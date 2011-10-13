@@ -1,0 +1,36 @@
+#avoid flicker
+double_buffer yes
+
+#own window to run simultanious 2 or more conkys
+own_window yes
+own_window_transparent no
+own_window_type normal
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager 
+
+#borders
+draw_borders no
+border_margin 1
+
+#shades
+draw_shades no
+
+#position
+gap_x 0
+gap_y 0
+alignment top_center
+
+#behaviour
+update_interval 1
+
+#colour
+default_color  ffffff
+
+#default_shade_color 0000003d352a
+own_window_colour 000000
+
+#font
+use_xft yes
+xftfont AvantGarde Md BT:pixelsize=13
+
+TEXT
+${alignc}${color}Kernel: ${color D7D3C5}$kernel  |  ${color}Processes: ${color D7D3C5}$processes  ${color}Running: ${color D7D3C5}$running_processes  |  ${color}Core0: ${color D7D3C5}${cpu cpu1}% - ${color}Temp: ${color D7D3C5}${hwmon 0 temp 1}°C    ${color}Core1: ${color D7D3C5}${cpu cpu2}% - ${color}Temp: ${color D7D3C5}${hwmon 0 temp 3}°C  |  ${color}Mem: ${color D7D3C5}$memperc%  |  ${color}Root: ${color D7D3C5}${font}${fs_free /}  / ${fs_size /}  |  ${color}Home: ${color D7D3C5}${fs_free /home}  / ${fs_size /home}  |  ${color}IP: ${color D7D3C5}${addr eth0}  |  ${color}Down: ${color D7D3C5}${downspeedf eth0}k/s  -  ${color}Up: ${color D7D3C5}${upspeedf eth0}k/s
