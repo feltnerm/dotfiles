@@ -52,7 +52,7 @@ TRAY_I_WIDTH    = 24            # System tray icon width  (usually 16 or 24)
 #------------------------------------------------------------------------------
 # Panel Clock Format: 'man strftime' for detailed formatting options and help
 #------------------------------------------------------------------------------
-CLOCK_FORMAT    = "%Y-%m-%d %H:%M"    # Ex: 2004-09-25 17:45 
+CLOCK_FORMAT    = "%d-%Y-%m %H:%M"    # Ex: 2004-09-25 17:45 
 
 #------------------------------------------------------------------------------
 # Clock Delay: Seconds between each clock update during periods of inactivity
@@ -76,7 +76,7 @@ HIDDEN_SIZE     = 2
 # Ex: "-schumacher-clean-medium-r-normal-*-12-*-*-*-*-*-*-*"
 #     "aquafont-8" 
 #------------------------------------------------------------------------------
-FONT            = "bitstream vera sans-8"
+FONT            = "calibri-8"
 
 #------------------------------------------------------------------------------
 # Show All Applications: Show apps from all desktops or just the current
@@ -214,7 +214,7 @@ def clockButtonEvent(pp, button):
     """ Button event handler for the panel's clock object """
     
     if button == 1:
-        os.system("xclock &")
+        os.system("/home/mark/bin/pypanel/dzen_calendar &")
     elif button == 2:
         pass
     elif button == 3:

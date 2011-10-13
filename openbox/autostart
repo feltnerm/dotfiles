@@ -15,4 +15,11 @@
 # If you want to use XFCE config tools...
 #
 #xfce-mcs-manager &
+nitrogen --restore &
 conky &
+pypanel &
+wicd-gtk &
+volti &
+trayfreq &
+parcellite &
+unclutter &

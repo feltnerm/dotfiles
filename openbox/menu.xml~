@@ -339,6 +339,22 @@
 				</action>
 			</item>
 		</menu>
+		<menu id="39" label="Other">
+			<item label="Dropbox">
+				<action name="Execute">
+					<execute>
+						dropboxd
+					</execute>
+				</action>
+			</item>
+			<item label="ElectricSheep">
+				<action name="Execute">
+					<execute>
+						electricsheep-saver
+					</execute>
+				</action>
+			</item>
+		</menu>
 		<menu id="19" label="Shells">
 			<item label="GTerminal">
 				<action name="Execute">
@@ -370,36 +386,6 @@
 			</item>
 		</menu>
 		<menu id="37" label="System">
-			<menu id="36-61950" label="Look and Feel">
-				<item label="GTK+ Look">
-					<action name="Execute">
-						<execute>
-								lxappearance
-						</execute>
-					</action>
-				</item>
-				<item label="Nitrogen (Wallpaper)">
-					<action name="Execute">
-						<execute>
-								nitrogen
-						</execute>
-					</action>
-				</item>
-				<item label="qt3 Look">
-					<action name="Execute">
-						<execute>
-								qt3config
-						</execute>
-					</action>
-				</item>
-				<item label="qt4 Look">
-					<action name="Execute">
-						<execute>
-								qtconfig
-						</execute>
-					</action>
-				</item>
-			</menu>
 			<menu id="36" label="Settings">
 				<item label="Gnome Configuration">
 					<action name="Execute">
@@ -415,18 +401,39 @@
 						</execute>
 					</action>
 				</item>
+				<menu id="36-61950" label="Look and Feel">
+					<item label="GTK+ Look">
+						<action name="Execute">
+							<execute>
+								lxappearance
+							</execute>
+						</action>
+					</item>
+					<item label="Nitrogen (Wallpaper)">
+						<action name="Execute">
+							<execute>
+								nitrogen
+							</execute>
+						</action>
+					</item>
+					<item label="qt3 Look">
+						<action name="Execute">
+							<execute>
+								qt3config
+							</execute>
+						</action>
+					</item>
+					<item label="qt4 Look">
+						<action name="Execute">
+							<execute>
+								qtconfig
+							</execute>
+						</action>
+					</item>
+				</menu>
 			</menu>
 		</menu>
 		<menu id="38" label="Utilities">
-			<menu id="38-603027" label="Backups / Sync">
-				<item label="Dropbox">
-					<action name="Execute">
-						<execute>
-							dropboxd
-						</execute>
-					</action>
-				</item>
-			</menu>
 			<menu id="38-901642" label="Disk / File">
 				<item label="7-Zip">
 					<action name="Execute">
