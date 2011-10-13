@@ -42,4 +42,4 @@ use_xft no
 xftfont Calibri:pixelsize=12
 
 TEXT
-${nodename} | ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KPVB temperature}F ${time %d.%m.%Y %I:%M.%S%p} | CPU 1:${cpu}% 2:${cpu}% | MEM ram: ${memperc}% swap: ${swapperc}% | HD /: ${fs_used}/${fs_size} | BATT: ${battery_percent} |  NET ${gw_iface} ${addr wlan0} essid: ${wireless_essid wlan0} (${wireless_link_qual wlan0})% down: ${downspeed wlan0} up: ${upspeed wlan0}
+${nodename} | ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KPVB temperature}F ${time %d.%m.%Y %I:%M.%S%p} | CPU 1:${cpu}% 2:${cpu}% | MEM ram: ${memperc}% swap: ${swapperc}% | HD /: ${fs_used}/${fs_size} | BATT: ${battery_percent} |  NET ${gw_iface} ${addr wlan0} essid: ${wireless_essid wlan0} [${wireless_link_qual wlan0}%] down: ${downspeed wlan0} up: ${upspeed wlan0}
