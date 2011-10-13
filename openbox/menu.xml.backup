@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu>
-	<menu id="root-menu" label="OpenBox 3">
+	<menu id="root-menu" label="weepood">
 		<menu id="1" label="Development">
 			<item label="BlueFish">
 				<action name="Execute">
