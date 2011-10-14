@@ -226,10 +226,10 @@
 						</execute>
 					</action>
 				</item>
-				<item label="xmms2">
+				<item label="gxmms2">
 					<action name="Execute">
 						<execute>
-							xmms2
+							gxmms2
 						</execute>
 					</action>
 				</item>
@@ -270,7 +270,7 @@
 				<item label="ardour">
 					<action name="Execute">
 						<execute>
-							ardour
+							ardour2
 						</execute>
 					</action>
 				</item>
