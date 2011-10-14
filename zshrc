@@ -88,3 +88,9 @@ alias g='git'
 alias pacman='pacman-color'
 
 ## Productivity Aliai
+
+## Linux Pro Audio
+export VST_PATH=/usr/lib/vst:/usr/local/lib/vst:~/.vst
+export LADSPA_PATH=/usr/lib/ladspa:/usr/local/lib/ladspa:~/.ladspa
+export LV2_PATH=/usr/lib/lv2:/usr/local/lib/lv2:~/.lv2
+export DSSI_PATH=/usr/lib/dssi:/usr/local/lib/dssi:~/.dssi

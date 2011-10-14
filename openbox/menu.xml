@@ -226,13 +226,6 @@
 						</execute>
 					</action>
 				</item>
-				<item label="nightengale">
-					<action name="Execute">
-						<execute>
-							nightengale
-						</execute>
-					</action>
-				</item>
 				<item label="xmms2">
 					<action name="Execute">
 						<execute>
@@ -241,7 +234,30 @@
 					</action>
 				</item>
 			</menu>
+			<menu id="7-63100" label="tools">
+				<item label="easytag">
+					<action name="Execute">
+						<execute>
+							easytag
+						</execute>
+					</action>
+				</item>
+				<item label="k3b">
+					<action name="execute">
+						<execute>
+							k3b
+						</execute>
+					</action>
+				</item>
+			</menu>
 			<menu id="7-79917" label="video">
+				<item label="projectm">
+					<action name="Execute">
+						<execute>
+							projectm-qt
+						</execute>
+					</action>
+				</item>
 				<item label="vlc">
 					<action name="execute">
 						<execute>
@@ -250,11 +266,88 @@
 					</action>
 				</item>
 			</menu>
-			<menu id="7-63100" label="tools">
-				<item label="k3b">
-					<action name="execute">
+			<menu id="7-56568" label="workstation">
+				<item label="ardour">
+					<action name="Execute">
 						<execute>
-							k3b
+							ardour
+						</execute>
+					</action>
+				</item>
+				<item label="hyrdogen">
+					<action name="Execute">
+						<execute>
+							hyrdogen
+						</execute>
+					</action>
+				</item>
+				<item label="jokosher">
+					<action name="Execute">
+						<execute>
+							jokosher
+						</execute>
+					</action>
+				</item>
+				<item label="linuxsampler">
+					<action name="Execute">
+						<execute>
+							linuxsampler
+						</execute>
+					</action>
+				</item>
+				<item label="lmms">
+					<action name="Execute">
+						<execute>
+							lmms
+						</execute>
+					</action>
+				</item>
+				<item label="mixxx">
+					<action name="Execute">
+						<execute>
+							mixxx
+						</execute>
+					</action>
+				</item>
+				<item label="patchage">
+					<action name="Execute">
+						<execute>
+							patchage
+						</execute>
+					</action>
+				</item>
+				<item label="qjackctl">
+					<action name="Execute">
+						<execute>
+							qjackctl
+						</execute>
+					</action>
+				</item>
+				<item label="qsnyth">
+					<action name="Execute">
+						<execute>
+							qsynth
+						</execute>
+					</action>
+				</item>
+				<item label="qtractor">
+					<action name="Execute">
+						<execute>
+							qtractor
+						</execute>
+					</action>
+				</item>
+				<item label="rosegarden">
+					<action name="Execute">
+						<execute>
+							rosegarden
+						</execute>
+					</action>
+				</item>
+				<item label="terminatorx">
+					<action name="Execute">
+						<execute>
+							terminatorx
 						</execute>
 					</action>
 				</item>
@@ -350,6 +443,13 @@
 				<action name="execute">
 					<execute>
 						libreoffice
+					</execute>
+				</action>
+			</item>
+			<item label="osmo">
+				<action name="Execute">
+					<execute>
+						osmo
 					</execute>
 				</action>
 			</item>

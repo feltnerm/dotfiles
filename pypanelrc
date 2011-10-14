@@ -214,7 +214,7 @@ def clockButtonEvent(pp, button):
     """ Button event handler for the panel's clock object """
     
     if button == 1:
-        os.system("/home/mark/bin/pypanel/dzen_calendar &")
+        pass
     elif button == 2:
         pass
     elif button == 3:
