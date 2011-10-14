@@ -15,18 +15,18 @@
 # If you want to use XFCE config tools...
 #
 #xfce-mcs-manager &
-wicd-gtk &
-nitrogen --restore &
-conky &
-pypanel &
 syndaemon -t -k -i 1 -d &
 dropboxd &
 #archassistant &
+nitrogen --restore &
+conky &
+pypanel &
+wicd-gtk &
 volti &
 trayfreq &
 parcellite &
 unclutter &
-xscreensaver &
+xscreensaver -no-splash &
 pidgin &
 osmo &
 urxvt -name urxvt-bg &

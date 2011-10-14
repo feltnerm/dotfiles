@@ -892,28 +892,28 @@
 		    <prompt></prompt>
 			<action name="execute"/>
 			<execute>
-			    gksu 'shutdown -h now'
+			    sudo 'shutdown -h now'
 			</execute>
 		</item>
 		<item label="restart">
 		    <prompt></prompt>
 			<action name="execute"/>
 			<execute>
-			    gksu 'shutdown -r now'
+			    sudo 'shutdown -r now'
 			</execute>
 		</item>
 		<item label="suspend">
 		    <prompt></prompt>
 			<action name="execute"/>
 		    <execute>
-		        gksu pm-suspend
+		        sudo pm-suspend
 			</execute>
 		</item>
 		<item label="hibernate">
 		    <prompt></prompt>
 			<action name="execute"/>
 		    <execute>
-		        gksu pm-hibernate
+		        sudo pm-hibernate
 			</execute>
 		</item>
 	</menu>

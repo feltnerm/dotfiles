@@ -48,7 +48,7 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 
 ## Self Settings
-export EDITOR="gvim"
+export EDITOR="vim"
 export PAGER="less"
 export SHELL="/bin/zsh"
 export BROWSER="chromium"
@@ -65,6 +65,7 @@ alias ..='cd ../..'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
 
+alias logo='archey3 | lolcat'
 alias emacs='emacs -nw'
 
 ## Python stuff
