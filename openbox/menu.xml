@@ -101,6 +101,59 @@
 					</action>
 				</item>
 			</menu>
+			<menu id="1-932532" label="langs">
+			    <menu id="1-345235" label="coffee-script">
+			        <item label="coffee">
+			            <execute>
+			                sakura -x coffee
+		                </execute>
+			        </item>
+			    </menu>
+			    <menu id="1-8755" label="haskell">
+			        <item label="ghc">
+			            <execute>
+			                sakura -x ghc
+		                </execute>
+	                </item>
+			    </menu>
+			    <menu id="1-875554" label="ruby">
+			        <item label="irb">
+			            <execute>
+			                sakura -x irb
+	                    </execute>
+                    </item>
+                </menu>
+                <menu id="1-58322" label="python">
+				    <item label="python2">
+					    <action name="execute">
+						    <execute>
+							    sakura -e python2
+						    </execute>
+					    </action>
+				    </item>
+				    <item label="idle2">
+					    <action name="execute">
+						    <execute>
+							    idle2
+						    </execute>
+					    </action>
+				    </item>
+				    <item label="python3">
+					    <action name="execute">
+						    <execute>
+							    sakura -e python
+						    </execute>
+					    </action>
+				    </item>
+				    <item label="idle3">
+					    <action name="execute">
+						    <execute>
+							    idle
+						    </execute>
+					    </action>
+				    </item>
+			    </menu>
+			</menu>
 			<menu id="1-8750" label="tools">
 				<item label="new item">
 					<action name="execute">
@@ -110,35 +163,14 @@
 					</action>
 				</item>
 			</menu>
-			<menu id="1-58322" label="python">
-				<item label="python2">
-					<action name="execute">
-						<execute>
-							sakura -e python2
-						</execute>
-					</action>
-				</item>
-				<item label="idle2">
-					<action name="execute">
-						<execute>
-							idle2
-						</execute>
-					</action>
-				</item>
-				<item label="python3">
-					<action name="execute">
-						<execute>
-							sakura -e python
-						</execute>
-					</action>
-				</item>
-				<item label="idle3">
-					<action name="execute">
-						<execute>
-							idle
-						</execute>
-					</action>
-				</item>
+			<menu id="1-1" label="web">
+			<item label="kompozer">
+				<action name="execute">
+					<execute>
+						kompozer
+					</execute>
+				</action>
+			</item>
 			</menu>
 		</menu>
 		<menu id="2" label="editors">
@@ -165,6 +197,13 @@
 			</item>
 		</menu>
 		<menu id="root-menu-4840" label="games">
+		    <item label="counter-strike:2d">
+				<action name="execute">
+					<execute>
+						counter-strike-2d
+					</execute>
+				</action>
+			</item>
 			<item label="dwarffortress">
 				<action name="execute">
 					<execute>
@@ -179,6 +218,13 @@
 					</execute>
 				</action>
 			</item>
+			<item label="freeciv">
+				<action name="execute">
+					<execute>
+						freeciv
+					</execute>
+				</action>
+			</item>
 			<item label="playonlinux">
 				<action name="execute">
 					<execute>
@@ -186,12 +232,19 @@
 					</execute>
 				</action>
 			</item>
+			<item label="stellarium">
+			    <action name="execute">
+			        <execute>
+			        stellarium
+			        </execute>
+		        </action>
+			</item>
 		</menu>
 		<menu id="6" label="graphics">
-			<item label="inkscape">
+			<item label="dia">
 				<action name="execute">
 					<execute>
-						inkscape
+						dia
 					</execute>
 				</action>
 			</item>
@@ -199,6 +252,20 @@
 				<action name="execute">
 					<execute>
 						gimp
+					</execute>
+				</action>
+			</item>
+			<item label="inkscape">
+				<action name="execute">
+					<execute>
+						inkscape
+					</execute>
+				</action>
+			</item>
+			<item label="scribus">
+				<action name="execute">
+					<execute>
+						scribus
 					</execute>
 				</action>
 			</item>
@@ -219,10 +286,10 @@
 						</execute>
 					</action>
 				</item>
-				<item label="mixer">
-					<action name="execute">
+				<item label="grooveshark">
+					<action name="Execute">
 						<execute>
-							gnome-alsamixer
+							grooveshark-desktop
 						</execute>
 					</action>
 				</item>
@@ -230,6 +297,13 @@
 					<action name="Execute">
 						<execute>
 							gxmms2
+						</execute>
+					</action>
+				</item>
+				<item label="mixer">
+					<action name="execute">
+						<execute>
+							gnome-alsamixer
 						</execute>
 					</action>
 				</item>
@@ -246,6 +320,13 @@
 					<action name="execute">
 						<execute>
 							k3b
+						</execute>
+					</action>
+				</item>
+				<item label="picard">
+					<action name="Execute">
+						<execute>
+							picard
 						</execute>
 					</action>
 				</item>
@@ -385,12 +466,15 @@
 						</execute>
 					</action>
 				</item>
-				<item label="qbittorrent">
-					<action name="execute">
+				<item label="nicotine">
+					<action name="Execute">
 						<execute>
-							qbittorrent
+							nicotine
 						</execute>
 					</action>
+				</item>
+				<item label="deluge">
+					<action name="execute"/>
 				</item>
 			</menu>
 			<menu id="5-841155" label="security">
@@ -424,7 +508,7 @@
 				</action>
 			</item>
 		</menu>
-		<menu id="3" label="office">
+		<menu id="3" label="productivity">
 			<item label="evince">
 				<action name="execute">
 					<execute>
@@ -453,6 +537,22 @@
 					</execute>
 				</action>
 			</item>
+			<menu id="18-1-1" label="learning">
+			<item label="brain workshop">
+				<action name="execute">
+					<execute>
+						brainworkshop
+					</execute>
+				</action>
+			</item>
+			<item label="fbreader">
+				<action name="execute">
+					<execute>
+						fbreader
+					</execute>
+				</action>
+			</item>
+			</menu>
 		</menu>
 		<menu id="19" label="terminals">
 			<item label="gterminal">
@@ -530,6 +630,13 @@
 						</execute>
 					</action>
 				</item>
+				<item label="furius">
+					<action name="Execute">
+						<execute>
+							furiusisomount
+						</execute>
+					</action>
+				</item>
 				<item label="nautilus">
 					<action name="execute">
 						<execute>
@@ -557,6 +664,13 @@
 					<action name="execute">
 						<execute>
 								nitrogen
+						</execute>
+					</action>
+				</item>
+				<item label="openbox app settings">
+					<action name="Execute">
+						<execute>
+							command
 						</execute>
 					</action>
 				</item>
@@ -612,12 +726,8 @@
 						</execute>
 					</action>
 				</item>
-				<item label="firestarter (firewall)">
-					<action name="execute">
-						<execute>
-							firestarter
-						</execute>
-					</action>
+				<item label="gufw">
+					<action name="execute"/>
 				</item>
 			</menu>
 			<menu id="36" label="settings">
@@ -637,6 +747,13 @@
 				</item>
 			</menu>
 			<menu id="38-271715" label="system">
+				<item label="daemon manager">
+					<action name="Execute">
+						<execute>
+							gksudo aldm-gui
+						</execute>
+					</action>
+				</item>
 				<menu id="38-271715-822552" label="screensaver">
 					<item label="activate">
 						<action name="execute">
@@ -671,6 +788,14 @@
 		<item label="reconfigure">
 			<action name="reconfigure"/>
 		</item>
+		<item label="lock">
+		    <action name="lock"/>
+		    <prompt>
+		    <execute>
+		        xscreensaver-command -lock
+		    </execute>
+		    </prompt>
+		</item>
 		<item label="logout">
 			<action name="execute">
 				<prompt/>
@@ -680,36 +805,32 @@
 			</action>
 		</item>
 		<item label="shutdown">
-			<action name="execute">
-				<prompt/>
-				<execute>
-					gksu halt
-				</execute>
-			</action>
+		    <prompt></prompt>
+			<action name="execute"/>
+			<execute>
+			    sudo 'shutdown -h now'
+			</execute>
 		</item>
 		<item label="restart">
-			<action name="execute">
-				<prompt/>
-				<execute>
-					gksu reboot
-				</execute>
-			</action>
+		    <prompt></prompt>
+			<action name="execute"/>
+			<execute>
+			    sudo 'shutdown -r now'
+			</execute>
 		</item>
 		<item label="suspend">
-			<action name="execute">
-				<prompt/>
-				<execute>
-					gksu pm-suspend
-				</execute>
-			</action>
+		    <prompt></prompt>
+			<action name="execute"/>
+		    <execute>
+		        sudo pm-suspend
+			</execute>
 		</item>
 		<item label="hibernate">
-			<action name="execute">
-				<prompt/>
-				<execute>
-					gksu pm-hibernate
-				</execute>
-			</action>
+		    <prompt></prompt>
+			<action name="execute"/>
+		    <execute>
+		        sudo pm-hibernate
+			</execute>
 		</item>
 	</menu>
 </openbox_menu>

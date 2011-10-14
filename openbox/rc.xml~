@@ -714,7 +714,7 @@
   # end of the example
 -->
 #urxvt transparent on desktop
-  <application name="urxvt-bg"><decor>no</decor><focus>yes</focus><position><x>0</x><y>19</y></position><layer>below</layer><desktop>all</desktop><shade>false</shade><skip_taskbar>yes</skip_taskbar><skip_pager>yes</skip_pager><maximized>false</maximized> #Only if you want a full size terminal.
+  <application name="urxvt-bg"><decor>no</decor><focus>yes</focus><position><x>0</x><y>20</y></position><layer>below</layer><desktop>all</desktop><shade>false</shade><skip_taskbar>yes</skip_taskbar><skip_pager>yes</skip_pager><maximized>false</maximized> #Only if you want a full size terminal.
   </application>
 </applications>
 </openbox_config>

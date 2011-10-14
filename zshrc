@@ -94,3 +94,6 @@ export VST_PATH=/usr/lib/vst:/usr/local/lib/vst:~/.vst
 export LADSPA_PATH=/usr/lib/ladspa:/usr/local/lib/ladspa:~/.ladspa
 export LV2_PATH=/usr/lib/lv2:/usr/local/lib/lv2:~/.lv2
 export DSSI_PATH=/usr/lib/dssi:/usr/local/lib/dssi:~/.dssi
+
+#Get per-application settings for openbox rc.xml
+alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
