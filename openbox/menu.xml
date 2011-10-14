@@ -139,6 +139,13 @@
 						    </execute>
 					    </action>
 				    </item>
+				    <item label="ipython2">
+					    <action name="execute">
+						    <execute>
+							    sakura -e ipython2
+						    </execute>
+					    </action>
+				    </item>
 				    <item label="idle2">
 					    <action name="execute">
 						    <execute>
@@ -150,6 +157,13 @@
 					    <action name="execute">
 						    <execute>
 							    sakura -e python
+						    </execute>
+					    </action>
+				    </item>
+				    <item label="ipython">
+					    <action name="execute">
+						    <execute>
+							    sakura -e ipython
 						    </execute>
 					    </action>
 				    </item>
@@ -247,7 +261,7 @@
 			<item label="google earth">
 				<action name="google earth">
 					<execute>
-						google-earth
+						googleearth
 					</execute>
 				</action>
 			</item>
