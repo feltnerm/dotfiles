@@ -102,6 +102,13 @@
 				</item>
 			</menu>
 			<menu id="1-932532" label="langs">
+			    <menu id="1-345235" label="coffee-script">
+			        <item label="coffee">
+			            <execute>
+			                sakura -x coffee
+		                </execute>
+			        </item>
+			    </menu>
 			    <menu id="1-8755" label="haskell">
 			        <item label="ghc">
 			            <execute>
@@ -116,6 +123,14 @@
 	                    </execute>
                     </item>
                 </menu>
+                <menu id="1-45325" label="processing">
+			        <item label="processing">
+			            <execute>
+			                processing
+			            </execute>
+		            </item>
+                    <menu execute="python2 /home/mark/bin/openbox/pipe_directory.py /home/mark/Projects/Processing" id="processing-projects" label="projects"/>
+			    </menu>
                 <menu id="1-58322" label="python">
 				    <item label="python2">
 					    <action name="execute">
@@ -145,26 +160,30 @@
 						    </execute>
 					    </action>
 				    </item>
+                    <menu execute="python2 /home/mark/bin/openbox/pipe_directory.py /home/mark/Projects/Python" id="python-projects" label="projects"/>
 			    </menu>
 			</menu>
 			<menu id="1-8750" label="tools">
-				<item label="new item">
+				<item label="kdbg">
 					<action name="execute">
 						<execute>
-							command
+							kdbg
 						</execute>
 					</action>
 				</item>
 			</menu>
 			<menu id="1-1" label="web">
-			<item label="kompozer">
-				<action name="execute">
-					<execute>
-						kompozer
-					</execute>
-				</action>
-			</item>
+			    <item label="kompozer">
+				    <action name="execute">
+					    <execute>
+						    kompozer
+					    </execute>
+				    </action>
+			    </item>
+            <menu execute="python2 /home/mark/bin/openbox/pipe_directory.py /home/mark/Projects/Web" id="web-projects" label="projects"/>
 			</menu>
+			<separator />
+			<menu execute="python2 /home/mark/bin/openbox/pipe_directory.py /home/mark/Projects" id="all-projects" label="projects"/>
 		</menu>
 		<menu id="2" label="editors">
 			<item label="kwrite">
@@ -190,6 +209,13 @@
 			</item>
 		</menu>
 		<menu id="root-menu-4840" label="games">
+		    <item label="celestia">
+				<action name="execute">
+					<execute>
+						celestia
+					</execute>
+				</action>
+			</item>
 		    <item label="counter-strike:2d">
 				<action name="execute">
 					<execute>
@@ -215,6 +241,13 @@
 				<action name="execute">
 					<execute>
 						freeciv
+					</execute>
+				</action>
+			</item>
+			<item label="google earth">
+				<action name="google earth">
+					<execute>
+						google-earth
 					</execute>
 				</action>
 			</item>
@@ -248,10 +281,24 @@
 					</execute>
 				</action>
 			</item>
+			<item label="gpick">
+				<action name="execute">
+					<execute>
+						gpick
+					</execute>
+				</action>
+			</item>
 			<item label="inkscape">
 				<action name="execute">
 					<execute>
 						inkscape
+					</execute>
+				</action>
+			</item>
+			<item label="picasa">
+				<action name="execute">
+					<execute>
+						picasa
 					</execute>
 				</action>
 			</item>
@@ -283,6 +330,13 @@
 					<action name="Execute">
 						<execute>
 							grooveshark-desktop
+						</execute>
+					</action>
+				</item>
+				<item label="gnaural">
+					<action name="Execute">
+						<execute>
+							gnaural
 						</execute>
 					</action>
 				</item>
@@ -459,6 +513,13 @@
 						</execute>
 					</action>
 				</item>
+				<item lable="linuxdc++">
+				    <action name="execute">
+				        <execute>
+				            linuxdcpp
+				        </execute>
+				    </action>
+				</item>
 				<item label="nicotine">
 					<action name="Execute">
 						<execute>
@@ -541,7 +602,7 @@
 			<item label="fbreader">
 				<action name="execute">
 					<execute>
-						fbreader
+						FBReader
 					</execute>
 				</action>
 			</item>
@@ -771,6 +832,22 @@
 					</item>
 				</menu>
 			</menu>
+		    <menu id="32492390579325" label="tools">
+			    <item label="calculator">
+			        <action name="execute">
+			            <execute>
+			            galculator
+			            </execute>
+			        </action>
+		        </item>
+			    <item label="clean system">
+			        <action name="execute">
+			            <execute>
+			            bleachbit
+			            </execute>
+			        </action>
+		        </item>
+	        </menu>
 		</menu>
 		<separator/>
 		<menu execute="sh /home/mark/bin/openbox/pipe_battery.sh" id="pipe-33397" label="battery"/>

@@ -68,7 +68,7 @@ set wildignore+=*.o,*.obj,.git,*.rbc
 ""
 set nowrap
 set autoindent
-set list 				" show whitespace
+" set list 				" show whitespace
 "set listchars=tab:\ \ ,trail:Â·		" show tabs
 
 " Tabs
