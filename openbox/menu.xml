@@ -226,6 +226,20 @@
 						</execute>
 					</action>
 				</item>
+				<item label="nightengale">
+					<action name="Execute">
+						<execute>
+							nightengale
+						</execute>
+					</action>
+				</item>
+				<item label="xmms2">
+					<action name="Execute">
+						<execute>
+							xmms2
+						</execute>
+					</action>
+				</item>
 			</menu>
 			<menu id="7-79917" label="video">
 				<item label="vlc">
@@ -369,7 +383,7 @@
 					</execute>
 				</action>
 			</item>
-		      </menu>
+		</menu>
 		<menu id="38" label="utilities">
 			<menu id="38-603027" label="backups / sync">
 				<item label="dropbox">
@@ -491,6 +505,13 @@
 						</execute>
 					</action>
 				</item>
+				<item label="wicd">
+					<action name="Execute">
+						<execute>
+							wicd-gtk
+						</execute>
+					</action>
+				</item>
 				<item label="firestarter (firewall)">
 					<action name="execute">
 						<execute>
@@ -552,7 +573,7 @@
 		</item>
 		<item label="logout">
 			<action name="execute">
-				<prompt></prompt>
+				<prompt/>
 				<execute>
 					openbox --exit
 				</execute>
@@ -560,7 +581,7 @@
 		</item>
 		<item label="shutdown">
 			<action name="execute">
-				<prompt></prompt>
+				<prompt/>
 				<execute>
 					gksu halt
 				</execute>
@@ -568,15 +589,15 @@
 		</item>
 		<item label="restart">
 			<action name="execute">
-				<prompt></prompt>
+				<prompt/>
 				<execute>
 					gksu reboot
 				</execute>
 			</action>
 		</item>
-		<item label="suspend">  
+		<item label="suspend">
 			<action name="execute">
-				<prompt></prompt>
+				<prompt/>
 				<execute>
 					gksu pm-suspend
 				</execute>
@@ -584,7 +605,7 @@
 		</item>
 		<item label="hibernate">
 			<action name="execute">
-				<prompt></prompt>
+				<prompt/>
 				<execute>
 					gksu pm-hibernate
 				</execute>
