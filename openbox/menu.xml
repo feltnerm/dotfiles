@@ -644,6 +644,20 @@
 					</execute>
 				</action>
 			</item>
+            <item label="rxvt-unicode-desktop">
+				<action name="execute">
+					<execute>
+						urxvt --name urxvt-bg
+					</execute>
+				</action>
+			</item>
+			<item label="termkit">
+				<action name="execute">
+					<execute>
+						sakura -x termkit
+					</execute>
+				</action>
+			</item>
 			<item label="sakura">
 				<action name="execute">
 					<execute>
@@ -864,10 +878,12 @@
 	        </menu>
 		</menu>
 		<separator/>
+		<menu execute="python2 /home/mark/bin/openbox/pipe_calendar.py" id="pipe-235235235" label="calendar"/>
 		<menu execute="sh /home/mark/bin/openbox/pipe_battery.sh" id="pipe-33397" label="battery"/>
 		<menu id="client-list-menu"/>
 		<menu execute="perl /home/mark/bin/openbox/pipe_procinfo.pl" id="pipe-33941" label="processes"/>
 		<menu execute="perl /home/mark/bin/openbox/pipe_sysinfo.pl" id="pipe-553920" label="sysinfo"/>
+		<menu execute="python2 /home/mark/bin/openbox/pipe_weather.py platteville,wi en" id="pipe-23525" label="weather"/>
 		<separator/>
 		<item label="reconfigure">
 			<action name="reconfigure"/>
