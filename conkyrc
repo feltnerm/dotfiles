@@ -12,7 +12,7 @@ background no
 #position
 gap_x 0
 gap_y 0
-alignment top_middle
+alignment top_left
 
 #size
 #maximum_width 1024
@@ -21,6 +21,9 @@ alignment top_middle
 #colors
 default_color white
 default_outline_color 382D1C
+color1 white
+color2 7B8B8B
+color3 937F87
 
 #drawing
 draw_borders no
@@ -38,8 +41,9 @@ temperature_unit fahrenheit
 
 #font
 #use_xft yes
-use_xft no
-xftfont Calibri:pixelsize=12
+use_xft yes
+xftalpha 0.1
+xftfont Calibri:size=8
 
 TEXT
-${nodename} | ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KPVB temperature}F ${time %d.%m.%Y %I:%M.%S%p} | CPU 1:${cpu}% 2:${cpu}% | MEM ram: ${memperc}% swap: ${swapperc}% | HD /: ${fs_used}/${fs_size} | BATT: ${battery_percent} |  NET ${gw_iface} ${addr wlan0} essid: ${wireless_essid wlan0} [${wireless_link_qual wlan0}%] down: ${downspeed wlan0} up: ${upspeed wlan0}
+${color3}${nodename} | ${color2}${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KPVB temperature}F ${time %d.%m.%Y %I:%M.%S%p} | ${color3}CPU ${color2}1:${cpu}% 2:${cpu}% | ${color3}MEM ${color2}ram: ${memperc}% swap: ${swapperc}% | ${color3}HD ${color2}/: ${fs_used}/${fs_size} | ${color3}BATT: ${color2}${battery_percent} | ${color3}NET ${color2}${gw_iface} ${addr wlan0} essid: ${wireless_essid wlan0} [${wireless_link_qual wlan0}%] down: ${downspeed wlan0} up: ${upspeed wlan0}

@@ -1,152 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu>
-	<menu id="root-menu" label="OpenBox 3">
+	<menu id="root-menu" label="openbox 3">
+		<item label="internet">
+			<action name="execute">
+				<execute>
+					chromium
+				</execute>
+			</action>
+		</item>
 		<item label="run">
-			<action name="Execute">
+			<action name="execute">
 				<execute>
 					gmrun
 				</execute>
 			</action>
 		</item>
 		<item label="terminal">
-			<action name="Execute">
+			<action name="execute">
 				<execute>
 					sakura -c 80 -r 50
 				</execute>
 			</action>
 		</item>
-		<item label="internet">
-			<action name="Execute">
-				<execute>
-					chromium
-				</execute>
-			</action>
-		</item>
-		<item label="editor">
-			<action name="Execute">
-				<execute>
-					gedit
-				</execute>
-			</action>
-		</item>
-		<item label="fileman">
-			<action name="Execute">
-				<execute>
-					thunar
-				</execute>
-			</action>
-		</item>
+		<menu execute="perl /home/mark/bin/openbox/pipe_thunarbookmarks.pl" id="pipe-91488" label="places"/>
 		<separator/>
-		<menu id="root-menu-31026" label="Communication">
-			<item label="Pidgin">
-				<action name="Execute">
+		<menu id="root-menu-31026" label="communication">
+			<item label="pidgin">
+				<action name="execute">
 					<execute>
 						pidgin
 					</execute>
 				</action>
 			</item>
-			<item label="Thunderbird">
-				<action name="Execute">
+			<item label="thunderbird">
+				<action name="execute">
 					<execute>
 						thunderbird
 					</execute>
 				</action>
 			</item>
-			<item label="Xchat">
-				<action name="Execute">
+			<item label="xchat">
+				<action name="execute">
 					<execute>
 						xchat
 					</execute>
 				</action>
 			</item>
 		</menu>
-		<menu id="1" label="Development">
-			<menu id="1-70453" label="Editors">
+		<menu id="1" label="development">
+			<menu id="1-70453" label="editors">
 				<item label="gedit">
-					<action name="Execute">
+					<action name="execute">
 						<execute>
 							gedit
 						</execute>
 					</action>
 				</item>
 				<item label="gvim">
-					<action name="Execute">
+					<action name="execute">
 						<execute>
 							gvim
 						</execute>
 					</action>
 				</item>
-				<item label="Kate">
-					<action name="Execute">
+				<item label="kate">
+					<action name="execute">
 						<execute>
 							kate
 						</execute>
 					</action>
 				</item>
 				<item label="vim">
-					<action name="Execute">
+					<action name="execute">
 						<execute>
 							sakura -c 80 -r 50 -x vim
 						</execute>
 					</action>
 				</item>
 			</menu>
-			<menu id="1-16238" label="IDEs">
-				<item label="Bluefish">
-					<action name="Execute">
+			<menu id="1-16238" label="ides">
+				<item label="bluefish">
+					<action name="execute">
 						<execute>
 							geany
 						</execute>
 					</action>
 				</item>
-				<item label="Eclipse">
-					<action name="Execute">
+				<item label="eclipse">
+					<action name="execute">
 						<execute>
 							eclipse
 						</execute>
 					</action>
 				</item>
-				<item label="Geany">
-					<action name="Execute">
+				<item label="geany">
+					<action name="execute">
 						<execute>
 							geany
 						</execute>
 					</action>
 				</item>
 			</menu>
-			<menu id="1-8750" label="Tools">
-				<item label="New Item">
-					<action name="Execute">
+			<menu id="1-8750" label="tools">
+				<item label="new item">
+					<action name="execute">
 						<execute>
 							command
 						</execute>
 					</action>
 				</item>
 			</menu>
-			<menu id="1-58322" label="Python">
-				<item label="Python2">
-					<action name="Execute">
+			<menu id="1-58322" label="python">
+				<item label="python2">
+					<action name="execute">
 						<execute>
 							sakura -e python2
 						</execute>
 					</action>
 				</item>
-				<item label="IDLE2">
-					<action name="Execute">
+				<item label="idle2">
+					<action name="execute">
 						<execute>
 							idle2
 						</execute>
 					</action>
 				</item>
-				<item label="Python3">
-					<action name="Execute">
+				<item label="python3">
+					<action name="execute">
 						<execute>
 							sakura -e python
 						</execute>
 					</action>
 				</item>
-				<item label="IDLE3">
-					<action name="Execute">
+				<item label="idle3">
+					<action name="execute">
 						<execute>
 							idle
 						</execute>
@@ -154,90 +141,104 @@
 				</item>
 			</menu>
 		</menu>
-		<menu id="2" label="Editors">
-			<item label="KWrite">
-				<action name="Execute">
+		<menu id="2" label="editors">
+			<item label="kwrite">
+				<action name="execute">
 					<execute>
 						kwrite
 					</execute>
 				</action>
 			</item>
-			<item label="Leafpad">
-				<action name="Execute">
+			<item label="leafpad">
+				<action name="execute">
 					<execute>
 						leafpad
 					</execute>
 				</action>
 			</item>
-			<item label="Nano">
-				<action name="Execute">
+			<item label="nano">
+				<action name="execute">
 					<execute>
 						sakura -e nano
 					</execute>
 				</action>
 			</item>
 		</menu>
-		<menu id="root-menu-4840" label="Games">
-			<item label="New Item">
-				<action name="Execute">
+		<menu id="root-menu-4840" label="games">
+			<item label="dwarffortress">
+				<action name="execute">
 					<execute>
-						command
+						dwarffortress
+					</execute>
+				</action>
+			</item>
+			<item label="dwarftherapist">
+				<action name="execute">
+					<execute>
+						dwarftherapist
+					</execute>
+				</action>
+			</item>
+			<item label="playonlinux">
+				<action name="execute">
+					<execute>
+						playonlinux
 					</execute>
 				</action>
 			</item>
 		</menu>
-		<menu id="6" label="Graphics">
-			<item label="Inkscape">
-				<action name="Execute">
+		<menu id="6" label="graphics">
+			<item label="inkscape">
+				<action name="execute">
 					<execute>
 						inkscape
 					</execute>
 				</action>
 			</item>
-			<item label="GIMP">
-				<action name="Execute">
+			<item label="gimp">
+				<action name="execute">
 					<execute>
 						gimp
 					</execute>
 				</action>
 			</item>
-			<item label="Viewnior">
-				<action name="Execute">
+			<item label="viewnior">
+				<action name="execute">
 					<execute>
 						viewnior
 					</execute>
 				</action>
 			</item>
 		</menu>
-		<menu id="7" label="Multimedia">
-			<menu id="7-15914" label="Audio">
-				<item label="Amarok">
-					<action name="Execute">
+		<menu id="7" label="multimedia">
+			<menu id="7-15914" label="audio">
+				<item label="amarok">
+					<action name="execute">
 						<execute>
 							amarok
 						</execute>
 					</action>
 				</item>
-				<item label="Mixer">
-					<action name="Execute">
+				<item label="mixer">
+					<action name="execute">
 						<execute>
 							gnome-alsamixer
 						</execute>
 					</action>
 				</item>
 			</menu>
-			<menu id="7-79917" label="Video">
-				<item label="VLC">
-					<action name="Execute">
+			<menu id="7-79917" label="video">
+				<item label="vlc">
+					<action name="execute">
 						<execute>
 							vlc
 						</execute>
 					</action>
 				</item>
 			</menu>
-			<menu id="7-63100" label="Tools">
-				<item label="K3b">
-					<action name="Execute">
+			<menu id="7-63100" label="tools">
+				<item label="k3b">
+					<action name="execute">
 						<execute>
 							k3b
 						</execute>
@@ -245,63 +246,63 @@
 				</item>
 			</menu>
 		</menu>
-		<menu id="5" label="Network">
-			<menu id="5-0116" label="Browsers">
-				<item label="Chromium">
-					<action name="Execute">
+		<menu id="5" label="internet">
+			<menu id="5-0116" label="browsers">
+				<item label="chromium">
+					<action name="execute">
 						<execute>
 							chromium
 						</execute>
 					</action>
 				</item>
-				<item label="Lynx">
-					<action name="Execute">
+				<item label="lynx">
+					<action name="execute">
 						<execute>
 							sakura -c 150 -r 50 -x lynx
 						</execute>
 					</action>
 				</item>
 				<item label="uzbl">
-					<action name="Execute">
+					<action name="execute">
 						<execute>
 							uzbl-browser
 						</execute>
 					</action>
 				</item>
 			</menu>
-			<menu id="5-141132" label="P2P">
-				<item label="gFTP">
-					<action name="Execute">
+			<menu id="5-141132" label="p2p">
+				<item label="gftp">
+					<action name="execute">
 						<execute>
 							gftp
 						</execute>
 					</action>
 				</item>
-				<item label="qBittorrent">
-					<action name="Execute">
+				<item label="qbittorrent">
+					<action name="execute">
 						<execute>
 							qbittorrent
 						</execute>
 					</action>
 				</item>
 			</menu>
-			<menu id="5-841155" label="Security">
-				<item label="EtherApe">
-					<action name="Execute">
+			<menu id="5-841155" label="security">
+				<item label="etherape">
+					<action name="execute">
 						<execute>
 							etherape
 						</execute>
 					</action>
 				</item>
-				<item label="Zenmap">
-					<action name="Execute">
+				<item label="zenmap">
+					<action name="execute">
 						<execute>
 							zenmap
 						</execute>
 					</action>
 				</item>
-				<item label="Zenmap (root)">
-					<action name="Execute">
+				<item label="zenmap (root)">
+					<action name="execute">
 						<execute>
 							/usr/share/zenmap/su-to-zenmap.sh
 						</execute>
@@ -309,216 +310,229 @@
 				</item>
 			</menu>
 			<item label="ntop">
-				<action name="Execute">
+				<action name="execute">
 					<execute>
 						sakura -e ntop
 					</execute>
 				</action>
 			</item>
 		</menu>
-		<menu id="3" label="Office">
-			<item label="Evince">
-				<action name="Execute">
+		<menu id="3" label="office">
+			<item label="evince">
+				<action name="execute">
 					<execute>
 						evince
 					</execute>
 				</action>
 			</item>
-			<item label="GnuCash">
-				<action name="Execute">
+			<item label="gnucash">
+				<action name="execute">
 					<execute>
 						gnucash
 					</execute>
 				</action>
 			</item>
-			<item label="LibreOffice">
-				<action name="Execute">
+			<item label="libreoffice">
+				<action name="execute">
 					<execute>
 						libreoffice
 					</execute>
 				</action>
 			</item>
 		</menu>
-		<menu id="39" label="Other">
-			<item label="Dropbox">
-				<action name="Execute">
-					<execute>
-						dropboxd
-					</execute>
-				</action>
-			</item>
-			<item label="ElectricSheep">
-				<action name="Execute">
-					<execute>
-						electricsheep-saver
-					</execute>
-				</action>
-			</item>
-		</menu>
-		<menu id="19" label="Shells">
-			<item label="GTerminal">
-				<action name="Execute">
+		<menu id="19" label="terminals">
+			<item label="gterminal">
+				<action name="execute">
 					<execute>
 						gnome-terminal
 					</execute>
 				</action>
 			</item>
-			<item label="GTerminal (root)">
-				<action name="Execute">
+			<item label="gterminal (root)">
+				<action name="execute">
 					<execute>
 						gksu -l gnome-terminal
 					</execute>
 				</action>
 			</item>
 			<item label="rxvt-unicode">
-				<action name="Execute">
+				<action name="execute">
 					<execute>
 						urxvt
 					</execute>
 				</action>
 			</item>
-			<item label="Sakura">
-				<action name="Execute">
+			<item label="sakura">
+				<action name="execute">
 					<execute>
 						sakura
 					</execute>
 				</action>
 			</item>
-		</menu>
-		<menu id="37" label="System">
-			<menu id="36" label="Settings">
-				<item label="Gnome Configuration">
-					<action name="Execute">
+		      </menu>
+		<menu id="38" label="utilities">
+			<menu id="38-603027" label="backups / sync">
+				<item label="dropbox">
+					<action name="execute">
 						<execute>
-							dconf-editor
+							dropboxd
 						</execute>
 					</action>
 				</item>
-				<item label="Flash Player Settings">
-					<action name="Execute">
-						<execute>
-							flash-player-properties
-						</execute>
-					</action>
-				</item>
-				<menu id="36-61950" label="Look and Feel">
-					<item label="GTK+ Look">
-						<action name="Execute">
-							<execute>
-								lxappearance
-							</execute>
-						</action>
-					</item>
-					<item label="Nitrogen (Wallpaper)">
-						<action name="Execute">
-							<execute>
-								nitrogen
-							</execute>
-						</action>
-					</item>
-					<item label="qt3 Look">
-						<action name="Execute">
-							<execute>
-								qt3config
-							</execute>
-						</action>
-					</item>
-					<item label="qt4 Look">
-						<action name="Execute">
-							<execute>
-								qtconfig
-							</execute>
-						</action>
-					</item>
-				</menu>
 			</menu>
-		</menu>
-		<menu id="38" label="Utilities">
-			<menu id="38-901642" label="Disk / File">
-				<item label="7-Zip">
-					<action name="Execute">
+			<menu id="38-901642" label="disk / file">
+				<item label="7-zip">
+					<action name="execute">
 						<execute>
-							7zFM
+							7zfm
 						</execute>
 					</action>
 				</item>
-				<item label="Archive Manager">
-					<action name="Execute">
+				<item label="archive manager">
+					<action name="execute">
 						<execute>
 							file-roller
 						</execute>
 					</action>
 				</item>
-				<item label="Bulk Rename">
-					<action name="Execute">
+				<item label="bulk rename">
+					<action name="execute">
 						<execute>
-							/usr/lib/Thunar/ThunarBulkRename
+							/usr/lib/thunar/thunarbulkrename
 						</execute>
 					</action>
 				</item>
-				<item label="Catfish (File Searching)">
-					<action name="Execute">
+				<item label="catfish (file searching)">
+					<action name="execute">
 						<execute>
 							catfish
 						</execute>
 					</action>
 				</item>
-				<item label="Filelight (Disk Usage)">
-					<action name="Execute">
+				<item label="filelight (disk usage)">
+					<action name="execute">
 						<execute>
 							filelight
 						</execute>
 					</action>
 				</item>
-				<item label="Nautilus">
-					<action name="Execute">
+				<item label="nautilus">
+					<action name="execute">
 						<execute>
 							nautilus
 						</execute>
 					</action>
 				</item>
-				<item label="Thunar">
-					<action name="Execute">
+				<item label="thunar">
+					<action name="execute">
 						<execute>
 							thunar
 						</execute>
 					</action>
 				</item>
 			</menu>
-			<menu id="38-451653" label="Network">
-				<item label="ntop (Network Usage)">
-					<action name="Execute">
+			<menu id="36-61950" label="look and feel">
+				<item label="gtk+ look">
+					<action name="execute">
+						<execute>
+								lxappearance
+						</execute>
+					</action>
+				</item>
+				<item label="nitrogen (wallpaper)">
+					<action name="execute">
+						<execute>
+								nitrogen
+						</execute>
+					</action>
+				</item>
+				<item label="openbox configuration">
+					<action name="execute">
+						<execute>
+							obconf
+						</execute>
+					</action>
+				</item>
+				<item label="openbox key">
+					<action name="execute">
+						<execute>
+							obkey
+						</execute>
+					</action>
+				</item>
+				<menu execute="python2 /home/mark/bin/openbox/pipe_keybindings.py" id="keybindings" label="keybindings"/>
+				<item label="openbox menu">
+					<action name="execute">
+						<execute>
+							obmenu
+						</execute>
+					</action>
+				</item>
+				<item label="qt3 look">
+					<action name="execute">
+						<execute>
+								qt3config
+						</execute>
+					</action>
+				</item>
+				<item label="qt4 look">
+					<action name="execute">
+						<execute>
+								qtconfig
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="38-451653" label="network">
+				<item label="ntop (network usage)">
+					<action name="execute">
 						<execute>
 							sakura -x ntop
 						</execute>
 					</action>
 				</item>
-				<item label="Firestarter (Firewall)">
-					<action name="Execute">
+				<item label="firestarter (firewall)">
+					<action name="execute">
 						<execute>
 							firestarter
 						</execute>
 					</action>
 				</item>
 			</menu>
-			<menu id="38-271715" label="System">
-				<menu id="38-271715-822552" label="Screensaver">
-					<item label="Activate">
-						<action name="Execute">
+			<menu id="36" label="settings">
+				<item label="gnome configuration">
+					<action name="execute">
+						<execute>
+							dconf-editor
+						</execute>
+					</action>
+				</item>
+				<item label="flash player settings">
+					<action name="execute">
+						<execute>
+							flash-player-properties
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="38-271715" label="system">
+				<menu id="38-271715-822552" label="screensaver">
+					<item label="activate">
+						<action name="execute">
 							<execute>
 								xscreensaver
 							</execute>
 						</action>
 					</item>
-					<item label="Electric Sheep">
-						<action name="Execute">
+					<item label="electric sheep">
+						<action name="execute">
 							<execute>
 								electricsheep-saver
 							</execute>
 						</action>
 					</item>
-					<item label="Preferences">
-						<action name="Execute">
+					<item label="preferences">
+						<action name="execute">
 							<execute>
 								xscreensaver-command -prefs
 							</execute>
@@ -528,38 +542,53 @@
 			</menu>
 		</menu>
 		<separator/>
-		<menu id="40" label="OpenBox">
-			<menu id="40-275717" label="Settings">
-				<item label="Openbox Configuration">
-					<action name="Execute">
-						<execute>
-							obconf
-						</execute>
-					</action>
-				</item>
-				<item label="Openbox Key">
-					<action name="Execute">
-						<execute>
-							obkey
-						</execute>
-					</action>
-				</item>
-				<item label="Openbox Menu">
-					<action name="Execute">
-						<execute>
-							obmenu
-						</execute>
-					</action>
-				</item>
-			</menu>
-			<menu id="client-list-menu"/>
-			<item label="Reconfigure">
-				<action name="Reconfigure"/>
-			</item>
-			<separator/>
-			<item label="Exit">
-				<action name="Exit"/>
-			</item>
-		</menu>
+		<menu execute="sh /home/mark/bin/openbox/pipe_battery.sh" id="pipe-33397" label="battery"/>
+		<menu id="client-list-menu"/>
+		<menu execute="perl /home/mark/bin/openbox/pipe_procinfo.pl" id="pipe-33941" label="processes"/>
+		<menu execute="perl /home/mark/bin/openbox/pipe_sysinfo.pl" id="pipe-553920" label="sysinfo"/>
+		<separator/>
+		<item label="reconfigure">
+			<action name="reconfigure"/>
+		</item>
+		<item label="logout">
+			<action name="execute">
+				<prompt></prompt>
+				<execute>
+					openbox --exit
+				</execute>
+			</action>
+		</item>
+		<item label="shutdown">
+			<action name="execute">
+				<prompt></prompt>
+				<execute>
+					gksu halt
+				</execute>
+			</action>
+		</item>
+		<item label="restart">
+			<action name="execute">
+				<prompt></prompt>
+				<execute>
+					gksu reboot
+				</execute>
+			</action>
+		</item>
+		<item label="suspend">  
+			<action name="execute">
+				<prompt></prompt>
+				<execute>
+					gksu pm-suspend
+				</execute>
+			</action>
+		</item>
+		<item label="hibernate">
+			<action name="execute">
+				<prompt></prompt>
+				<execute>
+					gksu pm-hibernate
+				</execute>
+			</action>
+		</item>
 	</menu>
 </openbox_menu>

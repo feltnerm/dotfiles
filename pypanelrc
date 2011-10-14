@@ -11,17 +11,17 @@ VERSION         = 2.4           # Config file version
 #------------------------------------------------------------------------------
 # Colors: Format is hex triplet - 0xrrggbb
 #------------------------------------------------------------------------------
-BG_COLOR        = "0xd6d6d6"    # Panel background and tinting color
-TASK_COLOR      = "0x000000"    # Normal task name color 
-FOCUSED_COLOR   = "0x1826de"    # Focused task name color
-SHADED_COLOR    = "0x808080"    # Shaded task name color 
-MINIMIZED_COLOR = "0x808080"    # Minimized task name color 
-DESKTOP_COLOR   = "0x000000"    # Desktop name color
-CLOCK_COLOR     = "0x000000"    # Clock text color
-LINE_COLOR      = "0x606060"    # Vertical line color
+BG_COLOR        = "0x272521"    # Panel background and tinting color6
+TASK_COLOR      = "0x937F87"    # Normal task name color 
+FOCUSED_COLOR   = "0x7B8B8B"    # Focused task name color
+SHADED_COLOR    = "0x827F8D"    # Shaded task name color 
+MINIMIZED_COLOR = "0x19140B"    # Minimized task name color 
+DESKTOP_COLOR   = "0x937F87"    # Desktop name color
+CLOCK_COLOR     = "0x937F87"    # Clock text color
+LINE_COLOR      = "0x000000"    # Vertical line color
 
 # Text Shadow Colors
-TASK_SHADOW_COLOR      = "0xffffff"
+TASK_SHADOW_COLOR      = "0x000000"
 FOCUSED_SHADOW_COLOR   = "0xffffff"
 SHADED_SHADOW_COLOR    = "0xffffff"
 MINIMIZED_SHADOW_COLOR = "0xffffff" 
@@ -52,12 +52,12 @@ TRAY_I_WIDTH    = 24            # System tray icon width  (usually 16 or 24)
 #------------------------------------------------------------------------------
 # Panel Clock Format: 'man strftime' for detailed formatting options and help
 #------------------------------------------------------------------------------
-CLOCK_FORMAT    = "%d-%Y-%m %H:%M"    # Ex: 2004-09-25 17:45 
+CLOCK_FORMAT    = "%a %d %b, %Y  %I:%M.%S%P"    # Ex: 2004-09-25 17:45 
 
 #------------------------------------------------------------------------------
 # Clock Delay: Seconds between each clock update during periods of inactivity
 #------------------------------------------------------------------------------
-CLOCK_DELAY     = 20
+CLOCK_DELAY     = 1 
 
 #------------------------------------------------------------------------------
 # Hidden Application List: Apps listed here will not be display on the panel
@@ -76,7 +76,7 @@ HIDDEN_SIZE     = 2
 # Ex: "-schumacher-clean-medium-r-normal-*-12-*-*-*-*-*-*-*"
 #     "aquafont-8" 
 #------------------------------------------------------------------------------
-FONT            = "calibri-8"
+FONT            = "droid sans-8"
 
 #------------------------------------------------------------------------------
 # Show All Applications: Show apps from all desktops or just the current
