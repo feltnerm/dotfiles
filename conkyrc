@@ -45,7 +45,7 @@ net_avg_samples 2
 cpu_avg_samples 2
 
 #formatting
-format_human_readable yes
+format_human_readable yes 
 short_units yes
 temperature_unit fahrenheit
 default_bar_size 30 8

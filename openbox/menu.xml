@@ -18,7 +18,7 @@
 		<item label="terminal">
 			<action name="execute">
 				<execute>
-					sakura -c 80 -r 50
+					sakura -c 80 -r 19 
 				</execute>
 			</action>
 		</item>
@@ -893,7 +893,13 @@
 		        <prompt>Lock screen?</prompt>
 		        <command>xscreensaver-command --lock</command>
 		    </action>
-		</item>
+        </item>
+        <item label="logout">
+            <action name="execute">
+                <prompt>Logout?</prompt>
+                <command>openbox --exit</command>
+            </action>
+        </item>
 		<item label="reboot">
 		    <action name="execute">
 		        <prompt>Reboot?</prompt>

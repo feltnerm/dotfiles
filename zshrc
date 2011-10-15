@@ -89,6 +89,7 @@ alias g='git'
 alias pacman='pacman-color'
 
 ## Productivity Aliai
+alias calc='galculator'
 
 ## Linux Pro Audio
 export VST_PATH=/usr/lib/vst:/usr/local/lib/vst:~/.vst

@@ -116,7 +116,7 @@ ICON_LIST       = {
 #     ("<executable>", "<full path to icon>")
 #------------------------------------------------------------------------------
 LAUNCH_LIST     = [
-                   ("", "/home/mark/Pictures/Logos/starthere.png"), 
+                   ("xdotool key super+m", "/home/mark/Pictures/Logos/starthere.png"), 
                   ]
 
 #------------------------------------------------------------------------------
