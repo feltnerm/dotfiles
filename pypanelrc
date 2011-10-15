@@ -44,15 +44,15 @@ I_HEIGHT        = 16            # Panel application icon height
 I_WIDTH         = 16            # Panel application icon Width 
 APPL_I_HEIGHT   = 24            # Application launcher icon height
 APPL_I_WIDTH    = 24            # Application launcher icon width
-TRAY_I_HEIGHT   = 24            # System tray icon height (usually 16 or 24)
-TRAY_I_WIDTH    = 24            # System tray icon width  (usually 16 or 24)
+TRAY_I_HEIGHT   = 16            # System tray icon height (usually 16 or 24)
+TRAY_I_WIDTH    = 16            # System tray icon width  (usually 16 or 24)
                                 # If TRAY_I_WIDTH is set to 0, then the
                                 # width specified by the tray app will be used
                                 
 #------------------------------------------------------------------------------
 # Panel Clock Format: 'man strftime' for detailed formatting options and help
 #------------------------------------------------------------------------------
-CLOCK_FORMAT    = "%a %d %b, %Y  %I:%M.%S%P"    # Ex: 2004-09-25 17:45 
+CLOCK_FORMAT    = "%a %b %d %Y  %I:%M.%S%P"    # Ex: 2004-09-25 17:45 
 
 #------------------------------------------------------------------------------
 # Clock Delay: Seconds between each clock update during periods of inactivity
@@ -84,7 +84,7 @@ FONT            = "droid sans-8"
 # 1: Enabled  - Selected apps are moved to the current desktop
 # 2: Enabled  - Current desktop is changed to the selected apps desktop
 #------------------------------------------------------------------------------
-SHOWALL         = 0             # 0, 1 or 2 - see descriptions above
+SHOWALL         = 2             # 0, 1 or 2 - see descriptions above
 
 #------------------------------------------------------------------------------
 # Show Minimized/Iconified Applications: Show only minimized apps or all apps
@@ -116,7 +116,7 @@ ICON_LIST       = {
 #     ("<executable>", "<full path to icon>")
 #------------------------------------------------------------------------------
 LAUNCH_LIST     = [
-                   ("gimp-2.2", "/usr/share/imlib2/data/images/paper.png"), 
+                   ("", "/home/mark/Pictures/Logos/starthere.png"), 
                   ]
 
 #------------------------------------------------------------------------------
@@ -152,11 +152,11 @@ DESKTOP_NAMES   = []
 # in the diagram above.  Each of the following objects can be enabled by
 # assigning it a section number or disabled by assigning it 0:
 #------------------------------------------------------------------------------
-DESKTOP         = 1             # Desktop name section
-TASKS           = 2             # Task names section 
-TRAY            = 3             # System tray section
-CLOCK           = 4             # Clock section
-LAUNCHER        = 0             # Application launcher section
+DESKTOP         = 2             # Desktop name section
+TASKS           = 3             # Task names section 
+TRAY            = 4             # System tray section
+CLOCK           = 5             # Clock section
+LAUNCHER        = 1             # Application launcher section
 
 #------------------------------------------------------------------------------
 #                       Button Event Function Definitions
@@ -214,11 +214,11 @@ def clockButtonEvent(pp, button):
     """ Button event handler for the panel's clock object """
     
     if button == 1:
-        pass
+        os.system("/home/mark/bin/pypanel/dzen_calendar &")
     elif button == 2:
         pass
     elif button == 3:
-        pp.toggleHidden()  
+        os.system("chromium http://calendar.google.com")
     elif button == 4:
         pp.showDesktop()
     elif button == 5:

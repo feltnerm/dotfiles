@@ -24,9 +24,9 @@ dropboxd &
 #archassistant &
 volti &
 trayfreq &
-parcellite &
+#parcellite &
 unclutter &
 xscreensaver &
 pidgin &
-osmo &
+#osmo &
 urxvt -name urxvt-bg &

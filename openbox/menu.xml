@@ -82,7 +82,7 @@
 				<item label="bluefish">
 					<action name="execute">
 						<execute>
-							geany
+						    bluefish	
 						</execute>
 					</action>
 				</item>
@@ -752,7 +752,7 @@
 				<item label="openbox app settings">
 					<action name="Execute">
 						<execute>
-							command
+							obapps
 						</execute>
 					</action>
 				</item>
@@ -897,7 +897,7 @@
 		<item label="reboot">
 		    <action name="execute">
 		        <prompt>Reboot?</prompt>
-		        <command>sudo 'shutdown -r now'</command>
+		        <command>sudo shutdown -r now</command>
 		    </action>
 		</item>
 		<item label="suspend">

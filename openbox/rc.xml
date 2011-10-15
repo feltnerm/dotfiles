@@ -130,13 +130,13 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>1</number>
+    <number>4</number>
     <firstdesk>1</firstdesk>
     <names>
-      <!-- set names up here if you want to, like this:
-    <name>desktop 1</name>
-    <name>desktop 2</name>
-    -->
+      <name>General</name>
+      <name>Communication</name>
+      <name>Workspace</name>
+      <name>Multimedia</name>
     </names>
     <popupTime>875</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -163,7 +163,7 @@
      Many programs reserve space automatically, but you can use this in other
      cases. -->
   <margins>
-    <top>45</top>
+    <top>19</top>
     <bottom>27</bottom>
     <left>0</left>
     <right>0</right>
@@ -189,7 +189,7 @@
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <keybind key="C-A-Left">
-      <action name="GoToDesktop"/>
+      <action name="DesktopLeft"/>
     </keybind>
     <keybind key="C-A-BackSpace">
       <action name="Execute">
@@ -197,25 +197,31 @@
       </action>
     </keybind>
     <keybind key="C-A-Right">
-      <action name="GoToDesktop"/>
+      <action name="DesktopRight"/>
     </keybind>
     <keybind key="C-A-Up">
-      <action name="GoToDesktop"/>
+      <action name="DesktopNext"/>
     </keybind>
     <keybind key="C-A-Down">
-      <action name="GoToDesktop"/>
+      <action name="DesktopPrevious"/>
     </keybind>
     <keybind key="S-A-Left">
       <action name="SendToDesktop"/>
     </keybind>
     <keybind key="S-A-Right">
-      <action name="SendToDesktop"/>
+      <action name="SendToDesktop">
+        <desktop>4</desktop>
+      </action>
     </keybind>
     <keybind key="S-A-Up">
-      <action name="SendToDesktop"/>
+      <action name="SendToDesktop">
+        <desktop>2</desktop>
+      </action>
     </keybind>
     <keybind key="S-A-Down">
-      <action name="SendToDesktop"/>
+      <action name="SendToDesktop">
+        <desktop>3</desktop>
+      </action>
     </keybind>
     <keybind key="W-F1">
       <action name="GoToDesktop"/>
@@ -232,15 +238,15 @@
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
-    <keybind key="A-F4">
-      <action name="Close"/>
-    </keybind>
     <keybind key="A-Escape">
       <action name="Lower"/>
       <action name="FocusToBottom"/>
       <action name="Unfocus"/>
     </keybind>
-    <keybind key="A-space">
+    <keybind key="W-q">
+      <action name="Close"/>
+    </keybind>
+    <keybind key="W-space">
       <action name="ShowMenu">
         <menu>client-menu</menu>
       </action>
@@ -271,14 +277,13 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>kfmclient openProfile filemanagement</command>
+        <command>thunar</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <name>Konqueror</name>
         </startupnotify>
       </action>
     </keybind>
-    <keybind key="A-F2">
+    <keybind key="A-grave">
       <action name="Execute">
         <command>gmrun</command>
       </action>
@@ -543,6 +548,7 @@
       </mousebind>
     </context>
     <context name="Desktop">
+      <!--
       <mousebind action="Click" button="Up">
         <action name="GoToDesktop">
           <to>previous</to>
@@ -553,6 +559,7 @@
           <to>next</to>
         </action>
       </mousebind>
+      -->
       <mousebind action="Click" button="A-Up">
         <action name="GoToDesktop">
           <to>previous</to>
@@ -732,5 +739,25 @@
 #urxvt transparent on desktop
   <application name="urxvt-bg"><decor>no</decor><focus>yes</focus><position><x>0</x><y>19</y></position><layer>below</layer><desktop>all</desktop><shade>false</shade><skip_taskbar>yes</skip_taskbar><skip_pager>yes</skip_pager><maximized>false</maximized> #Only if you want a full size terminal.
   </application>
+<application class="Chromium" name="chromium" type="normal"><desktop>All</desktop></application>
+<application class="Gmrun" name="gmrun" type="normal"><desktop>All</desktop><position force="no"><x>center</x><y>center</y></position><focus>yes</focus><layer>above</layer></application>
+<application class="Sakura" name="sakura" type="normal"><desktop>All</desktop></application>
+<application class="Thunar" name="thunar" type="normal"><desktop>All</desktop></application>
+
+
+<application class="Pidgin" name="Pidgin" type="normal"><desktop>2</desktop><position force="no"><x>default</x></position><focus>yes</focus></application>
+<application class="Thunderbird" name="Mail" role="3pane" type="normal"><desktop>2</desktop><focus>yes</focus></application>
+<application class="Xchat" name="xchat" type="dialog"><desktop>2</desktop><focus>yes</focus></application>
+<application class="Xchat" name="xchat" type="normal"><desktop>2</desktop><focus>yes</focus></application>
+
+<application class="Eclipse" name="Eclipse" type="normal"><focus>yes</focus><desktop>3</desktop></application>
+<application class="Geany" name="geany" type="normal"><desktop>3</desktop><focus>yes</focus></application>
+<application class="Kdbg" name="kdbg" role="MainWindow#1" type="normal"><desktop>3</desktop><focus>yes</focus></application>
+<application class="processing-app-Base" name="sun-awt-X11-XFramePeer" type="normal"><desktop>3</desktop><focus>yes</focus></application>
+<application class="Bluefish" name="bluefish" role="bluefish" type="normal"><desktop>3</desktop><focus>yes</focus></application>
+<application class="Kompozer-bin" type="normal"><desktop>3</desktop><focus>yes</focus></application>
+<application class="Amarok" name="amarok" type="normal"><desktop>4</desktop><focus>yes</focus></application>
+<application class="Vlc" name="vlc" type="normal"><desktop>4</desktop><focus>yes</focus></application>
+<application class="Gxmms2" name="gxmms2" type="normal"><desktop>4</desktop><focus>yes</focus></application>
 </applications>
 </openbox_config>
