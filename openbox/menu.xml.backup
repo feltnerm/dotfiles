@@ -542,7 +542,7 @@
 					</action>
 				</item>
 				<item label="deluge">
-					<action name="execute">
+					<action name="execute"/>
                         <execute>
                             deluge
                         </execute>

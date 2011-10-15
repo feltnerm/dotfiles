@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
   <resistance>
     <strength>20</strength>
@@ -741,7 +742,7 @@
 </application>
 -->
 #urxvt transparent on desktop
-  <application name="urxvt-bg"><decor>no</decor><focus>yes</focus><position><x>0</x><y>19</y></position><layer>below</layer><desktop>all</desktop><shade>false</shade><skip_taskbar>yes</skip_taskbar><skip_pager>yes</skip_pager><maximized>false</maximized> #Only if you want a full size terminal.
+  <application name="urxvt-bg"><decor>no</decor><focus>yes</focus><position force="no"><x>0</x><y>15</y></position><layer>below</layer><desktop>All</desktop><shade>no</shade><skip_taskbar>yes</skip_taskbar><skip_pager>yes</skip_pager><maximized>no</maximized> #Only if you want a full size terminal.
   </application>
 <application class="Chromium" name="chromium" type="normal"><desktop>All</desktop></application>
 <application class="Gmrun" name="gmrun" type="normal"><desktop>All</desktop><position force="no"><x>center</x><y>center</y></position><focus>yes</focus><layer>above</layer></application>
