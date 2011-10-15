@@ -163,8 +163,8 @@
      Many programs reserve space automatically, but you can use this in other
      cases. -->
   <margins>
-    <top>19</top>
-    <bottom>25</bottom>
+    <top>45</top>
+    <bottom>27</bottom>
     <left>0</left>
     <right>0</right>
   </margins>
@@ -712,6 +712,22 @@
   </application>
 
   # end of the example
+--><!--
+# conky movements
+<application name="conky-desktop">
+    <decor>no</decor>
+    <focus>no</focus>
+    <position>
+        <x>0</x>
+        <y>0</y>
+    </position>
+    <layer>below</layer>
+    <desktop>all</desktop>
+    <shade>false</shade>
+    <skip_taskbar>yes</skip_taskbar>
+    <skip_pager>yes</skip_pager>
+    <maximized>false</maximized>
+</application>
 -->
 #urxvt transparent on desktop
   <application name="urxvt-bg"><decor>no</decor><focus>yes</focus><position><x>0</x><y>19</y></position><layer>below</layer><desktop>all</desktop><shade>false</shade><skip_taskbar>yes</skip_taskbar><skip_pager>yes</skip_pager><maximized>false</maximized> #Only if you want a full size terminal.

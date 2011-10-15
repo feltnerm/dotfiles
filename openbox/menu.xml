@@ -889,48 +889,28 @@
 			<action name="reconfigure"/>
 		</item>
 		<item label="lock">
-		    <action name="lock"/>
-		    <prompt>
-		    <execute>
-		        xscreensaver-command -lock
-		    </execute>
-		    </prompt>
+		    <action name="execute">
+		        <prompt>Lock screen?</prompt>
+		        <command>xscreensaver-command --lock</command>
+		    </action>
 		</item>
-		<item label="logout">
-			<action name="execute">
-				<prompt/>
-				<execute>
-					openbox --exit
-				</execute>
-			</action>
-		</item>
-		<item label="shutdown">
-		    <prompt></prompt>
-			<action name="execute"/>
-			<execute>
-			    gksu 'shutdown -h now'
-			</execute>
-		</item>
-		<item label="restart">
-		    <prompt></prompt>
-			<action name="execute"/>
-			<execute>
-			    gksu 'shutdown -r now'
-			</execute>
+		<item label="reboot">
+		    <action name="execute">
+		        <prompt>Reboot?</prompt>
+		        <command>sudo 'shutdown -r now'</command>
+		    </action>
 		</item>
 		<item label="suspend">
-		    <prompt></prompt>
-			<action name="execute"/>
-		    <execute>
-		        gksu pm-suspend
-			</execute>
+			<action name="execute">
+		        <prompt>Suspend to RAM?</prompt>
+		        <command>sudo pm-suspend</command>
+			</action>
 		</item>
 		<item label="hibernate">
-		    <prompt></prompt>
-			<action name="execute"/>
-		    <execute>
-		        gksu pm-hibernate
-			</execute>
+			<action name="execute">
+		        <prompt>Enter hibernation?</prompt>
+		        <execute>sudo pm-hibernate</execute>
+			</action>
 		</item>
 	</menu>
 </openbox_menu>
