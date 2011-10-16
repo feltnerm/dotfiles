@@ -72,6 +72,8 @@ alias emacs='emacs -nw'
 alias py='python'
 alias ipy='ipython'
 alias bpy='bpython'
+export WORKON_HOME=$HOME/.virtualenvs
+
 
 ## Mac Only Stuff
 #alias fndr='open .'
@@ -87,7 +89,7 @@ alias g='git'
 
 ## Pacman
 alias pacman='pacman-color'
-
+alias packer='packer-color'
 ## Productivity Aliai
 alias calc='galculator'
 

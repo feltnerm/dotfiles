@@ -19,7 +19,7 @@ wicd-gtk &
 nitrogen --restore &
 conky &
 pypanel &
-syndaemon -t -k -i 1 -d &
+#syndaemon -t -k -i 1 -d &
 dropboxd &
 #archassistant &
 volti &
@@ -28,5 +28,6 @@ trayfreq &
 unclutter &
 xscreensaver -no-splash &
 pidgin &
+lastfm &
 #osmo &
 urxvt -name urxvt-bg &

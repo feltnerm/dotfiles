@@ -742,7 +742,7 @@
 </application>
 -->
 #urxvt transparent on desktop
-  <application name="urxvt-bg"><decor>no</decor><focus>yes</focus><position force="no"><x>0</x><y>15</y></position><layer>below</layer><desktop>All</desktop><shade>no</shade><skip_taskbar>yes</skip_taskbar><skip_pager>yes</skip_pager><maximized>no</maximized> #Only if you want a full size terminal.
+  <application name="urxvt-bg"><decor>no</decor><focus>yes</focus><position force="no"><x>0</x><y>0</y></position><layer>below</layer><desktop>All</desktop><shade>no</shade><skip_taskbar>yes</skip_taskbar><skip_pager>yes</skip_pager><maximized>default</maximized> #Only if you want a full size terminal.
   </application>
 <application class="Chromium" name="chromium" type="normal"><desktop>All</desktop></application>
 <application class="Gmrun" name="gmrun" type="normal"><desktop>All</desktop><position force="no"><x>center</x><y>center</y></position><focus>yes</focus><layer>above</layer></application>
@@ -764,5 +764,7 @@
 <application class="Amarok" name="amarok" type="normal"><desktop>4</desktop><focus>yes</focus></application>
 <application class="Vlc" name="vlc" type="normal"><desktop>4</desktop><focus>yes</focus></application>
 <application class="Gxmms2" name="gxmms2" type="normal"><desktop>4</desktop><focus>yes</focus></application>
+<application class="Miro.real" name="miro.real" type="normal"><desktop>4</desktop><focus>yes</focus></application>
+<application class="Streamtuner2" name="streamtuner2" type="normal"><desktop>4</desktop><focus>yes</focus></application>
 </applications>
 </openbox_config>
