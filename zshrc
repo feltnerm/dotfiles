@@ -73,7 +73,7 @@ alias py='python'
 alias ipy='ipython'
 alias bpy='bpython'
 export WORKON_HOME=$HOME/.virtualenvs
-
+source /usr/bin/virtualenvwrapper.sh
 
 ## Mac Only Stuff
 #alias fndr='open .'

@@ -4,7 +4,7 @@
         <item label="internet">
             <action name="execute">
                 <execute>
-                    chromium
+                    google-chrome
                 </execute>
             </action>
         </item>
@@ -97,6 +97,13 @@
                     <action name="execute">
                         <execute>
                             geany
+                        </execute>
+                    </action>
+                </item>
+                <item label="glade">
+                    <action name="execute">
+                        <execute>
+                            glade
                         </execute>
                     </action>
                 </item>
@@ -233,7 +240,7 @@
             <item label="counter-strike:2d">
                 <action name="execute">
                     <execute>
-                        counter-strike-2d
+                        CounterStrike2D
                     </execute>
                 </action>
             </item>
@@ -370,6 +377,13 @@
                         </execute>
                     </action>
                 </item>
+                <item label="banshee">
+                    <action name="execute">
+                        <execute>
+                            banshee
+                        </execute>
+                    </action>
+                </item>
                 <item label="grooveshark">
                     <action name="Execute">
                         <execute>
@@ -467,10 +481,24 @@
                 </item>
             </menu>
             <menu id="7-56568" label="workstation">
+                <item label="ableton">
+                    <action name="Execute">
+                        <execute>
+                            sh /home/mark/bin/openbox/menu_ableton.sh
+                        </execute>
+                    </action>
+                </item>
                 <item label="ardour">
                     <action name="Execute">
                         <execute>
                             ardour2
+                        </execute>
+                    </action>
+                </item>
+                <item label="audacity">
+                    <action name="Execute">
+                        <execute>
+                            audacity
                         </execute>
                     </action>
                 </item>
@@ -537,6 +565,13 @@
                         </execute>
                     </action>
                 </item>
+                <item label="rapidevolution">
+                    <action name="Execute">
+                        <execute>
+                            rapid_evolution
+                        </execute>
+                    </action>
+                </item>
                 <item label="rosegarden">
                     <action name="Execute">
                         <execute>
@@ -555,10 +590,10 @@
         </menu>
         <menu id="5" label="internet">
             <menu id="5-0116" label="browsers">
-                <item label="chromium">
+                <item label="google-chrome-dev">
                     <action name="execute">
                         <execute>
-                            chromium
+                            google-chrome
                         </execute>
                     </action>
                 </item>

@@ -218,7 +218,7 @@ def clockButtonEvent(pp, button):
     elif button == 2:
         pass
     elif button == 3:
-        os.system("chromium http://calendar.google.com")
+        os.system("google-chrome http://calendar.google.com")
     elif button == 4:
         pp.showDesktop()
     elif button == 5:

@@ -4,6 +4,8 @@ altscreen on
 autodetach on
 nonblock on
 
+escape `
+
 shell -${SHELL}
 
 vbell_msg "[[[ ding ]]]"

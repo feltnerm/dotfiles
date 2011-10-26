@@ -15,7 +15,7 @@
 # If you want to use XFCE config tools...
 #
 #xfce-mcs-manager &
-wicd-gtk &
+#wicd-gtk &
 nitrogen --restore &
 conky &
 pypanel &
@@ -27,6 +27,7 @@ trayfreq &
 #parcellite &
 unclutter &
 xscreensaver -no-splash &
+kupfer --no-splash &
 pidgin &
 lastfm &
 #osmo &

@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mark Feltner 
 " Version 3.0 - 05/04/11
 "
@@ -46,7 +46,6 @@ set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%h\ \ \ Line:\ %l/%L:%c
 set more				" use more prompt
 set scrolloff=5				" keep >= 5 lines above/below
 set sidescrolloff=5			" keep >= 5 lines left/right
-set nu "line numbering"
 
 " Backspacing 
 set backspace=eol,start,indent
