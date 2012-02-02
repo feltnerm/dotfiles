@@ -86,10 +86,11 @@ set wrap				" wrap lines
 
 " Syntax highlighting
 syntax enable				" enable highlighitng
-filetype on				" turn on filetype highlighting
+filetype off				" turn off filetype highlighting
 filetype plugin on			" turn on filetype plugins
 filetype indent on
 set showmatch 				" Show matching brackets
+
 
 ""
 " Visual Settings
@@ -98,6 +99,7 @@ set showmatch 				" Show matching brackets
 set background=dark
 colorscheme solarized
 set nonu 
+set cursorline
 
 " could be doneÉ
 " if MySys() == "mac"
@@ -110,18 +112,52 @@ set nonu
 "	set shell=/bin/zsh
 "
 if has("gui_running")
-	set guioptions-=T
+    set guifont=Inconsolata:h13 
+    set guioptions-=T
 	set t_Co=256
 	set background=dark
 	colorscheme solarized
 	set nonu
 	if has("gui_macvim")
-  	" Fullscreen takes up entire screen
+  	    " Fullscreen takes up entire screen
   		set fuoptions=maxhorz,maxvert
     endif
 else
 	colorscheme solarized
-	set background=dark
+	set background=light
 	set nonu
 endif
 
+"" Options for vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+"" Plugins Defined Here
+"
+" examples:
+" # original repos on Github
+" Bundle 'tpope/vim-fugitive'
+"
+" # vim-scripts
+" Bundle 'FuzzyFinder'
+"
+" # non github
+" Bundle git://git.wincent.com/command-t.git
+Bundle 'spf13/PIV'
+Bundle 'L9'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'SQLComplete'
+Bundle 'SearchComplete'
+Bundle 'SuperTab'
+Bundle 'tpope/vim-fugitive'
+Bundle 'FuzzyFinder'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'Gist.vim'
+Bundle 'taglist.vim'
+Bundle 'altercation/vim-colors-solarized'
+
+
+filetype plugin indent on
