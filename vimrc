@@ -158,6 +158,6 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'Gist.vim'
 Bundle 'taglist.vim'
 Bundle 'altercation/vim-colors-solarized'
-
+Bundle 'javascript.vim'
 
 filetype plugin indent on
