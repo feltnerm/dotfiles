@@ -91,11 +91,15 @@ filetype plugin on			" turn on filetype plugins
 filetype indent on
 set showmatch 				" Show matching brackets
 
+" Key bindings and such
+inoremap jj <Esc>
 
 ""
 " Visual Settings
 ""
 " Default color scheme
+set colorcolumn=79
+set number 
 set background=dark
 colorscheme solarized
 set nonu 
@@ -149,7 +153,7 @@ Bundle 'spf13/PIV'
 Bundle 'L9'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'SQLComplete'
+" Bundle 'SQLComplete'
 Bundle 'SearchComplete'
 Bundle 'SuperTab'
 Bundle 'tpope/vim-fugitive'
@@ -159,5 +163,9 @@ Bundle 'Gist.vim'
 Bundle 'taglist.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'javascript.vim'
+Bundle 'htmljinja.vim'
+Bundle 'jsbeautify'
+Bundle 'JavaScript-syntax'
+" Bundle 'jslint.vim'
 
 filetype plugin indent on
