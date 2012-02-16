@@ -1,13 +1,21 @@
+# No startup messages
 startup_message off
+
+# 1024 lines of scrollback
 defscrollback 1024
 altscreen on
+
+# automagically detach on logout
 autodetach on
 nonblock on
 
+# Use ` rather than Ctrl-A to execute commands
 escape ``
 
+# ZSH babay!
 shell -${SHELL}
 
+# No noises plz
 vbell_msg "[[[ ding ]]]"
 vbell off
 
