@@ -102,7 +102,6 @@ set colorcolumn=79
 set number 
 set background=dark
 colorscheme solarized
-set nonu 
 set cursorline
 
 " could be doneÉ
@@ -167,5 +166,19 @@ Bundle 'htmljinja.vim'
 Bundle 'jsbeautify'
 Bundle 'JavaScript-syntax'
 " Bundle 'jslint.vim'
+Bundle 'node.js'
+Bundle 'vim-coffee-script'
 
 filetype plugin indent on
+
+"" Keybindings
+" Tab Switching
+" Ctrl-Left and Ctrl-Right switch between previous and next tabs
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+" Alt-Left and Alt-Right move current tab left or right
+nnoremap <silent> <A-left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <silent> <A-right> :execute 'silent! tabmove ' . (tabpagenr()<CR>
+" With the following you can press F8 to show all buffers in tabs
+let notabs = 1
+nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
