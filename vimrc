@@ -101,7 +101,7 @@ inoremap jj <Esc>
 set colorcolumn=79
 set number 
 set background=dark
-colorscheme solarized
+""colorscheme solarized
 set cursorline
 
 " could be doneÉ
@@ -120,15 +120,13 @@ if has("gui_running")
 	set t_Co=256
 	set background=dark
 	colorscheme solarized
-	set nonu
 	if has("gui_macvim")
   	    " Fullscreen takes up entire screen
   		set fuoptions=maxhorz,maxvert
     endif
 else
-	colorscheme solarized
+	""colorscheme solarized
 	set background=light
-	set nonu
 endif
 
 "" Options for vundle
@@ -152,7 +150,7 @@ Bundle 'spf13/PIV'
 Bundle 'L9'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-" Bundle 'SQLComplete'
+Bundle 'command-t'
 Bundle 'SearchComplete'
 Bundle 'SuperTab'
 Bundle 'tpope/vim-fugitive'
@@ -165,13 +163,19 @@ Bundle 'javascript.vim'
 Bundle 'htmljinja.vim'
 Bundle 'jsbeautify'
 Bundle 'JavaScript-syntax'
-" Bundle 'jslint.vim'
 Bundle 'node.js'
 Bundle 'vim-coffee-script'
 
 filetype plugin indent on
 
-"" Keybindings
+""" Syntax highlighting
+syntax on
+au BufNewFile,BufRead *.html set filetype=jinja
+au BufNewFile,BufRead *.less set filetype=css
+au BufNewFile,BufRead *.coffee set filetype=coffee-script
+au BufNewFile,BufRead *.md set filetype=markdown
+
+""" Keybindings
 " Tab Switching
 " Ctrl-Left and Ctrl-Right switch between previous and next tabs
 nnoremap <C-Left> :tabprevious<CR>
@@ -181,4 +185,4 @@ nnoremap <silent> <A-left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-right> :execute 'silent! tabmove ' . (tabpagenr()<CR>
 " With the following you can press F8 to show all buffers in tabs
 let notabs = 1
-nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
+

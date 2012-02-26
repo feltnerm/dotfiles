@@ -24,7 +24,7 @@ ZSH_THEME="terminalparty"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git archlinux django extract gem github pip python)
+plugins=(ssh-agent autojump compleat debian node npm vundle git archlinux django extract gem github pip python)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -74,10 +74,6 @@ alias ipy='ipython'
 alias bpy='bpython'
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
-
-## Mac Only Stuff
-#alias fndr='open .'
-#alias rmtrsh='rm -rf ~/.Trash/*'
 
 ## Safeness!
 alias rm='rm -i'
