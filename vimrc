@@ -125,7 +125,7 @@ if has("gui_running")
   		set fuoptions=maxhorz,maxvert
     endif
 else
-	""colorscheme solarized
+	colorscheme solarized
 	set background=light
 endif
 
