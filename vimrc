@@ -115,7 +115,7 @@ set cursorline
 "	set shell=/bin/zsh
 "
 if has("gui_running")
-    set guifont=Inconsolata:h13 
+    set guifont=Consolas\ 8
     set guioptions-=T
 	set t_Co=256
 	set background=dark
