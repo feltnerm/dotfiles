@@ -1,0 +1,14 @@
+{
+	"auto_upgrade_last_run": 1331096741,
+	"installed_packages":
+	[
+		"Git",
+		"jQuery",
+		"JsFormat",
+		"Package Control",
+		"Prefixr",
+		"SublimeLinter",
+		"Tag",
+		"ZenCoding"
+	]
+}
