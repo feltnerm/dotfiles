@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[
-.toggleClass('${1:class name}')$0
-		]]></content>
-	<tabTrigger>.toggleClass</tabTrigger>
-</snippet>
