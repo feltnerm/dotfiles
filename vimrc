@@ -175,6 +175,16 @@ Bundle 'python.vim'
 
 filetype plugin indent on
 
+""" Plugin Options
+"" MiniBufExpl
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
+"" cTags
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+
 """ Syntax highlighting
 syntax on
 au BufNewFile,BufRead *.html set filetype=jinja
