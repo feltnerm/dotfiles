@@ -183,7 +183,7 @@ let g:miniBufExplCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
 "" cTags
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+let Tlist_Ctags_Cmd='/usr/bin/ctags'
 
 """ Syntax highlighting
 syntax on
