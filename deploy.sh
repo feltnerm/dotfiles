@@ -20,7 +20,7 @@ fi
 
 for f in $DOTFILE_DIR
 do
-    echo "ln -s $f .$f" 
-    #ln -s $f $BASE/.$f
+    #echo "ln -s $f .$f" 
+    ln -s $f $BASE/.$f
 done
 
