@@ -4,8 +4,10 @@
 #
 # Symlink dotfiles in the user's home directory
 
-BASE = $HOME
-DOTFILE_DIR = $BASE/dotfiles
+BASE=$HOME
+DOTFILE_DIR=$BASE/dotfiles
+
+cd $HOME
 
 if [ !  -d "$DOTFILE_DIR" ]; then
     # download using git
@@ -18,6 +20,7 @@ fi
 
 for f in $DOTFILE_DIR
 do
-    ln -s $f $BASE/.$f
+    echo "ln -s $f .$f" 
+    #ln -s $f $BASE/.$f
 done
 
