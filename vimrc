@@ -101,8 +101,7 @@ inoremap jj <Esc>
 set colorcolumn=79
 set number 
 set background=dark
-""colorscheme solarized
-set cursorline
+" set cursorline
 
 " could be doneÉ
 " if MySys() == "mac"
@@ -115,7 +114,7 @@ set cursorline
 "	set shell=/bin/zsh
 "
 if has("gui_running")
-    set guifont=Consolas\ 8
+    set guifont=Consolas\ 10 
     set guioptions-=T
 	set t_Co=256
 	set background=dark
@@ -125,8 +124,8 @@ if has("gui_running")
   		set fuoptions=maxhorz,maxvert
     endif
 else
-	colorscheme solarized
-	set background=light
+	set background=dark
+    colorscheme solarized
 endif
 
 "" Options for vundle
@@ -150,39 +149,40 @@ Bundle 'spf13/PIV'
 Bundle 'L9'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'command-t'
+Bundle 'Command-T'
 Bundle 'SearchComplete'
 Bundle 'SuperTab'
 Bundle 'tpope/vim-fugitive'
 Bundle 'FuzzyFinder'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'Gist.vim'
-Bundle 'taglist.vim'
+"" Bundle 'taglist.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'javascript.vim'
-Bundle 'htmljinja.vim'
+Bundle 'Jinja'
 Bundle 'jsbeautify'
 Bundle 'JavaScript-syntax'
 Bundle 'node.js'
+Bundle 'less.vim'
 Bundle 'vim-coffee-script'
+Bundle 'Python-3.x-Standard-Library-Reference'
+Bundle 'Python-2.x-Standard-Library-Reference'
+Bundle 'Solarized'
+Bundle 'vim-json-bundle'
+Bundle 'vim-python-virtualenv'
+Bundle 'python.vim'
+
 
 filetype plugin indent on
 
 """ Syntax highlighting
 syntax on
 au BufNewFile,BufRead *.html set filetype=jinja
-au BufNewFile,BufRead *.less set filetype=css
+au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.coffee set filetype=coffee-script
 au BufNewFile,BufRead *.md set filetype=markdown
 
 """ Keybindings
-" Tab Switching
-" Ctrl-Left and Ctrl-Right switch between previous and next tabs
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-" Alt-Left and Alt-Right move current tab left or right
-nnoremap <silent> <A-left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <A-right> :execute 'silent! tabmove ' . (tabpagenr()<CR>
 " With the following you can press F8 to show all buffers in tabs
 let notabs = 1
 
