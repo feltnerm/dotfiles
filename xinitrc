@@ -1,20 +1,58 @@
 #!/bin/sh
+#
+# ~/.xinitrc
+#
+# Executed by startx (run your window manager from here)
 
-# Some fonts, like terminus, are installed in /usr/share/fonts/local
-# which is not added to the font path by default
-xset +fp /usr/share/fonts/local &
-xset fp rehash &
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
 
-# xbindkeys to enable media keys on Inspiron 1525
-xbindkeys &
+# exec gnome-session
+# exec startkde
+# exec startxfce4
+# exec awesome
+# exec fluxbox
+# exec blackbox
 
-# Run synaptics deamon to disable touchpad when typing
-syndaemon -t -k -i 2 -d &
 
-# Ensure .Xresources applies to rxvt-unicode
-xrdb -merge ~/.Xresources &
-
-# Enable Ctrl-Alt-Backspace to restart X
-setxkbmap -option terminate:ctrl_alt_bksp &
-
-exec openbox-session
+DEFAULT_SESSION=xfce4
+case $1 in
+gnome)
+	gsynaptics-init &
+	exec ck-launch-session gnome-session
+	;;
+kde)
+    gsynaptics-init &
+    exec ck-launch-session startkde
+    ;;
+xfce4)
+    gsynaptics-init &
+    exec startxfce4 --with-ck-launch
+    ;;
+fluxbox)
+	gsynaptics-init &
+	exec ck-launch-session startfluxbox
+	;;
+awesome)
+	xcompmgr &
+	gsynaptics-init &
+	exec awesome
+	;;
+blackbox)
+	gsynaptics-init &
+	exec blackbox
+	;;
+openbox)
+	gsynaptics-init &
+	exec openbox-session
+    ;;
+*)
+	#syndaemon -t -k -i 2 -d &
+	gsynaptics-init &
+	exec $DEFAULT_SESSION
+	;;
+esac
