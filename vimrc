@@ -171,11 +171,14 @@ Bundle 'Solarized'
 Bundle 'vim-json-bundle'
 Bundle 'vim-python-virtualenv'
 Bundle 'python.vim'
-
+Bundle 'Lokaltog/vim-powerline'
 
 filetype plugin indent on
 
 """ Plugin Options
+"" Powerline
+let g:Powerline_symbols = 'fancy'
+
 "" MiniBufExpl
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
