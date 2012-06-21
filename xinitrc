@@ -50,6 +50,10 @@ openbox)
 	gsynaptics-init &
 	exec openbox-session
     ;;
+qtile)
+    gsynaptics-init &
+    exec qtile
+    ;;
 *)
 	#syndaemon -t -k -i 2 -d &
 	gsynaptics-init &

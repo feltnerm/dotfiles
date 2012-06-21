@@ -10,6 +10,7 @@
 ""
 " General Settings
 ""
+let mapleader=","
 set nocompatible			" don't inherit vi traits
 set number				" show line numbers
 set ruler				" show ruler at bottom of screen
@@ -114,7 +115,7 @@ set background=dark
 "	set shell=/bin/zsh
 "
 if has("gui_running")
-    set guifont=Consolas\ 10 
+    set guifont=Monaco 
     set guioptions-=T
 	set t_Co=256
 	set background=dark

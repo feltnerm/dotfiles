@@ -24,7 +24,7 @@ ZSH_THEME="terminalparty"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ssh-agent autojump compleat debian node npm vundle git archlinux django extract gem github pip python)
+plugins=(ssh-agent autojump compleat debian node npm vundle git github archlinux django extract gem github pip python sublime vundle)
 
 source $ZSH/oh-my-zsh.sh
 
