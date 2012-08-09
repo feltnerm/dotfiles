@@ -115,7 +115,7 @@ set background=dark
 "	set shell=/bin/zsh
 "
 if has("gui_running")
-    set guifont=Monaco 
+    set guifont=Monaco
     set guioptions-=T
 	set t_Co=256
 	set background=dark
@@ -139,8 +139,7 @@ Bundle 'gmarik/vundle'
 "
 " examples:
 " # original repos on Github
-" Bundle 'tpope/vim-fugitive'
-"
+" Bundle 'tpope/vim-fugitive' "
 " # vim-scripts
 " Bundle 'FuzzyFinder'
 "
@@ -173,7 +172,7 @@ Bundle 'vim-json-bundle'
 Bundle 'vim-python-virtualenv'
 Bundle 'python.vim'
 Bundle 'Lokaltog/vim-powerline'
-
+Bundle 'pylint'
 filetype plugin indent on
 
 """ Plugin Options

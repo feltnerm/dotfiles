@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
   <resistance>
     <strength>20</strength>
@@ -39,7 +40,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Laza</name>
+    <name>I-merry</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -54,8 +55,8 @@
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
-      <name>Droid Sans</name>
-      <size>9</size>
+      <name>Ubuntu</name>
+      <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -63,8 +64,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveWindow">
-      <name>Droid Sans</name>
-      <size>8</size>
+      <name>Ubuntu</name>
+      <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -72,8 +73,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuHeader">
-      <name>ProggyTinyTT</name>
-      <size>12</size>
+      <name>Ubuntu Medium</name>
+      <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -81,8 +82,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuItem">
-      <name>ProggyTinyTT</name>
-      <size>12</size>
+      <name>Ubuntu Light</name>
+      <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -129,13 +130,12 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>4</number>
+    <number>3</number>
     <firstdesk>1</firstdesk>
     <names>
-      <name>General</name>
-      <name>Communication</name>
-      <name>Workspace</name>
-      <name>Multimedia</name>
+      <name>gen</name>
+      <name>terminal</name>
+      <name>gVim</name>
     </names>
     <popupTime>875</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -595,6 +595,11 @@
     </context>
     <context name="Root">
       <!-- Menus -->
+      <mousebind action="Press" button="Left">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>
       <mousebind action="Press" button="Middle">
         <action name="ShowMenu">
           <menu>client-list-combined-menu</menu>
@@ -602,7 +607,7 @@
       </mousebind>
       <mousebind action="Press" button="Right">
         <action name="ShowMenu">
-          <menu>root-menu</menu>
+          <menu>client-list-combined-menu</menu>
         </action>
       </mousebind>
     </context>

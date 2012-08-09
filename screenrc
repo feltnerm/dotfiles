@@ -2,7 +2,8 @@
 startup_message off
 
 # 1024 lines of scrollback
-defscrollback 1024
+defscrollback 2056
+#scrollback 2056
 altscreen on
 
 # automagically detach on logout

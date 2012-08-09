@@ -14,8 +14,9 @@
 
 # If you want to use XFCE config tools...
 #
-#xfce-mcs-manager &
-#wicd-gtk &
+xfce-mcs-manager &
+wicd-gtk &
+#start-pulseaudio-x11 &
 nitrogen --restore &
 conky &
 pypanel &
@@ -31,4 +32,4 @@ kupfer --no-splash &
 pidgin &
 lastfm &
 #osmo &
-urxvt -name urxvt-bg &
+# urxvt -name urxvt-bg &
