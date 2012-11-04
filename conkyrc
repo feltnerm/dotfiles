@@ -56,20 +56,13 @@ default_graph_size 30 8
 #use_xft yes
 use_xft yes
 xftalpha 0.1
-xftfont Calibri:size=9
+xftfont terminus:size=9
 
 TEXT
-${color1}${font OpenLogos:size=12}A${font} ${color3}- ${color2}${time %a %d %b %Y %I:%M.%S%p} ${color3}| \
 ${color2}${nodename} ${color3}| \
-${color2}CPU ${font StyleBats:size=8}k${font} ${color1}${cpugraph}  \
-${color2}RAM ${font StyleBats:size=8}g${font} ${color1}${membar}  \
-${color2}SWP ${font StyleBats:size=8}j${font} ${color1}${swapbar}  \
-${color2}HDD ${font StyleBats:size=8}4${font} ${color1}${fs_used} ${color3}/ ${color1}${fs_size} \
-${color2}BTY ${font StyleBats:size=8}A${font}  ${color1}${battery_bar}  ${color1}${battery_short} ${color3}| ${color2}NET  \
-${color2}${font PizzaDude Bullets:size=8}a${font} ${color1}${addr wlan0} \
-${color2}${font PizzaDude Bullets:size=8}b${font} ${color1}${execi 900 /home/mark/bin/conky/ip.sh} ${color3}| \
-${color2}${font StyleBats:size=8}Q${font}${color1} ${wireless_essid wlan0} ${color3}- ${color1}${wireless_link_qual wlan0}% ${color3}| \
-${color2}${font PizzaDude Bullets:size=8}U${font} ${color1}${downspeed wlan0}  ${color2}${font PizzaDude Bullets:size=8}O${font} ${color1}${upspeed wlan0}\
- ${color3}| ${color2}${font PizzaDude Bullets:size=8}C${font} ${color1}${execi 900 /home/mark/bin/conky/pacmanupdatecount.sh}
-
-
+${color2}CPU ${font StyleBats:size=8}k${font} ${color1}${cpugraph} \
+${color2}RAM ${font StyleBats:size=8}g${font} ${color1}${membar} \
+${color2}SWP ${font StyleBats:size=8}j${font} ${color1}${swapbar} \
+${color2}${font PizzaDude Bullets:size=9}U${font} ${color1}${downspeed eth0} \
+${color2}${font PizzaDude Bullets:size=9}O${font} ${color1}${upspeed eth0} \
+${color3}| ${color2}${font PizzaDude Bullets:size=9}C${font} ${color1}${execi 900 /home/mark/bin/conky/pacmanupdatecount.sh}

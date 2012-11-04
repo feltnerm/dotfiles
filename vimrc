@@ -114,11 +114,12 @@ set background=dark
 "	set gfn=Monospace\ 10
 "	set shell=/bin/zsh
 "
+syntax enable
 if has("gui_running")
-    set guifont=Monaco 
+    set guifont=Inconsolata-g 
     set guioptions-=T
 	set t_Co=256
-	set background=dark
+	set background=light
 	colorscheme solarized
 	if has("gui_macvim")
   	    " Fullscreen takes up entire screen
@@ -146,33 +147,27 @@ Bundle 'gmarik/vundle'
 "
 " # non github
 " Bundle git://git.wincent.com/command-t.git
-Bundle 'spf13/PIV'
+
+
+Bundle 'tpope/vim-fugitive'
 Bundle 'L9'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'Command-T'
 Bundle 'SearchComplete'
 Bundle 'SuperTab'
-Bundle 'tpope/vim-fugitive'
 Bundle 'FuzzyFinder'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'Gist.vim'
-"" Bundle 'taglist.vim'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'javascript.vim'
 Bundle 'Jinja'
-Bundle 'jsbeautify'
-Bundle 'JavaScript-syntax'
 Bundle 'node.js'
 Bundle 'less.vim'
 Bundle 'vim-coffee-script'
-Bundle 'Python-3.x-Standard-Library-Reference'
-Bundle 'Python-2.x-Standard-Library-Reference'
-Bundle 'Solarized'
 Bundle 'vim-json-bundle'
-Bundle 'vim-python-virtualenv'
 Bundle 'python.vim'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-surround'
+Bundle 'scrooloose/syntastic'
+Bundle 'bufexplorer.zip'
+Bundle 'pylint.vim'
 
 filetype plugin indent on
 
@@ -192,8 +187,9 @@ let Tlist_Ctags_Cmd='/usr/bin/ctags'
 """ Syntax highlighting
 syntax on
 au BufNewFile,BufRead *.html set filetype=jinja
+au BufNewFile,BufRead *.jade set filetype=jade
 au BufNewFile,BufRead *.less set filetype=less
-au BufNewFile,BufRead *.coffee set filetype=coffee-script
+au BufNewFile,BufRead *.coffee set filetype=coffee
 au BufNewFile,BufRead *.md set filetype=markdown
 
 """ Keybindings

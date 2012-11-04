@@ -29,6 +29,9 @@ plugins=(ssh-agent autojump compleat debian node npm vundle git github archlinux
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
+
+# Customize to your needs...
 ## Options
 setopt correctall
 setopt autocd
@@ -64,6 +67,7 @@ alias .='cd ../'
 alias ..='cd ../..'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
+alias copypasta='xclip -sel clip < ' # needs work 
 
 alias logo='archey3 | lolcat'
 alias emacs='emacs -nw'
@@ -74,7 +78,7 @@ alias ipy='ipython'
 alias bpy='bpython'
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
-source /usr/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper_lazy.sh
 
 ## Safeness!
 alias rm='rm -i'
@@ -85,8 +89,8 @@ alias cp='cp -i'
 alias g='git'
 
 ## Pacman
-alias pacman='pacman-color'
-alias packer='packer-color'
+#alias pacman='pacman-color'
+#alias packer='packer-color'
 ## Productivity Aliai
 alias calc='galculator'
 

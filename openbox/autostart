@@ -18,17 +18,10 @@
 #wicd-gtk &
 nitrogen --restore &
 conky &
+pytyle &
 pypanel &
-#syndaemon -t -k -i 1 -d &
 dropboxd &
-#archassistant &
-volti &
-trayfreq &
-#parcellite &
 unclutter &
 xscreensaver -no-splash &
-kupfer --no-splash &
-pidgin &
-lastfm &
-#osmo &
-urxvt -name urxvt-bg &
+pasystray &
+#pidgin &

@@ -1,6 +1,1 @@
-URxvt*transparent:true
-URxvt*scrollBar:false
-URxvt*geometry:124x24
-URxvt*borderLess:true
-URxvt*foreground:White
 URxvt*font:xft:terminus:pixelsize=9
