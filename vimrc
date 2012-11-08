@@ -116,7 +116,11 @@ set background=dark
 "
 syntax enable
 if has("gui_running")
+<<<<<<< HEAD
     set guifont=bitstream\ vera\ sans\ mono\ 10
+=======
+    set guifont=Monaco
+>>>>>>> a9e0b73cbc01f0f95487cabbc2a598462db95eca
     set guioptions-=T
 	set t_Co=256
 	set background=dark
@@ -140,8 +144,7 @@ Bundle 'gmarik/vundle'
 "
 " examples:
 " # original repos on Github
-" Bundle 'tpope/vim-fugitive'
-"
+" Bundle 'tpope/vim-fugitive' "
 " # vim-scripts
 " Bundle 'FuzzyFinder'
 "
@@ -163,12 +166,16 @@ Bundle 'vim-coffee-script'
 Bundle 'vim-json-bundle'
 Bundle 'python.vim'
 Bundle 'Lokaltog/vim-powerline'
+<<<<<<< HEAD
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
 Bundle 'bufexplorer.zip'
 Bundle 'pylint.vim'
 
+=======
+Bundle 'pylint'
+>>>>>>> a9e0b73cbc01f0f95487cabbc2a598462db95eca
 filetype plugin indent on
 
 """ Plugin Options
