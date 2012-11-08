@@ -51,10 +51,11 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 
 ## Self Settings
-export EDITOR="vim"
+export EDITOR="gvim"
 export PAGER="less"
 export SHELL="/bin/zsh"
-export BROWSER="chromium"
+export BROWSER="google-chrome"
+export TERM="rxvt-unicode"
 export PATH="${PATH}:${HOME}/bin"
 export GREP_COLOR="1;33"
 export PYTHONSTARTUP=~/.pystartup
@@ -70,7 +71,6 @@ alias ....='cd ../../../../'
 alias copypasta='xclip -sel clip < ' # needs work 
 
 alias logo='archey3 | lolcat'
-alias emacs='emacs -nw'
 
 ## Python stuff
 alias py='python'
@@ -91,8 +91,6 @@ alias g='git'
 ## Pacman
 #alias pacman='pacman-color'
 #alias packer='packer-color'
-## Productivity Aliai
-alias calc='galculator'
 
 ## Linux Pro Audio
 export VST_PATH=/usr/lib/vst:/usr/local/lib/vst:~/.vst

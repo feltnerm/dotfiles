@@ -1,1 +1,3 @@
-*newLoginCommand: dm-tool switch-to-greeter
+
+# Allow Tabs
+URxvt.perl-ext-common:          default, tabbed

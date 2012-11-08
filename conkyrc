@@ -14,7 +14,7 @@ background no
 #position
 gap_x 2
 gap_y 2
-alignment top_left
+alignment bottom_left
 
 #size
 maximum_width 1280

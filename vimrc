@@ -116,10 +116,10 @@ set background=dark
 "
 syntax enable
 if has("gui_running")
-    set guifont=Inconsolata-g 
+    set guifont=bitstream\ vera\ sans\ mono\ 10
     set guioptions-=T
 	set t_Co=256
-	set background=light
+	set background=dark
 	colorscheme solarized
 	if has("gui_macvim")
   	    " Fullscreen takes up entire screen
