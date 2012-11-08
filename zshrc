@@ -24,12 +24,12 @@ ZSH_THEME="terminalparty"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ssh-agent autojump compleat debian node npm vundle git github archlinux django extract gem github pip python sublime vundle)
+plugins=(ssh-agent screen autojump compleat node git github archlinux extract pip python vundle)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
+export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
 
 # Customize to your needs...
 ## Options
@@ -51,11 +51,11 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 
 ## Self Settings
-export EDITOR="gvim"
+export EDITOR="vim"
 export PAGER="less"
 export SHELL="/bin/zsh"
 export BROWSER="google-chrome"
-export TERM="rxvt-unicode"
+#export TERM="rxvt-unicode"
 export PATH="${PATH}:${HOME}/bin"
 export GREP_COLOR="1;33"
 export PYTHONSTARTUP=~/.pystartup
@@ -68,7 +68,10 @@ alias .='cd ../'
 alias ..='cd ../..'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
-alias copypasta='xclip -sel clip < ' # needs work 
+#alias copypasta='xclip -sel clip < ' # needs work 
+alias pacman='pacman-color'
+alias packer='packer-color'
+alias df='cdf'
 
 alias logo='archey3 | lolcat'
 
@@ -93,10 +96,10 @@ alias g='git'
 #alias packer='packer-color'
 
 ## Linux Pro Audio
-export VST_PATH=/usr/lib/vst:/usr/local/lib/vst:~/.vst
-export LADSPA_PATH=/usr/lib/ladspa:/usr/local/lib/ladspa:~/.ladspa
-export LV2_PATH=/usr/lib/lv2:/usr/local/lib/lv2:~/.lv2
-export DSSI_PATH=/usr/lib/dssi:/usr/local/lib/dssi:~/.dssi
+#export VST_PATH=/usr/lib/vst:/usr/local/lib/vst:~/.vst
+#export LADSPA_PATH=/usr/lib/ladspa:/usr/local/lib/ladspa:~/.ladspa
+#export LV2_PATH=/usr/lib/lv2:/usr/local/lib/lv2:~/.lv2
+#export DSSI_PATH=/usr/lib/dssi:/usr/local/lib/dssi:~/.dssi
 
 #Get per-application settings for openbox rc.xml
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
