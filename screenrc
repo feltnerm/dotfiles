@@ -2,8 +2,13 @@
 startup_message off
 
 # 1024 lines of scrollback
-defscrollback 1024
+defscrollback 2056
+#scrollback 2056
+defshell /bin/zsh
 altscreen on
+
+#term screen-256color
+terminfo rxvt-unicode 'Col#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 
 # automagically detach on logout
 autodetach on

@@ -10,28 +10,30 @@
 ""
 " General Settings
 ""
+let mapleader=","
 set nocompatible			" don't inherit vi traits
-set number				" show line numbers
-set ruler				" show ruler at bottom of screen
+set number				    " show line numbers
+set ruler				    " show ruler at bottom of screen
 set encoding=utf-8			" set encoding
 set autoread				" watch for file changes
 set history=700				" 200 lines of history
 set undolevels=1000			" 1000 undos
-set ttyfast				" fast terminal
+set ttyfast				    " fast terminal
 set noerrorbells			" no ringa-dinga-ding-ding-dong
 set novisualbell			"
 set t_vb=			    	"
-set tm=500				"
+set tm=500				    "
 set shell=zsh				" probably safe to assume this ( <3 zsh )
 set fileformats=unix,mac,dos		" use mac, dos and unix file formats
 set ffs=unix,mac,dos			"
 set nolazyredraw			" Don't redraw when executing macros
-set magic				" set magic on, for regular expressions
-set mat=2				" how many tenths of a second to blink
-try					" try and apply my mother tongue
+set magic				    " set magic on, for regular expressions
+set mat=2				    " how many tenths of a second to blink
+try					        " try and apply my mother tongue
 	lang en_US
 catch
 endtry
+set shell=/bin/zsh
 
 " Directories for swp files
 set backupdir=~/.vim/backup
@@ -100,9 +102,8 @@ inoremap jj <Esc>
 " Default color scheme
 set colorcolumn=79
 set number 
-set background=dark
-""colorscheme solarized
-set cursorline
+set background=light
+" set cursorline
 
 " could be doneÉ
 " if MySys() == "mac"
@@ -114,19 +115,20 @@ set cursorline
 "	set gfn=Monospace\ 10
 "	set shell=/bin/zsh
 "
+syntax enable
 if has("gui_running")
-    set guifont=Inconsolata:h13 
+    set guifont=bitstream\ vera\ sans\ mono\ 10
     set guioptions-=T
 	set t_Co=256
-	set background=dark
-	colorscheme solarized
+	set background=light
+	"colorscheme solarized
 	if has("gui_macvim")
   	    " Fullscreen takes up entire screen
   		set fuoptions=maxhorz,maxvert
     endif
 else
-	""colorscheme solarized
 	set background=light
+    "colorscheme solarized
 endif
 
 "" Options for vundle
@@ -139,50 +141,105 @@ Bundle 'gmarik/vundle'
 "
 " examples:
 " # original repos on Github
-" Bundle 'tpope/vim-fugitive'
-"
+" Bundle 'tpope/vim-fugitive' "
 " # vim-scripts
 " Bundle 'FuzzyFinder'
 "
 " # non github
 " Bundle git://git.wincent.com/command-t.git
-Bundle 'spf13/PIV'
+
+
+"" General Plugins
+" Essential vim utility scripts
 Bundle 'L9'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'command-t'
-Bundle 'SearchComplete'
-Bundle 'SuperTab'
+" Git integration
 Bundle 'tpope/vim-fugitive'
+" Shows great info in a statusbar at the bottom
+Bundle 'Lokaltog/vim-powerline'
+" Ctrl-P commands like sublime text
+Bundle 'kien/ctrlp.vim'
+" Quickly surround things
+Bundle 'tpope/vim-surround'
+" fuzzy searching
 Bundle 'FuzzyFinder'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'Gist.vim'
-Bundle 'taglist.vim'
+" beautiful color scheme
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'javascript.vim'
-Bundle 'htmljinja.vim'
-Bundle 'jsbeautify'
-Bundle 'JavaScript-syntax'
+" NERDTree
+Bundle 'scrooloose/nerdtree'
+" NERDCommentor
+Bundle 'scrooloose/nerdcommenter'
+" tab completion when searching
+Bundle 'SearchComplete'
+" Syntax checking
+Bundle 'scrooloose/syntastic'
+" tabbed buffers 
+Bundle 'minibufexpl.vim'
+
+""" Language Specific
+"" Node.JS 
 Bundle 'node.js'
-Bundle 'vim-coffee-script'
+"" LessCSS 
+Bundle 'less.vim'
+"" CoffeeScript syntax
+Bundle 'kchmck/vim-coffee-script'
+"" CSS3
+Bundle 'hail2u/vim-css3-syntax'
+"" GO
+Bundle 'uggedal/go-vim'
+"" Javascript
+Bundle 'pangloss/vim-javascript'
+"" Markdown 
+Bundle 'tpope/vim-markdown'
+"" Mustache 
+Bundle 'juvenn/mustache.vim'
+"" Python 
+Bundle 'python.vim'
+"" HTML5
+Bundle 'othree/html5.vim'
 
 filetype plugin indent on
+
+""" Plugin Options
+"" Powerline
+let g:Powerline_symbols = 'fancy'
+
+"" NerdTree
+nnoremap <C-n> :NERDTreeToggle<cr>
+autocmd vimenter * if !argc() | NERDTree | endif
+
+"" Rope
+
+
+"" MiniBuf
+let g:MiniBufExplMapWindowNavVim = 1
+let g:MiniBufExplMapWindowNavArrows = 1
+let g:MiniBufExplMapCTabSwitchBufs = 1
+let g:MiniBufExplModSelTarget = 1
+
+
+"" MiniBufExpl
+let g:MiniBufExplMapWindowNavVim = 1
+let g:MiniBufExplMapWindowNavArrows = 1
+let g:MiniBufExplCTabSwitchBufs = 1
+let g:MiniBufExplModSelTarget = 1
+
+"" cTags
+let Tlist_Ctags_Cmd='/usr/bin/ctags'
 
 """ Syntax highlighting
 syntax on
 au BufNewFile,BufRead *.html set filetype=jinja
-au BufNewFile,BufRead *.less set filetype=css
-au BufNewFile,BufRead *.coffee set filetype=coffee-script
+au BufNewFile,BufRead *.jade set filetype=jade
+au BufNewFile,BufRead *.less set filetype=less
+au BufNewFile,BufRead *.coffee set filetype=coffee
 au BufNewFile,BufRead *.md set filetype=markdown
 
 """ Keybindings
-" Tab Switching
-" Ctrl-Left and Ctrl-Right switch between previous and next tabs
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-" Alt-Left and Alt-Right move current tab left or right
-nnoremap <silent> <A-left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <A-right> :execute 'silent! tabmove ' . (tabpagenr()<CR>
 " With the following you can press F8 to show all buffers in tabs
 let notabs = 1
+
+" Fuck help
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 

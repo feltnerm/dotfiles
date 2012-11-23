@@ -1,3 +1,8 @@
+# env shared between bash and zsh
+if [ -f "$HOME/.profile" ]; then
+    source "$HOME/.profile"
+fi
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -24,9 +29,12 @@ ZSH_THEME="terminalparty"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ssh-agent autojump compleat debian node npm vundle git archlinux django extract gem github pip python)
+plugins=(ssh-agent screen autojump compleat node git github archlinux extract pip python vundle)
 
 source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+#export PATH=~/bin:$(ruby -rubygems -e "puts Gem.user_dir")/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
 
 # Customize to your needs...
 ## Options
@@ -46,54 +54,3 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
-
-## Self Settings
-export EDITOR="vim"
-export PAGER="less"
-export SHELL="/bin/zsh"
-export BROWSER="chromium"
-export PATH="${PATH}:${HOME}/bin"
-export GREP_COLOR="1;33"
-export PYTHONSTARTUP=~/.pystartup
-
-## Aliasi
-alias grep="grep --color=auto"
-alias ls="ls --color=auto"
-alias ll="ls -lh"
-alias .='cd ../'
-alias ..='cd ../..'
-alias ...='cd ../../../'
-alias ....='cd ../../../../'
-
-alias logo='archey3 | lolcat'
-alias emacs='emacs -nw'
-
-## Python stuff
-alias py='python'
-alias ipy='ipython'
-alias bpy='bpython'
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
-
-## Safeness!
-alias rm='rm -i'
-alias mv='mv -i'
-alias cp='cp -i'
-
-## Git
-alias g='git'
-
-## Pacman
-alias pacman='pacman-color'
-alias packer='packer-color'
-## Productivity Aliai
-alias calc='galculator'
-
-## Linux Pro Audio
-export VST_PATH=/usr/lib/vst:/usr/local/lib/vst:~/.vst
-export LADSPA_PATH=/usr/lib/ladspa:/usr/local/lib/ladspa:~/.ladspa
-export LV2_PATH=/usr/lib/lv2:/usr/local/lib/lv2:~/.lv2
-export DSSI_PATH=/usr/lib/dssi:/usr/local/lib/dssi:~/.dssi
-
-#Get per-application settings for openbox rc.xml
-alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'

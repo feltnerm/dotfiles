@@ -1,4 +1,10 @@
 *~
-config/libreofffice
+config/awesome/wallpapers
+config/awesome/screenshots
 config/chromium
+config/libreoffice
 config/gmlive
+config/ranger/history
+vim/tmp/*
+vim/backup/*
+
