@@ -1,0 +1,1 @@
+/home/mark/.config/awesome/themes/awesome-solarized/light/theme.lua
