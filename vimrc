@@ -12,27 +12,28 @@
 ""
 let mapleader=","
 set nocompatible			" don't inherit vi traits
-set number				" show line numbers
-set ruler				" show ruler at bottom of screen
+set number				    " show line numbers
+set ruler				    " show ruler at bottom of screen
 set encoding=utf-8			" set encoding
 set autoread				" watch for file changes
 set history=700				" 200 lines of history
 set undolevels=1000			" 1000 undos
-set ttyfast				" fast terminal
+set ttyfast				    " fast terminal
 set noerrorbells			" no ringa-dinga-ding-ding-dong
 set novisualbell			"
 set t_vb=			    	"
-set tm=500				"
+set tm=500				    "
 set shell=zsh				" probably safe to assume this ( <3 zsh )
 set fileformats=unix,mac,dos		" use mac, dos and unix file formats
 set ffs=unix,mac,dos			"
 set nolazyredraw			" Don't redraw when executing macros
-set magic				" set magic on, for regular expressions
-set mat=2				" how many tenths of a second to blink
-try					" try and apply my mother tongue
+set magic				    " set magic on, for regular expressions
+set mat=2				    " how many tenths of a second to blink
+try					        " try and apply my mother tongue
 	lang en_US
 catch
 endtry
+set shell=/bin/zsh
 
 " Directories for swp files
 set backupdir=~/.vim/backup
@@ -101,7 +102,7 @@ inoremap jj <Esc>
 " Default color scheme
 set colorcolumn=79
 set number 
-set background=dark
+set background=light
 " set cursorline
 
 " could be doneÉ
@@ -119,14 +120,14 @@ if has("gui_running")
     set guifont=bitstream\ vera\ sans\ mono\ 10
     set guioptions-=T
 	set t_Co=256
-	set background=dark
+	set background=light
 	"colorscheme solarized
 	if has("gui_macvim")
   	    " Fullscreen takes up entire screen
   		set fuoptions=maxhorz,maxvert
     endif
 else
-	set background=dark
+	set background=light
     "colorscheme solarized
 endif
 
@@ -148,25 +149,53 @@ Bundle 'gmarik/vundle'
 " Bundle git://git.wincent.com/command-t.git
 
 
-Bundle 'tpope/vim-fugitive'
+"" General Plugins
+" Essential vim utility scripts
 Bundle 'L9'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'scrooloose/nerdtree'
-Bundle 'SearchComplete'
-Bundle 'SuperTab'
-Bundle 'FuzzyFinder'
-Bundle 'Jinja'
-Bundle 'node.js'
-Bundle 'less.vim'
-Bundle 'vim-coffee-script'
-Bundle 'vim-json-bundle'
-Bundle 'python.vim'
+" Git integration
+Bundle 'tpope/vim-fugitive'
+" Shows great info in a statusbar at the bottom
 Bundle 'Lokaltog/vim-powerline'
+" Ctrl-P commands like sublime text
 Bundle 'kien/ctrlp.vim'
+" Quickly surround things
 Bundle 'tpope/vim-surround'
+" fuzzy searching
+Bundle 'FuzzyFinder'
+" beautiful color scheme
+Bundle 'altercation/vim-colors-solarized'
+" NERDTree
+Bundle 'scrooloose/nerdtree'
+" NERDCommentor
+Bundle 'scrooloose/nerdcommenter'
+" tab completion when searching
+Bundle 'SearchComplete'
+" Syntax checking
 Bundle 'scrooloose/syntastic'
-Bundle 'bufexplorer.zip'
-Bundle 'pylint.vim'
+" tabbed buffers 
+Bundle 'minibufexpl.vim'
+
+""" Language Specific
+"" Node.JS 
+Bundle 'node.js'
+"" LessCSS 
+Bundle 'less.vim'
+"" CoffeeScript syntax
+Bundle 'kchmck/vim-coffee-script'
+"" CSS3
+Bundle 'hail2u/vim-css3-syntax'
+"" GO
+Bundle 'uggedal/go-vim'
+"" Javascript
+Bundle 'pangloss/vim-javascript'
+"" Markdown 
+Bundle 'tpope/vim-markdown'
+"" Mustache 
+Bundle 'juvenn/mustache.vim'
+"" Python 
+Bundle 'python.vim'
+"" HTML5
+Bundle 'othree/html5.vim'
 
 filetype plugin indent on
 
@@ -174,11 +203,25 @@ filetype plugin indent on
 "" Powerline
 let g:Powerline_symbols = 'fancy'
 
+"" NerdTree
+nnoremap <C-n> :NERDTreeToggle<cr>
+autocmd vimenter * if !argc() | NERDTree | endif
+
+"" Rope
+
+
+"" MiniBuf
+let g:MiniBufExplMapWindowNavVim = 1
+let g:MiniBufExplMapWindowNavArrows = 1
+let g:MiniBufExplMapCTabSwitchBufs = 1
+let g:MiniBufExplModSelTarget = 1
+
+
 "" MiniBufExpl
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
+let g:MiniBufExplMapWindowNavVim = 1
+let g:MiniBufExplMapWindowNavArrows = 1
+let g:MiniBufExplCTabSwitchBufs = 1
+let g:MiniBufExplModSelTarget = 1
 
 "" cTags
 let Tlist_Ctags_Cmd='/usr/bin/ctags'
@@ -194,4 +237,9 @@ au BufNewFile,BufRead *.md set filetype=markdown
 """ Keybindings
 " With the following you can press F8 to show all buffers in tabs
 let notabs = 1
+
+" Fuck help
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 
