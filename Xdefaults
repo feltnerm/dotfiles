@@ -1,7 +1,7 @@
 !! xft
 xft.antialias:  true
-xft.hinting:    true
-xft.hintstyle:  hintlight
+xft.hinting:    full
+!!xft.hintstyle:  hintlight
 xft.rgba:       rgb
 
 
@@ -9,7 +9,7 @@ urxvt*perl-ext-common:      default,matcher,tabbed,vtwheel,clipboard
 urxvt*matcher.button:       1
 URxvt*loginShell:           true
 urxvt*visualBell:           true
-urxvt*saveLines:            12000
+urxvt*saveLines:            120000
 urxvt*urlLauncher:          google-chrome
 urxvt*url-select.launcher:  google-chrome
 urxvt*scrollTtyOutput:      false
@@ -18,12 +18,11 @@ urxvt*secondaryScroll:      true
 urxvt*scrollWithBuffer:     true
 urxvt*scrollBar_right:      true
 urxvt*depth:                32
-urxvt.font:                 xft:terminus:pixelsize=10:medium
-urxvt.boldFont:             xft:terminus:pixelsize=10:bold
-urxvt.cursorBlink:          true
-urxvt.letterSpace:          1
-urxvt.termName:             screen-256color
-
+urxvt*font:                 xft:terminus:pixelsize=10:medium
+urxvt*boldFont:             xft:terminus:pixelsize=10:bold
+urxvt*cursorBlink:          true
+urxvt*letterSpace:          1
+urxvt*termName:             rxvt
 
 !! drop in Solarized colorscheme for Xresources
 !!
@@ -107,3 +106,7 @@ urxvt.termName:             screen-256color
 !! white dark/light
 *color7:                S_base2
 *color15:               S_base3
+
+!! Tab Color -- not working
+!urxvt.tabbed.tabbar-bg: S_base0 
+!urxvt.tabbed.tabbar-fg: S_base03 

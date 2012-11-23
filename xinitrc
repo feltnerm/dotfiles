@@ -61,9 +61,6 @@ if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
 
 DEFAULT_SESSION=awesome
 case $1 in
-    openbox)
-        exec openbox
-        ;;
     awesome)
         exec awesome
         ;;
