@@ -1,0 +1,6 @@
+shell cd ~/.config/
+find f
+shell 
+find 
+open_with 
+search calendar
