@@ -11,7 +11,33 @@
 #   does not symlink .git or .gitignore (for obvious reasons)
 ##
 
+require 'optparse'
+
+def parse_opts
+
+    options = {}
+    options[:verbose] = false
+    options[:overwrite] = false
+
+    OptionParser.new do |opts|
+        opts.banner = "Usage: deploy.rb [options]"
+
+        opts.on("-v", "--verbose", "Run verbosely") do |v|
+            options[:verbose] = v
+
+        end
+        opts.on("-o", "--overwrite", "Overwrite previously found dotfiles") do |o|
+            options[:overwrite] = o
+        end
+    end.parse!
+
+    return options
+end
+
 def main
+
+    options = parse_opts
+
 
     home = File.expand_path("~")
     dotfiles_dir = File.join(home, "dotfiles")
@@ -30,9 +56,24 @@ def main
                 to = File.join(home, x)
             end
 
+            if File.exists?(to)
+
+                if options[:overwrite]
+                    if File.directory?(to)
+                        Dir.delete(to)
+                    else
+                        File.delete(to)
+                    end
+                    puts "Deleting: #{to}" if options[:verbose]
+                else
+                    File.rename(to, to+".bak")
+                    puts "Backing up: #{to} ==> #{to}.bak" if options[:verbose]
+                end
+
+            end
             # the meat:
-            if not File.exists?(to) and not File.symlink?(to)
-                puts "#{from} ==> #{to}"
+            if not File.exists?(to)
+                puts "#{from} ==> #{to}" if options[:verbose]
                 File.symlink(from, to)
             end
 
