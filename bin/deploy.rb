@@ -18,6 +18,7 @@ def parse_opts
     options = {}
     options[:verbose] = false
     options[:overwrite] = false
+    options[:backup] = false
 
     OptionParser.new do |opts|
         opts.banner = "Usage: deploy.rb [options]"
@@ -28,6 +29,10 @@ def parse_opts
         end
         opts.on("-o", "--overwrite", "Overwrite previously found dotfiles") do |o|
             options[:overwrite] = o
+        end
+
+        opts.on("-b", "--backup", "Backup previously found dotfiles") do |b|
+            options[:backup] = b
         end
     end.parse!
 
@@ -56,7 +61,13 @@ def main
                 to = File.join(home, x)
             end
 
+            puts "\n>> #{File.basename(to)}" if options[:verbose]
             if File.exists?(to)
+
+                if options[:backup]
+                    File.rename(to, to+".bak")
+                    puts "BACKUP: #{to} ==> #{to}.bak" if options[:verbose]
+                end
 
                 if options[:overwrite]
                     if File.directory?(to)
@@ -64,16 +75,14 @@ def main
                     else
                         File.delete(to)
                     end
-                    puts "Deleting: #{to}" if options[:verbose]
-                else
-                    File.rename(to, to+".bak")
-                    puts "Backing up: #{to} ==> #{to}.bak" if options[:verbose]
+                    puts "DELETE: #{to}" if options[:verbose]
                 end
 
+
             end
-            # the meat:
+
             if not File.exists?(to)
-                puts "#{from} ==> #{to}" if options[:verbose]
+                puts "LINK #{from} ==> #{to}" if options[:verbose]
                 File.symlink(from, to)
             end
 
