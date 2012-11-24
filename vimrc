@@ -23,7 +23,7 @@ set noerrorbells			" no ringa-dinga-ding-ding-dong
 set novisualbell			"
 set t_vb=			    	"
 set tm=500				    "
-set shell=zsh				" probably safe to assume this ( <3 zsh )
+set shell=/bin/zsh				" probably safe to assume this ( <3 zsh )
 set fileformats=unix,mac,dos		" use mac, dos and unix file formats
 set ffs=unix,mac,dos			"
 set nolazyredraw			" Don't redraw when executing macros
@@ -33,7 +33,6 @@ try					        " try and apply my mother tongue
 	lang en_US
 catch
 endtry
-set shell=/bin/zsh
 
 " Directories for swp files
 set backupdir=~/.vim/backup
@@ -86,50 +85,9 @@ set ai					" auto indent
 set si					" smart indent
 set wrap				" wrap lines
 
-" Syntax highlighting
-syntax enable				" enable highlighitng
-filetype off				" turn off filetype highlighting
-filetype plugin on			" turn on filetype plugins
-filetype indent on
-set showmatch 				" Show matching brackets
-
 " Key bindings and such
 inoremap jj <Esc>
 
-""
-" Visual Settings
-""
-" Default color scheme
-set colorcolumn=79
-set number 
-set background=light
-" set cursorline
-
-" could be doneÉ
-" if MySys() == "mac"
-" 	set gfn=Menlo:h14
-"	set shell=/bin/zsh
-" elsif MySys() == "windows"
-"	set gfn=Bitstream\ Vera\ Sans\ Monon:h10
-" elsif MySys() == "linux"
-"	set gfn=Monospace\ 10
-"	set shell=/bin/zsh
-"
-syntax enable
-if has("gui_running")
-    set guifont=bitstream\ vera\ sans\ mono\ 10
-    set guioptions-=T
-	set t_Co=256
-	set background=light
-	"colorscheme solarized
-	if has("gui_macvim")
-  	    " Fullscreen takes up entire screen
-  		set fuoptions=maxhorz,maxvert
-    endif
-else
-	set background=light
-    "colorscheme solarized
-endif
 
 "" Options for vundle
 set rtp+=~/.vim/bundle/vundle/
@@ -174,6 +132,12 @@ Bundle 'SearchComplete'
 Bundle 'scrooloose/syntastic'
 " tabbed buffers 
 Bundle 'minibufexpl.vim'
+" VimWiki
+Bundle 'vimwiki'
+" DelimitMate
+Bundle 'Raimondi/delimitMate'
+" Tagbar
+Bundle 'majutsushi/tagbar'
 
 """ Language Specific
 "" Node.JS 
@@ -199,6 +163,16 @@ Bundle 'othree/html5.vim'
 
 filetype plugin indent on
 
+""
+" Visual Settings
+""
+" Default color scheme
+set colorcolumn=79
+set number 
+set background=dark
+set cursorline
+colorscheme solarized
+
 """ Plugin Options
 "" Powerline
 let g:Powerline_symbols = 'fancy'
@@ -206,6 +180,9 @@ let g:Powerline_symbols = 'fancy'
 "" NerdTree
 nnoremap <C-n> :NERDTreeToggle<cr>
 autocmd vimenter * if !argc() | NERDTree | endif
+
+"" Tagbar
+nmap <F8> :TagbarToggle<cr>
 
 "" Rope
 
@@ -227,7 +204,12 @@ let g:MiniBufExplModSelTarget = 1
 let Tlist_Ctags_Cmd='/usr/bin/ctags'
 
 """ Syntax highlighting
-syntax on
+syntax enable				" enable highlighitng
+filetype off				" turn off filetype highlighting
+filetype plugin on			" turn on filetype plugins
+filetype indent on
+set showmatch 				" Show matching brackets
+
 au BufNewFile,BufRead *.html set filetype=jinja
 au BufNewFile,BufRead *.jade set filetype=jade
 au BufNewFile,BufRead *.less set filetype=less
