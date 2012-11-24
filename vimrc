@@ -184,9 +184,6 @@ autocmd vimenter * if !argc() | NERDTree | endif
 "" Tagbar
 nmap <F8> :TagbarToggle<cr>
 
-"" Rope
-
-
 "" MiniBuf
 let g:MiniBufExplMapWindowNavVim = 1
 let g:MiniBufExplMapWindowNavArrows = 1
