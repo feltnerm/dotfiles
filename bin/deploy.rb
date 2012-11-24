@@ -19,21 +19,32 @@ def parse_opts
     options[:verbose] = false
     options[:overwrite] = false
     options[:backup] = false
+    options[:what_dir] = "dotfiles"
 
     OptionParser.new do |opts|
         opts.banner = "Usage: deploy.rb [options]"
 
-        opts.on("-v", "--verbose", "Run verbosely") do |v|
-            options[:verbose] = v
+        opts.on("-v", "--verbose", "Run verbosely") do
+            options[:verbose] = true
 
         end
-        opts.on("-o", "--overwrite", "Overwrite previously found dotfiles") do |o|
-            options[:overwrite] = o
+        opts.on("-o", "--overwrite", "Overwrite previously found files/folders") do
+            options[:overwrite] = true 
         end
 
-        opts.on("-b", "--backup", "Backup previously found dotfiles") do |b|
-            options[:backup] = b
+        opts.on("-b", "--backup", "Backup previously found files/folders")do
+            options[:backup] = true 
         end
+
+        opts.on("-w", "--what [DIR]", "What to deploy (dotfiles/dropbox")do |dir|
+            options[:what_dir] = dir
+        end
+
+        opts.on("-h", "--help", "Display this screen")do
+            puts opts
+            exit
+        end
+
     end.parse!
 
     return options
@@ -43,19 +54,28 @@ def main
 
     options = parse_opts
 
-
     home = File.expand_path("~")
-    dotfiles_dir = File.join(home, "dotfiles")
-    
-    Dir.foreach(dotfiles_dir) { |x| 
+    dir = File.join(home, "dotfiles")
+
+    if options[:what_dir] == "dropbox"
+        dir = File.join(home, "Dropbox")
+    elsif options[:what_dir] == "dotfiles"
+        dir = File.join(home, "dotfiles")
+    else
+        puts "Error, that deployment is not setup. Maybe you should make it!"
+        exit
+    end
+
+    puts "##########\nDeploying: #{options[:what_dir]}\n##########"
+    Dir.foreach(dir) { |x| 
 
         # where the original file resides
-        from = File.join(dotfiles_dir, x)
+        from = File.join(dir, x)
 
         if not (x == "." or x == ".." or x == ".git" or x == ".gitignore")
 
             # where to symlink will belong 
-            if x != "bin"
+            if x != "bin" and options[:what_dir] == "dotfiles"
                 to = File.join(home, "."+x)
             else
                 to = File.join(home, x)
