@@ -5,15 +5,6 @@
 local execute = {
    -- Read resources
    "xrdb -merge " .. os.getenv("HOME") .. "/.Xresources",
-   --"xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55",
-   --"xscreensaver -no-splash",
-   -- Start PulseAudio
-   "pulseaudio --check || start-pulseaudio-x11",
-   "xset -b",	-- Disable bell
-   -- Enable numlock
-   "numlockx on",
-
-   "urxvtd -q -f -o",
 
    -- Default browser
    "xdg-mime default " .. config.browser .. ".desktop x-scheme-handler/http",

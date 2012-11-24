@@ -67,7 +67,8 @@ config.keys.global = awful.util.table.join(
    -- awful.key({ modkey }, "F1", nil),
 
    -- Screenshot
-   awful.key({ modkey }, "Print", screenshot, "Screenshot")
+   awful.key({ modkey }, "Print", screenshot, "Screenshot"),
+   awful.key({ modkey }, "b", function() awful.util.spawn("chromium") end)
 )
 
 
