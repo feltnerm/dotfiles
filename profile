@@ -92,6 +92,9 @@ alias ll="ls -lh"
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
+alias vimwiki="vim -c VimwikiIndex"
+alias vimdiary="vim -c VimiwikiDiaryIndex"
+alias ndiary="vim -c VimwikiMakeDiaryNote"
 
 alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
 if _which bc; then
