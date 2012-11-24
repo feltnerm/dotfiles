@@ -179,7 +179,6 @@ let g:Powerline_symbols = 'fancy'
 
 "" NerdTree
 nnoremap <C-n> :NERDTreeToggle<cr>
-autocmd vimenter * if !argc() | NERDTree | endif
 
 "" Tagbar
 nmap <F8> :TagbarToggle<cr>
