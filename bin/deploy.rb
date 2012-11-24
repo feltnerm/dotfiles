@@ -50,6 +50,33 @@ def parse_opts
     return options
 end
 
+def make_link(from, to, options)
+    puts "\n>> #{File.basename(from)}" if options[:verbose]
+    if File.exists?(to)
+
+        if options[:backup]
+            File.rename(to, to+".bak")
+            puts "BACKUP: #{to} ==> #{to}.bak" if options[:verbose]
+        end
+
+        if options[:overwrite]
+            if File.directory?(to)
+                Dir.delete(to)
+            else
+                File.delete(to)
+            end
+            puts "DELETE: #{to}" if options[:verbose]
+        end
+
+
+    end
+
+    if not File.exists?(to)
+        puts "LINK #{from} ==> #{to}" if options[:verbose]
+        File.symlink(from, to)
+    end
+end
+
 def main
 
     options = parse_opts
@@ -75,36 +102,20 @@ def main
         if not (x == "." or x == ".." or x == ".git" or x == ".gitignore")
 
             # where to symlink will belong 
-            if x != "bin" and options[:what_dir] == "dotfiles"
-                to = File.join(home, "."+x)
-            else
-                to = File.join(home, x)
-            end
-
-            puts "\n>> #{File.basename(to)}" if options[:verbose]
-            if File.exists?(to)
-
-                if options[:backup]
-                    File.rename(to, to+".bak")
-                    puts "BACKUP: #{to} ==> #{to}.bak" if options[:verbose]
+            if options[:what_dir] == "dotfiles"
+                if x != "bin"
+                    to = File.join(home, "."+x)
+                else
+                    to = File.join(home, x)
                 end
-
-                if options[:overwrite]
-                    if File.directory?(to)
-                        Dir.delete(to)
-                    else
-                        File.delete(to)
-                    end
-                    puts "DELETE: #{to}" if options[:verbose]
+                make_link from, to, options
+            elsif options[:what_dir] == "dropbox"
+                if !x.start_with?(".")
+                    to = File.join(home, x)
+                    make_link from, to, options
                 end
-
-
             end
 
-            if not File.exists?(to)
-                puts "LINK #{from} ==> #{to}" if options[:verbose]
-                File.symlink(from, to)
-            end
 
         end
 
