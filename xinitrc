@@ -72,14 +72,17 @@ fi
 pulseaudio --check || start-pulseaudio-x11
 
 # Enable xscreensaver
-#xscreensaver -no-splash
+xscreensaver -no-splash &
 
 # start xcompmgr
 #xcompmgr -c -C -t-5 -l-5 -r4.2 -o0.55
+xcompmgr -CcfF -I-.015 -O-.03 -D6 -t-1 -l-3 -r4.2 -o.5 &
 
 # start urxvt daemon
 urxvtd -q -f -o
 
+# set wallpaper
+nitrogen --restore &
 DEFAULT_SESSION=awesome
 case $1 in
     awesome)

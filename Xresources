@@ -4,6 +4,10 @@ xft.hinting:    true
 xft.hintstyle:  hintlight
 xft.rgba:       rgb
 
+!! xpdf
+xpdf*enableFreetype:    yes
+xpdf*antialias:         yes
+xpdf*urlCommand:        /usr/bin/chromium %s
 
 urxvt*perl-ext-common:      default,matcher,tabbed,vtwheel,clipboard
 urxvt*matcher.button:       1

@@ -56,17 +56,22 @@ vicious.register(datewidget, vicious.widgets.date, "%H:%M %d/%m/%Y", 60)
 local cpuwidget = awful.widget.graph()
 --local cpuwidget = wibox.widget.graph()
 cpuwidget:set_width(50)
+cpuwidget:set_background_color(theme.bg_widget)
+cpuwidget:set_color(theme.fg_widget)
+cpuwidget:set_border_color(theme.border_widget)
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
 
 -- Memory Usage
 local memwidget = awful.widget.graph()
 memwidget:set_width(50)
+memwidget:set_background_color(theme.bg_widget)
+memwidget:set_color(theme.fg_widget)
+memwidget:set_border_color(theme.border_widget)
 vicious.register(memwidget, vicious.widgets.mem, "$1")
 
 -- Battery
---local batterywidget = wibox.widget.textbox()
---vicious.register(batterywidget, vicious.widgets.bat, "$1%", 60)
-
+local batwidget = wibox.widget.textbox()
+vicious.register(batwidget, vicious.widgets.bat, "$2%", 60, "BAT0")
 
 --local systray = wibox.widget.systray()
 local a_wibox = {}
@@ -149,6 +154,7 @@ for s = 1, screen.count() do
     -- Right Aligned Widgets
     local right_layout = wibox.layout.fixed.horizontal()
     --if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(batwidget)
     right_layout:add(cpuwidget)
     right_layout:add(memwidget)
     right_layout:add(separator)
