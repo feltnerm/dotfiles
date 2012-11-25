@@ -1,6 +1,7 @@
 -- Tags
 local tags = {}
-local tagnames = { "⌨", "⍜", "✉", "❁", "✣" }
+--local tagnames = { "⌨", "⍜", "✉", "❁", "✣" }
+local tagnames = { "⌨", "❁", "✣" }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = awful.tag(tagnames, s, config.layouts[1])
