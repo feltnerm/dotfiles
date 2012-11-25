@@ -11,7 +11,7 @@ awful.rules = require("awful.rules")
               require("awful.autofocus")
 beautiful   = require("beautiful")
 naughty     = require("naughty")
---revelation  = require("revelation")
+revelation  = require("revelation")
 
 
 -- Debugging & error helper

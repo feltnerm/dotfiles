@@ -52,6 +52,16 @@ config.keys.global = awful.util.table.join(
 
    -- Screenshot
    awful.key({}, "Print", screenshot),
+
+   -- Popup Status
+    awful.key({ modkey }, "F11", function() awful.util.spawn(config.terminal .. " -e htop") end),
+    -- XKill
+    awful.key({ modkey, "Ctrl" }, "x", 
+        function ()
+        awful.util.spawn("/usr/bin/xkill") 
+        end),
+    awful.key({ modkey }, "e", revelation.revelation),
+
    
    -- Multimedia keys
    --awful.key({ }, "XF86MonBrightnessUp",   brightness.increase),
