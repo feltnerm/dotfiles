@@ -23,7 +23,8 @@ urxvt*boldFont:             xft:terminus:pixelsize=10:bold
 urxvt*cursorBlink:          true
 urxvt*letterSpace:          1
 urxvt*termName:             rxvt
-
+urxvt*transparent:          true
+urxvt*shading:              30
 !! drop in Solarized colorscheme for Xresources
 !!
 !! ## Installation
