@@ -4,7 +4,7 @@ config/awesome/screenshots
 config/chromium
 config/libreoffice
 config/gmlive
-config/Trolltech
+config/Trolltech.conf
 config/ranger/history
 vim/tmp/*
 vim/backup/*
