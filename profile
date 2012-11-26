@@ -96,6 +96,16 @@ alias vimwiki="vim -c VimwikiIndex"
 alias vimdiary="vim -c VimiwikiDiaryIndex"
 alias ndiary="vim -c VimwikiMakeDiaryNote"
 
+if _which sp-sc; then
+    function sop()
+    {
+        sp-sc $1 3908 8908 > /dev/null &
+        sleep 3;
+        mplayer http://localhost:8908/tv.asf;
+        killall sp-sc;
+    }
+fi
+
 alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
 if _which bc; then
     alias bc='bc -ql'
