@@ -11,7 +11,8 @@ xpdf*urlCommand:        /usr/bin/chromium %s
 
 urxvt*perl-ext-common:      default,matcher,tabbed,vtwheel,clipboard
 urxvt*matcher.button:       1
-URxvt*loginShell:           true
+urxvt*loginShell:           false
+!!URxvt*loginShell:           true
 urxvt*visualBell:           true
 urxvt*saveLines:            12000
 urxvt*urlLauncher:          google-chrome
