@@ -1,0 +1,5 @@
+Battery=$(acpi -b | grep "Battery" | sed -nr '/Battery/s/.*(\<[[:digit:]]+%).*/\1/p')
+Thermal=$(acpi -t | grep "Thermal" | sed -nr "s/.*(\<[[:digit:]]+\.[[:digit:]]) degrees.*/\1°C/p" )
+
+echo "$Battery"
+echo "$Thermal"

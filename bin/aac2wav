@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# aac2wav
+#
+for i in *.aac; do
+    ffmpeg -i "$i" "$i".wav
+done
+

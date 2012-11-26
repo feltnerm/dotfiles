@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Output the number of current pacman updates to conky
+echo "`pacman -Qu | wc -l`"
