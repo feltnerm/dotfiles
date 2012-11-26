@@ -30,3 +30,4 @@ do
 done
 
 xrandr --output $DEFAULT_OUTPUT --auto $EXECUTE
+nitrogen --restore
