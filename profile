@@ -132,6 +132,7 @@ fi
 if _which packer-color; then
     alias packer="packer-color"
 fi
+
 function aa_power_settings ()
 { 
   sudo bash -c '
@@ -160,3 +161,5 @@ function aa_power_settings ()
     done
   ';
 }
+
+eval $(keychain --eval --agents ssh -Q --quiet id_rsa_github id_rsa_io_uwplatt id_rsa_saraswati)
