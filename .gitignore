@@ -6,6 +6,7 @@ config/libreoffice
 config/gmlive
 config/Trolltech.conf
 config/ranger/history
+config/ipython/profile_default/history.sqlite
 vim/tmp/*
 vim/backup/*
 
