@@ -162,4 +162,4 @@ function aa_power_settings ()
   ';
 }
 
-eval $(keychain --eval --agents ssh -Q --quiet id_rsa_github id_rsa_io_uwplatt id_rsa_saraswati)
+eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/{id_rsa_github,id_rsa_io_uwplatt,id_rsa_saraswati})
