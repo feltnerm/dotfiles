@@ -25,7 +25,7 @@ config.keys.global = awful.util.table.join(
     awful.key({ modkey, "Shift" },      "j", function() awful.client.swap.byidx(1) end),
     awful.key({ modkey, "Shift" },      "k", function() awful.client.swap.byidx(-1) end),
     awful.key({ modkey, "Control" },    "j", function() awful.screen.focus_relative(1) end),
-    awful.key({ modkey }, "u", function() awful.screen.focus_relative(-1) end),
+    awful.key({ modkey }, "s", function() awful.screen.focus_relative(-1) end),
     awful.key({ modkey }, "Tab",
         function()
             awful.client.focus.history.previous()
@@ -55,12 +55,17 @@ config.keys.global = awful.util.table.join(
 
    -- Popup Status
     awful.key({ modkey }, "F11", function() awful.util.spawn(config.terminal .. " -e htop") end),
+    --- Wicd
+    awful.key({ modkey }, "F10", function() awful.util.spawn(config.terminal .. " -e wicd-curses") end),
     -- XKill
     awful.key({ modkey, "Ctrl" }, "x", 
         function ()
         awful.util.spawn("/usr/bin/xkill") 
         end),
     awful.key({ modkey }, "e", revelation.revelation),
+    awful.key({ modkey }, "v", function() awful.util.spawn("gvim") end),
+    awful.key({ modkey }, "XF86Display", 
+        function() awful.util.spawn(config.terminal .. " -e xdisplay") end),
 
    
    -- Multimedia keys
