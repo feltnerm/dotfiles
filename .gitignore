@@ -7,6 +7,9 @@ config/gmlive
 config/Trolltech.conf
 config/ranger/history
 config/ipython/profile_default/history.sqlite
+config/anjuta
+config/dconf
+
 vim/tmp/*
 vim/backup/*
 
