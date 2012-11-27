@@ -20,7 +20,12 @@ do
         then
                 if [[ $XRANDR == *$CURRENT\ connected\ \(* ]] # is disabled
                 then
+                    if [[ $CURRENT == "VGA1" ]]
+                    then
+                        EXECUTE+="--output $CURRENT --mode 1600x1200 -pos 1280x0"
+                    else
                         EXECUTE+="--output $CURRENT --auto --above $DEFAULT_OUTPUT "
+                    fi
                 else
                         EXECUTE+="--output $CURRENT --off "
                 fi
@@ -29,5 +34,5 @@ do
         fi
 done
 
-xrandr --output $DEFAULT_OUTPUT --auto $EXECUTE
+xrandr --output $DEFAULT_OUTPUT --mode 1280x800 -pos 0x400 --rotate normal $EXECUTE
 nitrogen --restore
