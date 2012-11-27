@@ -2,7 +2,7 @@
 	name = Mark Feltner
 	email = feltner.mj@gmail.com
 [github]
-	user = plugitin 
+	user = feltnerm
 [pack]
 	threads = 0
 [color]
@@ -35,5 +35,7 @@
     df = diff
     pl = pull
     ps = push
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
 [branch]
     autosetupmerge = true
