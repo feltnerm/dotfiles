@@ -1,4 +1,5 @@
 *~
+config/gtk-2.0/gtkfilechooser.ini
 config/awesome/wallpapers
 config/awesome/screenshots
 config/chromium
@@ -6,9 +7,19 @@ config/libreoffice
 config/gmlive
 config/Trolltech.conf
 config/ranger/history
+config/ranger/bookmarks
 config/ipython/profile_default/history.sqlite
 config/anjuta
 config/dconf
+
+ncmpcpp/error.log
+
+cmus/cache
+cmus/command-history
+cmus/lib.pl
+cmus/playlist.pl
+cmus/search-history
+
 
 vim/tmp/*
 vim/backup/*
