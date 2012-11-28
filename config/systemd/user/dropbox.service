@@ -1,0 +1,16 @@
+[Unit]
+Description=Dropbox
+After=local-fs.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dropboxd
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+User=%u
+
+[Install]
+WantedBy=multi-user.target
+
+
