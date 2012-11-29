@@ -26,4 +26,6 @@ cmus/search-history
 
 vim/tmp/*
 vim/backup/*
+vim/bundle/*
+!vim/bundle/vundle
 
