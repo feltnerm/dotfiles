@@ -7,6 +7,7 @@ _root() {
     [ "$EUID" = "0" ]
 }
 
+
 # ruby
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
@@ -95,6 +96,10 @@ alias cp='cp -i'
 alias vimwiki="vim -c VimwikiIndex"
 alias vimdiary="vim -c VimiwikiDiaryIndex"
 alias ndiary="vim -c VimwikiMakeDiaryNote"
+
+if _which cdf; then
+    alias df="cdf"
+fi
 
 if _which sp-sc; then
     function sop()
