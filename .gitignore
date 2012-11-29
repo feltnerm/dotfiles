@@ -1,5 +1,6 @@
 *~
 config/gtk-2.0/gtkfilechooser.ini
+config/gtk-3.0/bookmarks
 
 config/awesome/wallpapers
 config/awesome/screenshots
