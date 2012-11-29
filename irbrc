@@ -7,6 +7,7 @@ IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
 
 # ASCII table views
+require 'hirb'
 require 'hirb/import_object'
 Hirb.enable
 extend Hirb::Console
