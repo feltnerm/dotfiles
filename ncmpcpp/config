@@ -27,8 +27,6 @@
 ## set it in order to make tag editor and renaming files work properly
 #
 #mpd_host = "localhost"
-mpd_host = "swati.dyndns.tv"
-mpd_port = 6600
 #
 #mpd_port = "6600"
 #
