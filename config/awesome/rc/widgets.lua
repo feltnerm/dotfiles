@@ -11,6 +11,12 @@ local launcher = {}
 
 -- Awesome Menu
 -- ---------------------
+--applications_menu = {}
+--applications_menu[10] = {
+--    {"Dungeon Crawl Stone Soup", crawl-tiles },
+--   {"Dwarf Fortress IronHand", dwarffortress-ih},
+--    {"nethack", config.terminal .. " -e nethack"},
+--}
 awesome_menu = {
    { "settings", config.exec_editor .. " " .. awesome.conffile },
    { "restart", awesome.restart },
