@@ -10,12 +10,11 @@ require 'ruby-debug' if DEBUG
 require 'optparse'
 
 
-options = {
-    "env"=> "home"
-}
-OptionParser.new do |opts|
+## CONTANTS & DEFAULTS ##
+#########################
 
-end
+# Dir where user defined (arandr) screenlayouts are kept
+SCREENLAYOUTS = File.expand_path("~/.screenlayout") 
 
 # the notebook monitor
 DEFAULT_OUTPUT = 'LVDS1'
@@ -25,25 +24,73 @@ OUTPUTS = ['VGA1', 'HDMI1']
 
 # Get info from xrandr
 XRANDR=`xrandr -q`
-execute=" --output #{DEFAULT_OUTPUT} --mode 1280x800"
 
-for output in OUTPUTS
-
-    if /#{output}\ connected* / =~ XRANDR # output IS connected
-            execute += " --output #{output} --auto" 
+## SCREEN MODIFYING FUNCTIONS ##
+################################
+# Run a layout from the default layouts directory
+def layout(l)
+    
+    script = File.join(SCREENLAYOUTS, l+".sh")
+    if not File.exists?(script)
+        puts "Script #{script} was not found."
     else
-        execute += " --output #{output} --off"
+        puts "\n>> Layout: #{l}" if VERBOSE
+        `sh #{script}`
     end
+
 end
 
-puts "xrandr #{execute}"
-`xrandr #{execute}`
+# Set layouts to auto
+def default()
+    # Arguments for xrandr:
+    execute=" --output #{DEFAULT_OUTPUT} --mode 1280x800"
 
-#for line in XRANDR.each
-#    
-#    if / connected / =~ line
-#        if line.start_with? DEFAULT_OUTPUT
-#            EXECUTE += "--output #{DEFAULT_OUTPUT} --mode 1280x800 --pos 0x400 --rotate normal"
-#        end
-#    end
-#end
+    for output in OUTPUTS
+
+        if /#{output}\ connected* / =~ XRANDR # output IS connected
+            execute += " --output #{output} --auto" 
+        else
+            execute += " --output #{output} --off"
+        end
+    end
+
+    puts "\n>> Layout: auto" if VERBOSE
+    puts "   Options: #{execute}" if VERBOSE
+    `xrandr #{execute}`
+
+end
+################################
+
+## OPTION PARSER ##
+###################
+# Options:
+#   env => specifies user defined setups found in .screen-settings
+options = {
+    "layout"=> ""
+}
+OptionParser.new do |opts|
+
+    opts.on("-l", "--layout [LAYOUT]", 
+            "Use a predefined layout located in ~/.screensettings") do |l|
+        options["layout"] << l
+    end
+
+    opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+        options[:verbose] = v
+    end
+
+end.parse!
+
+## MAIN ##
+##########
+if options[:verbose] 
+    VERBOSE = true
+else                 
+    VERBOSE = false
+end
+if options["layout"] != ""
+    layout(options["layout"])
+else
+    default
+end
+
