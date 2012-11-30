@@ -51,7 +51,7 @@ def parse_opts
 end
 
 def make_link(from, to, options)
-    puts "\n>> #{File.basename(from)}" if options[:verbose]
+    puts ">>>> #{File.basename(from)}" if options[:verbose]
     if File.exists?(to)
 
         if options[:backup]
