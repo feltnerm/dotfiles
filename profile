@@ -99,6 +99,10 @@ alias ndiary="vim -c VimwikiMakeDiaryNote"
 
 if _which cdf; then
     alias df="cdf"
+else
+    if _which pydf; then
+        alias df="pydf";
+    fi
 fi
 
 if _which sp-sc; then
