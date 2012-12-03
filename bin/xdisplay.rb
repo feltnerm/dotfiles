@@ -79,6 +79,10 @@ OptionParser.new do |opts|
         options[:verbose] = v
     end
 
+    opts.on("-r", "--restore", "Restore wallpaper with nitrogen") do |r|
+        options[:restore] = r
+    end
+
 end.parse!
 
 ## MAIN ##
@@ -92,5 +96,9 @@ if options["layout"] != ""
     layout(options["layout"])
 else
     default
+end
+
+if options[:restore]
+    `nitrogen --restore`
 end
 
