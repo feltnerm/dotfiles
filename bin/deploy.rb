@@ -6,9 +6,17 @@
 # Useful for those who keep a version controlled (via git) folder
 # full of dotfiles
 #
+# assumptions:
+#   your files are stored in either ~/dotfiles or ~/dropbox
+#   no files start with a '.'
+#
 # notes: 
 #   does not symlink bin/
 #   does not symlink .git or .gitignore (for obvious reasons)
+#
+# issues:
+#   if it tries to copy a folder that already exists, it blows up.
+#
 ##
 
 require 'optparse'
@@ -99,7 +107,7 @@ def main
         # where the original file resides
         from = File.join(dir, x)
 
-        if not (x == "." or x == ".." or x == ".git" or x == ".gitignore")
+        if not x.start_with?(".")
 
             # where to symlink will belong 
             if options[:what_dir] == "dotfiles"
