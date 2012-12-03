@@ -43,6 +43,7 @@ if [ -d "$HOME/bin" ]; then
     export PATH=$PATH:$HOME/bin
 fi
 
+
 # editor
 if _which vim; then
     export EDITOR="$(which vim)"
@@ -63,14 +64,47 @@ if _which less; then
     export LESS_TERMCAP_us=$'\E[01;32m'
 fi
 
-# term
-if _which urxvtc; then
-    export TERM="rxvt-unicode"
+if [[ "$(hostname -s)" == "saraswati" ]] then
+    export PATH=$PATH:$HOME/admin
+    eval $(keychain --eval --agents ssh -Q --quiet /home/mark/.ssh/{id_rsa_github,})
 fi
 
-# browser
-if _which chromium; then
-    export BROWSER="$(which chromium)"
+if [[ "$(hostname -s)" == "pioneerpete" ]] then
+
+    # term
+    if _which urxvtc; then
+        export TERM="rxvt-unicode"
+    fi
+
+    # browser
+    if _which chromium; then
+        export BROWSER="$(which chromium)"
+    fi
+    
+    if _which sp-sc; then
+        function sop()
+        {
+            sp-sc $1 3908 8908 > /dev/null &
+            sleep 3;
+            mplayer http://localhost:8908/tv.asf;
+            killall sp-sc;
+        }
+    fi
+
+    if _root; then
+        if _which pacman; then
+            alias pacman-orphans='pacman -Qtdq && pacman -Rs $(pacman -Qtdq)'
+        fi
+    fi
+
+    if _which pacman-color; then
+        alias pacman="pacman-color"
+    fi
+
+    if _which packer-color; then
+        alias packer="packer-color"
+    fi
+    eval $(keychain --eval --agents ssh -Q --quiet /home/mark/.ssh/{id_rsa_github,id_rsa_io_uwplatt,id_rsa_saraswati,})
 fi
 
 # shell
@@ -105,16 +139,6 @@ else
     fi
 fi
 
-if _which sp-sc; then
-    function sop()
-    {
-        sp-sc $1 3908 8908 > /dev/null &
-        sleep 3;
-        mplayer http://localhost:8908/tv.asf;
-        killall sp-sc;
-    }
-fi
-
 alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
 if _which bc; then
     alias bc='bc -ql'
@@ -124,23 +148,11 @@ if _which lsof; then
     alias ports='lsof -i -P -sTCP:LISTEN'
 fi
 
-if _root; then
-    if _which pacman; then
-        alias pacman-orphans='pacman -Qtdq && pacman -Rs $(pacman -Qtdq)'
-    fi
-fi
 
 if _which cloc; then
     alias cloc="cloc --exclude-dir=.git,.hg"
 fi
 
-if _which pacman-color; then
-    alias pacman="pacman-color"
-fi
-
-if _which packer-color; then
-    alias packer="packer-color"
-fi
 
 function aa_power_settings ()
 { 
@@ -171,4 +183,3 @@ function aa_power_settings ()
   ';
 }
 
-eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/{id_rsa_github,id_rsa_io_uwplatt,id_rsa_saraswati})
