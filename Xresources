@@ -27,7 +27,7 @@ urxvt.font:                 xft:terminus:pixelsize=10:medium
 urxvt.boldFont:             xft:terminus:pixelsize=10:bold
 urxvt.cursorBlink:          true
 urxvt.letterSpace:          1
-urxvt.termName:             screen-256color
+urxvt.termName:             rxvt-unicode
 
 
 !! drop in Solarized colorscheme for Xresources
