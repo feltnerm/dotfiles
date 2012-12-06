@@ -149,7 +149,7 @@ if [ -d "$HOME/projects" ]; then
     export PROJECT_HOME=$HOME/projects
 fi
 if _which virtualenvwrapper_lazy.sh; then
-    source /usr/bin/virtualenvwrapper_lazy.sh
+    source $(which virtualenvwrapper_lazy.sh)
 fi
 
 source ~/.aliases
