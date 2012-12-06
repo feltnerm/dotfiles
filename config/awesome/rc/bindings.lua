@@ -72,11 +72,11 @@ config.keys.global = awful.util.table.join(
    --awful.key({ }, "XF86MonBrightnessUp",   brightness.increase),
    --awful.key({ }, "XF86MonBrightnessDown", brightness.decrease),
    awful.key({ }, "XF86AudioRaiseVolume", 
-        function() os.execute("amixer -q sset Master 5%+") end),
+        function() os.execute("/usr/bin/vol_up") end),
    awful.key({ }, "XF86AudioLowerVolume", 
-        function() os.execute("amixer -q sset Master 5%-") end),
+        function() os.execute("/usr/bin/vol_down") end),
    awful.key({ }, "XF86AudioMute",        
-        function() os.execute("amixer -q sset Master toggle") end),
+        function() os.execute("/usr/bin/mute_toggle") end),
 
    -- Help
    -- awful.key({ modkey }, "F1", nil),
