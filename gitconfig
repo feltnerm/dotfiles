@@ -5,6 +5,16 @@
 	user = feltnerm
 [pack]
 	threads = 0
+[push]
+    config = default
+    default = tracking
+[diff]
+    renames = true
+[branch]
+    autosetupmerge = true
+[status]
+    short = true
+    branch = true
 [color]
 	ui = auto
     branch = auto
@@ -37,5 +47,3 @@
     ps = push
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
-[branch]
-    autosetupmerge = true
