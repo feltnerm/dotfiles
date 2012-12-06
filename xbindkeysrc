@@ -1,20 +1,23 @@
-"amixer set Master 5+ unmute"
-XF86AudioRaiseVolume
+#"amixer set Master 5+ unmute"
+#"/usr/bin/vol_up"
+#XF86AudioRaiseVolume
 
-"amixer set Master 5- unmute"
-XF86AudioLowerVolume
+#"amixer set Master 5- unmute"
+#"/usr/bin/vol_down"
+#XF86AudioLowerVolume
 
-"amixer set 'Master' toggle"
-XF86AudioMute
+#"amixer set 'Master' toggle"
+#"/usr/bin/mute_toggle"
+#XF86AudioMute
 
 #"audioplayer -next"
-XF86AudioNext
+#XF86AudioNext
 
 #"audioplayer -pause"
-XF86AudioPlay
+#XF86AudioPlay
 
 #"audioplayer -stop"
-XF86AudioStop
+#XF86AudioStop
 
 "audioplayer -previous"
-XF86AudioPrev
+#XF86AudioPrev
