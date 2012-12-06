@@ -1,0 +1,49 @@
+# grep
+alias grep='grep --color=auto'
+
+# ls
+alias ls="ls -hF --color=auto"
+alias ll="ls -lh"
+
+# cd - broken
+#alias .="cd .."
+#alias ..="cd ../.."
+#alias ...="cd ../../.."
+#alias ....="cd ../../../.."
+
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+
+# vimwiki
+alias vimwiki="vim -c VimwikiIndex"
+alias vimdiary="vim -c VimiwikiDiaryIndex"
+alias ndiary="vim -c VimwikiMakeDiaryNote"
+
+alias pm="ps ax | grep -v grep | grep -i"
+alias ducks="du -cksh * | sort -rn | head -11"
+
+if _which cdf; then
+    alias df="cdf"
+else
+    if _which pydf; then
+        alias df="pydf";
+    fi
+fi
+
+
+alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
+if _which bc; then
+    alias bc='bc -ql'
+fi
+
+if _which lsof; then
+    alias ports='lsof -i -P -sTCP:LISTEN'
+fi
+
+
+if _which cloc; then
+    alias cloc="cloc --exclude-dir=.git,.hg"
+fi
+
+

@@ -10,7 +10,9 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="terminalparty"
+#ZSH_THEME="terminalparty"
+# good themes: example, kphoen!!, fino!,  
+ZSH_THEME="kphoen"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -33,10 +35,6 @@ plugins=(ssh-agent screen autojump compleat node git github archlinux extract pi
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-#export PATH=~/bin:$(ruby -rubygems -e "puts Gem.user_dir")/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
-
-# Customize to your needs...
 ## Options
 setopt correctall
 setopt autocd

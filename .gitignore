@@ -5,6 +5,8 @@ config/gtk-3.0/bookmarks
 config/awesome/wallpapers
 config/awesome/screenshots
 
+cmus/
+
 config/anjuta
 config/dconf
 config/chromium
@@ -15,7 +17,7 @@ config/Trolltech.conf
 config/ranger/history
 config/ranger/bookmarks
 
-config/ipython/profile_default/history.sqlite
+config/ipython/profile_default/
 
 ncmpcpp/error.log
 
