@@ -5,14 +5,16 @@ IRB.conf[:USE_READLINE] = true
 IRB.conf[:AUTO_INDENT]  = true
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
+ARGV.concat [ "--readline", "--prompt-mode", "simple"]
 
-# ASCII table views
-require 'hirb'
-require 'hirb/import_object'
-Hirb.enable
-extend Hirb::Console
+class Object
+    def local_methods
+        (methods - Object.instance_methods).sort
+    end
+end
 
 begin
+
     require 'rubygems'
     require 'ap'
     require 'wirble'
@@ -24,6 +26,10 @@ begin
     require 'bond'
     Bond.start
 
+    require 'hirb'
+    require 'hirb/import_object'
+    Hirb.enable
+    extend Hirb::Console
     require 'what_methods'
 
     module DynamicPrompt
@@ -61,5 +67,6 @@ begin
 
     end
 DynamicPrompt.apply!
+rescue LoadError
 end
 
