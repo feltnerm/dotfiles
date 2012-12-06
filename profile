@@ -7,6 +7,7 @@ _root() {
     [ "$EUID" = "0" ]
 }
 
+# local bin
 # PATH
 if [ -d "$HOME/bin" ]; then
     export PATH=$PATH:$HOME/bin
