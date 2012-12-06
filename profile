@@ -7,50 +7,24 @@ _root() {
     [ "$EUID" = "0" ]
 }
 
-
-# ruby
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-if [ -d "$HOME/.gem" ]; then
-    export GEM_HOME=$HOME/.gem
-    export PATH=$PATH:$GEM_HOME/bin
-fi
-if [ -d "$HOME/.rvm" ]; then
-    export PATH=$PATH:$HOME/.rvm/bin
-fi
-
-# node
-if [ -d "$HOME/node_modules" ]; then
-    export PATH=$PATH:$HOME/node_modules/.bin
-fi
-
-# python
-if [ -d "$HOME/.virtualenvs" ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-fi
-if [ -d "$HOME/.pystartup" ]; then
-    export PYTHONSTARTUP=~/.pystartup
-fi
-if [ -d "$HOME/projects" ]; then
-    export PROJECT_HOME=$HOME/projects
-fi
-if _which virtualenvwrapper_lazy.sh; then
-    source /usr/bin/virtualenvwrapper_lazy.sh
-fi
-
-# local bin
+# PATH
 if [ -d "$HOME/bin" ]; then
     export PATH=$PATH:$HOME/bin
 fi
 
-
-# editor
+# EDITOR
 if _which vim; then
     export EDITOR="$(which vim)"
     export VISUAL="$EDITOR"
 fi
 
-# pager
+# SHELL
+if _which zsh; then
+    export SHELL="$(which zsh)"
+fi
+
+export GREP_COLOR="1;33"
+# PAGER
 if _which less; then
     export PAGER=less
 
@@ -71,16 +45,34 @@ fi
 
 if [[ "$(hostname -s)" == "pioneerpete" ]] then
 
-    # term
+    # TERM
     if _which urxvtc; then
         export TERM="rxvt-unicode"
     fi
 
-    # browser
+    # BROWSER 
     if _which chromium; then
         export BROWSER="$(which chromium)"
     fi
     
+    # Pacman
+    if _which pacman; then
+        alias pacman-orphans='pacman -Qtdq && pacman -Rs $(pacman -Qtdq)'
+    fi
+
+    if _which pacman-color; then
+        alias pacman="pacman-color"
+    fi
+
+    if _which packer-color; then
+        alias packer="packer-color"
+    fi
+
+    if _root; then
+       alias pacman-clean='pacman -Rs $(pacman -Qtdq)' 
+    fi
+
+    # sopcast
     if _which sp-sc; then
         function sop()
         {
@@ -91,66 +83,8 @@ if [[ "$(hostname -s)" == "pioneerpete" ]] then
         }
     fi
 
-    if _root; then
-        if _which pacman; then
-            alias pacman-orphans='pacman -Qtdq && pacman -Rs $(pacman -Qtdq)'
-        fi
-    fi
-
-    if _which pacman-color; then
-        alias pacman="pacman-color"
-    fi
-
-    if _which packer-color; then
-        alias packer="packer-color"
-    fi
+    # Keychain
     eval $(keychain --eval --agents ssh -Q --quiet /home/mark/.ssh/{id_rsa_github,id_rsa_io_uwplatt,id_rsa_saraswati,})
-fi
-
-# shell
-if _which zsh; then
-    export SHELL="$(which zsh)"
-fi
-
-# grep
-alias grep='grep --color=auto'
-export GREP_COLOR="1;33"
-
-# aliases
-alias ls="ls -hF --color"
-alias ls="ls --color=auto"
-alias ll="ls -lh"
-#alias .="cd ../"
-#alias ..="cd ../../"
-#alias ...="cd ../../../"
-#alias ....="cd ../../../../"
-alias rm='rm -i'
-alias mv='mv -i'
-alias cp='cp -i'
-alias vimwiki="vim -c VimwikiIndex"
-alias vimdiary="vim -c VimiwikiDiaryIndex"
-alias ndiary="vim -c VimwikiMakeDiaryNote"
-
-if _which cdf; then
-    alias df="cdf"
-else
-    if _which pydf; then
-        alias df="pydf";
-    fi
-fi
-
-alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
-if _which bc; then
-    alias bc='bc -ql'
-fi
-
-if _which lsof; then
-    alias ports='lsof -i -P -sTCP:LISTEN'
-fi
-
-
-if _which cloc; then
-    alias cloc="cloc --exclude-dir=.git,.hg"
 fi
 
 
@@ -183,3 +117,38 @@ function aa_power_settings ()
   ';
 }
 
+
+## DEVELOPMENT
+##############
+
+# ruby
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+if [ -d "$HOME/.gem" ]; then
+    export GEM_HOME=$HOME/.gem
+    export PATH=$PATH:$GEM_HOME/bin
+fi
+if [ -d "$HOME/.rvm" ]; then
+    export PATH=$PATH:$HOME/.rvm/bin
+fi
+
+# node
+if [ -d "$HOME/node_modules" ]; then
+    export PATH=$PATH:$HOME/node_modules/.bin
+fi
+
+# python
+if [ -d "$HOME/.virtualenvs" ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+fi
+if [ -d "$HOME/.pystartup" ]; then
+    export PYTHONSTARTUP=~/.pystartup
+fi
+if [ -d "$HOME/projects" ]; then
+    export PROJECT_HOME=$HOME/projects
+fi
+if _which virtualenvwrapper_lazy.sh; then
+    source /usr/bin/virtualenvwrapper_lazy.sh
+fi
+
+source ~/.aliases
