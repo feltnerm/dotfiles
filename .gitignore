@@ -5,6 +5,8 @@ config/gtk-3.0/bookmarks
 config/awesome/wallpapers
 config/awesome/screenshots
 
+config/cmus/*
+
 config/anjuta
 config/dconf
 config/chromium
