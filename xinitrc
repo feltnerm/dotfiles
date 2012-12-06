@@ -57,14 +57,6 @@ fi
 # Disable bell
 xset -b
 
-# SSH Agent
-#SSHAGENT="/usr/bin/ssh-agent"
-#SSHAGENTARGS="-s"
-#if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
-#    eval `$SSHAGENT $SSHAGENTARGS`
-#    trap "kill $SSH_AGENT_PID" 0
-#fi
-
 ## Autostarting Applications (must haves)
 #########################################
 
@@ -75,8 +67,8 @@ pulseaudio --check || start-pulseaudio-x11
 xscreensaver -no-splash &
 
 # start xcompmgr
-xcompmgr -c -C -t-5 -l-5 -r4.2 -o0.55 &
-#xcompmgr_mgr 
+#xcompmgr -c -C -t-5 -l-5 -r4.2 -o0.55 &
+xcompmgr_mgr & 
 
 # start urxvt daemon
 urxvtd -q -f -o
@@ -98,4 +90,5 @@ case $1 in
         exec $DEFAULT_SESSION
         ;;
 esac
+
 
