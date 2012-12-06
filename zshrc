@@ -35,10 +35,6 @@ plugins=(ssh-agent screen autojump compleat node git github archlinux extract pi
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-#export PATH=~/bin:$(ruby -rubygems -e "puts Gem.user_dir")/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
-
-# Customize to your needs...
 ## Options
 setopt correctall
 setopt autocd
