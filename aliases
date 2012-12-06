@@ -20,7 +20,7 @@ alias vimwiki="vim -c VimwikiIndex"
 alias vimdiary="vim -c VimiwikiDiaryIndex"
 alias ndiary="vim -c VimwikiMakeDiaryNote"
 
-alias pm="ps ax | grep -v grep | grep -i"
+alias pm="ps ax | grep -v grep | grep "
 alias ducks="du -cksh * | sort -rn | head -11"
 
 if _which cdf; then

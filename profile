@@ -40,7 +40,6 @@ fi
 
 if [[ "$(hostname -s)" == "saraswati" ]] then
     export PATH=$PATH:$HOME/admin
-    eval $(keychain --eval --agents ssh -Q --quiet /home/mark/.ssh/{id_rsa_github,})
 fi
 
 if [[ "$(hostname -s)" == "pioneerpete" ]] then
@@ -84,7 +83,6 @@ if [[ "$(hostname -s)" == "pioneerpete" ]] then
     fi
 
     # Keychain
-    eval $(keychain --eval --agents ssh -Q --quiet /home/mark/.ssh/{id_rsa_github,id_rsa_io_uwplatt,id_rsa_saraswati,})
 fi
 
 
