@@ -1,34 +1,34 @@
 !! xft
-xft.antialias:  true
-xft.hinting:    true
-xft.hintstyle:  hintlight
-xft.rgba:       rgb
+xft*.antialias:  true
+xft*.hinting:    true
+xft*.hintstyle:  hintlight
+xft*.rgba:       rgb
 
 !! xpdf
-xpdf*enableFreetype:    yes
-xpdf*antialias:         yes
-xpdf*urlCommand:        /usr/bin/chromium %s
+xpdf*.enableFreetype:    yes
+xpdf*.antialias:         yes
+xpdf*.urlCommand:        /usr/bin/chromium %s
 
-urxvt*perl-ext-common:      default,matcher,tabbed,vtwheel,clipboard
-urxvt*matcher.button:       1
-urxvt*loginShell:           false
-!!URxvt*loginShell:           true
-urxvt*visualBell:           true
-urxvt*saveLines:            12000
-urxvt*urlLauncher:          google-chrome
-urxvt*url-select.launcher:  google-chrome
-urxvt*scrollTtyOutput:      false
-urxvt*ScrollTtyKeypress:    true
-urxvt*secondaryScroll:      true
-urxvt*scrollWithBuffer:     true
-urxvt*scrollBar_right:      true
-urxvt*depth:                32
-urxvt.font:                 xft:terminus:pixelsize=10:medium
-urxvt.boldFont:             xft:terminus:pixelsize=10:bold
-urxvt.cursorBlink:          true
-urxvt.letterSpace:          1
-urxvt.termName:             rxvt-unicode
+urxvt*.perl-ext-common:      default,matcher,tabbed,vtwheel,clipboard
+urxvt*.matcher.button:       1
+urxvt*.loginShell:           false
+urxvt*.visualBell:           true
+urxvt*.saveLines:            12000
+urxvt*.urlLauncher:          chromium
+urxvt*.url-select.launcher:  chromium
+urxvt*.scrollTtyOutput:      true
+urxvt*.ScrollTtyKeypress:    true
+urxvt*.secondaryScroll:      true
+urxvt*.scrollWithBuffer:     true
+urxvt*.scrollBar_right:      false
+urxvt*.font:                 xft:terminus:pixelsize=10:medium
+urxvt*.boldFont:             xft:terminus:pixelsize=10:bold
+urxvt*.cursorBlink:          true
+urxvt*.letterSpace:          1
+urxvt*.termName:             rxvt-unicode
 
+urxvt*.depth:                32
+!!urxvt*.background:           [98]#1c1c1c
 
 !! drop in Solarized colorscheme for Xresources
 !!
@@ -112,3 +112,8 @@ urxvt.termName:             rxvt-unicode
 !! white dark/light
 *color7:                S_base2
 *color15:               S_base3
+
+!! Tab Color -- not working
+!urxvt.tabbed.tabbar-bg: S_base0 
+!urxvt.tabbed.tabbar-fg: S_base03 
+
