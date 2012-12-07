@@ -29,9 +29,18 @@ function startcomp () {
   exit
 }
 
-case "$1x" in
-    "x") startcomp;;
-  "-qx") checkcomp;;
-  "-sx") stopcomp; exit;;
-      *) comphelp;;
-esac
+if [[ -z checkcomp ]]; then
+    echo "stopping xcompmgr" &
+    stopcomp;
+else
+    echo "starting xcompmgr" &
+    startcomp;
+fi
+
+#case "$1x" in
+#    "x") startcomp;;
+#  "-qx") checkcomp;;
+#  "-sx") stopcomp; exit;;
+#  "-hx") comphelp;;
+#      *) togglecomp;;
+#esac
