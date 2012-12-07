@@ -43,6 +43,11 @@ if [[ "$(hostname -s)" == "saraswati" ]] then
     export PATH=$PATH:$HOME/admin
 fi
 
+if [[ "$(hostname -s)" == "io" ]] then
+    export PYTHONPATH=~/.local/lib/python2.7/:$PYTHONPATH
+    export PATH=~/.local/bin:$PATH
+fi
+
 if [[ "$(hostname -s)" == "pioneerpete" ]] then
 
     # TERM
