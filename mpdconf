@@ -1,0 +1,21 @@
+port                "6600"
+music_directory     "~/music"
+playlist_directory  "~/.mpd/playlists"
+db_file             "~/.mpd/mpd.db"
+log_file            "~/.mpd/mpd.log"
+sticker_file        "~/.mpd/sticker.sql"
+user    "mark"
+group   "users"
+bind_to_address "localhost"
+
+audio_output {
+    type    "alsa"
+    name    "ALSA+MPD"
+    mixer_type "software"
+}
+
+audio_output {
+    type    "fifo"
+    name    "local [fifo]"
+    path    "/tmp/mpd.fifo"
+}
