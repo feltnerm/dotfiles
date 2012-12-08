@@ -1,3 +1,0 @@
-#!/bin/sh
-
-cvlc http://swati.dyndns.tv:8000/mpd.ogg.m3u
