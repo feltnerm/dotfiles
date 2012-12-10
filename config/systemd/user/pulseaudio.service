@@ -1,0 +1,11 @@
+[Unit]
+Description = PulseAudio 
+
+[Service]
+Type = simple
+ExecStart = /usr/bin/pulseaudio --start
+ExecStop = /usr/bin/pulseaudio --kill
+Restart = always
+
+[Install]
+WantedBy = default.target

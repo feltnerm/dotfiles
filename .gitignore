@@ -14,6 +14,8 @@ config/gmlive
 config/libreoffice
 config/Trolltech.conf
 
+config/transmission
+
 config/ranger/history
 config/ranger/bookmarks
 

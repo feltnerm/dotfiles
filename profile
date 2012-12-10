@@ -62,7 +62,7 @@ if [[ "$(hostname -s)" == "pioneerpete" ]] then
     
     # Pacman
     if _which pacman; then
-        alias pacman-orphans='pacman -Qtdq && pacman -Rs $(pacman -Qtdq)'
+        alias pacman-orphans='pacman -Qtdq'
     fi
 
     if _which pacman-color; then

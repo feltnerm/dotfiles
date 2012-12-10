@@ -60,7 +60,7 @@
 #
 #visualizer_in_stereo = "no"
 #
-#visualizer_fifo_path = ""
+visualizer_fifo_path = "/tmp/mpd.fifo"
 #
 ##
 ## Note: Below parameter is needed for ncmpcpp
@@ -70,7 +70,7 @@
 ## are some problems with it.
 ##
 #
-#visualizer_output_name = ""
+visualizer_output_name = "local [fifo]"
 #
 ##
 ## Note: Below parameter defines how often ncmpcpp
@@ -80,7 +80,7 @@
 ## Keep in mind that sane values start with >=10.
 ##
 #
-#visualizer_sync_interval = "30"
+visualizer_sync_interval = "1"
 #
 ##
 ## Note: To enable spectrum frequency visualization
@@ -88,8 +88,9 @@
 ##
 #
 #visualizer_type = "wave" (spectrum/wave)
+visualizer_type = "wave"
 #
-#visualizer_look = "◆│"
+visualizer_look = "◆│"
 #
 ##### system encoding #####
 ##
@@ -308,6 +309,7 @@ playlist_editor_display_mode = "columns"
 user_interface = "alternative"
 #
 #media_library_left_column = "a" (possible values: a,y,g,c,p, legend above)
+media_library_left_column = "A"
 #
 #default_find_mode = "wrapped" (wrapped/normal)
 #
@@ -402,7 +404,7 @@ ask_before_clearing_main_playlist = "yes"
 #display_volume_level = "yes"
 #
 #display_bitrate = "no"
-dispay_bitrate = "yes"
+display_bitrate = "yes"
 #
 #display_remaining_time = "no"
 #

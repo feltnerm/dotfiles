@@ -1,0 +1,9 @@
+[Unit]
+Description = mpdscribble
+
+[Service]
+ExecStart = /usr/bin/mpdscribble -D
+Restart = always
+
+[Install]
+WantedBy = default.target
