@@ -2,7 +2,7 @@
 #    eval "$(ssh-agent -s)"
 #fi
 if [[ "$(hostname -s)" == "saraswati" ]]; then
-    eval $(keychain --eval --agents ssh -Q --quiet /home/mark/.ssh/{id_rsa.github,})
+    eval $(keychain --eval --agents ssh -Q --quiet /home/mark/.ssh/id_rsa.github)
 fi
 
 if [[ "$(hostname -s)" == "pioneerpete" ]]; then
