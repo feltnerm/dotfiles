@@ -309,6 +309,7 @@ playlist_editor_display_mode = "columns"
 user_interface = "alternative"
 #
 #media_library_left_column = "a" (possible values: a,y,g,c,p, legend above)
+media_library_left_column = "A"
 #
 #default_find_mode = "wrapped" (wrapped/normal)
 #
