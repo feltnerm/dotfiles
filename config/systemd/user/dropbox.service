@@ -4,11 +4,11 @@ After=local-fs.target network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/dropboxd
+ExecStart=/opt/dropbox/dropboxd
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=always
-User=%u
+User=mark
 
 [Install]
 WantedBy=multi-user.target
