@@ -59,9 +59,7 @@ xset -b
 
 ## Autostarting Applications (must haves)
 #########################################
-
-# Start pulseaudio
-pulseaudio --check || start-pulseaudio-x11
+systemd --user &
 
 # Enable xscreensaver
 xscreensaver -no-splash &
@@ -76,7 +74,7 @@ urxvtd -q -f -o
 # set xflux settings for 100-watt incandescent 
 # http://www.sizes.com/units/color_temperature.htm
 #xflux -z 53818 -k 2870
-xflux -l 42.73311 -g -90.473882 -k 2870
+xflux -z 53818 -k 2870
 
 # set wallpaper
 nitrogen --restore &
