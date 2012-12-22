@@ -60,23 +60,6 @@ if [[ "$(hostname -s)" == "pioneerpete" ]] then
         export BROWSER="$(which chromium)"
     fi
     
-    # Pacman
-    if _which pacman; then
-        alias pacman-orphans='pacman -Qtdq'
-    fi
-
-    if _which pacman-color; then
-        alias pacman="pacman-color"
-    fi
-
-    if _which packer-color; then
-        alias packer="packer-color"
-    fi
-
-    if _root; then
-       alias pacman-clean='pacman -Rs $(pacman -Qtdq)' 
-    fi
-
     # sopcast
     if _which sp-sc; then
         function sop()
@@ -88,38 +71,7 @@ if [[ "$(hostname -s)" == "pioneerpete" ]] then
         }
     fi
 
-    # Keychain
 fi
-
-
-function aa_power_settings ()
-{ 
-  sudo bash -c '
-    for i in `find /sys/devices -name "bMaxPower"`;
-    do
-        for ii in `find $i -type f`;
-        do
-            bd=`dirname $ii`;
-            busnum=`cat $bd/busnum`;
-            devnum=`cat $bd/devnum`;
-            title=`lsusb -s $busnum:$devnum`;
-            echo -e "\n\n+++ $title\n  -$bd\n  -$ii";
-            for ff in `find $bd/power -type f ! -empty 2>/dev/null`;
-            do
-                v=`cat $ff 2>/dev/null|tr -d "\n"`;
-                [[ ${#v} -gt 0 ]] && echo -e " `basename $ff`=$v";
-                v=;
-            done | sort -g;
-        done;
-    done;
-    echo -e "\n\n\n+++ Kernel Modules\n";
-    for m in `command lspci -k|sed -n "/in use:/s,^.*: ,,p"|sort -u`;
-    do
-        echo "+ $m";
-        systool -v -m $m 2> /dev/null | sed -n "/Parameters:/,/^$/p";
-    done
-  ';
-}
 
 
 ## DEVELOPMENT
