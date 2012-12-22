@@ -1,25 +1,25 @@
 *~
-config/gtk-2.0/gtkfilechooser.ini
-config/gtk-3.0/bookmarks
-
-config/awesome/wallpapers
-config/awesome/screenshots
 
 cmus/
 
 config/anjuta
+config/awesome/wallpapers
+config/awesome/screenshots
 config/dconf
 config/chromium
 config/gmlive
+config/graveman
+config/gtk-2.0/gtkfilechooser.ini
+config/gtk-3.0/bookmarks
+config/ipython/profile_default/
 config/libreoffice
-config/Trolltech.conf
-
-config/transmission
-
+config/menus
+config/pulse
 config/ranger/history
 config/ranger/bookmarks
-
-config/ipython/profile_default/
+config/transmission
+config/Trolltech.conf
+config/yarpen.cz
 
 ncmpcpp/error.log
 
