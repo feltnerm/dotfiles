@@ -9,9 +9,8 @@ group   "users"
 bind_to_address "localhost"
 
 audio_output {
-    type    "alsa"
-    name    "ALSA+MPD"
-    mixer_type "software"
+	type		"pulse"
+	name		"local [pulse]"
 }
 
 audio_output {
