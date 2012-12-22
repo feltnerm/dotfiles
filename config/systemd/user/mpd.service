@@ -1,9 +1,11 @@
 [Unit]
-Description = Music Player Daemon
+Description=Music Player Daemon
+After=sound.target
 
 [Service]
-ExecStart = /usr/bin/mpd --no-daemon
-Restart = always
+Type=forking
+ExecStart=/usr/bin/mpd
+PIDFile=%t/mpd.pid
 
 [Install]
 WantedBy = default.target
