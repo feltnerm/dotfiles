@@ -1,3 +1,5 @@
+alias aliases="less ~/.aliases"
+
 # grep
 alias grep='grep --color=auto'
 
@@ -14,6 +16,9 @@ alias ll="ls -lh"
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
+alias cpv='rsync -pogr --progress'
+
+alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
 
 # vimwiki
 alias vimwiki="vim -c VimwikiIndex"
@@ -22,6 +27,7 @@ alias ndiary="vim -c VimwikiMakeDiaryNote"
 
 alias pm="ps ax | grep -v grep | grep "
 alias ducks="du -cksh * | sort -rn | head -11"
+alias free="free -m"
 
 if _which cdf; then
     alias df="cdf"
@@ -31,8 +37,6 @@ else
     fi
 fi
 
-
-alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
 if _which bc; then
     alias bc='bc -ql'
 fi
@@ -41,9 +45,55 @@ if _which lsof; then
     alias ports='lsof -i -P -sTCP:LISTEN'
 fi
 
-
 if _which cloc; then
     alias cloc="cloc --exclude-dir=.git,.hg"
 fi
 
+alias !='sudo'
+alias sless='! less'
+alias stail='! tail'
+alias ctl='! systemctl'
+
+if [[ -f /etc/arch-release ]] ; then
+    alias pacman='pacman-color'    
+    alias packer='packer-color'
+    alias pacman-orphans='pcaman -Qtdq'
+    alias pacman-clean='pacman -Rs $(pacman -Qtdq)'
+elif [[ -f /etc/debian_version ]] ; then
+    alias apt-get='! apt-get'
+    alias aptitude='! aptitude'
+    alias update='apt-get update && apt-get upgrade'
+    alias install='apt-get install'
+    alias search='apt-cache search'
+    alias clean='apt-get clean && apt-get autoclean'
+fi
+
+function aa_power_settings ()
+{ 
+  sudo bash -c '
+    for i in `find /sys/devices -name "bMaxPower"`;
+    do
+        for ii in `find $i -type f`;
+        do
+            bd=`dirname $ii`;
+            busnum=`cat $bd/busnum`;
+            devnum=`cat $bd/devnum`;
+            title=`lsusb -s $busnum:$devnum`;
+            echo -e "\n\n+++ $title\n  -$bd\n  -$ii";
+            for ff in `find $bd/power -type f ! -empty 2>/dev/null`;
+            do
+                v=`cat $ff 2>/dev/null|tr -d "\n"`;
+                [[ ${#v} -gt 0 ]] && echo -e " `basename $ff`=$v";
+                v=;
+            done | sort -g;
+        done;
+    done;
+    echo -e "\n\n\n+++ Kernel Modules\n";
+    for m in `command lspci -k|sed -n "/in use:/s,^.*: ,,p"|sort -u`;
+    do
+        echo "+ $m";
+        systool -v -m $m 2> /dev/null | sed -n "/Parameters:/,/^$/p";
+    done
+  ';
+}
 
