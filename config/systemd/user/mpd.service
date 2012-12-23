@@ -3,9 +3,12 @@ Description=Music Player Daemon
 After=sound.target
 
 [Service]
-Type=forking
+#Type=simple
 ExecStart=/usr/bin/mpd
-PIDFile=%t/mpd.pid
+ExecStop=/usr/bin/mpd --kill
+PIDFile=/home/%u/.mpd/mpd.pid
+Restart=always
+RestartSec=1
 
 [Install]
-WantedBy = default.target
+WantedBy=default.target
