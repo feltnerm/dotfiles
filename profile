@@ -16,7 +16,11 @@ fi
 # EDITOR
 if _which vim; then
     export EDITOR="$(which vim)"
-    export VISUAL="$EDITOR"
+    if _which gvim; then
+        export VISUAL="gvim"
+    else
+        export VISUAL="$EDITOR"
+    fi
 fi
 
 # SHELL
@@ -51,9 +55,7 @@ fi
 if [[ "$(hostname -s)" == "pioneerpete" ]] then
 
     # TERM
-    if _which urxvtc; then
-        export TERM="rxvt-unicode"
-    fi
+    export TERM="xterm"
 
     # BROWSER 
     if _which chromium; then
