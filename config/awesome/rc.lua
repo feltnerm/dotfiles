@@ -1,38 +1,46 @@
--- Awesome configuration
+-- AwesomeWM Configuration
 --
--- Author: Mark Feltner
--- 04 Nov 2012
+-- @author: Mark Feltner
 -- ---------------------------------------------------------------------------
 
--- Awesome Core
-gears       = require("gears")
+print("[awesome] Entering awesome: ".. os.date())
+-- Standard awesome library
 awful       = require("awful")
 awful.rules = require("awful.rules")
               require("awful.autofocus")
 beautiful   = require("beautiful")
-naughty     = require("naughty")
 revelation  = require("revelation")
+--toolbox     = require("toolbox")
+--shifty      = require("shifty")
+require("awesome-freedesktop/freedesktop/utils")
 
+-- {{{ Variable definitions
+-- Themes define colours, icons, apps, and wallpapers
+root_dir        = awful.util.getdir("config")
+env = {
+    theme       = "wombat",
+    themes_dir  = root_dir .. "/themes/",
+    icons_dir   = root_dir .. "/icons/",
+    terminal    = "terminal",
+    editor      = "gvim",
+    browser     = "chromium",
+    modkey      = "Mod4",
+}
+-- }}}
 
--- Debugging & error helper
-require("rc/errors")
+-- {{{ Dependencies
+require("lib/debug")
+require("lib/theme")
+require("lib/bindings")
+require("lib/menu")
+require("lib/layouts")
+require("lib/tags")
+require("lib/widgets")
+require("lib/rules")
+require("lib/signals")
+require("lib/startup")
+-- }}}
+print("[awesome] WM initialized")
 
--- Global configuration
-modkey = "Mod4"
-require("rc/config")
+-- vim: filetype=lua:expandtab:shiftwidth=2:tabstop=2:softtabstop=2:textwidth=80
 
--- Modules
-require("rc/utils")
-require("rc/appearance")
-require("rc/debug")
-
-require("rc/start")
-require("rc/bindings")
-require("rc/wallpaper")
-require("rc/widgets")
-require("rc/tags")
-require("rc/signals")
-require("rc/rules")
-
-root.keys(config.keys.global)
-root.buttons(config.mouse.global)

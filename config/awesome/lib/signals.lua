@@ -1,19 +1,5 @@
-
--- Did we get the focus because of sloppy focus?
-local focus_from_mouse = false
-local function mouse_follow_focus(c)
-   -- Move the mouse to the top left corner
-   local margin = 10
-   if c.type ~= "dialog" then
-      local cc = c:geometry()
-      local _, x, y = awful.mouse.client.corner(nil, "top_left")
-      if x and y and cc.width > margin * 2 and cc.height > margin * 2 then
-	 mouse.coords({ x = x + margin , y = y + margin }, true)
-      end
-   end
-end
-
--- Executed when a new client appears
+-- {{{ Signals
+-- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
     -- Enable sloppy focus
     c:connect_signal("mouse::enter", function(c)
@@ -76,3 +62,6 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
+
+print("[awesome] signals initialized")

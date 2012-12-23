@@ -1,4 +1,4 @@
-
+-- {{{ Rules
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
@@ -17,3 +17,6 @@ awful.rules.rules = {
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
 }
+-- }}}
+
+print("[awesome] rules initialized")
