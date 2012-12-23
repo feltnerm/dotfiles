@@ -68,9 +68,6 @@ xscreensaver -no-splash &
 #xcompmgr -c -C -t-5 -l-5 -r4.2 -o0.55 &
 #xcompmgr_mgr & 
 
-# start urxvt daemon
-urxvtd -q -f -o
-
 # set xflux settings for 100-watt incandescent 
 # http://www.sizes.com/units/color_temperature.htm
 #xflux -z 53818 -k 2870
