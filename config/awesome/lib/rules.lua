@@ -20,3 +20,5 @@ awful.rules.rules = {
 -- }}}
 
 print("[awesome] rules initialized")
+
+-- vim: filetype=lua:expandtab:shiftwidth=2:tabstop=2:softtabstop=2:textwidth=80

@@ -23,3 +23,5 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 print("[awesome] Menu created")
+
+-- vim: filetype=lua:expandtab:shiftwidth=2:tabstop=2:softtabstop=2:textwidth=80

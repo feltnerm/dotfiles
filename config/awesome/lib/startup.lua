@@ -8,3 +8,5 @@ local execute = {
     "xdg-mime default " .. env.browser .. ".desktop x-scheme-handler/https",
     "xdg-mime default " .. env.browser .. ".desktop text/html",
 }
+
+-- vim: filetype=lua:expandtab:shiftwidth=2:tabstop=2:softtabstop=2:textwidth=80

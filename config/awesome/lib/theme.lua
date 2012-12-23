@@ -16,3 +16,5 @@ if beautiful.wallpaper then
     print("[awesome] Wallpaper set")
 end
 -- }}}
+
+-- vim: filetype=lua:expandtab:shiftwidth=2:tabstop=2:softtabstop=2:textwidth=80

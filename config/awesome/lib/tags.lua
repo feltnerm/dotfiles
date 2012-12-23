@@ -5,8 +5,10 @@ require("lib/layouts")
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "☕", "⌨", "⌘", "☭" }, s, layouts[1])
+    tags[s] = awful.tag({ "☭", "‣", "λ", "⌨", "ᴥ", "⌘", }, s, layouts[1])
 end
 -- }}}
 
 print("[awesome] tags set")
+
+-- vim: filetype=lua:expandtab:shiftwidth=2:tabstop=2:softtabstop=2:textwidth=80

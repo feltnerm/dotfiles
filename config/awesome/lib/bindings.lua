@@ -194,3 +194,5 @@ globalkeys = awful.util.table.join(globalkeys,
 root.keys(globalkeys)
 
 print("[awesome] Bindings set.")
+
+-- vim: filetype=lua:expandtab:shiftwidth=2:tabstop=2:softtabstop=2:textwidth=80

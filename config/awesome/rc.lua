@@ -30,14 +30,13 @@ require("lib/debug")
 require("lib/theme")
 require("lib/bindings")
 require("lib/menu")
-require("lib/layouts")
 require("lib/tags")
 require("lib/widgets")
-require("shifty/shifty")
-shifty.config.taglist = mytaglist -- for some reason we need to specify the taglist to shifty...
 require("lib/rules")
 require("lib/signals")
 require("lib/startup")
+--require("lib/shifty")
+--
 -- }}}
 print("[awesome] WM initialized")
 
