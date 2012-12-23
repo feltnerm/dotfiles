@@ -57,7 +57,7 @@ alias ctl='! systemctl'
 if [[ -f /etc/arch-release ]] ; then
     alias pacman='pacman-color'    
     alias packer='packer-color'
-    alias pacman-orphans='pcaman -Qtdq'
+    alias pacman-orphans='pacman -Qtdq'
     alias pacman-clean='pacman -Rs $(pacman -Qtdq)'
 elif [[ -f /etc/debian_version ]] ; then
     alias apt-get='! apt-get'
