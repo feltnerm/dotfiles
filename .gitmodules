@@ -7,21 +7,3 @@
 [submodule "solarized-terminal"]
     path = config/Terminal/xfce4-terminal-colors-solarized
     url = git://github.com/sgerrand/xfce4-terminal-colors-solarized.git
-[submodule "awesome-themes"]
-	path = config/awesome/themes
-	url = git://github.com/mikar/awesome-themes.git
-[submodule "awesome-shifty"]
-    path = config/awesome/shifty
-    url = git://github.com/residentsummer/awesome-shifty.git
-[submodule "awesome-toolbox"]
-    path = config/awesome/toolbox
-    url = git://github.com/bioe007/awesome-toolbox.git 
-[submodule "awesome-freedesktop"]
-    path = config/awesome/freedesktop
-    url = git://github.com/terceiro/awesome-freedesktop.git
-[submodule "awesome-eminent"]
-	path = config/awesome/eminent
-	url = git://git.glacicle.org/awesome/eminent.git
-[submodule "awesome-obvious"]
-	path = config/awesome/obvious
-	url = git://git.mercenariesguild.net/obvious.git
