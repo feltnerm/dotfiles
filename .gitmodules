@@ -7,6 +7,6 @@
 [submodule "solarized-terminal"]
     path = config/Terminal/xfce4-terminal-colors-solarized
     url = git://github.com/sgerrand/xfce4-terminal-colors-solarized.git
-[submodule "awesome"]
-	path = awesome
-	url = ./config/awesome
+[submodule "config/awesome"]
+	path = config/awesome
+	url = https://github.com/feltnerm/awesome-config.git
