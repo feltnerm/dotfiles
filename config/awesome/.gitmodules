@@ -1,0 +1,18 @@
+[submodule "awesome-themes"]
+	path = themes
+	url = git://github.com/mikar/awesome-themes.git
+[submodule "awesome-shifty"]
+    path = shifty
+    url = git://github.com/residentsummer/awesome-shifty.git
+[submodule "awesome-toolbox"]
+    path = toolbox
+    url = git://github.com/bioe007/awesome-toolbox.git 
+[submodule "awesome-freedesktop"]
+    path = freedesktop
+    url = git://github.com/terceiro/awesome-freedesktop.git
+[submodule "awesome-eminent"]
+	path = eminent
+	url = git://git.glacicle.org/awesome/eminent.git
+[submodule "awesome-obvious"]
+	path = bvious
+	url = git://git.mercenariesguild.net/obvious.git
