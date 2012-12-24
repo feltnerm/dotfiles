@@ -19,3 +19,9 @@
 [submodule "awesome-freedesktop"]
     path = config/awesome/freedesktop
     url = git://github.com/terceiro/awesome-freedesktop.git
+[submodule "awesome-eminent"]
+	path = config/awesome/eminent
+	url = git://git.glacicle.org/awesome/eminent.git
+[submodule "awesome-obvious"]
+	path = config/awesome/obvious
+	url = git://git.mercenariesguild.net/obvious.git
