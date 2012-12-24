@@ -3,8 +3,6 @@
 cmus/
 
 config/anjuta
-config/awesome/wallpapers
-config/awesome/screenshots
 config/dconf
 config/chromium
 config/gmlive
