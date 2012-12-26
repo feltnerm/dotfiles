@@ -35,8 +35,11 @@ MiscTabCloseButtons=TRUE
 MiscTabCloseMiddleClick=TRUE
 MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
-TitleMode=TERMINAL_TITLE_HIDE
+TitleMode=TERMINAL_TITLE_REPLACE
 FontName=Terminus 9
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
 ScrollingLines=10000
+TitleInitial=console
+BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
+BackgroundDarkness=0.770000
 
