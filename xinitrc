@@ -39,6 +39,7 @@ xset m 30/10 4
 
 # Pointer Appearance
 #xsetroot -cursor_name left_ptr
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 # Enable numlock
 numlockx on
@@ -65,7 +66,7 @@ systemd --user &
 xscreensaver -no-splash &
 
 # start xcompmgr
-#xcompmgr -c -C -t-5 -l-5 -r4.2 -o0.55 &
+xcompmgr -c -C -t-5 -l-5 -r4.2 -o0.55 -D5&
 #xcompmgr_mgr & 
 
 # set xflux settings for 100-watt incandescent 
