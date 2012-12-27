@@ -38,7 +38,7 @@ xset r rate 200 30
 xset m 30/10 4
 
 # Pointer Appearance
-#xsetroot -cursor_name left_ptr
+xsetroot -cursor_name left_ptr
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 # Enable numlock
@@ -77,10 +77,14 @@ xflux -z 53818 -k 2870
 # set wallpaper
 nitrogen --restore &
 
+conky &
 DEFAULT_SESSION=awesome
 case $1 in
     awesome)
         exec awesome
+        ;;
+    xmonad)
+        exec xmonad
         ;;
     *)
         exec $DEFAULT_SESSION
