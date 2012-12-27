@@ -31,7 +31,7 @@ ZSH_THEME="kphoen"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ssh-agent screen autojump compleat node git github archlinux extract pip python vundle)
+plugins=(ssh-agent screen autojump compleat node git github archlinux extract pip python ruby virtualenvwrapper urltools encode64 django dircycle vundle)
 
 source $ZSH/oh-my-zsh.sh
 
