@@ -10,3 +10,9 @@
 [submodule "config/awesome"]
 	path = config/awesome
 	url = https://github.com/feltnerm/awesome-config.git
+[submodule "bin/XKCD-password-generator"]
+	path = bin/XKCD-password-generator
+	url = git://github.com/redacted/XKCD-password-generator.git
+[submodule "bin/selfspy"]
+	path = bin/selfspy
+	url = git://github.com/gurgeh/selfspy.git
