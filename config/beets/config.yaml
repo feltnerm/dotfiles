@@ -1,0 +1,39 @@
+# Automatically migrated from legacy .beetsconfig.
+
+color: true
+threaded: true
+plugins: lastgenre scrub inline fetchart ftintitle importfeeds mpdupdate
+directory: /stash/library/final/music
+library: ~/.musiclibrary.blb
+
+import:
+    copy: true
+    move: false
+    write: true
+    log: beetslog.text
+    resume: true
+    art: true
+    quiet_fallback: skip
+art_filename: cover
+ignore: .AppleDouble ._* *~ .DS_Store
+
+paths:
+    default: $albumartist/$year - $album [$format]/$track - $title
+    singleton: $artist/$year - $album [$format]/$title
+    comp: __COMPILATIONS/$year - $album [$format]/$track - $title - $artist
+    albumtype:soundtrack: '%if{$composer,$composer,__SOUNDTRACKS}/$year - $album [$format]/$track - $title'
+
+fetchart:
+    auto: true
+
+scrub:
+    auto: true
+
+mpdupdate:
+    host: localhost
+    port: 6600
+
+importfeeds:
+    feeds_format: m3u link
+    feeds_dir: /var/lib/mpd/playlists/
+    m3u_name: newest_tracks.m3u
