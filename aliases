@@ -29,6 +29,10 @@ alias pm="ps ax | grep -v grep | grep "
 alias ducks="du -cksh * | sort -rn | head -11"
 alias free="free -m"
 
+if _which powerfill; then
+    alias pacman="powerpill"
+fi
+
 if _which pydf; then
     alias df="pydf"
 else

@@ -25,12 +25,9 @@ text_buffer_size 1512
 #colors
 default_color white
 default_outline_color 382D1C
-# Light, for headings
-color1 909FA1
-# More neutral
-color2 A19C90
-# Dark
-color3 272521
+color1 FFAA00
+color2 FF7700
+color3 1223BA
 
 #drawing
 draw_borders no
@@ -70,20 +67,20 @@ use_spacer right
 #font
 use_xft yes
 xftalpha 0.1
-xftfont Inconsolata:size=9
+xftfont Terminus:size=9
 
-#${color1}${font OpenLogos:size=12}A${font} ${color3}- ${color2} \
 #${color2}${time %c} ${color3}| \
 TEXT
+${color3}${font OpenLogos:size=12}A${font} ${color3}- ${color2} \
 ${color2}${nodename} ${color3}| \
-${color2}CPU ${font StyleBats:size=10}k${font} ${color1}${cpugraph}  \
-${color2}RAM ${font StyleBats:size=10}g${font} ${color1}${membar}  \
-${color2}SWP ${font StyleBats:size=10}j${font} ${color1}${swapbar}${color3} | \
-${color2}HDD ${font StyleBats:size=10}4${font} ${color1} ${fs_bar /} ${color3}| \
-${color2}BTY ${font StyleBats:size=10}A${font} ${color1}${battery_bar} ${color1}${battery_short} ${color3}| ${color2}NET  \
-${color2}${font PizzaDude Bullets:size=10}a${font} ${color1}${addr wlan0} \
-${color2}${font PizzaDude Bullets:size=10}b${font} ${color1}${execi 10000 /home/mark/bin/external_ip} ${color3}| \
-${color2}${font StyleBats:size=10}Q${font}${color1} ${scroll 10 1 ${wireless_essid wlan0}} ${color3}${color1}${wireless_link_bar wlan0} ${color3}| \
-${color2}${font PizzaDude Bullets:size=10}U${font} ${color1}${downspeed wlan0} ${color2}${font PizzaDude Bullets:size=10}O${font} ${color1}${upspeed wlan0} \
-${color3}| ${color2}${font PizzaDude Bullets:size=10}C${font} ${color1}${execi 1000 /home/mark/bin/pacman-uc} \
-${if_mpd_playing}${color3}| ${color1}${scroll 30 2 ${mpd_smart}}${endif}
+${color1}CPU ${font StyleBats:size=9}k${font} ${color2}${cpugraph}  \
+${color1}RAM ${color2}${font StyleBats:size=9}g${font} ${color2}${membar}  \
+${color1}SWP ${color2}${font StyleBats:size=9}j${font} ${color2}${swapbar}${color3} | \
+${color1}HDD ${color2}${font StyleBats:size=9}4${font} ${color2} ${fs_bar /} ${color3}| \
+${color1}BTY ${color2}${font StyleBats:size=9}A${font} ${color2}${battery_bar} ${color2}${battery_short} ${color3}| ${color1}NET  \
+${color1}${font PizzaDude Bullets:size=9}a${font} ${color2}${addr wlp11s0} \
+${color1}${font PizzaDude Bullets:size=9}b${font} ${color2}${execi 10000 /home/mark/bin/external_ip} ${color3}| \
+${color1}${font StyleBats:size=9}Q${font}${color2} ${scroll 10 1 ${wireless_essid wlp11s0}} ${color2}${wireless_link_bar wlp11so} ${color3}| \
+${color1}${font PizzaDude Bullets:size=9}U${font} ${color2}${downspeed wlp11so} ${color1}${font PizzaDude Bullets:size=9}O${font} ${color2}${upspeed wlan0} \
+${color3}| ${color1}${font PizzaDude Bullets:size=9}C${font} ${color2}${execi 1000 /home/mark/bin/pacman-uc} \
+${if_mpd_playing}${color3}| ${color2}${scroll 30 2 ${mpd_smart}}${endif}

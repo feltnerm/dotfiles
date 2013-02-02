@@ -15,6 +15,8 @@ fi
 
 # Display settings
 ##################
+# Force LVDS as the primary screen
+xrandr --output LVDS1 --primary
 
 # Resource and keymap settings
 ##############################
@@ -44,7 +46,6 @@ xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 # Enable numlock
 numlockx on
 
-
 # Autostart settings
 ###################
 # Deprecated?
@@ -72,19 +73,20 @@ xcompmgr -c -C -t-5 -l-5 -r4.2 -o0.55 -D5&
 # set xflux settings for 100-watt incandescent 
 # http://www.sizes.com/units/color_temperature.htm
 #xflux -z 53818 -k 2870
-xflux -z 53818 -k 2870
+xflux -z 53818 -k 2870 &
 
 # set wallpaper
 nitrogen --restore &
 
+# pulseaudio system tray
+pasystray &
+dropbox start &
 conky &
+
 DEFAULT_SESSION=awesome
 case $1 in
     awesome)
-        exec awesome
-        ;;
-    xmonad)
-        exec xmonad
+        exec awesome > $HOME/.logs/awesome.log 2> $HOME/.logs/awesome-error.log
         ;;
     *)
         exec $DEFAULT_SESSION
