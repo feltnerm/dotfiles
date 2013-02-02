@@ -16,7 +16,7 @@ fi
 # Display settings
 ##################
 # Force LVDS as the primary screen
-xrandr --output LVDS1 --primary
+#xrandr --output LVDS1 --primary
 
 # Resource and keymap settings
 ##############################
