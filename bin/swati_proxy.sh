@@ -1,5 +1,5 @@
 #!/bin/bash
-SSID=$($(which iwgetid) wlan0 -r)
+SSID=$($(which iwgetid) wlp11s0 -r)
 
 case "$SSID" in
     "pala")
