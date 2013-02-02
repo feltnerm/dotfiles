@@ -3,7 +3,7 @@ Description = mpdscribble
 After=mpd.service
 
 [Service]
-ExecStart = /usr/bin/mpdscribble -D
+ExecStart = /usr/bin/mpdscribble -D --daemon-user %u
 Restart = always
 
 [Install]
