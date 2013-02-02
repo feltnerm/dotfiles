@@ -29,9 +29,6 @@ alias pm="ps ax | grep -v grep | grep "
 alias ducks="du -cksh * | sort -rn | head -11"
 alias free="free -m"
 
-if _which powerfill; then
-    alias pacman="powerpill"
-fi
 
 if _which pydf; then
     alias df="pydf"
@@ -53,6 +50,10 @@ if _which cloc; then
     alias cloc="cloc --exclude-dir=.git,.hg"
 fi
 
+if _which ncmpcpp; then
+    alias ncmpcpp="sh ~/bin/ncmpcpp-proxy.sh"
+fi
+
 alias !='sudo'
 alias sless='! less'
 alias stail='! tail'
@@ -63,6 +64,9 @@ if [[ -f /etc/arch-release ]] ; then
     alias packer='packer-color'
     alias pacman-orphans='pacman -Qtdq'
     alias pacman-clean='pacman -Rs $(pacman -Qtdq)'
+    if _which powerpill; then
+        alias pacman="powerpill"
+    fi
 elif [[ -f /etc/debian_version ]] ; then
     alias apt-get='! apt-get'
     alias aptitude='! aptitude'
