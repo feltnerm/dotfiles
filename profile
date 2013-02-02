@@ -90,6 +90,10 @@ if [ -d "$HOME/.rvm" ]; then
     export PATH=$PATH:$HOME/.rvm/bin
 fi
 
+if [ -d "$HOME/.gem/ruby/1.9.1/bin" ]; then
+    export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin
+fi
+
 # node
 if [ -d "$HOME/node_modules" ]; then
     export PATH=$PATH:$HOME/node_modules/.bin
