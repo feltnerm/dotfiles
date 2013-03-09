@@ -15,11 +15,12 @@ compleat
 ssh-agent
 screen
 archlinux
+systemd
+debian
 urltools
 encode64
 dircycle
 git
-github
 svn
 node
 extract
@@ -28,10 +29,13 @@ pip
 virtualenvwrapper 
 django
 ruby
+cake
+coffee
+node
+npm
+nyan
 vundle
 heroku
-lein
-command-not-found
 zsh-users/zsh-completions src
 zsh-users/zsh-syntax-highlighting 
 kennethreitz/autoenv 
