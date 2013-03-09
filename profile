@@ -52,7 +52,7 @@ if [[ "$(hostname -s)" == "io" ]] then
     export PATH=~/.local/bin:$PATH
 fi
 
-if [[ "$(hostname -s)" == "pioneerpete" ]] then
+if [[ "$(hostname -s)" == "trotsky" ]] then
 
     # TERM
     export TERM="xterm"
@@ -60,6 +60,7 @@ if [[ "$(hostname -s)" == "pioneerpete" ]] then
     # BROWSER 
     if _which chromium; then
         export BROWSER="$(which chromium)"
+        #export CHROMIUM_USER_FLAGS="--disk-cache-dir=/tmp"
     fi
     
     # sopcast
@@ -79,24 +80,31 @@ fi
 ## DEVELOPMENT
 ##############
 
+# heroku
+PATH="/usr/local/heroku/bin:$PATH"
 # ruby
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 if [ -d "$HOME/.gem" ]; then
     export GEM_HOME=$HOME/.gem
-    export PATH=$PATH:$GEM_HOME/bin
+    export PATH=$GEM_HOME/bin:$PATH
 fi
 if [ -d "$HOME/.rvm" ]; then
-    export PATH=$PATH:$HOME/.rvm/bin
+    export PATH=$HOME/.rvm/bin:$PATH
 fi
 
 if [ -d "$HOME/.gem/ruby/1.9.1/bin" ]; then
     export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin
 fi
 
+# go
+if [ -d "$HOME/.go" ]; then
+    export GOPATH=$HOME/.go
+fi
+
 # node
 if [ -d "$HOME/node_modules" ]; then
-    export PATH=$PATH:$HOME/node_modules/.bin
+    export PATH=$HOME/node_modules/bin:$PATH
 fi
 
 # python
