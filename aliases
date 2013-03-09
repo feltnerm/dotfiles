@@ -76,6 +76,10 @@ elif [[ -f /etc/debian_version ]] ; then
     alias clean='apt-get clean && apt-get autoclean'
 fi
 
+function lt() { ls -ltrsa "$@" | tail; }
+function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
+function fname () { find . -iname "*$@*"; }
+
 function aa_power_settings ()
 { 
   sudo bash -c '
