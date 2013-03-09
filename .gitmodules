@@ -16,3 +16,6 @@
 [submodule "bin/selfspy"]
 	path = bin/selfspy
 	url = git://github.com/gurgeh/selfspy.git
+[submodule "antigen"]
+	path = antigen
+	url = https://github.com/zsh-users/antigen.git
