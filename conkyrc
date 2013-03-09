@@ -76,11 +76,11 @@ ${color2}${nodename} ${color3}| \
 ${color1}CPU ${font StyleBats:size=9}k${font} ${color2}${cpugraph}  \
 ${color1}RAM ${color2}${font StyleBats:size=9}g${font} ${color2}${membar}  \
 ${color1}SWP ${color2}${font StyleBats:size=9}j${font} ${color2}${swapbar}${color3} | \
-${color1}HDD ${color2}${font StyleBats:size=9}4${font} ${color2} ${fs_bar /} ${color3}| \
+${color1}HDD ${color2}${font StyleBats:size=9}4${font} ${color2} ${diskiograph /dev/sda 8,30 ${color3} ${color1} -t} ${color3}| \
 ${color1}BTY ${color2}${font StyleBats:size=9}A${font} ${color2}${battery_bar} ${color2}${battery_short} ${color3}| ${color1}NET  \
 ${color1}${font PizzaDude Bullets:size=9}a${font} ${color2}${addr wlp11s0} \
 ${color1}${font PizzaDude Bullets:size=9}b${font} ${color2}${execi 10000 /home/mark/bin/external_ip} ${color3}| \
-${color1}${font StyleBats:size=9}Q${font}${color2} ${scroll 10 1 ${wireless_essid wlp11s0}} ${color2}${wireless_link_bar wlp11so} ${color3}| \
+${color1}${font StyleBats:size=9}Q${font}${color2} ${scroll 10 1 ${wireless_essid wlp11s0}} ${color2}${wireless_link_bar wlp11s0} ${color3}| \
 ${color1}${font PizzaDude Bullets:size=9}U${font} ${color2}${downspeed wlp11so} ${color1}${font PizzaDude Bullets:size=9}O${font} ${color2}${upspeed wlan0} \
 ${color3}| ${color1}${font PizzaDude Bullets:size=9}C${font} ${color2}${execi 1000 /home/mark/bin/pacman-uc} \
 ${if_mpd_playing}${color3}| ${color2}${scroll 30 2 ${mpd_smart}}${endif}
