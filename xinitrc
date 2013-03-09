@@ -67,7 +67,7 @@ systemd --user &
 xscreensaver -no-splash &
 
 # start xcompmgr
-xcompmgr -c -C -t-5 -l-5 -r4.2 -o0.55 -D5&
+#xcompmgr -c -C -t-5 -l-5 -r4.2 -o0.55 -D5&
 #xcompmgr_mgr & 
 
 # set xflux settings for 100-watt incandescent 
@@ -87,6 +87,9 @@ DEFAULT_SESSION=awesome
 case $1 in
     awesome)
         exec awesome > $HOME/.logs/awesome.log 2> $HOME/.logs/awesome-error.log
+        ;;
+    xfce4)
+        exec startxfce4
         ;;
     *)
         exec $DEFAULT_SESSION
