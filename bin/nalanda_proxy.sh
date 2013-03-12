@@ -3,9 +3,9 @@ SSID=$($(which iwgetid) wlp11s0 -r)
 
 case "$SSID" in
     "pala")
-        nc saraswati 22
+        nc nalanda 22
         ;;
     *)
-        nc swati.dyndns.tv 22
+        nc nalanda.bd.to 22
         ;;
 esac

@@ -1,7 +1,26 @@
 *~
 
 cmus/
-
+config/chromium-backup
+config/gedit
+config/google-chrome*
+config/chromium*
+config/gtk*
+config/kupfer*
+config/pavucontrol.ini
+config/viewnior
+config/xfce4/terminal
+config/vlc
+config/leafpad
+config/.ACEStream/
+config/Skype/
+config/Thunar/
+config/systemd/user/anamnesis.service
+config/systemd/user/default.target.wants/anamnesis.service
+config/xfce4/desktop/
+config/xfce4/help.rc
+config/xfce4/panel/
+config/xfce4/xfconf/
 config/anjuta
 config/dconf
 config/chromium
@@ -18,6 +37,7 @@ config/ranger/bookmarks
 config/transmission
 config/Trolltech.conf
 config/yarpen.cz
+config/vlc
 
 ncmpcpp/error.log
 
