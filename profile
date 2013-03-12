@@ -1,3 +1,9 @@
+for i in /etc/profile.d/*.sh ; do
+    if [ -r "$i" ] ; then
+        source $i
+    fi
+done
+
 
 _which() {
     which "$1" &>/dev/null;
@@ -43,16 +49,16 @@ if _which less; then
     export LESS_TERMCAP_us=$'\E[01;32m'
 fi
 
-if [[ "$(hostname -s)" == "saraswati" ]] then
+if [[ "$(hostname -s)" == "saraswati" ]]; then
     export PATH=$PATH:$HOME/admin
 fi
 
-if [[ "$(hostname -s)" == "io" ]] then
+if [[ "$(hostname -s)" == "io" ]]; then
     export PYTHONPATH=~/.local/lib/python2.7/:$PYTHONPATH
     export PATH=~/.local/bin:$PATH
 fi
 
-if [[ "$(hostname -s)" == "trotsky" ]] then
+if [[ "$(hostname -s)" == "trotsky" ]]; then
 
     # TERM
     export TERM="xterm"

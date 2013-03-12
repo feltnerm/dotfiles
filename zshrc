@@ -41,13 +41,17 @@ zsh-users/zsh-syntax-highlighting
 kennethreitz/autoenv 
 EOBUNDLES
     
-    antigen-theme kphoen
+    if [[ "$(hostname -s)" == "trotsky" ]]; then
+        antigen-theme wedisagree
+    elif [[ "$(hostname -s)" == "saraswati" ]]; then
+        antigen-theme kphoen
+    elif [[ "$(hostname -s)" == "io" ]]; then
+        antigen-theme norm
+    else
+        antigen-theme agnoster
+    fi
     antigen-apply
 fi
-#ZSH=$HOME/.oh-my-zsh
-#ZSH_THEME="kphoen"
-
-#plugins=(ssh-agent screen autojump compleat node git github archlinux extract pip python ruby virtualenvwrapper urltools encode64 django dircycle vundle)
 
 ## Options
 setopt correctall
@@ -59,7 +63,7 @@ setopt extendedglob
 
 ## History
 export HISTSIZE=25000
-export HISTFILE=~/.zsh_history
+export HISTFILE=$HOME/.zsh_history
 export SAVEHIST=5000
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
