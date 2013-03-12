@@ -138,6 +138,8 @@ Bundle 'vimwiki'
 Bundle 'Raimondi/delimitMate'
 " Tagbar
 Bundle 'majutsushi/tagbar'
+" git gutter
+Bundle 'airblade/vim-gitgutter'
 
 """ Language Specific
 "" Node.JS 
@@ -152,6 +154,7 @@ Bundle 'hail2u/vim-css3-syntax'
 Bundle 'uggedal/go-vim'
 "" Javascript
 Bundle 'pangloss/vim-javascript'
+au FileType javascript set tabstop=2 shiftwidth=2 softtabstop=2
 "" Markdown 
 Bundle 'tpope/vim-markdown'
 "" Mustache 
@@ -206,11 +209,15 @@ filetype plugin on			" turn on filetype plugins
 filetype indent on
 set showmatch 				" Show matching brackets
 
-au BufNewFile,BufRead *.html set filetype=jinja
+au BufNewFile,BufRead *.html set filetype=html
 au BufNewFile,BufRead *.jade set filetype=jade
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.coffee set filetype=coffee
 au BufNewFile,BufRead *.md set filetype=markdown
+
+" Show a subtle color when line is > 80 chars
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
 
 """ Keybindings
 " With the following you can press F8 to show all buffers in tabs
