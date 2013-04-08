@@ -5,15 +5,20 @@
 [submodule "awesome-config"]
 	path = config/awesome
 	url = git@github.com:feltnerm/awesome-config.git
+    branch = master
 [submodule "selfspy"]
 	path = bin/selfspy
 	url = git://github.com/gurgeh/selfspy.git
+    branch = master
 [submodule "solarized-xfce4-terminal"]
 	path = config/Terminal/xfce4-terminal-colors-solarized
 	url = git://github.com/sgerrand/xfce4-terminal-colors-solarized.git
+    branch = master
 [submodule "vundle"]
 	path = vim/bundle/vundle
 	url = git://github.com/gmarik/vundle.git
+    branch = master
 [submodule "xkcd-password-generator"]
 	path = bin/xkcd-password-generator
 	url = git://github.com/redacted/XKCD-password-generator.git
+    branch = master
