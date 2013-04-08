@@ -11,7 +11,7 @@
 	path = config/awesome
 	url = https://github.com/feltnerm/awesome-config.git
 [submodule "XKCD-password-generator"]
-	path = bin/XKCD-password-generator
+	path = bin/xkcd-password-generator
 	url = git://github.com/redacted/XKCD-password-generator.git
 [submodule "selfspy"]
 	path = bin/selfspy
