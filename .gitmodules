@@ -1,9 +1,9 @@
 [submodule "antigen"]
     path = antigen
-    url = https://github.com/zsh-users/antigen.git
+    url = git://github.com/zsh-users/antigen.git
 [submodule "awesome-config"]
     path = config/awesome
-    url = git://github.com/feltnerm/awesome-config.git
+    url = git@github.com:feltnerm/awesome-config.git
 [submodule "selfspy"]
     path = bin/selfspy
     url = git://github.com/gurgeh/selfspy.git
