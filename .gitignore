@@ -21,5 +21,6 @@ ncmpcpp
 vim/backup                                                                      
 vim/bundle                                                                      
 vim/bundle/*
+!vim/bundle/vundle
 vim/tmp                                                                         
 vim/tmp/*
