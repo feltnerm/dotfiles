@@ -14,9 +14,6 @@ autojump
 compleat
 ssh-agent
 screen
-archlinux
-systemd
-debian
 urltools
 encode64
 dircycle
@@ -33,7 +30,6 @@ cake
 coffee
 node
 npm
-nyan
 lein
 vundle
 heroku
@@ -43,8 +39,12 @@ kennethreitz/autoenv
 EOBUNDLES
     
     if [[ "$(hostname -s)" == "trotsky" ]]; then
+        antigen-bundle archlinux
+        antigen-bundle nyan
+        antigen-bundle systemd
         antigen-theme wedisagree
     elif [[ "$(hostname -s)" == "saraswati" ]]; then
+        antigen-bundle debian
         antigen-theme kphoen
     elif [[ "$(hostname -s)" == "io" ]]; then
         antigen-theme norm

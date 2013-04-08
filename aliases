@@ -60,7 +60,6 @@ alias stail='! tail'
 alias ctl='! systemctl'
 
 if [[ -f /etc/arch-release ]] ; then
-    alias pacman='pacman-color'    
     alias packer='packer-color'
     alias pacman-orphans='pacman -Qtdq'
     alias pacman-clean='pacman -Rs $(pacman -Qtdq)'
