@@ -13,6 +13,3 @@
 [submodule "vundle"]
 	path = vim/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
-[submodule "awesome"]
-	path = config/awesome
-	url = https://github.com/feltnerm/awesome.git
