@@ -34,6 +34,7 @@ coffee
 node
 npm
 nyan
+lein
 vundle
 heroku
 zsh-users/zsh-completions src
