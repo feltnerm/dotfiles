@@ -33,6 +33,7 @@ try					        " try and apply my mother tongue
 	lang en_US
 catch
 endtry
+set shell=zsh\ --login
 
 " Directories for swp files
 set backupdir=~/.vim/backup
@@ -142,6 +143,12 @@ Bundle 'majutsushi/tagbar'
 Bundle 'airblade/vim-gitgutter'
 
 """ Language Specific
+"" Clojure
+"Bundle 'VimClojure'
+Bundle 'paredit.vim'
+Bundle "tpope/vim-fireplace"
+Bundle "tpop/vim-classpath"
+Bundle "guns/vim-clojure-static"
 "" Node.JS 
 Bundle 'node.js'
 "" LessCSS 
@@ -228,3 +235,25 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+""" Automatically determine indenting using fuzzy matching. e.g. the a line starting "(with-"
+""" will be indented two spaces.
+"let vimclojure#FuzzyIndent=1
+"
+""" Highlight built-in functions from clojure.core and friends
+"let vimclojure#HighlightBuiltins=1
+"
+""" Highlight functions from contrib
+"let vimclojure#HighlightContrib=1
+"
+""" As new symbols are identified using VimClojure's dynamic features, automatically
+""" highlight them.
+"let vimclojure#DynamicHighlighting=1
+"
+""" Color parens so they're easier to match visually
+"let vimclojure#ParenRainbow=1
+"
+""" Yes, I want nailgun support
+"let vimclojure#WantNailgun = 1
+""
+""" Full path to the nailgun client
+"let vimclojure#NailgunClient = "/usr/bin/ng"
