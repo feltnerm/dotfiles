@@ -2,18 +2,18 @@
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "vundle"]
-	path = ./vim/bundle/vundle
+	path = vim/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
 [submodule "solarized-terminal"]
     path = config/Terminal/xfce4-terminal-colors-solarized
     url = git://github.com/sgerrand/xfce4-terminal-colors-solarized.git
-[submodule "config/awesome"]
+[submodule "awesome"]
 	path = config/awesome
 	url = https://github.com/feltnerm/awesome-config.git
-[submodule "bin/XKCD-password-generator"]
+[submodule "XKCD-password-generator"]
 	path = bin/XKCD-password-generator
 	url = git://github.com/redacted/XKCD-password-generator.git
-[submodule "bin/selfspy"]
+[submodule "selfspy"]
 	path = bin/selfspy
 	url = git://github.com/gurgeh/selfspy.git
 [submodule "antigen"]
