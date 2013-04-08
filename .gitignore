@@ -1,3 +1,7 @@
+*.swp
+
+antigen
+
 cabal/*
 !cabal/config                                                                     
 
@@ -6,6 +10,8 @@ config/*
 !config/archey3.cfg
 !config/nitrogen
 !config/systemd
+config/systemd/user/default.target.wants
+config/systemd/user/multi-user.target.wants
 !config/user-dirs.dirs
 
 lein
@@ -14,9 +20,9 @@ lein
 ncmpcpp
 !ncmpcpp/config
 
-vim/backup/*                                                                      
-vim/bundle/*                                                                      
-vim/tmp/*                                                                         
+vim/backup                                                                      
+vim/bundle                                                                      
+vim/tmp                                                                         
 
 #cmus/cache                                                                       
 #cmus/command-history                                                             

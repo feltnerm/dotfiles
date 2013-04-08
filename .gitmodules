@@ -1,18 +1,18 @@
-[submodule "vundle"]
-	path = vim/bundle/vundle
-	url = https://github.com/gmarik/vundle.git
+[submodule "antigen"]
+	path = antigen
+	url = https://github.com/zsh-users/antigen.git
 [submodule "solarized-terminal"]
     path = config/Terminal/xfce4-terminal-colors-solarized
     url = git://github.com/sgerrand/xfce4-terminal-colors-solarized.git
-[submodule "awesome"]
-	path = config/awesome
-	url = https://github.com/feltnerm/awesome-config.git
-[submodule "XKCD-password-generator"]
+[submodule "xkcd-password-generator"]
 	path = bin/xkcd-password-generator
 	url = git://github.com/redacted/XKCD-password-generator.git
 [submodule "selfspy"]
 	path = bin/selfspy
 	url = git://github.com/gurgeh/selfspy.git
-[submodule "antigen"]
-	path = antigen
-	url = https://github.com/zsh-users/antigen.git
+[submodule "vundle"]
+	path = vim/bundle/vundle
+	url = https://github.com/gmarik/vundle.git
+[submodule "awesome"]
+	path = config/awesome
+	url = https://github.com/feltnerm/awesome.git
