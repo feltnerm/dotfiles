@@ -11,7 +11,7 @@
 	path = config/Terminal/xfce4-terminal-colors-solarized
 	url = git://github.com/sgerrand/xfce4-terminal-colors-solarized.git
 [submodule "vundle"]
-	path = vundle
+	path = vim/bundle/vundle
 	url = git://github.com/gmarik/vundle.git
 [submodule "xkcd-password-generator"]
 	path = bin/xkcd-password-generator
