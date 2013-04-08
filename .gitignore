@@ -4,6 +4,7 @@ cabal/*
 !cabal/config                                                                     
 
 config/*
+!config/beets/config.yaml
 !config/Terminal
 !config/archey3.cfg
 !config/nitrogen

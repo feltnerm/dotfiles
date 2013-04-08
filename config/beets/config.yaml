@@ -3,14 +3,14 @@
 color: true
 threaded: true
 plugins: lastgenre scrub inline fetchart ftintitle importfeeds mpdupdate
-directory: /stash/library/final/music
-library: ~/.musiclibrary.blb
+directory: /stash/library/music
+library: /var/lib/beets/library.blb
 
 import:
     copy: true
     move: false
     write: true
-    log: beetslog.text
+    log: /stash/_meta/music/beetslog.txt
     resume: true
     art: true
     quiet_fallback: skip
@@ -34,6 +34,6 @@ mpdupdate:
     port: 6600
 
 importfeeds:
-    feeds_format: m3u link
-    feeds_dir: /var/lib/mpd/playlists/
-    m3u_name: newest_tracks.m3u
+    format: m3u
+    dir: /var/lib/mpd/playlists/
+    m3u_name: recentlty_added.m3u
