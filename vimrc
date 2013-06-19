@@ -12,6 +12,7 @@
 ""
 let mapleader=","
 set nocompatible			" don't inherit vi traits
+set modeline                " read modeline from files
 set number				    " show line numbers
 set ruler				    " show ruler at bottom of screen
 set encoding=utf-8			" set encoding
@@ -23,9 +24,9 @@ set noerrorbells			" no ringa-dinga-ding-ding-dong
 set novisualbell			"
 set t_vb=			    	"
 set tm=500				    "
-set shell=/bin/zsh				" probably safe to assume this ( <3 zsh )
-set fileformats=unix,mac,dos		" use mac, dos and unix file formats
-set ffs=unix,mac,dos			"
+set shell=/bin/zsh			" probably safe to assume this ( <3 zsh )
+set fileformats=unix,mac,dos	" use mac, dos and unix file formats
+set ffs=unix,mac,dos		"
 set nolazyredraw			" Don't redraw when executing macros
 set magic				    " set magic on, for regular expressions
 set mat=2				    " how many tenths of a second to blink
@@ -111,10 +112,18 @@ Bundle 'gmarik/vundle'
 "" General Plugins
 " Essential vim utility scripts
 Bundle 'L9'
+" Ultimate Completion
+Bundle 'Shougo/neocomplcache'
 " Git integration
 Bundle 'tpope/vim-fugitive'
 " Shows great info in a statusbar at the bottom
 Bundle 'Lokaltog/vim-powerline'
+" Command-T for finding files fast
+Bundle 'Command-T'
+" Taglist
+Bundle 'taglist.vim'
+" Tasklist for @todos and such
+Bundle 'TaskList.vim'
 " Ctrl-P commands like sublime text
 Bundle 'kien/ctrlp.vim'
 " Quickly surround things
@@ -149,25 +158,36 @@ Bundle 'paredit.vim'
 Bundle "tpope/vim-fireplace"
 Bundle "tpop/vim-classpath"
 Bundle "guns/vim-clojure-static"
+Bundle 'Rainbow-Parenthesis'
+
+"" (X)HTML
+Bundle 'ZenCoding.vim'
+
 "" Node.JS 
 Bundle 'node.js'
+
 "" LessCSS 
 Bundle 'less.vim'
+
 "" CoffeeScript syntax
 Bundle 'kchmck/vim-coffee-script'
+
 "" CSS3
 Bundle 'hail2u/vim-css3-syntax'
-"" GO
+
+"" Go
 Bundle 'uggedal/go-vim'
+
 "" Javascript
 Bundle 'pangloss/vim-javascript'
 au FileType javascript set tabstop=2 shiftwidth=2 softtabstop=2
+
 "" Markdown 
 Bundle 'tpope/vim-markdown'
+
 "" Mustache 
 Bundle 'juvenn/mustache.vim'
-"" Python 
-Bundle 'python.vim'
+
 "" HTML5
 Bundle 'othree/html5.vim'
 

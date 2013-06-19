@@ -1,7 +1,16 @@
-alias aliases="less ~/.aliases"
+# 
+# A collection of generic aliases
+#
 
-# grep
-alias grep='grep --color=auto'
+alias !='sudo'
+alias sless='! less'
+alias stail='! tail'
+alias ctl='! systemctl'
+
+alias bc='bc -ql'
+alias ports='lsof -i -P -sTCP:LISTEN'
+alias cloc="cloc --exclude-dir=.git,.hg"
+alias aliases="less ~/.aliases"
 
 # ls
 alias ls="ls -hF --color=auto"
@@ -29,6 +38,9 @@ alias pm="ps ax | grep -v grep | grep "
 alias ducks="du -cksh * | sort -rn | head -11"
 alias free="free -m"
 
+if _which ack; then
+    alias grep=ack
+fi;
 
 if _which pydf; then
     alias df="pydf"
@@ -37,27 +49,6 @@ else
         alias df="cdf";
     fi
 fi
-
-if _which bc; then
-    alias bc='bc -ql'
-fi
-
-if _which lsof; then
-    alias ports='lsof -i -P -sTCP:LISTEN'
-fi
-
-if _which cloc; then
-    alias cloc="cloc --exclude-dir=.git,.hg"
-fi
-
-if _which ncmpcpp; then
-    alias ncmpcpp="sh ~/bin/ncmpcpp-proxy.sh"
-fi
-
-alias !='sudo'
-alias sless='! less'
-alias stail='! tail'
-alias ctl='! systemctl'
 
 if [[ -f /etc/arch-release ]] ; then
     alias packer='packer-color'
@@ -107,4 +98,3 @@ function aa_power_settings ()
     done
   ';
 }
-
