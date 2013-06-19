@@ -7,51 +7,46 @@ COMPLETION_WAITING_DOTS=true
 
 if [ -f "$HOME/.antigen/antigen.zsh" ]; then
     source "$HOME/.antigen/antigen.zsh"
-    antigen-lib
+    antigen use oh-my-zsh
     
-    antigen-bundles <<EOBUNDLES
-autojump
-compleat
-ssh-agent
-screen
-urltools
-encode64
-dircycle
-git
-svn
-node
-extract
-python
-pip
-virtualenvwrapper 
-django
-ruby
-cake
-coffee
-node
-npm
-lein
-vundle
-heroku
-zsh-users/zsh-completions src
-zsh-users/zsh-syntax-highlighting 
-kennethreitz/autoenv 
-EOBUNDLES
-    
-    if [[ "$(hostname -s)" == "trotsky" ]]; then
-        antigen-bundle archlinux
-        antigen-bundle nyan
-        antigen-bundle systemd
-        antigen-theme wedisagree
-    elif [[ "$(hostname -s)" == "saraswati" ]]; then
-        antigen-bundle debian
-        antigen-theme kphoen
-    elif [[ "$(hostname -s)" == "io" ]]; then
-        antigen-theme norm
-    else
-        antigen-theme agnoster
-    fi
-    antigen-apply
+    antigen bundle autojump
+    antigen bundle vi-mode
+    antigen bundle autoenv
+    antigen bundle compleat
+    antigen bundle ssh-agent
+    antigen bundle screen
+    antigen bundle urltools
+    antigen bundle encode64
+    antigen bundle dircycle
+    antigen bundle git
+    antigen bundle svn
+    antigen bundle node
+    antigen bundle extract
+    antigen bundle python
+    antigen bundle pip
+    antigen bundle virtualenv
+    antigen bundle virtualenvwrapper 
+    antigen bundle django
+    antigen bundle ruby
+    antigen bundle cake
+    antigen bundle coffee
+    antigen bundle brew
+    antigen bundle node
+    antigen bundle npm
+    antigen bundle lein
+    antigen bundle vundle
+    antigen bundle heroku
+    antigen bundle history-substring-search
+    antigen bundle history
+    antigen bundle nyan
+    antigen bundle zsh-users/zsh-completions src
+    antigen bundle zsh-users/zsh-syntax-highlighting 
+        
+    for i in "${ANTIGEN_BUNDLES[@]}"
+    do
+        antigen bundle $i
+    done
+    antigen apply
 fi
 
 ## Options
