@@ -13,7 +13,8 @@ alias cloc="cloc --exclude-dir=.git,.hg"
 alias aliases="less ~/.aliases"
 
 # ls
-alias ls="ls -hF --color=auto"
+alias ls="ls -hF"
+#alias ls="ls -hF --color=auto"
 alias ll="ls -lh"
 
 # cd - broken
