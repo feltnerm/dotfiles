@@ -199,7 +199,7 @@ filetype plugin indent on
 " Default color scheme
 set colorcolumn=79
 set number 
-set background=dark
+set background=light
 set cursorline
 colorscheme solarized
 
