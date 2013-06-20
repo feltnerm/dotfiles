@@ -39,6 +39,7 @@ if [ -f "$HOME/.antigen/antigen.zsh" ]; then
     antigen bundle history-substring-search
     antigen bundle history
     antigen bundle nyan
+    antigen bundle clauswitt/zsh-grunt-plugin
     antigen bundle zsh-users/zsh-completions src
     antigen bundle zsh-users/zsh-syntax-highlighting 
         
@@ -46,6 +47,7 @@ if [ -f "$HOME/.antigen/antigen.zsh" ]; then
     do
         antigen bundle $i
     done
+    antigen theme ${ANTIGEN_THEME}
     antigen apply
 fi
 
