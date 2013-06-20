@@ -12,7 +12,7 @@
 ""
 let mapleader=","
 set nocompatible			" don't inherit vi traits
-set modeline                " read modeline from files
+"set modeline                " read modeline from files
 set number				    " show line numbers
 set ruler				    " show ruler at bottom of screen
 set encoding=utf-8			" set encoding
@@ -199,7 +199,7 @@ filetype plugin indent on
 " Default color scheme
 set colorcolumn=79
 set number 
-set background=light
+set background=dark
 set cursorline
 colorscheme solarized
 
@@ -217,13 +217,6 @@ nmap <F8> :TagbarToggle<cr>
 let g:MiniBufExplMapWindowNavVim = 1
 let g:MiniBufExplMapWindowNavArrows = 1
 let g:MiniBufExplMapCTabSwitchBufs = 1
-let g:MiniBufExplModSelTarget = 1
-
-
-"" MiniBufExpl
-let g:MiniBufExplMapWindowNavVim = 1
-let g:MiniBufExplMapWindowNavArrows = 1
-let g:MiniBufExplCTabSwitchBufs = 1
 let g:MiniBufExplModSelTarget = 1
 
 "" cTags
