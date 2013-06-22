@@ -180,7 +180,7 @@ Bundle 'uggedal/go-vim'
 
 "" Javascript
 Bundle 'pangloss/vim-javascript'
-au FileType javascript set tabstop=2 shiftwidth=2 softtabstop=2
+au FileType javascript set tabstop=4 shiftwidth=4 softtabstop=4
 
 "" Markdown 
 Bundle 'tpope/vim-markdown'
