@@ -4,6 +4,8 @@ if [ -f "$HOME/.profile" ]; then
 fi
 
 COMPLETION_WAITING_DOTS=true
+# vim. +1 to dexterity
+bindkey -v
 
 if [ -f "$HOME/.antigen/antigen.zsh" ]; then
     source "$HOME/.antigen/antigen.zsh"
