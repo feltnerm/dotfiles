@@ -3,20 +3,21 @@
 # 
 
 # Load default profiles for whichever distro we are on
-if [[ -d /etc/profile.d ]]; then
-    for i in /etc/profile.d/*.sh ; do
-        if [ -r "$i" ] ; then
-            source $i
-        fi
-    done
-fi;
-
-for i in /etc/profile* ; do
-    if [ -r "$i" ] ; then
-        source $i
-    fi
-done
-
+ if [[ -d /etc/profile.d ]]; then
+     for i in /etc/profile.d/*.sh ; do
+         if [ -r "$i" ] ; then
+             source $i
+         fi
+     done
+ fi;
+ 
+ if [[ -d /etc/profile/ ]]; then
+     for i in /etc/profile/* ; do
+         if [ -r "$i" ] ; then
+             source $i
+         fi
+     done
+ fi
 #
 # Utilities
 #
