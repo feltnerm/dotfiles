@@ -1,42 +1,77 @@
 dotfiles
 ========
 
-Just my dotfiles
+# What's is this?
+Just my dotfiles.
 
-To symlink all files in this directory to your ~/
-```shell
-ruby bin/deploy.rb --verbose --backup --what dotfiles
-```
+# What's inside?
+* zsh configuration (zlogin, zprofile, zshenv, zshrc)
+    * antigen
+    * oh-my-zsh
+* vim configuration (vimrc, vim)
+    * vundle
 
+# How do I dotfile?
 Minimum requirements:
+* git
 * zsh
 
-You'll be able to fully experience The Awesome if you find yourself using any combination of the following:
-
-_(these are not requirements, but I'd *highly* suggest them)_
-* [arch] linux
-* awesomewm
-* vim or gvim (for included plugins see vimrc)
-* virtualenv + virtualenvwrapper
-* git
-* screen
-
-.profile does a decent job of figuring out what the system has and enables/disables things based on that. This is a win
-because it allows my layout to be modular and work on a variety of *nix boxes.
-Feel free to use the _which() bash function to check whether or not a program exists on your machine before operating
-on it.
-
-And some goodies:
-* xinitrc
-  * xset - set keyboard/mouse settings
-  * numlockx - enable numlock
-  * xflux - set the color temperature of the monitor based on geographic location and time of day
-  * nitrogen - set/save/restore wallpaper
-  * pulseaudio 
-  * xscreensaver
-  * xcompmgr
-  * rxvt-unicode
+Suggested requirements:
+* [arch] linux / Mac OS X
 * ncmpcpp
-* cmus
+* screen
+* vim
 
-bin/ has more requirements, but I think most of them are obvious on inspection.
+## Instructions
+
+```shell
+% git clone https://github.com/feltnerm/dotfiles.git
+% python .py init
+```
+
+### Other useful .py commands:
+#### Init
+```shell
+% python .py init # initializes a new dotfiles structure in your $HOME 
+```
+
+#### Link
+```shell
+% python .py link # create symlinks between source-files in ~/dotfiles and $HOME 
+```
+
+#### Clean
+```shell
+% python .py clea # clean the $HOME dir of files that are in the source-files directory 
+```
+
+#### Status
+```shell
+% python .py status # show the update status of the dotfiles repo 
+```
+
+#### Update
+```shell
+% python .py update # checks for updates and downloads them via git
+```
+
+#### Diff
+```shell
+% python .py diff # show a diff between the files in your current $HOME and the source-files repository 
+```
+
+#### Options
+`-d [--dest-dir]` changes the default  destination directory (default is: `~/`)
+`-e [--exclude]` a regex of files to exclude
+`-f [--force]` disregards all user input
+`-i [--interactive]` asks the user before doing anything substantial
+`-n [--dry-run]` run, but don't _actually_ do anything
+`-s [--source-dir]` changes the default source directory (default is: `~/dotfiles`)
+`-v [--version]` flag that prints out the current version of this tool (not implemented)
+`-V [--verbose]` flag that runs in verbose (print everything to console) mode if present
+
+#### Extras
+You can also chain commands. It's what the `init` command uses to run.
+```shell
+% python .py update link
+```
