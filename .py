@@ -1,21 +1,38 @@
 #!/usr/bin/env python
 
 # .py
-#
-# Manage your dotfiles.
-#
 # @TODO:
 # * symlink dotfiles from $DOTFILES to $HOME
 # * read configuration 
 
-import argparse, difflib, functools, re, sys, time, os
+import argparse, difflib, functools, re, shutil, subprocess, sys, time, os
 from pprint import pprint
 
 __description__ = "Manage your dotfiles."
 
-ls = lambda (path): os.listdir(path)
-ls_abs = lambda (path): [os.path.join(path, x) for x in os.listdir(path)]
-ln = lambda (src, dst): os.symlink(src, dst)
+ls = lambda path: os.listdir(path)
+ls_abs = lambda path: [os.path.join(path, x) for x in os.listdir(path)]
+ln = lambda src, dst: os.symlink(src, dst)
+
+def rm(path):
+    try:
+        if os.path.isdir(path):
+            os.rmdir(path)
+        else:
+            os.remove(path)
+    except OSError, e:
+        print(e)
+
+def diff(fromfile, tofile):
+    if os.path.exists(tofile):
+        fromdate = time.ctime(os.stat(fromfile).st_mtime)
+        todate = time.ctime(os.stat(tofile).st_mtime)
+        fromlines = open(fromfile, 'U').readlines()
+        tolines = open(tofile, 'U').readlines()
+
+        diff = difflib.unified_diff(fromlines, tolines, 
+                    fromfile, tofile, fromdate, todate)
+        return diff
 
 def parse_args(argv):
 
@@ -27,18 +44,18 @@ def parse_args(argv):
     ap = argparse.ArgumentParser(prog='.py', 
                                  description=__description__)
 
-    #ap.add_argument("-v", "--version", default=False, action='store_true', 
-    #        help="Print the version.")
-    #ap.add_argument("-V", "--verbose", default=False, action='store_true', 
-    #        help="Verbose mode.")
-    #ap.add_argument("-i", "--interactive", default=False, action='stoee_true', 
-    #        help="Run interactively.")
+    ap.add_argument("-v", "--version", default=False, action='store_true', 
+            help="Print the version.")
+    ap.add_argument("-V", "--verbose", default=False, action='store_true', 
+            help="Verbose mode.")
+    ap.add_argument("-i", "--interactive", default=False, action='store_true', 
+            help="Run interactively.")
     ap.add_argument("-f", "--force", help="Force the operation to continue.")
     ap.add_argument("-e", "--exclude", help="Regex of files to exclude")
-    #ap.add_argument("--no-dot", 
-    #        help="Comma-separated list of files to not append a '.' to")
-    #ap.add_argument("-n", "--dry-run", default=False, action='store_true', 
-    #        help="Dry run.")
+    ap.add_argument("--no-dot", 
+            help="Comma-separated list of files to not append a '.' to")
+    ap.add_argument("-n", "--dry-run", default=False, action='store_true', 
+            help="Dry run.")
     ap.add_argument("-s", "--source-dir", default=DEFAULTS['source_dir'], 
             help="Directory to process source files from.")
     ap.add_argument("-d", "--dest-dir", default=DEFAULTS['dest_dir'],
@@ -48,6 +65,17 @@ def parse_args(argv):
     args = ap.parse_args(argv)
 
     return args
+
+def ask(msg):
+
+    inp = raw_input(msg + " [Y]/n?").lower()
+    while inp not in ('y','n'):
+        inp = raw_input(msg + " [Y]/n?").lower()
+
+    if inp == 'y':
+        return True
+    else:
+        return False
 
 
 #
@@ -63,7 +91,8 @@ class Dotfiles(object):
                     '.git', 
                     '.gitconfig', 
                     '.gitignore',
-                    '.gitmodules'
+                    '.gitmodules',
+                    '.py'
                 ],
                 "nodot_list": ['bin']
             }
@@ -96,6 +125,10 @@ class Dotfiles(object):
         self.source_files = self._exclude(ls(self.src))()
         self.dest_files = ls(self.dst)
 
+        self.verbose = self.options.get('verbose')
+        self.interactive = self.options.get('interactive')
+        self.dry_run = self.options.get('dry_run')
+
         pprint(self.options)
 
     def _nodots(self, l):
@@ -110,15 +143,31 @@ class Dotfiles(object):
 
         return functools.partial(filter, filter_func, l)
 
+    def _execute(self, cmd, func):
+
+        if self.dry_run:
+            self.verbose = True
+            self.func = None
+        if self.verbose:
+            print("# Execute: %s" % cmd)
+
+        if func:
+            func()
+
+        
     def run(self, command):
         cmd = 'cmd_' + command
         if hasattr(self, cmd):
             func = getattr(self, cmd)
             if callable(func):
                 try:
-                    func()
+                    self._execute(cmd, func)
                 except Exception, e:
                     print(e)
+
+    #
+    # Commands API
+    # 
 
     def cmd_init(self):
         """ Task to initialize dotfiles in your $HOME for the first time. """
@@ -136,15 +185,7 @@ class Dotfiles(object):
                 #to_file = os.path.join(self.options.get('dest_dir', from_file)) 
                 tofile = os.path.join(self.options.get('dest_dir'), "." + from_file)
 
-                if os.path.exists(tofile):
-                    fromdate = time.ctime(os.stat(fromfile).st_mtime)
-                    todate = time.ctime(os.stat(tofile).st_mtime)
-                    fromlines = open(fromfile, 'U').readlines()
-                    tolines = open(tofile, 'U').readlines()
-
-                    diff = difflib.unified_diff(fromlines, tolines, 
-                                fromfile, tofile, fromdate, todate)
-                    sys.stdout.writelines(diff)
+                sys.stdout.writelines(diff(fromfile, tofile))
 
     def cmd_link(self):
         """ Link files in $DOTFILES to corresponding files in $HOME. """
@@ -154,14 +195,26 @@ class Dotfiles(object):
             tofile = os.path.join(self.options.get('dest_dir'), "." + from_file)
 
             if os.path.lexists(tofile):
-                print("ln(%s, %s)" % (fromfile, tofile))
+                print("File %s exists already!" % tofile)
+                if not os.path.isdir(tofile):
+                    diff(fromfile, tofile)
+                if self.verbose:
+                    print("ln(%s, %s)" % (fromfile, tofile))
+                if self.interactive:
+                    if ask("Link %s->%s" % (tofile, fromfile)):
+                        rm(tofile)
+                        ln(fromfile, tofile)
+                else:
+                    rm(tofile)
+                    ln(fromfile, tofile)
             else:
-                print("ln(%s, %s)" % (fromfile, tofile))
-
-    def cmd_update(self):
-        """ Update dotfiles and dependencies in $HOME with latest 
-        in the repo(s). """ 
-        print(">> Updating ...")
+                if self.verbose:
+                    print("ln(%s, %s)" % (fromfile, tofile))
+                if self.interactive:
+                    if ask("Link %s->%s" % (tofile, fromfile)):
+                        ln(fromfile, tofile)
+                else:
+                    ln(fromfile, tofile)
 
     def cmd_clean(self):
         """ Clean the dotfiles in $HOME. """
@@ -171,11 +224,30 @@ class Dotfiles(object):
             tofile = os.path.join(self.options.get('dest_dir'), "." + from_file)
             
             if os.path.lexists(tofile):
-                print("rm(%s)" % tofile)
+                if self.verbose:
+                    print("rm(%s)" % tofile)
+                rm(tofile)
+
+    def cmd_update(self):
+        """ Update dotfiles and dependencies in $HOME with latest 
+        in the repo(s). """ 
+        print(">> Updating ...")
+        cmd = "cd %s; git pull" % self.options.get('source_dir')
+        output = subprocess.check_output(
+                    cmd,
+                    stderr=subprocess.STDOUT,
+                    shell=True) 
+        print(output)
 
     def cmd_status(self):
         """ Status of $DOTFILES. """
         print(">> Status: ")
+        cmd = "cd %s; git status" % self.options.get('source_dir')
+        output = subprocess.check_output(
+                    cmd,
+                    stderr=subprocess.STDOUT,
+                    shell=True) 
+        print(output)
         
 
 def run(commands, opts):
