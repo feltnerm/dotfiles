@@ -110,6 +110,14 @@ Bundle 'gmarik/vundle'
 
 
 "" General Plugins
+" Ack
+Bundle 'ack.vim'
+" Buffer switching
+Bundle 'tpop/vim-unimpaired'
+" Use <tab> to tab-complete on context
+Bundle 'ervandew/supertab'
+" List, navigate and select buffers
+Bundle "jeetsukumaran/vim-buffergator"
 " Essential vim utility scripts
 Bundle 'L9'
 " Ultimate Completion
@@ -180,6 +188,7 @@ Bundle 'uggedal/go-vim'
 
 "" Javascript
 Bundle 'pangloss/vim-javascript'
+Bundle 'briancollins/vim-jst'
 au FileType javascript set tabstop=4 shiftwidth=4 softtabstop=4
 
 "" Markdown 
