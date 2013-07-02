@@ -4,6 +4,7 @@ if [ -f "$HOME/.profile" ]; then
 fi
 
 COMPLETION_WAITING_DOTS=true
+
 # vim. +1 to dexterity
 bindkey -v
 
@@ -15,35 +16,35 @@ if [ -f "$HOME/.antigen/antigen.zsh" ]; then
     antigen bundle vi-mode
     antigen bundle autoenv
     antigen bundle compleat
+    antigen bundle zsh-users/zsh-completions src
+    antigen bundle zsh-users/zsh-syntax-highlighting 
+    antigen bundle history-substring-search
+    antigen bundle history
+    antigen bundle dircycle
     antigen bundle ssh-agent
     antigen bundle screen
-    antigen bundle urltools
-    antigen bundle encode64
-    antigen bundle dircycle
     antigen bundle git
-    antigen bundle svn
-    antigen bundle node
     antigen bundle extract
-    antigen bundle python
     antigen bundle pip
     antigen bundle virtualenv
     antigen bundle virtualenvwrapper 
-    antigen bundle django
-    antigen bundle ruby
-    antigen bundle cake
-    antigen bundle coffee
     antigen bundle brew
-    antigen bundle node
     antigen bundle npm
     antigen bundle lein
-    antigen bundle vundle
-    antigen bundle heroku
-    antigen bundle history-substring-search
-    antigen bundle history
     antigen bundle nyan
-    antigen bundle clauswitt/zsh-grunt-plugin
-    antigen bundle zsh-users/zsh-completions src
-    antigen bundle zsh-users/zsh-syntax-highlighting 
+    antigen bundle urltools
+    #antigen bundle encode64
+    #antigen bundle svn
+    #antigen bundle node
+    #antigen bundle python
+    #antigen bundle django
+    #antigen bundle ruby
+    #antigen bundle cake
+    #antigen bundle coffee
+    #antigen bundle node
+    #antigen bundle vundle
+    #antigen bundle heroku
+    #antigen bundle clauswitt/zsh-grunt-plugin
         
     for i in "${ANTIGEN_BUNDLES[@]}"
     do
