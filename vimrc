@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Mark Feltner 
+" Mark Feltner
 " Version 3.0 - 05/04/11
 "
 "
@@ -50,7 +50,7 @@ set more				" use more prompt
 set scrolloff=5				" keep >= 5 lines above/below
 set sidescrolloff=5			" keep >= 5 lines left/right
 
-" Backspacing 
+" Backspacing
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
@@ -89,6 +89,7 @@ set wrap				" wrap lines
 
 " Key bindings and such
 inoremap jj <Esc>
+imap ii <C-[>
 
 
 "" Options for vundle
@@ -103,21 +104,20 @@ Bundle 'gmarik/vundle'
 " # original repos on Github
 " Bundle 'tpope/vim-fugitive' "
 " # vim-scripts
-" Bundle 'FuzzyFinder'
+"
 "
 " # non github
 " Bundle git://git.wincent.com/command-t.git
 
 
 "" General Plugins
+Bundle 'FuzzyFinder'
 " Ack
 Bundle 'ack.vim'
 " Buffer switching
-Bundle 'tpop/vim-unimpaired'
+Bundle 'tpope/vim-unimpaired'
 " Use <tab> to tab-complete on context
 Bundle 'ervandew/supertab'
-" List, navigate and select buffers
-Bundle "jeetsukumaran/vim-buffergator"
 " Essential vim utility scripts
 Bundle 'L9'
 " Ultimate Completion
@@ -126,12 +126,11 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'tpope/vim-fugitive'
 " Shows great info in a statusbar at the bottom
 Bundle 'Lokaltog/vim-powerline'
+ Bundle 'Lokaltog/vim-easymotion'
 " Command-T for finding files fast
-Bundle 'Command-T'
+" Bundle 'Command-T'
 " Taglist
 Bundle 'taglist.vim'
-" Tasklist for @todos and such
-Bundle 'TaskList.vim'
 " Ctrl-P commands like sublime text
 Bundle 'kien/ctrlp.vim'
 " Quickly surround things
@@ -148,7 +147,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'SearchComplete'
 " Syntax checking
 Bundle 'scrooloose/syntastic'
-" tabbed buffers 
+" tabbed buffers
 Bundle 'minibufexpl.vim'
 " VimWiki
 Bundle 'vimwiki'
@@ -164,17 +163,17 @@ Bundle 'airblade/vim-gitgutter'
 "Bundle 'VimClojure'
 Bundle 'paredit.vim'
 Bundle "tpope/vim-fireplace"
-Bundle "tpop/vim-classpath"
+Bundle "tpope/vim-classpath"
 Bundle "guns/vim-clojure-static"
 Bundle 'Rainbow-Parenthesis'
 
 "" (X)HTML
 Bundle 'ZenCoding.vim'
 
-"" Node.JS 
+"" Node.JS
 Bundle 'node.js'
 
-"" LessCSS 
+"" LessCSS
 Bundle 'less.vim'
 
 "" CoffeeScript syntax
@@ -191,10 +190,10 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'briancollins/vim-jst'
 au FileType javascript set tabstop=4 shiftwidth=4 softtabstop=4
 
-"" Markdown 
+"" Markdown
 Bundle 'tpope/vim-markdown'
 
-"" Mustache 
+"" Mustache
 Bundle 'juvenn/mustache.vim'
 
 "" HTML5
@@ -207,8 +206,8 @@ filetype plugin indent on
 ""
 " Default color scheme
 set colorcolumn=79
-set number 
-set background=dark
+set number
+set background=light
 set cursorline
 colorscheme solarized
 
@@ -252,10 +251,23 @@ match OverLength /\%81v.\+/
 " With the following you can press F8 to show all buffers in tabs
 let notabs = 1
 
+nore ; :
+nore , ;
+
 " Fuck help
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
+
+noremap <silent> <Leader>tl :TaskList<CR>
+noremap <silent> <Leader>t :CommandT<CR>
+noremap <silent> <Leader>b :CommandTBuffer<CR>
+
+if has("gui_macvim")
+    macmenu &File.New\ Tab key=<nop>
+    map <D-t> :CommandT<CR>
+    map <D-p> :<C-U>CtrlP<CR>
+endif
 
 """ Automatically determine indenting using fuzzy matching. e.g. the a line starting "(with-"
 """ will be indented two spaces.
