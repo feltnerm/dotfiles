@@ -3,21 +3,21 @@
 # 
 
 # Load default profiles for whichever distro we are on
- if [[ -d /etc/profile.d ]]; then
-     for i in /etc/profile.d/*.sh ; do
-         if [ -r "$i" ] ; then
-             source $i
-         fi
-     done
- fi;
- 
- if [[ -d /etc/profile/ ]]; then
-     for i in /etc/profile/* ; do
-         if [ -r "$i" ] ; then
-             source $i
-         fi
-     done
- fi
+if [[ -d /etc/profile.d ]]; then
+    for i in /etc/profile.d/*.sh ; do
+        if [ -r "$i" ] ; then
+            source $i
+        fi
+    done
+fi;
+
+if [[ -d /etc/profile/ ]]; then
+    for i in /etc/profile/* ; do
+        if [ -r "$i" ] ; then
+            source $i
+        fi
+    done
+fi
 #
 # Utilities
 #
@@ -105,10 +105,6 @@ fi
 if _which less; then
     export PAGER=less
     export LESS="-F -X -R"
-fi
-
-if [[ "$(hostname -s)" == "trotsky" ]]; then
-
 fi
 
 source ~/.aliases
