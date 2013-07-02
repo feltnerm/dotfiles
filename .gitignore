@@ -7,7 +7,6 @@ config/*
 !config/beets/config.yaml
 !config/Terminal
 !config/archey3.cfg
-!config/nitrogen
 !config/systemd
 config/systemd/user/default.target.wants
 config/systemd/user/multi-user.target.wants
