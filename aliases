@@ -7,6 +7,8 @@ alias sless='! less'
 alias stail='! tail'
 alias ctl='! systemctl'
 
+alias ssh-keygen2="ssh-keygen -t rsa -C '$(whoami)@$(hostname)-$(date -u)'"
+
 alias bc='bc -ql'
 alias ports='lsof -i -P -sTCP:LISTEN'
 alias cloc="cloc --exclude-dir=.git,.hg"
@@ -29,6 +31,7 @@ alias cp='cp -i'
 alias cpv='rsync -pogr --progress'
 
 alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
+alias rmdstore='find . -name \*.DS_Store -exec rm -v {} \;'
 
 # vimwiki
 alias vimwiki="vim -c VimwikiIndex"
