@@ -1,104 +1,49 @@
-# 
-# A collection of generic aliases
+##
 #
+# aliases
+#
+##
 
 alias !='sudo'
-alias sless='! less'
-alias stail='! tail'
-alias ctl='! systemctl'
-
-alias ssh-keygen2="ssh-keygen -t rsa -C '$(whoami)@$(hostname)-$(date -u)'"
-
+alias aliases='less ~/.aliases'
 alias bc='bc -ql'
-alias ports='lsof -i -P -sTCP:LISTEN'
-alias cloc="cloc --exclude-dir=.git,.hg"
-alias aliases="less ~/.aliases"
-
-# ls
-alias ls="ls -hF"
-#alias ls="ls -hF --color=auto"
-alias ll="ls -lh"
-
-# cd - broken
-#alias .="cd .."
-#alias ..="cd ../.."
-#alias ...="cd ../../.."
-#alias ....="cd ../../../.."
-
-alias rm='rm -i'
-alias mv='mv -i'
+alias cloc='cloc --exclude-dir=.git,.hg'
 alias cp='cp -i'
+#alias .='cd ..'
+#alias ..='cd ../..'
+#alias ...='cd ../../..'
+#alias ....='cd ../../../..'
 alias cpv='rsync -pogr --progress'
-
+alias ducks='du -cksh * | sort -rn | head -11'
+function fname () { find . -iname '*$@*'; }
+alias free='free -m'
+alias ll='ls -lh'
+alias ls='ls -hF'
+#alias ls='ls -hF --color=auto'
+function lt() { ls -ltrsa '$@' | tail; }
+alias mv='mv -i'
+alias ports='lsof -i -P -sTCP:LISTEN'
+alias pm='ps ax | grep -v grep | grep '
+function psgrep() { ps axuf | grep -v grep | grep '$@' -i --color=auto; }
+alias rm='rm -i'
 alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
 alias rmdstore='find . -name \*.DS_Store -exec rm -v {} \;'
+alias sctl='! systemctl'
+alias sless='! less'
+alias ssh-keygen2='ssh-keygen -t rsa -C "$(whoami)@$(hostname)-$(date -u)"'
+alias stail='! tail'
 
-# vimwiki
-alias vimwiki="vim -c VimwikiIndex"
-alias vimdiary="vim -c VimiwikiDiaryIndex"
-alias ndiary="vim -c VimwikiMakeDiaryNote"
-
-alias pm="ps ax | grep -v grep | grep "
-alias ducks="du -cksh * | sort -rn | head -11"
-alias free="free -m"
-
+# grep => ack
 if _which ack; then
     alias grep=ack
 fi;
 
+# df => pydf => cdf
 if _which pydf; then
-    alias df="pydf"
+    alias df='pydf'
 else
     if _which cdf; then
-        alias df="cdf";
+        alias df='cdf';
     fi
 fi
 
-if [[ -f /etc/arch-release ]] ; then
-    alias packer='packer-color'
-    alias pacman-orphans='pacman -Qtdq'
-    alias pacman-clean='pacman -Rs $(pacman -Qtdq)'
-    if _which powerpill; then
-        alias pacman="powerpill"
-    fi
-elif [[ -f /etc/debian_version ]] ; then
-    alias apt-get='! apt-get'
-    alias aptitude='! aptitude'
-    alias update='apt-get update && apt-get upgrade'
-    alias install='apt-get install'
-    alias search='apt-cache search'
-    alias clean='apt-get clean && apt-get autoclean'
-fi
-
-function lt() { ls -ltrsa "$@" | tail; }
-function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
-function fname () { find . -iname "*$@*"; }
-
-function aa_power_settings ()
-{ 
-  sudo bash -c '
-    for i in `find /sys/devices -name "bMaxPower"`;
-    do
-        for ii in `find $i -type f`;
-        do
-            bd=`dirname $ii`;
-            busnum=`cat $bd/busnum`;
-            devnum=`cat $bd/devnum`;
-            title=`lsusb -s $busnum:$devnum`;
-            echo -e "\n\n+++ $title\n  -$bd\n  -$ii";
-            for ff in `find $bd/power -type f ! -empty 2>/dev/null`;
-            do
-                v=`cat $ff 2>/dev/null|tr -d "\n"`;
-                [[ ${#v} -gt 0 ]] && echo -e " `basename $ff`=$v";
-                v=;
-            done | sort -g;
-        done;
-    done;
-    echo -e "\n\n\n+++ Kernel Modules\n";
-    for m in `command lspci -k|sed -n "/in use:/s,^.*: ,,p"|sort -u`;
-    do
-        echo "+ $m";
-        systool -v -m $m 2> /dev/null | sed -n "/Parameters:/,/^$/p";
-    done
-  ';
-}

@@ -9,3 +9,6 @@
 [submodule "bin"]
 	path = bin
 	url = https://github.com/feltnerm/bin.git
+[submodule "prezto"]
+	path = prezto
+	url = https://github.com/sorin-ionescu/prezto.git

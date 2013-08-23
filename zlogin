@@ -4,16 +4,12 @@ for i in ${HOME}/.ssh/* ; do
     fi;
 done
 
-CMD=""
 if [[ -n $(whence _which) ]]; then
     if _which fortune; then
-        CMD+="fortune | "
         if _which cowsay; then
-            CMD+="cowsay | "
             if _which lolcat; then
-                CMD+="lolcat"
+                fortune | cowsay | lolcat
             fi
         fi
     fi
 fi
-eval $CMD

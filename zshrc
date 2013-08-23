@@ -12,39 +12,31 @@ if [ -f "$HOME/.antigen/antigen.zsh" ]; then
     source "$HOME/.antigen/antigen.zsh"
     antigen use oh-my-zsh
     
-    antigen bundle autojump
-    antigen bundle vi-mode
     antigen bundle autoenv
-    antigen bundle compleat
-    antigen bundle zsh-users/zsh-completions src
-    antigen bundle zsh-users/zsh-syntax-highlighting 
-    antigen bundle history-substring-search
-    antigen bundle history
-    antigen bundle dircycle
-    antigen bundle ssh-agent
-    antigen bundle screen
-    antigen bundle git
     antigen bundle extract
-    antigen bundle pip
+    antigen bundle git
+    antigen bundle history
+    antigen bundle screen
+    antigen bundle vi-mode
     antigen bundle virtualenv
     antigen bundle virtualenvwrapper 
-    antigen bundle brew
-    antigen bundle npm
-    antigen bundle lein
-    antigen bundle nyan
-    antigen bundle urltools
+    #antigen bundle autojump
+    #antigen bundle cake
+    #antigen bundle clauswitt/zsh-grunt-plugin
+    #antigen bundle coffee
+    #antigen bundle compleat
     #antigen bundle encode64
-    #antigen bundle svn
+    #antigen bundle django
+    #antigen bundle history-substring-search
+    #antigen bundle heroku
     #antigen bundle node
     #antigen bundle python
-    #antigen bundle django
+    #antigen bundle ssh-agent
+    #antigen bundle svn
     #antigen bundle ruby
-    #antigen bundle cake
-    #antigen bundle coffee
-    #antigen bundle node
     #antigen bundle vundle
-    #antigen bundle heroku
-    #antigen bundle clauswitt/zsh-grunt-plugin
+    #antigen bundle zsh-users/zsh-syntax-highlighting 
+    #antigen bundle zsh-users/zsh-completions src
         
     for i in "${ANTIGEN_BUNDLES[@]}"
     do
@@ -55,12 +47,12 @@ if [ -f "$HOME/.antigen/antigen.zsh" ]; then
 fi
 
 ## Options
-setopt correctall
-setopt autocd
-setopt auto_resume
-
-## Extended globbing
-setopt extendedglob
+#setopt correctall
+#setopt autocd
+#setopt auto_resume
+#
+### Extended globbing
+#setopt extendedglob
 
 ## History
 export HISTSIZE=25000
