@@ -46,7 +46,7 @@ set directory=~/.vim/tmp
 set cmdheight=2
 set laststatus=2			" status bar
 set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%h\ \ \ Line:\ %l/%L:%c
-set more				" use more prompt
+set more				    " use more prompt
 set scrolloff=5				" keep >= 5 lines above/below
 set sidescrolloff=5			" keep >= 5 lines left/right
 
@@ -70,7 +70,7 @@ set wildignore+=*.o,*.obj,.git,*.rbc
 ""
 set nowrap
 set autoindent
-" set list 				" show whitespace
+"set list 				" show whitespace
 "set listchars=tab:\ \ ,trail:Â·		" show tabs
 
 " Tabs
@@ -109,9 +109,8 @@ Bundle 'gmarik/vundle'
 " # non github
 " Bundle git://git.wincent.com/command-t.git
 
-
 "" General Plugins
-Bundle 'FuzzyFinder'
+ Bundle 'Lokaltog/vim-easymotion'
 " Ack
 Bundle 'ack.vim'
 " Buffer switching
@@ -126,13 +125,10 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'tpope/vim-fugitive'
 " Shows great info in a statusbar at the bottom
 Bundle 'Lokaltog/vim-powerline'
- Bundle 'Lokaltog/vim-easymotion'
 " Command-T for finding files fast
-" Bundle 'Command-T'
+Bundle 'Command-T'
 " Taglist
 Bundle 'taglist.vim'
-" Ctrl-P commands like sublime text
-Bundle 'kien/ctrlp.vim'
 " Quickly surround things
 Bundle 'tpope/vim-surround'
 " fuzzy searching
@@ -189,6 +185,8 @@ Bundle 'uggedal/go-vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'briancollins/vim-jst'
 au FileType javascript set tabstop=4 shiftwidth=4 softtabstop=4
+au FileType coffee set tabstop=2 shiftwidth=2 softtabstop=2
+autocmd BufRead,BufNewFile *.coffee set sw=2 sts=2 et
 
 "" Markdown
 Bundle 'tpope/vim-markdown'
@@ -244,7 +242,7 @@ au BufNewFile,BufRead *.coffee set filetype=coffee
 au BufNewFile,BufRead *.md set filetype=markdown
 
 " Show a subtle color when line is > 80 chars
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+highlight OverLength ctermbg=red ctermfg=white guibg=#DC322F
 match OverLength /\%81v.\+/
 
 """ Keybindings
@@ -268,6 +266,11 @@ if has("gui_macvim")
     map <D-t> :CommandT<CR>
     map <D-p> :<C-U>CtrlP<CR>
 endif
+
+"" Highlight whitespace
+match ErrorMsg '\s\+$'
+autocmd BufWritePre * :%s/\s\+$//e
+
 
 """ Automatically determine indenting using fuzzy matching. e.g. the a line starting "(with-"
 """ will be indented two spaces.
