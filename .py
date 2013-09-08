@@ -3,7 +3,7 @@
 # .py
 # @TODO:
 # * symlink dotfiles from $DOTFILES to $HOME
-# * read configuration 
+# * read configuration
 
 import argparse, difflib, functools, re, shutil, subprocess, sys, time, os
 from pprint import pprint
@@ -30,7 +30,7 @@ def diff(fromfile, tofile):
         fromlines = open(fromfile, 'U').readlines()
         tolines = open(tofile, 'U').readlines()
 
-        diff = difflib.unified_diff(fromlines, tolines, 
+        diff = difflib.unified_diff(fromlines, tolines,
                     fromfile, tofile, fromdate, todate)
         return diff
 
@@ -41,22 +41,22 @@ def parse_args(argv):
         'dest_dir': os.path.join(os.getenv("HOME"))
         }
 
-    ap = argparse.ArgumentParser(prog='.py', 
+    ap = argparse.ArgumentParser(prog='.py',
                                  description=__description__)
 
-    ap.add_argument("-v", "--version", default=False, action='store_true', 
+    ap.add_argument("-v", "--version", default=False, action='store_true',
             help="Print the version.")
-    ap.add_argument("-V", "--verbose", default=False, action='store_true', 
+    ap.add_argument("-V", "--verbose", default=False, action='store_true',
             help="Verbose mode.")
-    ap.add_argument("-i", "--interactive", default=False, action='store_true', 
+    ap.add_argument("-i", "--interactive", default=False, action='store_true',
             help="Run interactively.")
     ap.add_argument("-f", "--force", help="Force the operation to continue.")
     ap.add_argument("-e", "--exclude", help="Regex of files to exclude")
-    ap.add_argument("--no-dot", 
+    ap.add_argument("--no-dot",
             help="Comma-separated list of files to not append a '.' to")
-    ap.add_argument("-n", "--dry-run", default=False, action='store_true', 
+    ap.add_argument("-n", "--dry-run", default=False, action='store_true',
             help="Dry run.")
-    ap.add_argument("-s", "--source-dir", default=DEFAULTS['source_dir'], 
+    ap.add_argument("-s", "--source-dir", default=DEFAULTS['source_dir'],
             help="Directory to process source files from.")
     ap.add_argument("-d", "--dest-dir", default=DEFAULTS['dest_dir'],
             help="Directory to process source files to.")
@@ -82,14 +82,14 @@ def ask(msg):
 # dotfiles command API
 #
 class Dotfiles(object):
-        
+
     def __init__(self, opts):
         self.options = {
                 "exclude_list": [
-                    'README.md', 
-                    'LICENSE', 
-                    '.git', 
-                    '.gitconfig', 
+                    'README.md',
+                    'LICENSE',
+                    '.git',
+                    '.gitconfig',
                     '.gitignore',
                     '.gitmodules',
                     '.py'
@@ -103,20 +103,21 @@ class Dotfiles(object):
         self.src = self.options.get('source_dir', None)
         self.dst = self.options.get('dest_dir', None)
         if not (os.path.isdir(self.src) and os.path.isdir(self.dst)):
-            raise Exception("BAD PATH: <Source: %s> <Dest: %s>" % 
+            raise Exception("BAD PATH: <Source: %s> <Dest: %s>" %
                     (self.src, self.dst))
 
         # Process files which to not add a '.' to
         _nodot = self.options.get('nodot', None)
         if _nodot:
             if "," in _nodot:
-                self.options['nodot_list'].extend(_nodot.split(',')) 
-            self.options['nodot_list'].append(_nodot)
+                self.options['nodot_list'].extend(_nodot.split(','))
+            else:
+                self.options['nodot_list'].append(_nodot)
 
         # Process regex for excluding files
         _re_exclude = self.options.get('exclude', None)
         if _re_exclude:
-            _re_exclude = _re_exclude.decode('string_escape') 
+            _re_exclude = _re_exclude.decode('string_escape')
             re_exclude = re.compile(_re_exclude)
             self.options['exclude_list'].extend(filter(lambda x: re_exclude.match(x), ls(self.src)))
 
@@ -139,7 +140,7 @@ class Dotfiles(object):
 
     def _exclude(self, l):
         def filter_func(x):
-            return x not in [os.path.basename(a) for a in self.options['exclude_list']] 
+            return x not in [os.path.basename(a) for a in self.options['exclude_list']]
 
         return functools.partial(filter, filter_func, l)
 
@@ -154,7 +155,7 @@ class Dotfiles(object):
         if func:
             func()
 
-        
+
     def run(self, command):
         cmd = 'cmd_' + command
         if hasattr(self, cmd):
@@ -167,7 +168,7 @@ class Dotfiles(object):
 
     #
     # Commands API
-    # 
+    #
 
     def cmd_init(self):
         """ Task to initialize dotfiles in your $HOME for the first time. """
@@ -175,14 +176,14 @@ class Dotfiles(object):
         commands = ['update', 'diff', 'link']
         for cmd in commands:
             self.run(cmd)
-        
+
     def cmd_diff(self):
         """ Show the differences between $DOTFILES and $HOME. """
         print(">> Diffing ...")
         for from_file in self.source_files:
             fromfile = os.path.join(self.options.get('source_dir'), from_file)
             if not os.path.isdir(fromfile):
-                #to_file = os.path.join(self.options.get('dest_dir', from_file)) 
+                #to_file = os.path.join(self.options.get('dest_dir', from_file))
                 tofile = os.path.join(self.options.get('dest_dir'), "." + from_file)
 
                 sys.stdout.writelines(diff(fromfile, tofile))
@@ -222,21 +223,21 @@ class Dotfiles(object):
         for from_file in self.source_files:
             fromfile = os.path.join(self.options.get('source_dir'), from_file)
             tofile = os.path.join(self.options.get('dest_dir'), "." + from_file)
-            
+
             if os.path.lexists(tofile):
                 if self.verbose:
                     print("rm(%s)" % tofile)
                 rm(tofile)
 
     def cmd_update(self):
-        """ Update dotfiles and dependencies in $HOME with latest 
-        in the repo(s). """ 
+        """ Update dotfiles and dependencies in $HOME with latest
+        in the repo(s). """
         print(">> Updating ...")
         cmd = "cd %s; git pull" % self.options.get('source_dir')
         output = subprocess.check_output(
                     cmd,
                     stderr=subprocess.STDOUT,
-                    shell=True) 
+                    shell=True)
         print(output)
 
     def cmd_status(self):
@@ -246,9 +247,9 @@ class Dotfiles(object):
         output = subprocess.check_output(
                     cmd,
                     stderr=subprocess.STDOUT,
-                    shell=True) 
+                    shell=True)
         print(output)
-        
+
 
 def run(commands, opts):
 
@@ -261,7 +262,7 @@ def run(commands, opts):
 #
 def main(argv=None):
     args = parse_args(argv)
-    run(args.commands, vars(args)) 
+    run(args.commands, vars(args))
     return 0 # success
 
 
