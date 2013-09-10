@@ -46,4 +46,3 @@ else
         alias df='cdf';
     fi
 fi
-
