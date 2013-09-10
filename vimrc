@@ -10,31 +10,41 @@
 ""
 " General Settings
 ""
-let mapleader=","
 set nocompatible			" don't inherit vi traits
-"set modeline                " read modeline from files
+set shell=/bin/zsh			" probably safe to assume this ( <3 zsh )
+let mapleader=","
+set ttyfast				    " fast terminal
 set number				    " show line numbers
 set ruler				    " show ruler at bottom of screen
-set encoding=utf-8			" set encoding
 set autoread				" watch for file changes
-set history=700				" 200 lines of history
-set undolevels=1000			" 1000 undos
-set ttyfast				    " fast terminal
-set noerrorbells			" no ringa-dinga-ding-ding-dong
-set novisualbell			"
+set nolazyredraw			" Don't redraw when executing macros
+set mat=2				    " how many tenths of a second to blink
 set t_vb=			    	"
 set tm=500				    "
-set shell=/bin/zsh			" probably safe to assume this ( <3 zsh )
-set fileformats=unix,mac,dos	" use mac, dos and unix file formats
-set ffs=unix,mac,dos		"
-set nolazyredraw			" Don't redraw when executing macros
-set magic				    " set magic on, for regular expressions
-set mat=2				    " how many tenths of a second to blink
 try					        " try and apply my mother tongue
 	lang en_US
 catch
 endtry
-set shell=zsh\ --login
+"set modeline               " read modeline from files
+set backupcopy=yes
+set clipboard=unnamed
+set showcmd
+
+" Regex
+set magic				    " set magic on, for regular expressions
+
+" History
+set history=700				" 200 lines of history
+set undolevels=1000			" 1000 undos
+
+" Bells
+set noerrorbells			" no ringa-dinga-ding-ding-dong
+set novisualbell			"
+
+" File Formats and Encodings
+set encoding=utf-8			" set encoding
+set ffs=unix,mac,dos        " use mac, dos and unix file formats
+set fileformats=unix,mac,dos
 
 " Directories for swp files
 set backupdir=~/.vim/backup
@@ -63,15 +73,28 @@ set smartcase				" Éor use use artificial intelligence whilst searching
 " Tab completion
 set wildmenu
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc
+set wildignore+=*.o,*.obj,.git,*.rbc,log/**,node_modules/**,target/**,tmp/**
+
+" Mouse
+set mouse=a
+if exists('$TMUX')
+    set ttymouse=xterm2
+endif
 
 ""
 " Code Formatting
 ""
 set nowrap
 set autoindent
-"set list 				" show whitespace
-"set listchars=tab:\ \ ,trail:Â·		" show tabs
+"set list 				    " show whitespace
+"set listchars=tab:\ \ ,trail:Â· " show tabs
+
+" Highlight whitespace
+match ErrorMsg '\s\+$'
+autocmd BufWritePre * :%s/\s\+$//e
+" Show a subtle color when line is > 80 chars
+highlight OverLength ctermbg=red ctermfg=white guibg=#DC322F
+match OverLength /\%81v.\+/
 
 " Tabs
 set tabstop=4
@@ -86,11 +109,6 @@ set tw=500
 set ai					" auto indent
 set si					" smart indent
 set wrap				" wrap lines
-
-" Key bindings and such
-inoremap jj <Esc>
-imap ii <C-[>
-
 
 "" Options for vundle
 set rtp+=~/.vim/bundle/vundle/
@@ -110,9 +128,11 @@ Bundle 'gmarik/vundle'
 " Bundle git://git.wincent.com/command-t.git
 
 "" General Plugins
- Bundle 'Lokaltog/vim-easymotion'
-" Ack
+" Undo on save - lifesaver!
+Bundle 'sjl/gundo.vim'
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'ack.vim'
+Bundle 'TaskList.vim'
 " Buffer switching
 Bundle 'tpope/vim-unimpaired'
 " Use <tab> to tab-complete on context
@@ -124,9 +144,8 @@ Bundle 'Shougo/neocomplcache'
 " Git integration
 Bundle 'tpope/vim-fugitive'
 " Shows great info in a statusbar at the bottom
-Bundle 'Lokaltog/vim-powerline'
-" Command-T for finding files fast
-Bundle 'Command-T'
+Bundle 'bling/vim-airline'
+Bundle 'kien/ctrlp.vim'
 " Taglist
 Bundle 'taglist.vim'
 " Quickly surround things
@@ -143,6 +162,8 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'SearchComplete'
 " Syntax checking
 Bundle 'scrooloose/syntastic'
+let g:syntastic_python_checkers=['python', 'pyflakes', 'pep8']
+let g:syntastic_javascript_checkers=['jshint']
 " tabbed buffers
 Bundle 'minibufexpl.vim'
 " VimWiki
@@ -153,8 +174,16 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'majutsushi/tagbar'
 " git gutter
 Bundle 'airblade/vim-gitgutter'
+" Multiple cursors (like sublime)
+Bundle 'terryma/vim-multiple-cursors'
 
-""" Language Specific
+"""
+" Language Specific
+"""
+
+"" Python
+Bundle 'jmcantrell/vim-virtualenv'
+
 "" Clojure
 "Bundle 'VimClojure'
 Bundle 'paredit.vim'
@@ -163,21 +192,6 @@ Bundle "tpope/vim-classpath"
 Bundle "guns/vim-clojure-static"
 Bundle 'Rainbow-Parenthesis'
 
-"" (X)HTML
-Bundle 'ZenCoding.vim'
-
-"" Node.JS
-Bundle 'node.js'
-
-"" LessCSS
-Bundle 'less.vim'
-
-"" CoffeeScript syntax
-Bundle 'kchmck/vim-coffee-script'
-
-"" CSS3
-Bundle 'hail2u/vim-css3-syntax'
-
 "" Go
 Bundle 'uggedal/go-vim'
 
@@ -185,17 +199,30 @@ Bundle 'uggedal/go-vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'briancollins/vim-jst'
 au FileType javascript set tabstop=4 shiftwidth=4 softtabstop=4
+
+"" Node.JS
+Bundle 'node.js'
+
+"" CoffeeScript syntax
+Bundle 'kchmck/vim-coffee-script'
 au FileType coffee set tabstop=2 shiftwidth=2 softtabstop=2
 autocmd BufRead,BufNewFile *.coffee set sw=2 sts=2 et
-
-"" Markdown
-Bundle 'tpope/vim-markdown'
-
-"" Mustache
-Bundle 'juvenn/mustache.vim'
+au BufNewFile,BufRead *.coffee set filetype=coffee
 
 "" HTML5
 Bundle 'othree/html5.vim'
+au BufNewFile,BufRead *.html set filetype=html
+
+"" Markdown
+Bundle 'tpope/vim-markdown'
+au BufNewFile,BufRead *.md set filetype=markdown
+
+"" CSS3
+Bundle 'hail2u/vim-css3-syntax'
+
+"" LessCSS
+Bundle 'less.vim'
+au BufNewFile,BufRead *.less set filetype=less
 
 filetype plugin indent on
 
@@ -213,12 +240,6 @@ colorscheme solarized
 "" Powerline
 let g:Powerline_symbols = 'fancy'
 
-"" NerdTree
-nnoremap <C-n> :NERDTreeToggle<cr>
-
-"" Tagbar
-nmap <F8> :TagbarToggle<cr>
-
 "" MiniBuf
 let g:MiniBufExplMapWindowNavVim = 1
 let g:MiniBufExplMapWindowNavArrows = 1
@@ -228,24 +249,21 @@ let g:MiniBufExplModSelTarget = 1
 "" cTags
 let Tlist_Ctags_Cmd='/usr/bin/ctags'
 
-""" Syntax highlighting
+"""
+" Syntax highlighting
+"""
 syntax enable				" enable highlighitng
 filetype off				" turn off filetype highlighting
 filetype plugin on			" turn on filetype plugins
 filetype indent on
 set showmatch 				" Show matching brackets
 
-au BufNewFile,BufRead *.html set filetype=html
-au BufNewFile,BufRead *.jade set filetype=jade
-au BufNewFile,BufRead *.less set filetype=less
-au BufNewFile,BufRead *.coffee set filetype=coffee
-au BufNewFile,BufRead *.md set filetype=markdown
+""
+" Key bindings, remappings, and such
+""
+inoremap jj <Esc>
+imap ii <C-[>
 
-" Show a subtle color when line is > 80 chars
-highlight OverLength ctermbg=red ctermfg=white guibg=#DC322F
-match OverLength /\%81v.\+/
-
-""" Keybindings
 " With the following you can press F8 to show all buffers in tabs
 let notabs = 1
 
@@ -257,9 +275,6 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-noremap <silent> <Leader>tl :TaskList<CR>
-noremap <silent> <Leader>t :CommandT<CR>
-noremap <silent> <Leader>b :CommandTBuffer<CR>
 
 if has("gui_macvim")
     macmenu &File.New\ Tab key=<nop>
@@ -267,30 +282,15 @@ if has("gui_macvim")
     map <D-p> :<C-U>CtrlP<CR>
 endif
 
-"" Highlight whitespace
-match ErrorMsg '\s\+$'
-autocmd BufWritePre * :%s/\s\+$//e
-
-
-""" Automatically determine indenting using fuzzy matching. e.g. the a line starting "(with-"
-""" will be indented two spaces.
-"let vimclojure#FuzzyIndent=1
-"
-""" Highlight built-in functions from clojure.core and friends
-"let vimclojure#HighlightBuiltins=1
-"
-""" Highlight functions from contrib
-"let vimclojure#HighlightContrib=1
-"
-""" As new symbols are identified using VimClojure's dynamic features, automatically
-""" highlight them.
-"let vimclojure#DynamicHighlighting=1
-"
-""" Color parens so they're easier to match visually
-"let vimclojure#ParenRainbow=1
-"
-""" Yes, I want nailgun support
-"let vimclojure#WantNailgun = 1
-""
-""" Full path to the nailgun client
-"let vimclojure#NailgunClient = "/usr/bin/ng"
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>d :NERDTreeToggle<CR>
+nmap <Leader>tl :TaskList<CR>
+nmap <leader>t :CtrlP<CR>
+nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+nmap <leader>g :GitGutterToggle<CR>
+nmap <leader>] :TagbarToggle<CR>
+"nmap <leader> :GundoToggle<CR>
