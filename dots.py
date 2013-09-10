@@ -196,13 +196,13 @@ class Dotfiles(object):
             tofile = os.path.join(self.options.get('dest_dir'), "." + from_file)
 
             if os.path.lexists(tofile):
-                print("File %s exists already!" % tofile)
+                print("\nFile %s exists already!" % tofile)
                 if not os.path.isdir(tofile):
                     diff(fromfile, tofile)
                 if self.verbose:
                     print("ln(%s, %s)" % (fromfile, tofile))
                 if self.interactive:
-                    if ask("Link %s->%s" % (tofile, fromfile)):
+                    if ask("Link %s->%s" % (fromfile, tofile)):
                         rm(tofile)
                         ln(fromfile, tofile)
                 else:
@@ -212,7 +212,7 @@ class Dotfiles(object):
                 if self.verbose:
                     print("ln(%s, %s)" % (fromfile, tofile))
                 if self.interactive:
-                    if ask("Link %s->%s" % (tofile, fromfile)):
+                    if ask("Link %s->%s" % (fromfile, tofile)):
                         ln(fromfile, tofile)
                 else:
                     ln(fromfile, tofile)

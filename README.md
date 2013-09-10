@@ -6,11 +6,11 @@ Just my dotfiles.
 
 ### What's inside?
 * zsh configuration (`zlogin`, `zprofile`, `zshenv`, `zshrc`)
-    * antigen
     * oh-my-zsh
 * vim configuration (`vimrc`, `vim/`)
     * vundle
-* a tool to manage this mess (`.py`)
+* screen configuration
+* a tool to manage this mess (`dots.py`)
 * submodules to other useful tools (`bin/`)
 
 ### How do I dotfile?
@@ -20,11 +20,10 @@ System-specific configurations can be thrown into the `.system-confs/` directory
 ### Requirements?
 Minimum requirements:
 * git
-* zsh
+* zsh (v5+ recommended)
 
 Suggested requirements:
 * [arch] linux / Mac OS X
-* ncmpcpp
 * screen
 * vim
 
@@ -32,38 +31,38 @@ Suggested requirements:
 
 ```shell
 % git clone https://github.com/feltnerm/dotfiles.git
-% python .py init
+% python dots.py init
 ```
 
 ##### Other useful .py commands:
 ###### Init
 ```shell
-% python .py init # initializes a new dotfiles structure in your $HOME 
+% python dots.py init # initializes a new dotfiles structure in your $HOME
 ```
 
 ###### Link
 ```shell
-% python .py link # create symlinks between source-files in ~/dotfiles and $HOME 
+% python dots.py link # create symlinks between source-files in ~/dotfiles and $HOME
 ```
 
 ###### Clean
 ```shell
-% python .py clean # clean the $HOME dir of files that are in the source-files directory 
+% python dots.py clean # clean the $HOME dir of files that are in the source-files directory
 ```
 
 ###### Status
 ```shell
-% python .py status # show the update status of the dotfiles repo 
+% python dots.py status # show the update status of the dotfiles repo
 ```
 
 ###### Update
 ```shell
-% python .py update # checks for updates and downloads them via git
+% python dots.py update # checks for updates and downloads them via git
 ```
 
 ###### Diff
 ```shell
-% python .py diff # show a diff between the files in your current $HOME and the source-files repository 
+% python dots.py diff # show a diff between the files in your current $HOME and the source-files repository
 ```
 
 ###### Options
