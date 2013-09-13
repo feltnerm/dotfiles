@@ -88,3 +88,7 @@ You can also chain commands. It's what the `init` command uses to run.
 ```shell
 % python .py update link
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/feltnerm/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
