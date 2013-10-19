@@ -226,6 +226,9 @@ set cursorline
 colorscheme solarized
 
 """ Plugin Options
+"" vimwiki
+let g:vimwiki_list = [{ 'path': expand("~/Dropbox/vimwiki"), 'path_html': expand("~/Dropbox/vimwiki_html") }]
+
 "" Powerline
 let g:Powerline_symbols = 'fancy'
 
