@@ -81,8 +81,8 @@ fi
 if [ -d "$HOME/.pystartup" ]; then
     export PYTHONSTARTUP=${HOME}/.pystartup
 fi
-if [ -d "$HOME/Projects" ]; then
-    export PROJECT_HOME=$HOME/Projects
+if [ -d "$HOME/code" ]; then
+    export PROJECT_HOME=$HOME/code
 fi
 if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
     export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
@@ -93,3 +93,16 @@ else
         source /usr/local/share/python/virtualenvwrapper_lazy.sh
     fi
 fi
+
+##
+# Custom Environment Variables
+##
+# Dropbox
+if [ -d "$HOME/Dropbox" ]; then
+    export DROPBOX=$HOME/Dropbox
+fi
+
+# Wiki
+export WIKI=$DROPBOX/vimwiki_html
+export WIKI_SOURCE=$DROPBOX/vimwiki
+
