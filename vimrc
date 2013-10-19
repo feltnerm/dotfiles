@@ -115,18 +115,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-
-"" Plugins Defined Here
-"
-" examples:
-" # original repos on Github
-" Bundle 'tpope/vim-fugitive' "
-" # vim-scripts
-"
-"
-" # non github
-" Bundle git://git.wincent.com/command-t.git
-
 "" General Plugins
 " Undo on save - lifesaver!
 Bundle 'sjl/gundo.vim'
