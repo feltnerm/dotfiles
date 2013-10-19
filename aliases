@@ -43,6 +43,11 @@ if _which pydf; then
     alias df='pydf'
 else
     if _which cdf; then
-        alias df='cdf';
+        alias df='cdf'
     fi
+fi
+
+if _which surfraw; then
+    alias srddg="sr duckduckgo"
+    alias srgh="sr github"
 fi
