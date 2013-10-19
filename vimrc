@@ -171,6 +171,8 @@ Bundle 'terryma/vim-multiple-cursors'
 """
 
 "" Python
+Bundle 'mitsuhiko/vim-python-combined'
+Bundle 'davidhalter/jedi-vim'
 Bundle 'jmcantrell/vim-virtualenv'
 
 "" Clojure
