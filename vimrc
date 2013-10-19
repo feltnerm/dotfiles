@@ -283,6 +283,7 @@ nmap <leader>d :NERDTreeToggle<CR>
 nmap <Leader>tl :TaskList<CR>
 nmap <leader>t :CtrlP<CR>
 nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
-nmap <leader>g :GitGutterToggle<CR>
+nmap <leader>g :GundoToggle<CR>
+"nmap <leader>g :GitGutterToggle<CR>
 nmap <leader>] :TagbarToggle<CR>
-"nmap <leader> :GundoToggle<CR>
+noremap <leader>q <Plug>TaskList<CR>
