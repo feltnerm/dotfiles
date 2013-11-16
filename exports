@@ -1,0 +1,47 @@
+# Variables
+
+##
+# SHELL
+##
+export SHELL="zsh"
+
+##
+# PAGER
+##
+export PAGER="less -X"
+export MANPAGER="$PAGER"
+export LESS="-F -X -R"
+
+##
+# History
+##
+#
+# Larger history (allow 32³ entries; default is 500)
+export HISTFILE="$HOME/.history"
+export HISTSIZE=32768
+export HISTFILESIZE=$HISTSIZE
+export HISTCONTROL=ignoredups
+export SAVEHIST=5000
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+
+# timestamps for bash history. www.debian-administration.org/users/rossen/weblog/1
+# saved for later analysis
+HISTTIMEFORMAT='%F %T '
+export HISTTIMEFORMAT
+
+# Make some commands not show up in history
+export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
+
+##
+# EDITOR
+##
+export EDITOR="vim"
+
+# Prefer US English and use UTF-8
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US"
+
