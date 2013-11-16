@@ -1,3 +1,8 @@
+# debugger
+#source ~/bin/zshdb/dbg-trace.sh
+# start debgguing with:
+# _Dbg_debugger
+
 # env shared between bash and zsh
 if [ -f "$HOME/.profile" ]; then
     source "$HOME/.profile"
