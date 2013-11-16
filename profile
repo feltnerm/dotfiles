@@ -71,6 +71,26 @@ else
     fi
 fi
 
+# node + npm
+export NPM_PACKAGES=~/.npm-packages
+if [[ ! -d "$NPM_PACKAGES" ]]; then
+    mkdir $NPM_PACKAGES
+fi
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export PATH="$NPM_PACKAGES:$PATH"
+unset MANPATH
+MANPATH="$NPM_PACKAGES/share/man:%(manpath)"
+
+# z
+if [[ -f "${HOME}/bin/z" ]]; then
+    source "${HOME}/bin/z"
+fi
+
+# git-friendly
+if [[ -f "${HOME}/bin/git-friendly" ]]; then
+    export PATH=~/git-friendly:$PATH
+fi
+
 ##
 # Custom Environment Variables
 ##
