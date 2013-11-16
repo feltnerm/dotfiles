@@ -4,41 +4,86 @@
 #
 ##
 
+# do stuff
+alias please='sudo'
 alias !='sudo'
+alias sctl='! systemctl'
+alias sless='! less'
+alias stail='! tail'
+
+# wtf have I done?
 alias aliases='less ~/.aliases'
+
+# calculate
 alias bc='bc -ql'
+
+# count lines of code
 alias cloc='cloc --exclude-dir=.git,.hg'
-alias cp='cp -i'
-#alias .='cd ..'
-#alias ..='cd ../..'
-#alias ...='cd ../../..'
-#alias ....='cd ../../../..'
+
+# move around
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ~="cd ~"
+alias -- -="cd -"
+
+# move other things around
 alias cpv='rsync -pogr --progress'
+alias cp='cp -i'
+
+# lol, ducks.
 alias ducks='du -cksh * | sort -rn | head -11'
-function fname () { find . -iname '*$@*'; }
+
+
+# how much memz?
 alias free='free -m'
-alias ll='ls -lh'
-alias ls='ls -hF'
-#alias ls='ls -hF --color=auto'
-function lt() { ls -ltrsa '$@' | tail; }
+
+# list stuff
+if ls --color > /dev/null 2>&1; then
+    colorflag='--color'
+else
+    colorflag='-G'
+fi
+alias l="ls -l ${colorflag}"
+alias ll="ls -lhf ${colorflag}"
+alias la="ls -lahf ${colorflag}"
+alias lh="ls -hf ${colorflag}"
+alias lsd="ls -l ${colorflag} | grep '^d'"
+alias ls="ls ${colorflag}"
+
+# `cat` with pretty colors
+alias c="pygmentize -O style=monokai -f console256 -g"
+
+# Netwerk stuff
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+
+
+# OS stuff
 alias mv='mv -i'
 alias ports='lsof -i -P -sTCP:LISTEN'
 alias pm='ps ax | grep -v grep | grep '
 function psgrep() { ps axuf | grep -v grep | grep '$@' -i --color=auto; }
-alias rm='rm -i'
-alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
-alias rmdstore='find . -name \*.DS_Store -exec rm -v {} \;'
-alias sctl='! systemctl'
-alias sless='! less'
+
+# SsH
 alias ssh-keygen2='ssh-keygen -t rsa -C "$(whoami)@$(hostname)-$(date -u)"'
-alias stail='! tail'
 
-# grep => ack
-if _which ack; then
-    alias grep=ack
-fi;
+# remove stuff
+alias rm='rm -i'
+# pyc files
+alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
+# Recursively delete `.DS_Store` files
+alias rmdstore='find . -name \*.DS_Store -exec rm -v {} \;'
 
-# df => pydf => cdf
+
+
+# Shortcuts
+alias g="git"
+alias v="vim"
+
+# df < pydf < cdf
 if _which pydf; then
     alias df='pydf'
 else
@@ -47,7 +92,8 @@ else
     fi
 fi
 
-if _which surfraw; then
-    alias srddg="sr duckduckgo"
-    alias srgh="sr github"
-fi
+# Surfraw is the bees knees
+alias srddg="sr duckduckgo"
+alias srgh="sr github"
+
+#alias spotify="osascript $HOME/bin/SpotifyControl/SpotifyControl.scpt"
