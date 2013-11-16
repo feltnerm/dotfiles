@@ -18,29 +18,11 @@ _root() {
     [ "$EUID" = "0" ]
 }
 
-# aliases
-source ~/.aliases
+system_conf="${HOME}/.system-confs/$(hostname -s).conf"
+for file in ~/.{aliases,exports,functions,system_conf,extras}; do
+    [ -r "$file" ] && source "$file"
+done
 
-##
-# SHELL
-##
-export SHELL="$(which zsh)"
-
-##
-# PAGER
-##
-export PAGER=less
-export LESS="-F -X -R"
-
-##
-# EDITOR
-##
-export EDITOR="$(which vim)"
-if _which gvim; then
-    export VISUAL="$(which gvim)"
-else
-    export VISUAL="$EDITOR"
-fi
 
 ##
 # PATHs
@@ -54,11 +36,6 @@ fi
 if [ -d "$HOME/bin" ]; then
     export PATH=$PATH:$HOME/bin
 fi
-
-# Load hostname-specific paths
-if [[ -r ${HOME}/.system-confs/$(hostname -s).conf ]]; then
-    source ${HOME}/.system-confs/$(hostname -s).conf;
-fi;
 
 # Default Paths (constants)
 #
@@ -105,4 +82,3 @@ fi
 # Wiki
 export WIKI=$DROPBOX/vimwiki_html
 export WIKI_SOURCE=$DROPBOX/vimwiki
-
