@@ -4,7 +4,7 @@
 # _Dbg_debugger
 
 # env shared between bash and zsh
-if [ -f "$HOME/.profile" ]; then
+if [[ -f "$HOME/.profile" && -n "$PS1" ]]; then
     source "$HOME/.profile"
 fi
 
