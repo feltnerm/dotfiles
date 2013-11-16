@@ -116,7 +116,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 "" General Plugins
-" Undo on save - lifesaver!
+Bundle 'editorconfig/editorconfig-vim'
 Bundle 'shemerey/vim-project'
 Bundle 'sjl/gundo.vim'
 Bundle 'Lokaltog/vim-easymotion'
