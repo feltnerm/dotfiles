@@ -118,10 +118,11 @@ Bundle 'gmarik/vundle'
 "" General Plugins
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'shemerey/vim-project'
-Bundle 'sjl/gundo.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'ack.vim'
 Bundle 'TaskList.vim'
+" Undo on save - lifesaver!
+Bundle 'sjl/gundo.vim'
 " Buffer switching
 Bundle 'tpope/vim-unimpaired'
 " Use <tab> to tab-complete on context
@@ -151,8 +152,8 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'SearchComplete'
 " Syntax checking
 Bundle 'scrooloose/syntastic'
-let g:syntastic_python_checkers=['python', 'pyflakes', 'pep8']
-let g:syntastic_javascript_checkers=['jshint']
+" let g:syntastic_python_checkers=['python', 'pyflakes', 'pep8']
+" let g:syntastic_javascript_checkers=['jshint']
 " tabbed buffers
 Bundle 'minibufexpl.vim'
 " VimWiki
@@ -223,7 +224,7 @@ filetype plugin indent on
 " Default color scheme
 set colorcolumn=79
 set number
-set background=light
+set background=dark
 set cursorline
 colorscheme solarized
 
