@@ -41,12 +41,17 @@
 [alias]
     co = checkout
     st = status
+    c = commit -am
     ci = commit
     br = branch
-    df = diff
+    df = diff --color --color-words --abbrev
     pl = pull
+    p = push
     ps = push
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\'%s'\\' $@)\"' -
+    squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\'%s'\\' $@)\"' -
+    ri = rebase --interactive --autosquash))'
 	switch = !legit switch \"$@\"
 	branches = !legit branches
 	sprout = !legit sprout \"$@\"
