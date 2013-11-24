@@ -1,7 +1,5 @@
 for i in ${HOME}/.ssh/* ; do
-    if [[ -r $i.pub ]]; then
-        eval $(keychain --eval --agents ssh -Q --quiet $i)
-    fi;
+    [ -r $i.pub ] && eval $(keychain --eval --agents ssh -Q --quiet $i)
 done
 
 if [[ -n $(whence _which) ]]; then

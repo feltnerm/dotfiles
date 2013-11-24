@@ -33,72 +33,48 @@ done
 # bin
 #   this should be first as I don't want my own derpy programs to be
 #   overwriting some important library.
-if [ -d "$HOME/bin" ]; then
-    export PATH=$PATH:$HOME/bin
-fi
+[ -d "$HOME/bin" ] && export PATH=$PATH:$HOME/bin
 
 # Default Paths (constants)
 #
 # ruby
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-if [ -d "$HOME/.gem" ]; then
-    export GEM_HOME=$HOME/.gem
-    export PATH=$GEM_HOME/bin:$PATH
-fi
+[ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
+[ -d "$HOME/.gem" ] &&  export GEM_HOME=$HOME/.gem PATH=$GEM_HOME/bin:$PATH
 
 # go
-if [ -d "$HOME/.go" ]; then
-    export GOPATH=$HOME/.go
-fi
+[ -d "$HOME/.go" ] && export GOPATH=$HOME/.go
 
 # python
-if [ -d "$HOME/.virtualenvs" ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-fi
-if [ -d "$HOME/.pystartup" ]; then
-    export PYTHONSTARTUP=${HOME}/.pystartup
-fi
-if [ -d "$HOME/code" ]; then
-    export PROJECT_HOME=$HOME/code
-fi
+[ -d "$HOME/.virtualenvs" ] && export WORKON_HOME=$HOME/.virtualenvs
+[ -d "$HOME/.pystartup" ] && export PYTHONSTARTUP=${HOME}/.pystartup
+[ -d "$HOME/code" ] && export PROJECT_HOME=$HOME/code
 if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
     export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
     source /usr/local/bin/virtualenvwrapper_lazy.sh
 else
-    if [ -d "/usr/local/share/python" ]; then
-        export VIRTUALENVWRAPPER_SCRIPT=/usr/local/share/python/virtualenvwrapper.sh
-        source /usr/local/share/python/virtualenvwrapper_lazy.sh
-    fi
+    [ -d "/usr/local/share/python" ] \
+    && export VIRTUALENVWRAPPER_SCRIPT=/usr/local/share/python/virtualenvwrapper.sh \
+    && source /usr/local/share/python/virtualenvwrapper_lazy.sh
 fi
 
 # node + npm
-export NPM_PACKAGES=~/.npm-packages
-if [[ ! -d "$NPM_PACKAGES" ]]; then
-    mkdir $NPM_PACKAGES
-fi
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-export PATH="$NPM_PACKAGES:$PATH"
+export NPM_PACKAGES=$HOME/.npm-packages
+[ ! -d "$NPM_PACKAGES" ] && mkdir $NPM_PACKAGES
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH" PATH="$NPM_PACKAGES/bin/:$PATH"
 unset MANPATH
 MANPATH="$NPM_PACKAGES/share/man:%(manpath)"
 
 # z
-if [[ -f "${HOME}/bin/z" ]]; then
-    source "${HOME}/bin/z"
-fi
+[ -f "${HOME}/bin/z" ] && source "${HOME}/bin/z"
 
 # git-friendly
-if [[ -f "${HOME}/bin/git-friendly" ]]; then
-    export PATH=~/git-friendly:$PATH
-fi
+[ -f "${HOME}/bin/git-friendly" ] && export PATH=$HOME/git-friendly:$PATH
 
 ##
 # Custom Environment Variables
 ##
 # Dropbox
-if [ -d "$HOME/Dropbox" ]; then
-    export DROPBOX=$HOME/Dropbox
-fi
+[ -d "$HOME/Dropbox" ] && export DROPBOX=$HOME/Dropbox
 
 # Wiki
-export WIKI=$DROPBOX/vimwiki_html
-export WIKI_SOURCE=$DROPBOX/vimwiki
+export WIKI=$DROPBOX/vimwiki_html WIKI_SOURCE=$DROPBOX/vimwiki

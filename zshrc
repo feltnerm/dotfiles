@@ -4,9 +4,7 @@
 # _Dbg_debugger
 
 # env shared between bash and zsh
-if [[ -f "$HOME/.profile" && -n "$PS1" ]]; then
-    source "$HOME/.profile"
-fi
+[ -f "$HOME/.profile" ] && [ -n "$PS1" ] && source "$HOME/.profile"
 
 # vim. +1 to dexterity
 bindkey -v
@@ -19,9 +17,7 @@ CASE_SENSITIVE="true"
 DISABLE_CORRECTION="true"
 PLUGINS=(git)
 
-if [ -f "$ZSH/oh-my-zsh.sh" ]; then
-    source "$ZSH/oh-my-zsh.sh"
-fi
+[ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
 ## Options
 setopt correctall
@@ -30,4 +26,4 @@ setopt auto_resume
 setopt extendedglob
 
 # added by travis gem
-source /Users/mfeltner/.travis/travis.sh
+[ -f "$HOME/.travis/travis.sh" ] && source /Users/mfeltner/.travis/travis.sh
