@@ -52,6 +52,7 @@ alias lh="ls -hf ${colorflag}"
 alias lsd="ls -l ${colorflag} | grep '^d'"
 alias ls="ls ${colorflag}"
 
+alias pygmentize="pygmentize -O style=monokai -f console256 -g"
 # `cat` with pretty colors
 alias c="pygmentize -O style=monokai -f console256 -g"
 
