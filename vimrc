@@ -10,6 +10,7 @@
 ""
 " General Settings
 ""
+set paste
 set nocompatible			" don't inherit vi traits
 set shell=/bin/zsh			" probably safe to assume this ( <3 zsh )
 let mapleader=","
