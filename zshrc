@@ -1,4 +1,13 @@
-# debugger
+### profiler
+## set the trace prompt to include seconds, nanoseconds, script name and line number
+#PS4='+$(date "+%s:%N") %N:%i> '
+## save file stderr to file descriptor 3 and redirect stderr (including trace
+## output) to a file with the script's PID as an extension
+#exec 3>&2 2>/tmp/startlog.$$
+## set options to turn on tracing and expansion of commands contained in the prompt
+#setopt xtrace prompt_subst
+
+## debugger
 #source ~/bin/zshdb/dbg-trace.sh
 # start debgguing with:
 # _Dbg_debugger
@@ -15,7 +24,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 COMPLETION_WAITING_DOTS=true
 CASE_SENSITIVE="true"
 DISABLE_CORRECTION="true"
-PLUGINS=(git)
+PLUGINS=(colored-man compleat extract git-extras git-flow git-fast gnu-utils node npm nyan osx rsync ssh-agent tmux vi-mode virtualenv virtualenvwrapper z tmuxinator)
 
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
@@ -27,3 +36,10 @@ setopt extendedglob
 
 # added by travis gem
 [ -f "$HOME/.travis/travis.sh" ] && source /Users/mfeltner/.travis/travis.sh
+
+
+### /profiler
+## turn off tracing
+## unsetopt xtrace
+## restore stderr to the value saved in FD 3
+#exec 2>&3 3>&-
