@@ -97,3 +97,4 @@ alias srddg="sr duckduckgo"
 alias srgh="sr github"
 
 #alias spotify="osascript $HOME/bin/SpotifyControl/SpotifyControl.scpt"
+alias oracow="fortune | cowsay | lolcat"
