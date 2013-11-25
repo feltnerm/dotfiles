@@ -1,9 +1,8 @@
 [user]
 	name = Mark Feltner
-	email = mark@feltner.me
 [github]
 	user = feltnerm
-    password = !cat /home/mark/.keychain/github-password | tr -d '\n'
+    password = !cat $HOME/.keychain/github-password | tr -d '\n'
 [pack]
 	threads = 0
 [push]
