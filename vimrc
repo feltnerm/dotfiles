@@ -226,7 +226,7 @@ set colorcolumn=79
 set number
 set background=dark
 set cursorline
-colorscheme solarized
+"" colorscheme solarized
 
 """ Plugin Options
 "" vimwiki
