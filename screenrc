@@ -18,7 +18,7 @@ nonblock on
 escape ``
 
 # ZSH babay!
-shell -${SHELL}
+shell -$SHELL
 
 # No noises plz
 vbell_msg "[[[ ding ]]]"
