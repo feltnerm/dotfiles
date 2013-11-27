@@ -14,7 +14,7 @@ Just my dotfiles.
 * submodules to other useful tools (`bin/`)
 
 ### How do I dotfile?
-Use `.py` to manage the symlinking of files in the dotfiles directory to your home directory.
+Use `dots.py` to manage the symlinking of files in the dotfiles directory to your home directory.
 System-specific configurations can be thrown into the `.system-confs/` directory which is automagically loaded on a per-hostname basis.
 
 ### Requirements?
