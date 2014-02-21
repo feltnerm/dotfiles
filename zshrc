@@ -30,11 +30,6 @@ PLUGINS=(git-extras git-flow gnu-utils nyan tmux vi-mode virtualenvwrapper z tmu
 
 ## Options
 setopt correctall
-
-[ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
-
-## Options
-setopt correctall
 setopt autocd
 setopt auto_resume
 setopt extendedglob
@@ -42,6 +37,7 @@ setopt extendedglob
 # added by travis gem
 [ -f "$HOME/.travis/travis.sh" ] && source /Users/mfeltner/.travis/travis.sh
 
+[ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
 ### /profiler
 ## turn off tracing
