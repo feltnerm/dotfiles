@@ -41,26 +41,28 @@ def parse_args(argv):
         'dest_dir': os.path.join(os.getenv("HOME"))
         }
 
-    ap = argparse.ArgumentParser(prog='.py',
+    ap = argparse.ArgumentParser(prog='dots.py',
                                  description=__description__)
 
+    ap.add_argument("-d", "--dest-dir", default=DEFAULTS['dest_dir'],
+            help="Directory to process source files to.")
+    ap.add_argument("-e", "--exclude", help="Regex of files to exclude")
+    ap.add_argument("-f", "--force", help="Force the operation to continue.")
+    ap.add_argument("-i", "--interactive", default=False, action='store_true',
+            help="Run interactively.")
+    ap.add_argument("-l", "--list-commands", default=False, action='store_true',
+            help="List the possible commands.")
+    ap.add_argument("-n", "--dry-run", default=False, action='store_true',
+            help="Dry run.")
+    ap.add_argument("--no-dot",
+            help="Comma-separated list of files to not append a '.' to")
+    ap.add_argument("-s", "--source-dir", default=DEFAULTS['source_dir'],
+            help="Directory to process source files from.")
     ap.add_argument("-v", "--version", default=False, action='store_true',
             help="Print the version.")
     ap.add_argument("-V", "--verbose", default=False, action='store_true',
             help="Verbose mode.")
-    ap.add_argument("-i", "--interactive", default=False, action='store_true',
-            help="Run interactively.")
-    ap.add_argument("-f", "--force", help="Force the operation to continue.")
-    ap.add_argument("-e", "--exclude", help="Regex of files to exclude")
-    ap.add_argument("--no-dot",
-            help="Comma-separated list of files to not append a '.' to")
-    ap.add_argument("-n", "--dry-run", default=False, action='store_true',
-            help="Dry run.")
-    ap.add_argument("-s", "--source-dir", default=DEFAULTS['source_dir'],
-            help="Directory to process source files from.")
-    ap.add_argument("-d", "--dest-dir", default=DEFAULTS['dest_dir'],
-            help="Directory to process source files to.")
-    ap.add_argument("commands", nargs="+",  help="Command to run.")
+    ap.add_argument("commands", nargs="*",  help="Command to run.")
 
     args = ap.parse_args(argv)
 
@@ -85,19 +87,20 @@ class Dotfiles(object):
 
     def __init__(self, opts):
         self.options = {
+                "exclude": [
+                    r'^\.'
+                ],
                 "exclude_list": [
                     'README.md',
                     'LICENSE',
-                    '.git',
-                    '.gitconfig',
-                    '.gitignore',
-                    '.gitmodules',
-                    '.py'
+                    'dots.py',
                 ],
                 "nodot_list": ['bin']
             }
 
-        self.options.update(opts)
+        for key in opts.keys():
+            if opts.get(key, None):
+                self.options[key] = (opts.get(key))
 
         # Look for the source and destination directories
         self.src = self.options.get('source_dir', None)
@@ -115,11 +118,17 @@ class Dotfiles(object):
                 self.options['nodot_list'].append(_nodot)
 
         # Process regex for excluding files
-        _re_exclude = self.options.get('exclude', None)
-        if _re_exclude:
-            _re_exclude = _re_exclude.decode('string_escape')
-            re_exclude = re.compile(_re_exclude)
-            self.options['exclude_list'].extend(filter(lambda x: re_exclude.match(x), ls(self.src)))
+        _re_excludes = self.options.get('exclude', None)
+        if _re_excludes:
+            for _re_exclude in _re_excludes:
+                _re_exclude = _re_exclude.decode('string_escape')
+                re_exclude = re.compile(_re_exclude)
+                self.options['exclude_list'].extend(filter(lambda x: re_exclude.match(x), ls(self.src)))
+        #_re_exclude = self.options.get('exclude', None)
+        #if _re_exclude:
+        #    _re_exclude = _re_exclude.decode('string_escape')
+        #    re_exclude = re.compile(_re_exclude)
+        #    self.options['exclude_list'].extend(filter(lambda x: re_exclude.match(x), ls(self.src)))
 
         # Pre-process (cache) these files for quick access
         #self.source_files = self._nodots(self._exclude(ls(self.src))()
@@ -130,7 +139,12 @@ class Dotfiles(object):
         self.interactive = self.options.get('interactive')
         self.dry_run = self.options.get('dry_run')
 
-        pprint(self.options)
+        if self.options.get('verbose', False):
+            pprint(self.options)
+
+    @property
+    def commands(self):
+        return filter(lambda method: method.startswith('cmd_'), dir(self))
 
     def _nodots(self, l):
         def map_func(x):
@@ -254,8 +268,14 @@ class Dotfiles(object):
 def run(commands, opts):
 
     df = Dotfiles(opts)
-    for command in commands:
-        df.run(command)
+    if not opts['commands'] or opts['list_commands']:
+        for cmd in df.commands:
+            print(cmd.split("_")[1]+":")
+            docstring = getattr(getattr(df, cmd), '__doc__')
+            print(docstring)
+    else:
+        for command in commands:
+            df.run(command)
 
 #
 # main
