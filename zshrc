@@ -34,8 +34,6 @@ setopt autocd
 setopt auto_resume
 setopt extendedglob
 
-# added by travis gem
-[ -f "$HOME/.travis/travis.sh" ] && source /Users/mfeltner/.travis/travis.sh
 
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
