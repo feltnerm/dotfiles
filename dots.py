@@ -2,8 +2,8 @@
 
 # .py
 # @TODO:
-# * symlink dotfiles from $DOTFILES to $HOME
-# * read configuration
+# - fix the diffing
+# - use rsync across hosts or something fancy
 
 import argparse, difflib, functools, re, shutil, subprocess, sys, time, os
 from pprint import pprint
