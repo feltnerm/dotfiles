@@ -12,8 +12,6 @@
 # start debgguing with:
 # _Dbg_debugger
 
-# env shared between bash and zsh
-[ -f "$HOME/.profile" ] && [ -n "$PS1" ] && source "$HOME/.profile"
 
 # vim. +1 to dexterity
 bindkey -v
@@ -25,6 +23,13 @@ COMPLETION_WAITING_DOTS=true
 CASE_SENSITIVE="true"
 DISABLE_CORRECTION="true"
 PLUGINS=(git-extras git-flow gnu-utils nyan tmux vi-mode virtualenvwrapper z tmuxinator)
+
+# env shared between bash and zsh
+[ -f "$HOME/.profile" ] && [ -n "$PS1" ] && source "$HOME/.profile"
+
+
+## Options
+setopt correctall
 
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
