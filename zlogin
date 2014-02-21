@@ -1,3 +1,4 @@
-for i in ${HOME}/.ssh/* ; do
-    [ -r $i.pub ] && eval $(keychain --eval --agents ssh -Q --quiet $i)
-done
+#. ~/.functions
+#eval `add_keys 1`
+#src
+source ~/.login
