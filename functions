@@ -1,16 +1,14 @@
 # source zsh stuff
 function src () {
     autoload -U zrecompile
-    [ -f $HOME/.zshrc ] && zrecompile -p $HOME/.zshrc
-    [ -f $HOME/.zlogout ] && zrecompile -p $HOME/.zlogout
-    [ -f $HOME/.zlogin ] && zrecompile -p $HOME/.zlogin
-    [ -f $HOME/.zcompdump ] && zrecompile -p $HOME/.zcompdump
-    [ -f /etc/profile ] && zrecompile -p /etc/profile
-    [ -f /etc/profile.env ] && zrecompile -p /etc/profile.env
-    for a in $fpath
-    do
-        [ -d $a ] && zrecompile -p $a.zwc $a/*
-    done
+    [[ -f $HOME/.zshrc ]] && zrecompile -p $HOME/.zshrc
+    [[ -f $HOME/.zlogout ]] && zrecompile -p $HOME/.zlogout
+    [[ -f $HOME/.zlogin ]] && zrecompile -p $HOME/.zlogin
+    [[ -f $HOME/.zcompdump ]] && zrecompile -p $HOME/.zcompdump
+    #for a in $fpath
+    #do
+    #    [ -d $a ] && zrecompile -p $a.zwc $a/*
+    #done
 }
 
 # Create a new directory and enter it
