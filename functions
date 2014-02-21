@@ -5,6 +5,8 @@ function src () {
     [[ -f $HOME/.zlogout ]] && zrecompile -p $HOME/.zlogout
     [[ -f $HOME/.zlogin ]] && zrecompile -p $HOME/.zlogin
     [[ -f $HOME/.zcompdump ]] && zrecompile -p $HOME/.zcompdump
+    #[[ -f /etc/profile ]] && zrecompile -p /etc/profile
+    #[[ -f /etc/profile.env ]] && zrecompile -p /etc/profile.env
     #for a in $fpath
     #do
     #    [ -d $a ] && zrecompile -p $a.zwc $a/*
