@@ -13,6 +13,7 @@ __description__ = "Manage your dotfiles."
 ls = lambda path: os.listdir(path)
 ls_abs = lambda path: [os.path.join(path, x) for x in os.listdir(path)]
 ln = lambda src, dst: os.symlink(src, dst)
+unlink = lambda src: os.unlink(src)
 
 def rm(path):
     try:
@@ -209,26 +210,38 @@ class Dotfiles(object):
             fromfile = os.path.join(self.options.get('source_dir'), from_file)
             tofile = os.path.join(self.options.get('dest_dir'), "." + from_file)
 
-            if os.path.lexists(tofile):
+            nodeExists = os.path.lexists(tofile)
+            if nodeExists:
                 print("\nFile %s exists already!" % tofile)
-                if not os.path.isdir(tofile):
-                    diff(fromfile, tofile)
-                if self.verbose:
-                    print("ln(%s, %s)" % (fromfile, tofile))
-                if self.interactive:
-                    if ask("Link %s->%s" % (fromfile, tofile)):
-                        rm(tofile)
-                        ln(fromfile, tofile)
-                else:
-                    rm(tofile)
-                    ln(fromfile, tofile)
+                if self.options.get('force', False):
+                    if self.interactive:
+                        if ask("Link %s->%s" % (fromfile, tofile)):
+                            if self.verbose:
+                                print("rm(%s)" % (tofile))
+                                print("ln(%s, %s)" % (fromfile, tofile))
+                            if os.path.islink(tofile):
+                                unlink(tofile)
+                            elif os.path.isdir(tofile):
+                                shutil.rmtree(tofile)
+                                ln(fromfile, tofile)
+                            else:
+                                rm(tofile)
+                                ln(fromfile, tofile)
+                        else:
+                            if self.verbose:
+                                print("rm(%s)" % (tofile))
+                                print("ln(%s, %s)" % (fromfile, tofile))
+                            rm(tofile)
+                            ln(fromfile, tofile)
             else:
-                if self.verbose:
-                    print("ln(%s, %s)" % (fromfile, tofile))
                 if self.interactive:
                     if ask("Link %s->%s" % (fromfile, tofile)):
+                        if self.verbose:
+                            print("ln(%s, %s)" % (fromfile, tofile))
                         ln(fromfile, tofile)
                 else:
+                    if self.verbose:
+                        print("ln(%s, %s)" % (fromfile, tofile))
                     ln(fromfile, tofile)
 
     def cmd_clean(self):
