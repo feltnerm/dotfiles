@@ -34,6 +34,12 @@ setopt autocd
 setopt auto_resume
 setopt extendedglob
 
+if [[ -n $LOGIN ]]; then
+    eval `add_keys 1`
+    src
+else
+    eval $(`add_keys`)
+fi
 
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
