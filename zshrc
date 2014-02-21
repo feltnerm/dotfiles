@@ -24,7 +24,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 COMPLETION_WAITING_DOTS=true
 CASE_SENSITIVE="true"
 DISABLE_CORRECTION="true"
-PLUGINS=(colored-man compleat extract git-extras git-flow git-fast gnu-utils node npm nyan osx rsync ssh-agent tmux vi-mode virtualenv virtualenvwrapper z tmuxinator)
+PLUGINS=(git-extras git-flow gnu-utils nyan tmux vi-mode virtualenvwrapper z tmuxinator)
 
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
