@@ -2,7 +2,6 @@
 	name = Mark Feltner
 [github]
 	user = feltnerm
-    password = !cat $HOME/.keychain/github-password | tr -d '\n'
 [pack]
 	threads = 0
 [push]
@@ -83,11 +82,12 @@
 
 # git.feltnerm.com
 [url "git@git.feltnerm.com:"]
-    insteadOf = "gh:"
+    insteadOf = "feltnerm:"
     pushInsteadOf = "feltnerm:"
 [url "git://git.feltnerm.com/"]
     insteadOf = "feltnerm:"
 
 [push]
         default = matching
-
+[credential]
+	helper = cache
