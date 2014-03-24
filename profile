@@ -53,8 +53,9 @@ fi
 # node + npm
 export NPM_PACKAGES=$HOME/.npm-packages
 [ ! -d "$NPM_PACKAGES" ] && mkdir $NPM_PACKAGES
-export NODE_PATH="$PATH:$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export NODE_PATH="$PATH:$NPM_PACKAGES/lib/node_modules:/usr/local/lib/node_modules:$NODE_PATH"
 export PATH="$PATH:$NPM_PACKAGES/bin"
+source $(brew --prefix nvm)/nvm.sh
 unset MANPATH
 MANPATH="$NPM_PACKAGES/share/man:%(manpath)"
 
