@@ -1,19 +1,160 @@
 "" vim:set ft=vim et tw=78 sw=4:
 
 
+""
+" General Settings
+""
+let mapleader=","           " comma as the map-leader
+
+set nocompatible            " don't inherit vi traits
+set dictionary+=/usr/share/dict/words
+if exists("+spelllang")
+    set spelllang=en_us
+endif
+set spellfile=~/.vim/spell/en.utf-8.add
+set shell=/bin/zsh          " probably safe to assume this ( <3 zsh )
+set pastetoggle=<F2>        " toggle paste
+"set paste                   " paste mode
+set ttyfast                 " fast terminal
+set number                  " show line numbers
+set ruler                   " show ruler at bottom of screen
+set autoread                " watch for file changes
+set lazyredraw              " Redraw when executing macros
+set mat=2                   " how many tenths of a second to blink
+set t_vb=                   "
+set tm=500                  "
+try                         " try and apply my mother tongue
+    lang en_US
+catch
+endtry
+set modeline               " read modeline from files
+set backupcopy=yes
+" set clipboard=unnamed
+set showcmd                 " Show (partial) command in status line
+if exists('+undofile')
+  set undofile
+endif
+
+" Regex
+set magic                   " set magic on, for regular expressions
+
+" History
+set history=700             " 200 lines of history
+set undolevels=1000         " 1000 undos
+
+" Bells
+set noerrorbells            " no ringa-dinga-ding-ding-dong
+set novisualbell            "
+
+" File Formats and Encodings
+set encoding=utf-8          " set encoding
+set ffs=unix,mac,dos        " use mac, dos and unix file formats
+set fileformats=unix,mac,dos
+
+" Directories for swp files
+set backupdir=~/.vim/backup
+set directory=~/.vim/tmp
+set undodir=~/.vim/undo
+
+""
+" UI Settings
+""
+set cmdheight=2
+set laststatus=2            " status bar
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%h\ \ \ Line:\ %l/%L:%c
+set more                    " use more prompt
+set scrolloff=1             " keep >= 1 lines above/below
+set sidescrolloff=1         " keep >= 1 lines left/right
+set timeoutlen=1200 " A little bit more time for macros
+set ttimeoutlen=50  " Make Esc work faster
+
+" Backspacing
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+" Searching
+set nohlsearch              " don't highlight search results
+set incsearch               " incremental search
+set ignorecase              " ignore case when searching
+set smartcase               " Éor use use artificial intelligence whilst searching
+
+" Tab completion
+set wildmenu
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,log/**,node_modules/**,target/**,tmp/**
+
+" Mouse
+set mouse=a
+if exists('$TMUX')
+    set ttymouse=xterm2
+endif
+
+""
+" Code Formatting
+""
+set nowrap
+set autoindent
+"set list                   " show whitespace
+"set listchars=tab:\ \ ,trail:Â· " show tabs
+
+" Highlight whitespace
+match ErrorMsg '\s\+$'
+autocmd BufWritePre * :%s/\s\+$//e
+" Show a subtle color when line is > 80 chars
+highlight OverLength ctermbg=red ctermfg=white guibg=#DC322F
+match OverLength /\%81v.\+/
+
+" Tabs
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+" set smarttab
+
+" Windows
+set splitbelow              " Split windows below
+
+set lbr
+set tw=500
+
+set ai                  " auto indent
+set si                  " smart indent
+set wrap                " wrap lines
+
+
+""
+" Visual Settings
+""
+" Default color scheme
+set colorcolumn=79
+set number
+set background=light
+set cursorline
+
 "" Options for vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
 "" General Plugins
-" Show VCS diffs
+" Airline
+"Bundle 'bling/vim-airline'
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline_theme = 'tomorrow'
+Bundle "Solarized"
+" UNIX Integration
+Bundle "tpope/vim-eunuch"
+" Show a diff in the sign column
 Bundle "mhinz/vim-signify"
-Bundle "edkolev/tmuxline.vim"
+" Use an editorconfig
 Bundle 'editorconfig/editorconfig-vim'
+" Use vim to manage projects
 Bundle 'shemerey/vim-project'
+" Motions on speed (hint: try <leader><leader> then a key)
 Bundle 'Lokaltog/vim-easymotion'
+" Ack
 Bundle 'ack.vim'
+" Parse @TODO
 Bundle 'TaskList.vim'
 " Undo on save - lifesaver!
 Bundle 'sjl/gundo.vim'
@@ -44,8 +185,6 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'SearchComplete'
 " Syntax checking
 Bundle 'scrooloose/syntastic'
-" let g:syntastic_python_checkers=['python', 'pyflakes', 'pep8']
-" let g:syntastic_javascript_checkers=['jshint']
 " tabbed buffers
 Bundle 'minibufexpl.vim'
 " VimWiki
@@ -81,16 +220,15 @@ Bundle 'uggedal/go-vim'
 
 "" Javascript
 Bundle 'pangloss/vim-javascript'
-Bundle 'briancollins/vim-jst'
-au FileType javascript set tabstop=4 shiftwidth=4 softtabstop=4
+" au FileType javascript set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 "" Node.JS
 Bundle 'node.js'
 
 "" CoffeeScript syntax
 Bundle 'kchmck/vim-coffee-script'
-au FileType coffee set tabstop=2 shiftwidth=2 softtabstop=2
-autocmd BufRead,BufNewFile *.coffee set sw=2 sts=2 et
+au FileType coffee set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd BufRead,BufNewFile *.coffee set sw=4 sts=4 et
 au BufNewFile,BufRead *.coffee set filetype=coffee
 
 "" HTML5
@@ -109,136 +247,6 @@ Bundle 'less.vim'
 au BufNewFile,BufRead *.less set filetype=less
 
 filetype plugin indent on
-""
-" General Settings
-""
-let mapleader=","           " comma as the map-leader
-
-set nocompatible			" don't inherit vi traits
-set dictionary+=/usr/share/dict/words
-if exists("+spelllang")
-    set spelllang=en_us
-endif
-set spellfile=~/.vim/spell/en.utf-8.add
-set shell=/bin/zsh			" probably safe to assume this ( <3 zsh )
-set pastetoggle=<F2>        " toggle paste
-"set paste                   " paste mode
-set ttyfast				    " fast terminal
-set number				    " show line numbers
-set ruler				    " show ruler at bottom of screen
-set autoread				" watch for file changes
-set lazyredraw			    " Redraw when executing macros
-set mat=2				    " how many tenths of a second to blink
-set t_vb=			    	"
-set tm=500				    "
-try					        " try and apply my mother tongue
-	lang en_US
-catch
-endtry
-set modeline               " read modeline from files
-set backupcopy=yes
-set clipboard=unnamed
-set showcmd                 " Show (partial) command in status line
-if exists('+undofile')
-  set undofile
-endif
-
-" Regex
-set magic				    " set magic on, for regular expressions
-
-" History
-set history=700				" 200 lines of history
-set undolevels=1000			" 1000 undos
-
-" Bells
-set noerrorbells			" no ringa-dinga-ding-ding-dong
-set novisualbell			"
-
-" File Formats and Encodings
-set encoding=utf-8			" set encoding
-set ffs=unix,mac,dos        " use mac, dos and unix file formats
-set fileformats=unix,mac,dos
-
-" Directories for swp files
-set backupdir=~/.vim/backup
-set directory=~/.vim/tmp
-
-""
-" UI Settings
-""
-set cmdheight=2
-set laststatus=2			" status bar
-set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%h\ \ \ Line:\ %l/%L:%c
-set more				    " use more prompt
-set scrolloff=1				" keep >= 1 lines above/below
-set sidescrolloff=1			" keep >= 1 lines left/right
-set timeoutlen=1200 " A little bit more time for macros
-set ttimeoutlen=50  " Make Esc work faster
-
-" Backspacing
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-
-" Searching
-set nohlsearch				" don't highlight search results
-set incsearch				" incremental search
-set ignorecase				" ignore case when searching
-set smartcase				" Éor use use artificial intelligence whilst searching
-
-" Tab completion
-set wildmenu
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,log/**,node_modules/**,target/**,tmp/**
-
-" Mouse
-set mouse=a
-if exists('$TMUX')
-    set ttymouse=xterm2
-endif
-
-""
-" Code Formatting
-""
-set nowrap
-set autoindent
-"set list 				    " show whitespace
-"set listchars=tab:\ \ ,trail:Â· " show tabs
-
-" Highlight whitespace
-match ErrorMsg '\s\+$'
-autocmd BufWritePre * :%s/\s\+$//e
-" Show a subtle color when line is > 80 chars
-highlight OverLength ctermbg=red ctermfg=white guibg=#DC322F
-match OverLength /\%81v.\+/
-
-" Tabs
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set smarttab
-
-" Windows
-set splitbelow              " Split windows below
-
-set lbr
-set tw=500
-
-set ai					" auto indent
-set si					" smart indent
-set wrap				" wrap lines
-
-
-""
-" Visual Settings
-""
-" Default color scheme
-set colorcolumn=79
-set number
-set background=light
-set cursorline
-colorscheme tomorrow
-
 """ Plugin Options
 "" vimwiki
 let g:vimwiki_list = [{ 'path': expand("~/Dropbox/vimwiki"), 'path_html': expand("~/Dropbox/vimwiki_html") }]
@@ -258,11 +266,12 @@ let Tlist_Ctags_Cmd='/usr/bin/ctags'
 """
 " Syntax highlighting
 """
-syntax enable				" enable highlighitng
-filetype off				" turn off filetype highlighting
-filetype plugin on			" turn on filetype plugins
+syntax enable               " enable highlighitng
+filetype off                " turn off filetype highlighting
+filetype plugin on          " turn on filetype plugins
 filetype indent on
-set showmatch 				" Show matching brackets
+set showmatch               " Show matching brackets
+colorscheme solarized
 
 """
 " Git
