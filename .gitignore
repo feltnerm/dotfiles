@@ -1,7 +1,7 @@
 *.swp
 
 cabal/*
-!cabal/config                                                                     
+!cabal/config
 
 config/*
 !config/beets/config.yaml
@@ -18,9 +18,8 @@ lein
 ncmpcpp
 !ncmpcpp/config
 
-vim/backup                                                                      
-vim/bundle                                                                      
+vim/undo/*
+vim/backup/*
 vim/bundle/*
 !vim/bundle/vundle
-vim/tmp                                                                         
 vim/tmp/*
