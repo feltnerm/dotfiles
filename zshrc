@@ -39,6 +39,8 @@ if [[ -n $LOGIN ]]; then
     src
 else
     eval $(`add_keys`)
+	export SSH_AUTH_SOCK=''
+	eval $(keychain --eval --quiet)
 fi
 
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
