@@ -115,7 +115,7 @@
         //"anotherCoolGlobal",
         //"iLoveDouglas"
     ],
-    "quotmark"      : "double", // Enforces consistencey of quotation marks.
+    "quotmark"      : "single", // Enforces consistencey of quotation marks.
     //"maxlen"        : "80",     // Enfore a maximum line length
     "indent"        : 4         // Specify indentation spacing
 }
