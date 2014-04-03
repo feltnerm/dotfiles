@@ -79,8 +79,17 @@ alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
 alias rmdstore='find . -name \*.DS_Store -exec rm -v {} \;'
 
 # tmux
-alias tmuxn="tmux new-session -s $(basename `pwd`)"
-alias tmuxa="tmux attach -t $(basename `pwd`)"
+#alias tmuxn="pwd | xargs basename | xargs tmux new-session -s"
+function tmuxn(){
+    [[ -z $1 ]] && tmux new-session -s $(basename `pwd`)
+    [[ -n $1 ]] && tmux new-session -s $1
+}
+
+#alias tmuxa="pwd | xargs baseneme | xargs tmux attach -t"
+function tmuxa(){
+    [[ -z $1 ]] && tmux attach -t $(basename `pwd`)
+    [[ -n $1 ]] && tmux attach -t $1
+}
 
 
 # Shortcuts
