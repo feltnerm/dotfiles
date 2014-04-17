@@ -40,17 +40,21 @@ alias ducks='du -cksh * | sort -rn | head -11'
 alias free='free -m'
 
 # list stuff
-if ls --color > /dev/null 2>&1; then
-    colorflag='--color'
-else
+#if ls --color > /dev/null 2>&1; then
+#    colorflag='--color'
+#else
     colorflag='-G'
-fi
+#fi
 alias l="ls -l ${colorflag}"
 alias ll="ls -lhf ${colorflag}"
 alias la="ls -lahf ${colorflag}"
 alias lh="ls -hf ${colorflag}"
 alias lsd="ls -l ${colorflag} | grep '^d'"
 alias ls="ls ${colorflag}"
+
+if _which k; then
+    alias lsk="k"
+fi
 
 alias pygmentize="pygmentize -O style=monokai -f console256 -g"
 # `cat` with pretty colors

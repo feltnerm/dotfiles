@@ -62,6 +62,9 @@ MANPATH="$NPM_PACKAGES/share/man:%(manpath)"
 # z
 [ -f "${HOME}/bin/z" ] && source "${HOME}/bin/z"
 
+# k
+[ -f "${HOME}/bin/k" ] && source "${HOME}/bin/k"
+
 # git-friendly
 [ -f "${HOME}/bin/git-friendly" ] && export PATH=$PATH:$HOME/bin/git-friendly
 
