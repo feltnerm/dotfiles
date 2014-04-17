@@ -322,11 +322,11 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+nmap <leader>t :CtrlP<CR>
 nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <Leader>tl :TaskList<CR>
-nmap <leader>t :CtrlP<CR>
-nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nmap <leader>g :GundoToggle<CR>
 "nmap <leader>g :GitGutterToggle<CR>
 nmap <leader>] :TagbarToggle<CR>
