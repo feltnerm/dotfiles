@@ -38,9 +38,6 @@ done
 [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
 [ -d "$HOME/.gem" ] &&  export GEM_HOME=$HOME/.gem PATH=$PATH:$GEM_HOME/bin
 
-# go
-[ -d "$HOME/.go" ] && export GOPATH=$HOME/.go
-
 # python
 [ -d "$HOME/.virtualenvs" ] && export WORKON_HOME=$HOME/.virtualenvs
 [ -d "$HOME/.pystartup" ] && export PYTHONSTARTUP=$HOME/.pystartup
@@ -58,6 +55,12 @@ export PATH="$PATH:$NPM_PACKAGES/bin"
 source $(brew --prefix nvm)/nvm.sh
 unset MANPATH
 MANPATH="$NPM_PACKAGES/share/man:%(manpath)"
+
+# go
+export GOPATH=~/.go-packages
+[ ! -d "$NPM_PACKAGES" ] && mkdir $NPM_PACKAGES
+export PATH="$PATH:$PATH:/usr/local/opt/go/libexec/bin"
+
 
 # z
 [ -f "${HOME}/bin/z" ] && source "${HOME}/bin/z"
