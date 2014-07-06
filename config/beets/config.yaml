@@ -19,7 +19,7 @@ ignore: .AppleDouble ._* *~ .DS_Store
 
 paths:
     default: $albumartist/$year - $album [$format]/$track - $title
-    singleton: $artist/$year - $album [$format]/$title
+    singleton: __SINGLES/$artist/$year - $album [$format]/$title
     comp: __COMPILATIONS/$year - $album [$format]/$track - $title - $artist
     albumtype:soundtrack: '%if{$composer,$composer,__SOUNDTRACKS}/$year - $album [$format]/$track - $title'
 
