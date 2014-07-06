@@ -128,7 +128,7 @@ set wrap                " wrap lines
 " Default color scheme
 set colorcolumn=79
 set number
-set background=light
+"" set background=dark
 set cursorline
 
 "" Options for vundle
@@ -271,7 +271,8 @@ filetype off                " turn off filetype highlighting
 filetype plugin on          " turn on filetype plugins
 filetype indent on
 set showmatch               " Show matching brackets
-colorscheme solarized
+"" colorscheme solarized
+"" colorscheme Tomorrow-Night-Eighties
 
 """
 " Git
