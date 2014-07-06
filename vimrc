@@ -166,6 +166,7 @@ Bundle 'ervandew/supertab'
 Bundle 'L9'
 " Ultimate Completion
 Bundle 'Shougo/neocomplcache'
+let g:neocomplete#enable_at_startup = 1
 " Git integration
 Bundle 'tpope/vim-fugitive'
 Bundle 'kien/ctrlp.vim'
@@ -216,7 +217,7 @@ Bundle "guns/vim-clojure-static"
 Bundle 'Rainbow-Parenthesis'
 
 "" Go
-Bundle 'uggedal/go-vim'
+Bundle 'fatih/vim-go'
 
 "" Javascript
 Bundle 'pangloss/vim-javascript'
@@ -261,7 +262,7 @@ let g:MiniBufExplMapCTabSwitchBufs = 1
 let g:MiniBufExplModSelTarget = 1
 
 "" cTags
-let Tlist_Ctags_Cmd='/usr/bin/ctags'
+"" let Tlist_Ctags_Cmd='/usr/bin/ctags'
 
 """
 " Syntax highlighting
@@ -332,3 +333,31 @@ nmap <leader>g :GundoToggle<CR>
 "nmap <leader>g :GitGutterToggle<CR>
 nmap <leader>] :TagbarToggle<CR>
 noremap <leader>q <Plug>TaskList<CR>
+
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : '~/.go-packages/bin/gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
