@@ -62,6 +62,10 @@ MANPATH="$NPM_PACKAGES/share/man:%(manpath)"
 
 # go
 export GOPATH=~/.go-packages
+export PATH=$PATH:$GOPATH/bin
+if _which brew; then
+    export GOROOT="$(brew --prefix go)/libexec"
+fi
 [ ! -d "$NPM_PACKAGES" ] && mkdir $NPM_PACKAGES
 export PATH="$PATH:$PATH:/usr/local/opt/go/libexec/bin"
 
