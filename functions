@@ -144,3 +144,17 @@ venv() {
         echo "Error: Not found: $activate"
     fi
 }
+
+# tmux
+function tmuxn(){
+    [[ -z $1 ]] && tmux new-session -s $(basename `pwd`)
+    [[ -n $1 ]] && tmux new-session -s $1
+}
+
+#alias tmuxa="pwd | xargs baseneme | xargs tmux attach -t"
+function tmuxa(){
+    [[ -z $1 ]] && tmux attach -t $(basename `pwd`)
+    [[ -n $1 ]] && tmux attach -t $1
+}
+
+

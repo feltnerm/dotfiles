@@ -82,20 +82,6 @@ alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
 # Recursively delete `.DS_Store` files
 alias rmdstore='find . -name \*.DS_Store -exec rm -v {} \;'
 
-# tmux
-#alias tmuxn="pwd | xargs basename | xargs tmux new-session -s"
-function tmuxn(){
-    [[ -z $1 ]] && tmux new-session -s $(basename `pwd`)
-    [[ -n $1 ]] && tmux new-session -s $1
-}
-
-#alias tmuxa="pwd | xargs baseneme | xargs tmux attach -t"
-function tmuxa(){
-    [[ -z $1 ]] && tmux attach -t $(basename `pwd`)
-    [[ -n $1 ]] && tmux attach -t $1
-}
-
-
 # Shortcuts
 alias g="git"
 alias v="vim"
