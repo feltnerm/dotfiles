@@ -247,6 +247,11 @@ Bundle 'hail2u/vim-css3-syntax'
 Bundle 'less.vim'
 au BufNewFile,BufRead *.less set filetype=less
 
+"" Scala
+Bundle 'derekwyatt/vim-scala'
+Bundle 'ktvoelker/sbt-vim'
+Bundle 'mpollmeier/vim-scalaConceal'
+
 filetype plugin indent on
 """ Plugin Options
 "" vimwiki
