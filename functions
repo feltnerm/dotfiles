@@ -128,3 +128,19 @@ gifify() {
     echo "proper usage: gifify <input_movie.mov>. You DO need to include extension."
   fi
 }
+
+# Python :D
+venv() {
+    local venv_name=$1
+    [[ -z $venv_name ]] && venv_name=$(basename `pwd`)
+
+    local activate="$WORKON_HOME/$venv_name/bin/activate"
+    local default_virtualenvs="~/.virtualenvs/$venv_name/bin/activate"
+    if [ -e "$activate" ] ; then
+        source "$activate"
+    elif [ -e "$default_virtualenvs" ] ; then
+        source "$default_virtualenvs"
+    else
+        echo "Error: Not found: $activate"
+    fi
+}
