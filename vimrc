@@ -219,6 +219,7 @@ Bundle 'scrooloose/syntastic'
 Bundle "Solarized"
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
+Bundle 'kien/rainbow_parentheses.vim'
 
 "" Project Management
 Bundle 'minibufexpl.vim'
@@ -260,10 +261,16 @@ Bundle 'jmcantrell/vim-virtualenv'
 "" Clojure
 "Bundle 'VimClojure'
 Bundle 'paredit.vim'
-Bundle "tpope/vim-fireplace"
+Bundle 'tpope/vim-leiningen'
+Bundle 'tpope/vim-projectionist'
+Bundle 'tpope/vim-dispatch'
 Bundle "tpope/vim-classpath"
 Bundle "guns/vim-clojure-static"
 Bundle 'Rainbow-Parenthesis'
+Bundle 'guns/vim-clojure-static'
+Bundle 'vim-clojure-highlight'
+Bundle 'tpope/vim-fireplace'
+Bundle 'tpope/vim-classpath'
 
 "" Go
 Bundle 'fatih/vim-go'
