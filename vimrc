@@ -108,6 +108,9 @@ set ttimeoutlen=50          " Make Esc work faster
 set showmatch               " Show matching brackets
 set splitbelow              " Split windows below
 set title " Show the filename in the window titlebar.
+set foldenable          " enable folding
+set foldlevelstart=10   " open most folds by default
+set foldmethod=indent   " fold based on indent level
 
 " Paste
 ""
@@ -402,6 +405,8 @@ map <C-l> <C-w>l
 
 " Find merge conflict markers
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+" space open/closes folds
+nnoremap <space> za
 
 vnoremap < <gv
 vnoremap > >gv
