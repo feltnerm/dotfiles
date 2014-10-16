@@ -283,6 +283,11 @@ Bundle 'pangloss/vim-javascript'
 "" Node.JS
 Bundle 'node.js'
 
+"" Groovy
+Bundle "groovy.vim"
+Bundle "tfnico/vim-gradle"
+
+
 "" CoffeeScript syntax
 Bundle 'kchmck/vim-coffee-script'
 
