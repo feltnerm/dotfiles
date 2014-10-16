@@ -1,5 +1,4 @@
-(comment {:user
-  {:plugins [[lein-tarsier "0.10.0"]
-             [lein-bikeshed "0.1.0"]
-    ]}
-})
+{:user
+ {:plugins [[cider/cider-nrepl "0.7.0"]
+            [lein-bikeshed "0.1.8"]
+            ]}}
