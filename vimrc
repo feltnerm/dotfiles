@@ -323,6 +323,9 @@ let g:airline_enable_branch     = 1
 let g:airline_enable_syntastic  = 1
 let g:airline#extensions#tabline#enabled=1
 
+" Eclim
+let g:EclimCompletionMethod = 'omnifunc'
+
 "
 "" vimwiki
 let g:vimwiki_list = [{ 'path': expand("~/Dropbox/vimwiki"), 'path_html': expand("~/Dropbox/vimwiki_html") }]
