@@ -131,7 +131,8 @@ set whichwrap+=<,>,h,l          " These keys should move to the next line
 " Tab completion
 set wildmenu                            " Enhanced command-line completion
 set wildmode=list:longest,list:full     " Good wildmode default mactching
-set wildignore+=*.o,*.obj,.git,*.rbc,node_modules/**
+set wildignore+=*.o,*.obj,.git,*.rbc,node_modules,build,indexes,out
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " Mouse
 set mouse=a                 " Use mouse in all modes
