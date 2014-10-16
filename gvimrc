@@ -19,8 +19,9 @@ if has("gui_macvim")
     macm Window.Select\ Previous\ Tab  key=<M-S-T>
     macm Window.Select\ Next\ Tab	   key=<M-T>
 
-    macmenu File.New\ Tab key=<D-t>
-    macmenu File.New\ Window key=<D-n>
+    "macmenu File.New\ Tab key=<D-t>
+	macm File.New\ Tab key=<nop>
+	nmap <D-t> :tabnew<CR>:NERDTreeToggle<CR>
     "map <D-t> :CtrlP<CR>
 
     " Larger Font
