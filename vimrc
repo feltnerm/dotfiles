@@ -393,11 +393,18 @@ autocmd FileType perl,python,ruby   inoremap <silent> <buffer> <C-X>! #!/usr/bin
 
 inoremap <C-X>^ <C-R>=substitute(&commentstring,' \=%s\>'," -*- ".&ft." -*- vim:set ft=".&ft." ".(&et?"et":"noet")." sw=".&sw." sts=".&sts.':','')<CR>
 
+map <F1> :Dispatch<CR>
+map <F2> :Dispatch
+
 "" Gradle
-map <F6> :w<CR> :compiler gradle<CR> :make clean <CR>
-map <F7> :w<CR> :compiler gradle<CR> :make test<CR>:cw 4<CR>
-map <F8> :w<CR> :compiler gradle<CR> :make compile<CR>:cw 4<CR>
-map <F9> :w<CR> :compiler gradle<CR> :make build<CR>:cw 4<CR>
+map <F6> :w<CR> :compiler gradle<CR> :Make clean<CR>:cw 4<CR>
+map <F7> :w<CR> :compiler gradle<CR> :Make test<CR>:cw 4<CR>
+map <F8> :w<CR> :compiler gradle<CR> :Make compile<CR>:cw 4<CR>
+map <F9> :w<CR> :compiler gradle<CR> :Make build<CR>:cw 4<CR>
+
+"" Javascript
+
+map <F8> :w<CR> :ProjectBuild<CR>
 
 " Key bindings, remappings, and such
 ""
