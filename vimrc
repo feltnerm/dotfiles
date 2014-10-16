@@ -258,6 +258,8 @@ Bundle 'terryma/vim-multiple-cursors'
 "" VimWiki
 Bundle 'vimwiki'
 
+Bundle 'SirVer/ultisnips'
+
 "" Autocomplete
 Bundle 'Valloric/YouCompleteMe'
 
