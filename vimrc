@@ -199,6 +199,7 @@ Bundle 'gmarik/vundle'
 "" Plugins
 Bundle 'L9'
 Bundle 'sjl/gundo.vim'
+Bundle 'airblade/vim-rooter'
 
 "" OS Integration
 Bundle "tpope/vim-eunuch"
