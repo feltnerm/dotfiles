@@ -241,6 +241,9 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'SearchComplete'
 " @TODO: get this working!
 Bundle 'FuzzyFinder'
+Bundle 'ervandew/supertab'
+Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 
 "" Moving Around
 " auto close parens, quotes, brackets, etc.
@@ -419,10 +422,32 @@ vnoremap > >gv
 " When you forget to sudo:
 cmap w!! w !sudo tee % >/dev/null
 
+" ag
+nmap <leader>a :Ag<
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 " CtrlP
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>t :CtrlP<CR>
 nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+let g:ctrlp_use_caching=0
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn)$'
+    \ }
+
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = {
+	\ 'types': {
+		\ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f -not -path ".git" -not -path ".git" -not -path ".git"'],
+		\ 2: ['.hg', 'hg --cwd %s locate -I .'],
+		\ },
+    \ 'f': 'ag %s -l --nocolor --hidden -g ""'
+	\ }
+
 " NERDTree - filesystem
 nmap <leader>d :NERDTreeToggle<CR>
 
