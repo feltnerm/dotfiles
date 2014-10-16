@@ -337,8 +337,12 @@ let g:airline#extensions#tabline#enabled=1
 "" Indentline
 let g:indentLine_char = '│'
 
+"" Delimitmate
+let delimitMate_expand_cr = 1
+
 " Eclim
 let g:EclimCompletionMethod = 'omnifunc'
+let g:EclimJavaValidate = 1
 
 "
 "" vimwiki
