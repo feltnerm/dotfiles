@@ -61,7 +61,7 @@ unset MANPATH
 MANPATH="$NPM_PACKAGES/share/man:%(manpath)"
 
 # go
-export GOPATH=~/.go-packages
+[ -d "$HOME/.go" ] && export GOPATH="$HOME/.go"
 export PATH=$PATH:$GOPATH/bin
 if _which brew; then
     export GOROOT="$(brew --prefix go)/libexec"
