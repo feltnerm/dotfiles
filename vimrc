@@ -389,6 +389,12 @@ autocmd FileType perl,python,ruby   inoremap <silent> <buffer> <C-X>! #!/usr/bin
 
 inoremap <C-X>^ <C-R>=substitute(&commentstring,' \=%s\>'," -*- ".&ft." -*- vim:set ft=".&ft." ".(&et?"et":"noet")." sw=".&sw." sts=".&sts.':','')<CR>
 
+"" Gradle
+map <F6> :w<CR> :compiler gradle<CR> :make clean <CR>
+map <F7> :w<CR> :compiler gradle<CR> :make test<CR>:cw 4<CR>
+map <F8> :w<CR> :compiler gradle<CR> :make compile<CR>:cw 4<CR>
+map <F9> :w<CR> :compiler gradle<CR> :make build<CR>:cw 4<CR>
+
 " Key bindings, remappings, and such
 ""
 nore ; :
