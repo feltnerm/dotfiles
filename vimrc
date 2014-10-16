@@ -206,13 +206,13 @@ Bundle 'airblade/vim-rooter'
 
 "" OS Integration
 Bundle "tpope/vim-eunuch"
-Bundle 'ack.vim'
 
 "" Git
 " Show a diff sign in the column
 Bundle "mhinz/vim-signify"
-Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'tpope/vim-fugitive'
+Bundle 'gregsexton/gitv'
 
 "" Code Formatting
 Bundle 'editorconfig/editorconfig-vim'
