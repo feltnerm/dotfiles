@@ -410,6 +410,10 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
 " Find merge conflict markers
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 " space open/closes folds
