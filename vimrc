@@ -485,6 +485,12 @@ let g:UltiSnipsExpandTrigger = '<C-j>'
 let g:UltiSnipsJumpForwardTrigger = '<C-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
+
+"" FuzzyFinder
+nmap <leader>fb :FufBufferTag<CR>
+nmap <leader>ff :FufFile<CR>
+nmap <leader>fd :FufDir<CR>
+
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
