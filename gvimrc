@@ -11,20 +11,17 @@ if has("gui_macvim")
 
     " OSX Specific Keybindings
     "macmenu &File.New\ Tab key=<nop>
-    map <D-t> :CommandT<CR>
-    map <D-p> :<C-U>CtrlP<CR>
     " Disable print shortcut for 'goto anything...'
-      macmenu File.Print key=<nop>
-
-    " Disable new tab shortcut for 'goto file...'
-    macmenu File.New\ Tab key=<nop>
+    macmenu File.Print key=<nop>
+    macmenu &File.New\ Tab key=<nop>
 
     " Move  with cmd+alt
-    macm Window.Select\ Previous\ Tab  key=<D-M-LEFT>
-    macm Window.Select\ Next\ Tab	   key=<D-M-RIGHT>
+    macm Window.Select\ Previous\ Tab  key=<M-S-T>
+    macm Window.Select\ Next\ Tab	   key=<M-T>
 
-    " Open new window via cmd+shift+n
-    macmenu File.New\ Window key=<D-N>
+    macmenu File.New\ Tab key=<D-t>
+    macmenu File.New\ Window key=<D-n>
+    "map <D-t> :CtrlP<CR>
 
     " Larger Font
     set antialias
