@@ -35,6 +35,7 @@
 [diff]
 	renameLimit = 0
 [core]
+    ignorecase = false
 	excludesfile = ~/.gitignore
 [alias]
     co = checkout
