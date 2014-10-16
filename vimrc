@@ -416,6 +416,8 @@ nnoremap E $
 
 " Find merge conflict markers
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
 " space open/closes folds
 nnoremap <space> za
 
