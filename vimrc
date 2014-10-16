@@ -420,6 +420,8 @@ map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 nnoremap <leader><space> :nohlsearch<CR>
 " space open/closes folds
 nnoremap <space> za
+" highlight last inserted text
+nnoremap gV `[v`]
 
 vnoremap < <gv
 vnoremap > >gv
