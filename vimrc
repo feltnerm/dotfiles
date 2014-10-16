@@ -224,6 +224,7 @@ Bundle "Solarized"
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
 Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'Yggdroot/indentLine'
 
 "" Project Management
 Bundle 'minibufexpl.vim'
@@ -331,6 +332,9 @@ let g:airline_theme='tomorrow'
 let g:airline_enable_branch     = 1
 let g:airline_enable_syntastic  = 1
 let g:airline#extensions#tabline#enabled=1
+
+"" Indentline
+let g:indentLine_char = '│'
 
 " Eclim
 let g:EclimCompletionMethod = 'omnifunc'
