@@ -323,10 +323,6 @@ Bundle 'vim.groovy'
 Bundle 'tfnico/vim-gradle'
 
 
-" To evaluate:
-" Use <tab> to tab-complete on context
-" Bundle 'ervandew/supertab'
-
 filetype plugin indent on
 
 " Plugin Options
@@ -356,6 +352,7 @@ let g:MiniBufExplMapWindowNavVim = 1
 let g:MiniBufExplMapWindowNavArrows = 1
 let g:MiniBufExplMapCTabSwitchBufs = 1
 let g:MiniBufExplModSelTarget = 1
+
 
 "" cTags
 "" let Tlist_Ctags_Cmd='/usr/bin/ctags'
