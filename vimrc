@@ -220,8 +220,9 @@ Bundle 'editorconfig/editorconfig-vim'
 Bundle 'scrooloose/syntastic'
 
 "" UI
-Bundle "Solarized"
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'flazz/vim-colorschemes'
+"Bundle 'Solarized'
+"Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'Yggdroot/indentLine'
