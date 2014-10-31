@@ -144,9 +144,9 @@ endif
 ""
 " Code Formatting
 ""
-set wrap
-set wrapmargin=80       " Number of characters from the right window border where wrapping starts
-set linebreak
+set nowrap
+"set wrapmargin=80       " Number of characters from the right window border where wrapping starts
+"set linebreak
 "set list                   " show whitespace
 "set listchars=tab:\ \ ,trail:Â· " show tabs
 
