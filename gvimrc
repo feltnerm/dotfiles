@@ -29,6 +29,5 @@ if has("gui_macvim")
     set guifont=Inconsolata-g\ for\ Powerline:h12
 
     set background=dark
-    colorscheme Tomorrow-Night-Eighties
-
+    colorscheme wombat256mod
 endif
