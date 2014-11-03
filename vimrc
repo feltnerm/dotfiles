@@ -164,9 +164,7 @@ set expandtab
 " Default color scheme
 set colorcolumn=79
 set number
-set background=dark
 set cursorline
-colorscheme Tomorrow-Night-Eighties " colorscheme solarized
 
 " Highlight code over 80 chars
 match ErrorMsg '\s\+$'
