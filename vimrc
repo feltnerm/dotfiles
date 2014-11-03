@@ -392,6 +392,11 @@ autocmd FileType perl,python,ruby   inoremap <silent> <buffer> <C-X>! #!/usr/bin
 
 inoremap <C-X>^ <C-R>=substitute(&commentstring,' \=%s\>'," -*- ".&ft." -*- vim:set ft=".&ft." ".(&et?"et":"noet")." sw=".&sw." sts=".&sts.':','')<CR>
 
+"" Java
+nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
+nnoremap <silent> <buffer> <leader>jd :JavaDocSearch -x declarations<cr>
+nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
+
 map <F1> :Dispatch<CR>
 map <F2> :Dispatch
 
