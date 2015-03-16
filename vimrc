@@ -276,10 +276,8 @@ Bundle 'tpope/vim-dispatch'
 Bundle "tpope/vim-classpath"
 Bundle "guns/vim-clojure-static"
 Bundle 'Rainbow-Parenthesis'
-Bundle 'guns/vim-clojure-static'
 Bundle 'vim-clojure-highlight'
 Bundle 'tpope/vim-fireplace'
-Bundle 'tpope/vim-classpath'
 
 "" Go
 Bundle 'fatih/vim-go'
@@ -289,13 +287,11 @@ Bundle 'Blackrush/vim-gocode'
 Bundle 'pangloss/vim-javascript'
 " au FileType javascript set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
+"" JSX
+Bundle 'mxw/vim-jsx'
+
 "" Node.JS
 Bundle 'node.js'
-
-"" Groovy
-Bundle "groovy.vim"
-Bundle "tfnico/vim-gradle"
-
 
 "" CoffeeScript syntax
 Bundle 'kchmck/vim-coffee-script'
@@ -506,6 +502,7 @@ let g:UltiSnipsExpandTrigger = '<C-j>'
 let g:UltiSnipsJumpForwardTrigger = '<C-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
+"" Supertab
 
 "" FuzzyFinder
 nmap <leader>fb :FufBufferTag<CR>

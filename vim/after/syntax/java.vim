@@ -5,7 +5,7 @@ if exists('g:no_java_conceal') || !has('conceal') || &enc != 'utf-8'
     finish
 endif
 
-syntax clear javaOperator
+"syntax clear javaOperator
 
 syntax match javaNiceOperator "->" conceal cchar=λ
 syntax match javaNiceOperator "==" conceal cchar=≟

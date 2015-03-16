@@ -50,3 +50,5 @@ fi
 ## unsetopt xtrace
 ## restore stderr to the value saved in FD 3
 #exec 2>&3 3>&-
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
