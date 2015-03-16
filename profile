@@ -39,8 +39,8 @@ fi
 # Default Paths (constants)
 #
 # ruby
-[ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
-[ -d "$HOME/.gem" ] &&  export GEM_HOME=$HOME/.gem PATH=$PATH:$GEM_HOME/bin
+# [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
+# [ -d "$HOME/.gem" ] &&  export GEM_HOME=$HOME/.gem PATH=$PATH:$GEM_HOME/bin
 
 # python
 [ -d "$HOME/.virtualenvs" ] && export WORKON_HOME=$HOME/.virtualenvs
@@ -94,3 +94,5 @@ export WIKI=$DROPBOX/vimwiki_html WIKI_SOURCE=$DROPBOX/vimwiki
 
 extra="${HOME}/.extra"
 [ -r "$extra" ] && [ -f "$extra" ] && source "$extra"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
