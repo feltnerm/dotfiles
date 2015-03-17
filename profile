@@ -94,3 +94,4 @@ export WIKI=$DROPBOX/vimwiki_html WIKI_SOURCE=$DROPBOX/vimwiki
 
 extra="${HOME}/.extra"
 [ -r "$extra" ] && [ -f "$extra" ] && source "$extra"
+export DOCKER_HOST=tcp://localhost:4243

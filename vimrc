@@ -144,9 +144,10 @@ endif
 ""
 " Code Formatting
 ""
-set wrap
-set wrapmargin=80       " Number of characters from the right window border where wrapping starts
-set linebreak
+"set wrap
+"set wrapmargin=80       " Number of characters from the right window border where wrapping starts
+set nowrap
+"set linebreak
 "set list                   " show whitespace
 "set listchars=tab:\ \ ,trail:Â· " show tabs
 
@@ -164,9 +165,10 @@ set expandtab
 " Default color scheme
 set colorcolumn=79
 set number
-set background=dark
+set background=light
 set cursorline
-colorscheme Tomorrow-Night-Eighties " colorscheme solarized
+"colorscheme wombat256mod
+" colorscheme solarized
 
 " Highlight code over 80 chars
 match ErrorMsg '\s\+$'
@@ -220,11 +222,12 @@ Bundle 'editorconfig/editorconfig-vim'
 Bundle 'scrooloose/syntastic'
 
 "" UI
-Bundle "Solarized"
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'flazz/vim-colorschemes'
+"Bundle "Solarized"
+"Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
-Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'Yggdroot/indentLine'
+Bundle 't9md/vim-macvim-transparency'
 
 "" Project Management
 Bundle 'minibufexpl.vim'
@@ -255,6 +258,10 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'terryma/vim-multiple-cursors'
 
+"" jekyll
+Bundle 'parkr/vim-jekyll'
+Bundle 'mitsuhiko/vim-jinja'
+
 "" VimWiki
 Bundle 'vimwiki'
 
@@ -274,13 +281,16 @@ Bundle 'paredit.vim'
 Bundle 'tpope/vim-leiningen'
 Bundle 'tpope/vim-projectionist'
 Bundle 'tpope/vim-dispatch'
-Bundle "tpope/vim-classpath"
 Bundle "guns/vim-clojure-static"
-Bundle 'Rainbow-Parenthesis'
-Bundle 'guns/vim-clojure-static'
 Bundle 'vim-clojure-highlight'
+Bundle 'Rainbow-Parenthesis'
+Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-classpath'
+Bundle 'fwolanski/vim-clojure-conceal'
+
+"" GLSL
+Bundle "tikhomirov/vim-glsl"
 
 "" Go
 Bundle 'fatih/vim-go'
@@ -306,12 +316,16 @@ Bundle 'othree/html5.vim'
 
 "" Markdown
 Bundle 'tpope/vim-markdown'
+Bundle 'wikimatze/hammer.vim'
+Bundle 'github/markup'
 
 "" CSS3
 Bundle 'hail2u/vim-css3-syntax'
 
 "" LessCSS
-Bundle 'less.vim'
+"Bundle 'less.vim'
+"Bundle 'less-syntax'
+Bundle 'groenewege/vim-less'
 
 "" Scala
 Bundle 'derekwyatt/vim-scala'
@@ -319,7 +333,7 @@ Bundle 'ktvoelker/sbt-vim'
 Bundle 'mpollmeier/vim-scalaConceal'
 
 "" Groovy
-Bundle 'vim.groovy'
+""Bundle 'vim.groovy'
 Bundle 'tfnico/vim-gradle'
 
 
@@ -333,6 +347,25 @@ let g:airline_theme='tomorrow'
 let g:airline_enable_branch     = 1
 let g:airline_enable_syntastic  = 1
 let g:airline#extensions#tabline#enabled=1
+
+"" Transparency
+let g:macvim_transparency_step = 10
+let g:macvim_transparency_roller = [0, 50, 100]
+
+" transparent
+nmap <D-Up>   <Plug>(macvim-transparency-inc)
+" opaque
+nmap <D-Down> <Plug>(macvim-transparency-dec)
+" roll from
+nmap <F10>    <Plug>(macvim-transparency-roll)
+
+imap <D-Up>   <Plug>(macvim-transparency-inc)
+imap <D-Down> <Plug>(macvim-transparency-dec)
+imap <F10>    <Plug>(macvim-transparency-roll)
+
+xmap <D-Up>   <Plug>(macvim-transparency-inc)
+xmap <D-Down> <Plug>(macvim-transparency-dec)
+xmap <F10>    <Plug>(macvim-transparency-roll)
 
 "" Indentline
 let g:indentLine_char = '│'
@@ -368,7 +401,7 @@ syntax enable               " enable highlighitng
 "filetype plugin on          " turn on filetype plugins
 "filetype indent on
 
-au BufNewFile,BufRead *.less set filetype=less
+""au BufNewFile,BufRead *.less set filetype=less
 "au BufNewFile,BufRead *.html set filetype=html
 "au FileType coffee set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 "autocmd BufRead,BufNewFile *.coffee set sw=4 sts=4 et
@@ -397,12 +430,21 @@ map <F1> :Dispatch<CR>
 map <F2> :Dispatch
 
 "" Gradle
-map <F6> :w<CR> :compiler gradle<CR> :Make clean<CR>:cw 4<CR>
-map <F7> :w<CR> :compiler gradle<CR> :Make test<CR>:cw 4<CR>
-map <F8> :w<CR> :compiler gradle<CR> :Make compile<CR>:cw 4<CR>
-map <F9> :w<CR> :compiler gradle<CR> :Make build<CR>:cw 4<CR>
+" map <F6> :w<CR> :compiler gradle<CR> :Make clean<CR>:cw 4<CR>
+" map <F7> :w<CR> :compiler gradle<CR> :Make test<CR>:cw 4<CR>
+" map <F8> :w<CR> :compiler gradle<CR> :Make compile<CR>:cw 4<CR>
+" map <F9> :w<CR> :compiler gradle<CR> :Make build<CR>:cw 4<CR>
 
-"" Javascript
+"" Overtone
+autocmd BufRead,BufNewFile *.clj    set filetype=clojure
+autocmd FileType clojure            nnoremap <leader>r :Require<CR>
+autocmd FileType clojure            nnoremap <leader>e :Eval<CR>
+autocmd FileType clojure            nnoremap <leader>E :%Eval<CR>
+autocmd FileType clojure            RainbowParenthesesToggle
+autocmd FileType clojure            RainbowParenthesesLoadRound
+autocmd FileType clojure            RainbowParenthesesLoadSquare
+autocmd FileType clojure            RainbowParenthesesLoadBraces
+""tocmd Javascript
 
 map <F8> :w<CR> :ProjectBuild<CR>
 

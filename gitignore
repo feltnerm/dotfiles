@@ -3,5 +3,4 @@
 .pydevproject
 .settings
 *.pyc
-build
 *.un~
