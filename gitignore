@@ -4,5 +4,4 @@ env.sh
 .pydevproject
 .settings
 *.pyc
-build
 *.un~

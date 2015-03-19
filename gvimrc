@@ -4,11 +4,6 @@ if has("gui_macvim")
     set lines=100
     set columns=160
 
-    " Shows great info in a statusbar at the bottom
-    " Bundle 'bling/vim-airline'
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline_theme = 'tomorrow'
-
     " OSX Specific Keybindings
     "macmenu &File.New\ Tab key=<nop>
     " Disable print shortcut for 'goto anything...'
@@ -27,6 +22,11 @@ if has("gui_macvim")
     " Larger Font
     set antialias
     set guifont=Inconsolata-g\ for\ Powerline:h12
+
+    " Shows great info in a statusbar at the bottom
+    " Bundle 'bling/vim-airline'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline_theme = 'tomorrow'
 
     set background=dark
     colorscheme wombat256mod

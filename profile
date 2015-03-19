@@ -96,3 +96,4 @@ extra="${HOME}/.extra"
 [ -r "$extra" ] && [ -f "$extra" ] && source "$extra"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export DOCKER_HOST=tcp://localhost:4243
