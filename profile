@@ -37,10 +37,6 @@ if _which mvim ; then
 fi
 
 # Default Paths (constants)
-#
-# ruby
-# [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
-# [ -d "$HOME/.gem" ] &&  export GEM_HOME=$HOME/.gem PATH=$PATH:$GEM_HOME/bin
 
 # python
 [ -d "$HOME/.virtualenvs" ] && export WORKON_HOME=$HOME/.virtualenvs
@@ -57,9 +53,10 @@ export NPM_PACKAGES=$HOME/.npm-packages
 export NODE_PATH="$PATH:$NPM_PACKAGES/lib/node_modules:/usr/local/lib/node_modules:$NODE_PATH"
 export PATH="$NPM_PACKAGES/bin:$PATH"
 export NVM_DIR=~/.nvm
-#source $(brew --prefix nvm)/nvm.sh
+source $(brew --prefix nvm)/nvm.sh
 unset MANPATH
 MANPATH="$NPM_PACKAGES/share/man:%(manpath)"
+export NVM_DIR=~/.nvm
 
 # go
 [ -d "$HOME/.go" ] && export GOPATH="$HOME/.go"
@@ -67,9 +64,16 @@ export PATH=$PATH:$GOPATH/bin
 if _which brew; then
     export GOROOT="$(brew --prefix go)/libexec"
 fi
-[ ! -d "$NPM_PACKAGES" ] && mkdir $NPM_PACKAGES
 export PATH="$PATH:$PATH:/usr/local/opt/go/libexec/bin"
 
+# https://github.com/kennethreitz/autoenv
+source $(brew --prefix autoenv)/activate.sh
+
+# rvm
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# docker
+export DOCKER_HOST=tcp://localhost:4243
 
 # z
 [ -f "${HOME}/bin/z" ] && source "${HOME}/bin/z"
@@ -94,6 +98,3 @@ export WIKI=$DROPBOX/vimwiki_html WIKI_SOURCE=$DROPBOX/vimwiki
 
 extra="${HOME}/.extra"
 [ -r "$extra" ] && [ -f "$extra" ] && source "$extra"
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export DOCKER_HOST=tcp://localhost:4243

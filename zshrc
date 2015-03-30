@@ -19,14 +19,13 @@ bindkey -v
 ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME=kphoen
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-COMPLETION_WAITING_DOTS=true
+COMPLETION_WAITING_DOTS="true"
 CASE_SENSITIVE="true"
-DISABLE_CORRECTION="true"
-PLUGINS=(git-extras git-flow gnu-utils nyan tmux vi-mode virtualenvwrapper z tmuxinator)
+
+PLUGINS=(git-extras git-flow osx gnu-utils nyan tmux vi-mode virtualenvwrapper z tmuxinator)
 
 # env shared between bash and zsh
 [ -f "$HOME/.profile" ] && [ -n "$PS1" ] && source "$HOME/.profile"
-
 
 ## Options
 setopt correctall
@@ -50,5 +49,3 @@ fi
 ## unsetopt xtrace
 ## restore stderr to the value saved in FD 3
 #exec 2>&3 3>&-
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
