@@ -307,6 +307,9 @@ Bundle 'mxw/vim-jsx'
 "" Node.JS
 Bundle 'node.js'
 
+"" YAML
+Bundle 'stephpy/vim-yaml'
+
 "" CoffeeScript syntax
 Bundle 'kchmck/vim-coffee-script'
 
