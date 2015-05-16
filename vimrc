@@ -617,7 +617,7 @@ let g:tagbar_type_go = {
         \ 'ctype' : 't',
         \ 'ntype' : 'n'
     \ },
-    \ 'ctagsbin'  : '~/.go-packages/bin/gotags',
+    \ 'ctagsbin'  : '~/.go/bin/gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
 
