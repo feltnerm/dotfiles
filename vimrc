@@ -81,14 +81,14 @@ set tm=500                  " timeout length for keypresses
 
 " Spellcheck
 ""
-set dictionary+=/usr/share/dict/words
-if exists("+spelllang")
-    set spelllang=en_us
-endif
-set spellfile=~/.vim/spell/en.utf-8.add
 try                         " try and apply my mother tongue
     lang en_US
 catch
+set dictionary+=/usr/share/dict/words
+set spelllang=en_us
+"if exists("+spelllang")
+"endif
+set spellfile=~/.vim/spell/en.utf-8.add
 endtry
 
 ""
@@ -166,7 +166,7 @@ set expandtab
 " Default color scheme
 set colorcolumn=79
 set number
-set background=light
+set background=dark
 set cursorline
 "colorscheme wombat256mod
 "colorscheme solarized

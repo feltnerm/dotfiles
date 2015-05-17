@@ -7,9 +7,6 @@
 # do stuff
 alias please='sudo'
 alias !='sudo'
-alias sctl='! systemctl'
-alias sless='! less'
-alias stail='! tail'
 
 # wtf have I done?
 alias aliases='less ~/.aliases'
@@ -35,7 +32,6 @@ alias cp='cp -i'
 # lol, ducks.
 alias ducks='du -cksh * | sort -rn | head -11'
 
-
 # how much memz?
 alias free='free -m'
 
@@ -43,7 +39,7 @@ alias free='free -m'
 #if ls --color > /dev/null 2>&1; then
 #    colorflag='--color'
 #else
-    colorflag='-G'
+local colorflag='-G'
 #fi
 alias l="ls -l ${colorflag}"
 alias ll="ls -lhf ${colorflag}"
@@ -65,14 +61,13 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en1"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 
-
 # OS stuff
 alias mv='mv -i'
 alias ports='lsof -i -P -sTCP:LISTEN'
 alias pm='ps ax | grep -v grep | grep '
 function psgrep() { ps axuf | grep -v grep | grep '$@' -i --color=auto; }
 
-# SsH
+# SSH
 alias ssh-keygen2='ssh-keygen -t rsa -C "$(whoami)@$(hostname)-$(date -u)"'
 
 # remove stuff
@@ -81,6 +76,8 @@ alias rm='rm -i'
 alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
 # Recursively delete `.DS_Store` files
 alias rmdstore='find . -name \*.DS_Store -exec rm -v {} \;'
+
+alias clean="rmpyc; rmdstore"
 
 # Shortcuts
 alias g="git"

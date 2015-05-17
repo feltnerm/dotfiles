@@ -1,5 +1,6 @@
 [user]
 	name = Mark Feltner
+	email = mfeltner@widen.com
 [github]
 	user = feltnerm
 [pack]
@@ -92,3 +93,5 @@
         default = matching
 [credential]
 	helper = cache
+[ghi]
+	token = b3b48cd16f50155997a92c2076f703bbd85f995a
