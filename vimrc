@@ -245,7 +245,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'SearchComplete'
 " @TODO: get this working!
 Bundle 'FuzzyFinder'
-Bundle 'ervandew/supertab'
 Bundle 'mileszs/ack.vim'
 Bundle 'rking/ag.vim'
 
