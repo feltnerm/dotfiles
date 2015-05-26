@@ -30,8 +30,8 @@ if has("gui_macvim")
 
     " Shows great info in a statusbar at the bottom
     " Bundle 'bling/vim-airline'
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline_theme = 'tomorrow'
+    "let g:airline#extensions#tabline#enabled = 1
+    "let g:airline_theme = 'tomorrow'
 
     set background=dark
     colorscheme wombat256mod
