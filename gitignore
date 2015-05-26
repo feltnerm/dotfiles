@@ -1,4 +1,5 @@
 env.sh
+.env
 .DS_STORE
 .project
 .pydevproject
