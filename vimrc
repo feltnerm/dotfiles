@@ -164,12 +164,11 @@ set expandtab
 " Visual Settings
 ""
 " Default color scheme
+colorschem default
 set colorcolumn=79
 set number
 set background=dark
 set cursorline
-"colorscheme wombat256mod
-"colorscheme solarized
 
 " Highlight code over 80 chars
 match ErrorMsg '\s\+$'
@@ -345,11 +344,10 @@ filetype plugin indent on
 " Plugin Options
 """
 
+colorscheme base16-atelierdune
+
 "" Airline
-let g:airline_theme='tomorrow'
-let g:airline_enable_branch     = 1
-let g:airline_enable_syntastic  = 1
-let g:airline#extensions#tabline#enabled=1
+let g:airline_theme='base16'
 
 "" Transparency
 let g:macvim_transparency_step = 10
