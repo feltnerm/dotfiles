@@ -274,6 +274,7 @@ Bundle 'Valloric/YouCompleteMe'
 "" Python
 Bundle 'mitsuhiko/vim-python-combined'
 Bundle 'davidhalter/jedi-vim'
+let g:jedi#completions_enabled = 0
 Bundle 'jmcantrell/vim-virtualenv'
 
 "" Clojure
@@ -556,14 +557,6 @@ nmap <leader>fb :FufBufferTag<CR>
 nmap <leader>ff :FufFile<CR>
 nmap <leader>fd :FufDir<CR>
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 au FileType py set textwidth=79 " PEP-8 Friendly
 
 " Haskell post write lint and check with ghcmod
