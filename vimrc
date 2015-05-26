@@ -226,6 +226,7 @@ Bundle 'flazz/vim-colorschemes'
 Bundle "Solarized"
 "Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
+Bundle 'edkolev/tmuxline.vim'
 Bundle 'Yggdroot/indentLine'
 Bundle 't9md/vim-macvim-transparency'
 
