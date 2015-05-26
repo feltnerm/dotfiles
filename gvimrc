@@ -33,6 +33,6 @@ if has("gui_macvim")
     "let g:airline#extensions#tabline#enabled = 1
     "let g:airline_theme = 'tomorrow'
 
-    set background=dark
-    colorscheme wombat256mod
+    "set background=dark
+    "colorscheme tomorrow
 endif
