@@ -31,9 +31,9 @@ set nohlsearch              " don't highlight search results
 set incsearch               " incremental search
 set ignorecase              " ignore case when searching
 set smartcase               " Éor use use artificial intelligence whilst searching
-set hlsearch " Highlight searches
-set incsearch " Highlight dynamically as pattern is typed.
-set laststatus=2 " Always show status line
+set hlsearch                " Highlight searches
+set incsearch               " Highlight dynamically as pattern is typed.
+set laststatus=2            " Always show status line
 
 " Backup
 ""
@@ -67,8 +67,8 @@ scriptencoding utf-8
 set encoding=utf-8 nobomb " BOM often causes trouble
 
 " Diff
-set diffopt=filler " Add vertical spaces to keep right and left aligned
-set diffopt+=iwhite " Ignore whitespace changes (focus on code changes)
+set diffopt=filler          " Add vertical spaces to keep right and left aligned
+set diffopt+=iwhite         " Ignore whitespace changes (focus on code changes)
 
 " Performance
 ""
@@ -107,19 +107,19 @@ set timeoutlen=1200         " A little bit more time for macros
 set ttimeoutlen=50          " Make Esc work faster
 set showmatch               " Show matching brackets
 set splitbelow              " Split windows below
-set title " Show the filename in the window titlebar.
-set foldenable          " enable folding
-set foldlevelstart=10   " open most folds by default
-set foldmethod=indent   " fold based on indent level
+set title                   " Show the filename in the window titlebar.
+set foldenable              " enable folding
+set foldlevelstart=10       " open most folds by default
+set foldmethod=indent       " fold based on indent level
 
 " Paste
 ""
-"set paste                   " paste mode
+"set paste                  " paste mode
 set pastetoggle=<F2>        " toggle paste with F2
 if has('clipboard')
-    if has('unnamedplus')  " When possible use + register for copy-paste
+    if has('unnamedplus')   " When possible use + register for copy-paste
       set clipboard=unnamedplus
-    else         " On mac and Windows, use * register for copy-paste
+    else                    " On mac and Windows, use * register for copy-paste
       set clipboard=unnamed
     endif
 endif
@@ -259,13 +259,14 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'terryma/vim-multiple-cursors'
 
-"" jekyll
-Bundle 'parkr/vim-jekyll'
 Bundle 'mitsuhiko/vim-jinja'
+
+Bundle 'Shougo/unite.vim'
 
 "" VimWiki
 Bundle 'vimwiki'
 
+"" Snippets
 Bundle 'SirVer/ultisnips'
 
 "" Autocomplete
@@ -391,7 +392,6 @@ let g:MiniBufExplMapWindowNavVim = 1
 let g:MiniBufExplMapWindowNavArrows = 1
 let g:MiniBufExplMapCTabSwitchBufs = 1
 let g:MiniBufExplModSelTarget = 1
-
 
 "" cTags
 "" let Tlist_Ctags_Cmd='/usr/bin/ctags'
