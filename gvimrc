@@ -1,6 +1,10 @@
 " GUI Options
 ""
 if has("gui_macvim")
+
+    " Autoload vimrc on changes
+    autocmd! bufwritepost .gvimrc source %
+
     set lines=100
     set columns=160
 
