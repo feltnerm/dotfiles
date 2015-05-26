@@ -447,6 +447,10 @@ map <F2> :Dispatch
 " map <F8> :w<CR> :compiler gradle<CR> :Make compile<CR>:cw 4<CR>
 " map <F9> :w<CR> :compiler gradle<CR> :Make build<CR>:cw 4<CR>
 
+"" Shellcheck quickfix
+au QuickFixCmdPost [^l]* nested cwindow
+au QuickFixCmdPost    l* nested lwindow
+
 "" Overtone
 autocmd BufRead,BufNewFile *.clj    set filetype=clojure
 autocmd FileType clojure            nnoremap <leader>r :Require<CR>
