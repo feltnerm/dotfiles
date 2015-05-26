@@ -25,7 +25,8 @@ if has("gui_macvim")
 
     " Larger Font
     set antialias
-    set guifont=Inconsolata-g\ for\ Powerline:h12
+    "set guifont=Inconsolata-g\ for\ Powerline:h13
+    set guifont=Meslo\ LG\ L\ DZ\ for\ Powerline:h13
 
     " Shows great info in a statusbar at the bottom
     " Bundle 'bling/vim-airline'
