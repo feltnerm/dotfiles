@@ -381,10 +381,16 @@ let g:EclimJavaValidate = 1
 
 "
 "" vimwiki
-let g:vimwiki_list = [{ 'path': expand("~/Dropbox/vimwiki"), 'path_html': expand("~/Dropbox/vimwiki_html") }]
-
-"" Powerline
-let g:Powerline_symbols = 'fancy'
+let g:vimwiki_list = [{
+            \ 'auto_export': 1,
+            \ 'path': expand("~/Dropbox/vimwiki"),
+            \ 'path_html': expand("~/Dropbox/vimwiki_html"),
+            \ 'template_path': expand("~/Dropbox/vimwiki/_templates"),
+            \ 'template_default': "default",
+            \ 'template_ext': ".html",
+            \ 'css_name': "_css/style.css",
+            \ 'nested_syntaxes': {'python': 'python'}
+            \ }]
 
 "" MiniBuf
 let g:MiniBufExplMapWindowNavVim = 1
