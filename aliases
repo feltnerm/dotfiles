@@ -6,7 +6,6 @@
 
 # do stuff
 alias please='sudo'
-alias !='sudo'
 
 # wtf have I done?
 alias aliases='less ~/.aliases'
