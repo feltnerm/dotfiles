@@ -20,7 +20,7 @@ _root() {
     [ "$EUID" = "0" ]
 }
 
-system_conf="${HOME}/.system-confs/$(hostname -s).conf"
+#system_conf="${HOME}/.system-confs/$(hostname -s).conf"
 for file in ~/.{aliases,exports,functions}; do
     [ -r "$file" ] && source "$file"
 done
