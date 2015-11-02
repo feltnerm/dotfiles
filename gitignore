@@ -6,3 +6,6 @@ env.sh
 .settings
 *.pyc
 *.un~
+birdseye.json
+.projectile
+.tern-port
