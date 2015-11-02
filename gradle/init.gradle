@@ -1,0 +1,17 @@
+allprojects {
+    apply plugin: 'eclipse'
+
+    tasks.withType(Test) {
+        if (System.getProperty('DEBUG', 'false') == 'true') {
+            jvmArgs '-Xdebug',
+                '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9009'
+        }
+    }
+
+    tasks.withType(JavaExec) {
+        if (System.getProperty('DEBUG', 'false') == 'true') {
+            jvmArgs '-Xdebug',
+                '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9009'
+        }
+    }
+}
