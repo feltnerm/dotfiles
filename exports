@@ -52,10 +52,6 @@ export CODE_HOME=$HOME/code
 export WORKON_HOME=$HOME/.virtualenvs
 export PYTHONSTARTUP=$HOME/.pystartup
 export PROJECT_HOME=$CODE_HOME
-if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
-    export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
 
 # go
 [ -d "$HOME/.go" ] && export GOPATH="$HOME/.go"
