@@ -34,10 +34,6 @@ done
 [ -d "/usr/local/bin" ] && export PATH=/usr/local/bin:$PATH
 [ -d "/usr/local/sbin" ] && export PATH=/usr/local/sbin:$PATH
 
-if _which mvim ; then
-    alias vim=mvim
-fi
-
 # Default Paths (constants)
 
 

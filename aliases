@@ -98,5 +98,9 @@ alias srgh="sr github"
 #alias spotify="osascript $HOME/bin/SpotifyControl/SpotifyControl.scpt"
 alias oracow="fortune | cowsay | lolcat"
 
+if _which mvim ; then
+    alias vim=mvim
+fi
+
 alias emacs="open -a /Applications/Emacs.app/Contents/MacOS/Emacs $@"
 alias vim="emacs"
