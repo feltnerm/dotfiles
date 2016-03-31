@@ -69,18 +69,18 @@
 # URL shorthands
 
 # github
-[url "git@github.com:"]
-        insteadOf = "gh:"
-        pushInsteadOf = "github:"
-        pushInsteadOf = "git://github.com/"
-[url "git://github.com/"]
-        insteadOf = "github:"
-[url "git@gist.github.com:"]
-        insteadOf = "gst:"
-        pushInsteadOf = "gist:"
-        pushInsteadOf = "git://gist.github.com/"
-[url "git://gist.github.com/"]
-        insteadOf = "gist:"
+#[url "git@github.com:"]
+#        insteadOf = "gh:"
+#        pushInsteadOf = "github:"
+#        pushInsteadOf = "git://github.com/"
+#[url "git://github.com/"]
+#        insteadOf = "github:"
+#[url "git@gist.github.com:"]
+#        insteadOf = "gst:"
+#        pushInsteadOf = "gist:"
+#        pushInsteadOf = "git://gist.github.com/"
+#[url "git://gist.github.com/"]
+#        insteadOf = "gist:"
 
 # git.feltnerm.com
 [url "git@git.feltnerm.com:"]
@@ -90,8 +90,12 @@
     insteadOf = "feltnerm:"
 
 [push]
-        default = matching
+  default = matching
 [credential]
 	helper = cache
 [ghi]
 	token = b3b48cd16f50155997a92c2076f703bbd85f995a
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f
