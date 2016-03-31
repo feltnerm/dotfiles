@@ -102,5 +102,6 @@ if _which mvim ; then
     alias vim=mvim
 fi
 
+alias vim="nvim"
+#alias emacs="emacsclient -nw $@"
 alias emacs="open -a /Applications/Emacs.app/Contents/MacOS/Emacs $@"
-alias vim="emacs"
