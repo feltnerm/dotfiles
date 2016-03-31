@@ -20,7 +20,6 @@
      themes-megapack
      auto-completion
      better-defaults
-     emacs-lisp
      (git :variables
           git-gutter-use-fringe t)
      github
@@ -39,6 +38,7 @@
      osx
 
      ; programming language and syntax support
+     emacs-lisp
      org
      go
      java
@@ -65,7 +65,7 @@
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(flycheck-clojure editorconfig nvm)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -99,10 +99,13 @@ before layers configuration."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         material
-                         molokai
-                         solarized-dark
-                         solarized-light
+                         cyberpunk
+                         gandalf
+                         ;;material
+                         ;;molokai
+                         ;;odersky
+                         ;;solarized-dark
+                         ;;solarized-light
                          )
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -156,7 +159,7 @@ before layers configuration."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'.
-   dotspacemacs-inactive-transparency 90
+   dotspacemacs-inactive-transparency 50
    ;; If non nil unicode symbols are displayed in the mode line.
    dotspacemacs-mode-line-unicode-symbols t
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
@@ -181,20 +184,28 @@ before layers configuration."
   ;; User initialization goes here
   )
 
-(defun dotspacemacs/config ()
+(defun dotspacemacs/user-config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+
+  ;; start server
+  ;;(server-start)
 
   ;; line numbers
   (global-linum-mode)
 
   ;; make emacs open files in existing frame
-  (setq ns-pop-up-frames nil)
-  (x-focus-frame nil)
+  ;;(setq ns-pop-up-frames nil)
+  ;;(x-focus-frame nil)
 
   ;; shell
-  (setq multi-term-program "/bin/zsh")
+  (setq multi-term-program "/usr/local/bin/zsh")
+  (setq-default dotspacemacs-configuration-layers
+                '(shell :variables shell-default-shell 'ansi-term))
+  (setq-default dotspacemacs-configuration-layers
+                '(shell :variables shell-default-term-shell "/usr/local/bin/zsh"))
+  (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
   ;; browser
   (setq browse-url-browser-function 'browse-url-generic
@@ -210,7 +221,72 @@ layers configuration."
 
   ;; rust
   (setq racer-rust-src-path "~/bin/rust/src/")
+
+  ;; groovy
+
+
+  ;; javascript
+  ;; flycheck-executable-find
+  ;; if node_modules exists in projectile-project-root
+  ;;   node_modules/.bin to front of exec-path
+  ;; (file-exists-p (concat projectile-project-root "node_modules"))
+  ;; flycheck-set-checker-executable
+  ;; (reqiure 'projectile)
+  ;; (add-to-list 'exec-path (concat (projectile-project-root) "/node_modules/.bin/"))
+  ;; (flycheck-add-mode 'javascript-eslint 'js-mode)
+
+  (defun feltnerm/setup-local-eslint ()
+    "If ESLint found in node_modules directory - use that for flycheck.
+Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
+    (interactive)
+    (let ((local-eslint (expand-file-name (concat (projectile-project-root) "node_modules/.bin/eslint"))))
+      (setq flycheck-javascript-eslint-executable
+            (and (file-exists-p local-eslint) local-eslint))))
+
+  (defun feltnerm/setup-local-standard ()
+    "If ESLint found in node_modules directory - use that for flycheck.
+Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
+    (interactive)
+    (let ((local-standard (expand-file-name (concat (projectile-project-root) "node_modules/.bin/standard"))))
+      (setq flycheck-javascript-standard-executable
+            (and (file-exists-p local-standard) local-standard))))
+
+  ;; disable jshint since we prefer eslint checking
+  ;; (setq-default flycheck-disabled-checkers
+  ;;               (append flycheck-disabled-checkers
+  ;;                       '(javascript-jscs)
+  ;;                       '(javascript-jshint)))
+
+  ;; use eslint with web-mode for jsx files
+  (add-to-list 'auto-mode-alist '("\\.jsx?$" . js2-jsx-mode))
+
+  (with-eval-after-load 'web-mode
+    ;; set reasonable indentation for web-mode
+    (setq web-mode-markup-indent-offset 2
+          web-mode-css-indent-offset 2
+          web-mode-code-indent-offset 2))
+
+  (with-eval-after-load 'js
+    (setq js-indent-level 2)
+    (setq js2-basic-offset 2)
+    (setq js2-strict-missing-semi-warning nil)
+    (setq js2-missing-semi-one-line-override nil))
+
+  (with-eval-after-load 'flycheck
+    (feltnerm/setup-local-eslint)
+    (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
+    (flycheck-add-mode 'javascript-eslint 'web-mode)
+    (flycheck-disable-checker 'javscript-standard)
+    (flycheck-disable-checker 'javscript-jshint)
+    (flycheck-disable-checker 'javscript-jscs)
 )
+    ;; (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
+    ;; (flycheck-add-mode 'javascript-eslint 'js-mode)
+    ;; (flycheck-add-mode 'javascript-eslint 'js2-mode)
+
+  (with-eval-after-load 'projectile
+    (add-hook 'projectile-after-switch-project-hook 'feltnerm/setup-local-eslint)
+    (add-hook 'projectile-after-switch-project-hook 'feltnerm/setup-local-standard)))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
