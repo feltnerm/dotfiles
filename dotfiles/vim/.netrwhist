@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/etc/laptop-mode/conf.d/board-specific'
+let g:netrw_dirhist_2='/home/mark/.wicd'
+let g:netrw_dirhist_3='/home/mark/.config'

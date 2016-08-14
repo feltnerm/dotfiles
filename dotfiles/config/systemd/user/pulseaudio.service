@@ -1,0 +1,13 @@
+[Unit]
+Description=PulseAudio 
+Before=sound.target
+
+[Service]
+Type=simple
+#BusName=org.pulseaudio.Server
+ExecStart=/usr/bin/pulseaudio
+ExecStop=/usr/bin/pulseaudio --kill
+Restart=always
+
+[Install]
+WantedBy=default.target

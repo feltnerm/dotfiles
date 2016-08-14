@@ -1,0 +1,14 @@
+[Unit]
+Description=Music Player Daemon
+After=sound.target
+
+[Service]
+#Type=simple
+ExecStart=/usr/bin/mpd
+ExecStop=/usr/bin/mpd --kill
+PIDFile=/home/%u/.mpd/mpd.pid
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target

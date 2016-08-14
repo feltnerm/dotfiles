@@ -1,0 +1,8 @@
+[Unit]
+Description=urxvt deamon
+
+[Service]
+ExecStart=/usr/bin/urxvtd -q -f -o
+
+[Install]
+WantedBy=multi-user.target

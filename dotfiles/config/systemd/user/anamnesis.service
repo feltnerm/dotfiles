@@ -1,0 +1,11 @@
+[Unit]
+Description = anamnesis
+After = multi-user.target.wants
+
+[Service]
+ExecStart = /usr/bin/anamnesis --start
+ExecStop = /usr/bin/anamnesis --stop
+Restart = always
+
+[Install]
+WantedBy = default.target

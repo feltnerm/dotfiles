@@ -1,0 +1,96 @@
+[user]
+	name = Mark Feltner
+[github]
+	user = feltnerm
+[pack]
+	threads = 0
+[push]
+    config = default
+    default = tracking
+[diff]
+    renames = true
+[branch]
+    autosetupmerge = true
+[status]
+    short = true
+    branch = true
+[color]
+	ui = auto
+    branch = auto
+    diff = auto
+    status = auto
+[color "branch"]
+    current = green bold
+    local = green
+    remote = yellow
+[color "diff"]
+    meta = blue bold
+    frag = blue
+    old = red bold
+    new = green bold
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = blue bold
+[diff]
+	renameLimit = 0
+[core]
+    ignorecase = false
+	excludesfile = ~/.gitignore
+[alias]
+    co = checkout
+    st = status
+    c = commit -am
+    ci = commit
+    br = branch
+    df = diff --color --color-words --abbrev
+    pl = pull
+    p = push
+    ps = push
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\'%s'\\' $@)\"' -
+    squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\'%s'\\' $@)\"' -
+    ri = rebase --interactive --autosquash))'
+	switch = !legit switch \"$@\"
+	branches = !legit branches
+	sprout = !legit sprout \"$@\"
+	unpublish = !legit unpublish \"$@\"
+	harvest = !legit harvest \"$@\"
+	sync = !legit sync \"$@\"
+	publish = !legit publish \"$@\"
+	graft = !legit graft \"$@\"
+
+# url aliases
+[merge]
+        # Include summaries of merged commits in newly created merge commit messages
+        log = true
+
+# URL shorthands
+
+# github
+[url "git@github.com:"]
+        insteadOf = "gh:"
+        pushInsteadOf = "github:"
+        pushInsteadOf = "git://github.com/"
+[url "git://github.com/"]
+        insteadOf = "github:"
+[url "git@gist.github.com:"]
+        insteadOf = "gst:"
+        pushInsteadOf = "gist:"
+        pushInsteadOf = "git://gist.github.com/"
+[url "git://gist.github.com/"]
+        insteadOf = "gist:"
+
+# git.feltnerm.com
+[url "git@git.feltnerm.com:"]
+    insteadOf = "feltnerm:"
+    pushInsteadOf = "feltnerm:"
+[url "git://git.feltnerm.com/"]
+    insteadOf = "feltnerm:"
+
+[push]
+        default = matching
+[credential]
+	helper = cache
+[ghi]
+	token = b3b48cd16f50155997a92c2076f703bbd85f995a
