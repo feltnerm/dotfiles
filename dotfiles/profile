@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-# profile
-# loaded by login shells (sourced via zprofile for zsh). used mainly to setup environment variables

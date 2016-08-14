@@ -1,0 +1,76 @@
+#!/bin/bash
+# This script will generate a secure ssh-key for ya
+#
+# For reasons why you should encrypt your key:
+# http://martin.kleppmann.com/2013/05/24/improving-security-of-ssh-private-keys.html
+#
+# PKCS8 is broken on mac openssl so we have to `brew link openssl --force`
+# Going to have to enter passwords manually until I can figure out the error
+# with OpenSSL
+##
+
+function usage {
+    echo 'Usage: ssh-keygen3 [file]'
+    exit 1
+}
+
+[[ $1 == '-h' ]] && usage
+
+path="$1"
+password="$2"
+[[ -z $path ]] && echo 'Save key as: ' && read path
+[[ -z $password ]] && echo 'Enter password: ' && read -s password
+
+function generate_key {
+# generate the key using ssh-keygen.
+
+    local KEY_TYPE='rsa'
+    local KEY_LENGTH=2048
+    local signature="$(whoami)@$(hostname -s)-$(date +'%s')"
+
+    ssh-keygen -t $KEY_TYPE -b $KEY_LENGTH -N $password -f $path -C $signature
+    [[ -r $path ]]
+}
+
+function encrypt_key {
+# Next we run it through openssl to encrypt it. It still works, just better.
+    openssl pkcs8 -topk8 -v2 des3 \
+    -in $path.unencrypted -passin pass:$password \
+    -out $path -passout pass:$password
+#    -in $path.unencrypted \
+#    -in $path.unencrypted -passin pass:$password \
+#    -in $path.unencrypted -passin pass:$password \
+#    -out $path -passout pass:$password && \
+}
+
+function add_key_to_ssh {
+    chmod 600 $path
+    ssh-add $path
+    cp "$path" "$path.pub" $HOME/.ssh/
+}
+
+function add_key_to_dropbox {
+    if [[ -d $DROPBOX ]]; then
+        local pth=$DROPBOX/keys/$(basename $path)
+        mkdir -p $pth && cp "$path" "$path.pub" $pth/
+    fi
+}
+
+function echo_keys {
+    echo "Private key @ $path"
+    cat "$path"
+    echo "Pubkey @ $path.pub"
+    cat "$path.pub"
+}
+
+function clean {
+    for f in "$path.unencrypted" "$path" "$path.pub"; do
+        rm -rf $f
+    done
+}
+
+generate_key
+#encrypt_key
+add_key_to_ssh
+add_key_to_dropbox
+echo_keys
