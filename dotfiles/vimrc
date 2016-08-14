@@ -226,9 +226,12 @@ Bundle 'flazz/vim-colorschemes'
 Bundle "Solarized"
 "Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'Yggdroot/indentLine'
 Bundle 't9md/vim-macvim-transparency'
+
+colorscheme Tomorrow-Night-Eighties
 
 "" Project Management
 Bundle 'minibufexpl.vim'
@@ -332,7 +335,6 @@ Bundle 'groenewege/vim-less'
 
 "" Scala
 Bundle 'derekwyatt/vim-scala'
-Bundle 'ktvoelker/sbt-vim'
 Bundle 'mpollmeier/vim-scalaConceal'
 
 "" Groovy
@@ -345,7 +347,6 @@ filetype plugin indent on
 " Plugin Options
 """
 
-colorscheme base16-atelierdune
 
 "" Airline
 let g:airline_theme='base16'
