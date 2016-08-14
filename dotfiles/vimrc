@@ -198,9 +198,9 @@ endif
 " --------------------------------------------------
 
 " VUNDLE
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+Bundle 'VundleVim/Vundle.vim'
 
 "" Plugins
 Bundle 'L9'
@@ -339,7 +339,7 @@ Bundle 'mpollmeier/vim-scalaConceal'
 ""Bundle 'vim.groovy'
 Bundle 'tfnico/vim-gradle'
 
-
+call vundle#end()            " required
 filetype plugin indent on
 
 " Plugin Options
