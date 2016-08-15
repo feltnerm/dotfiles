@@ -1,4 +1,4 @@
-set --global --export GOPATH="$HOME/.go"
+set --global --export GOPATH "$HOME/.go"
 
 # _is_osx && export GOROOT="$(brew --prefix go)/libexec"
 
