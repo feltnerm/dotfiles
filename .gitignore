@@ -5,14 +5,14 @@
 cabal/*
 !cabal/config
 
-config/*
-!config/beets/config.yaml
-!config/Terminal
-!config/archey3.cfg
-!config/systemd
-config/systemd/user/default.target.wants
-config/systemd/user/multi-user.target.wants
-!config/user-dirs.dirs
+/*dotfiles/config/**/
+/*!config/beets/config.yaml*/
+/*!config/Terminal*/
+/*!config/archey3.cfg*/
+/*!config/systemd*/
+/*config/systemd/user/default.target.wants*/
+/*config/systemd/user/multi-user.target.wants*/
+/*!config/user-dirs.dirs*/
 
 lein
 !lein/profiles.clj
@@ -20,8 +20,8 @@ lein
 ncmpcpp
 !ncmpcpp/config
 
-vim/undo/*
-vim/backup/*
-vim/bundle/*
-!vim/bundle/vundle
-vim/tmp/*
+dotfiles/vim/undo/*
+dotfiles/vim/backup/*
+dotfiles/vim/bundle/*
+dotfiles/vim/bundle/vundle
+dotfiles/vim/tmp/*
