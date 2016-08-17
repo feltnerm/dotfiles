@@ -15,7 +15,8 @@ silent function! WINDOWS()
     return  (has('win16') || has('win32') || has('win64'))
 endfunction
 
-let mapleader=","           " comma as the map-leader
+"let mapleader=","           " comma as the map-leader
+map <space> <leader>
 
 " Autoload vimrc on changes
 autocmd! bufwritepost .vimrc source %
@@ -494,8 +495,6 @@ nnoremap E $
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
-" space open/closes folds
-nnoremap <space> za
 " highlight last inserted text
 nnoremap gV `[v`]
 
