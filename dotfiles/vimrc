@@ -270,7 +270,7 @@ Bundle 'vimwiki'
 Bundle 'SirVer/ultisnips'
 
 "" Autocomplete
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 
 "" Python
 Bundle 'mitsuhiko/vim-python-combined'
@@ -435,7 +435,7 @@ inoremap <C-X>^ <C-R>=substitute(&commentstring,' \=%s\>'," -*- ".&ft." -*- vim:
 "" Java
 nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
 nnoremap <silent> <buffer> <leader>jd :JavaDocSearch -x declarations<cr>
-nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
+"nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
 
 map <F1> :Dispatch<CR>
 map <F2> :Dispatch
@@ -447,8 +447,8 @@ map <F2> :Dispatch
 " map <F9> :w<CR> :compiler gradle<CR> :Make build<CR>:cw 4<CR>
 
 "" Shellcheck quickfix
-au QuickFixCmdPost [^l]* nested cwindow
-au QuickFixCmdPost    l* nested lwindow
+"au QuickFixCmdPost [^l]* nested cwindow
+"au QuickFixCmdPost    l* nested lwindow
 
 "" Overtone
 autocmd BufRead,BufNewFile *.clj    set filetype=clojure
