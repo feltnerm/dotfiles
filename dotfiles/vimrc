@@ -15,7 +15,8 @@ silent function! WINDOWS()
     return  (has('win16') || has('win32') || has('win64'))
 endfunction
 
-let mapleader=","           " comma as the map-leader
+"let mapleader=","           " comma as the map-leader
+map <space> <leader>
 
 " Autoload vimrc on changes
 autocmd! bufwritepost .vimrc source %
@@ -137,9 +138,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 " Mouse
 set mouse=a                 " Use mouse in all modes
 set mousehide               " Hide the mouse cursor while typing
-if exists('$TMUX')
-    set ttymouse=xterm2
-endif
 
 ""
 " Code Formatting
@@ -272,7 +270,7 @@ Bundle 'vimwiki'
 Bundle 'SirVer/ultisnips'
 
 "" Autocomplete
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 
 "" Python
 Bundle 'mitsuhiko/vim-python-combined'
@@ -437,7 +435,7 @@ inoremap <C-X>^ <C-R>=substitute(&commentstring,' \=%s\>'," -*- ".&ft." -*- vim:
 "" Java
 nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
 nnoremap <silent> <buffer> <leader>jd :JavaDocSearch -x declarations<cr>
-nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
+"nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
 
 map <F1> :Dispatch<CR>
 map <F2> :Dispatch
@@ -449,8 +447,8 @@ map <F2> :Dispatch
 " map <F9> :w<CR> :compiler gradle<CR> :Make build<CR>:cw 4<CR>
 
 "" Shellcheck quickfix
-au QuickFixCmdPost [^l]* nested cwindow
-au QuickFixCmdPost    l* nested lwindow
+"au QuickFixCmdPost [^l]* nested cwindow
+"au QuickFixCmdPost    l* nested lwindow
 
 "" Overtone
 autocmd BufRead,BufNewFile *.clj    set filetype=clojure
@@ -494,8 +492,6 @@ nnoremap E $
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
-" space open/closes folds
-nnoremap <space> za
 " highlight last inserted text
 nnoremap gV `[v`]
 
