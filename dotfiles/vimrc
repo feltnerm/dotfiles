@@ -138,9 +138,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 " Mouse
 set mouse=a                 " Use mouse in all modes
 set mousehide               " Hide the mouse cursor while typing
-if exists('$TMUX')
-    set ttymouse=xterm2
-endif
 
 ""
 " Code Formatting
