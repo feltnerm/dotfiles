@@ -1,4 +1,7 @@
 function tmuxn
-  eval [[ -z $1 ]]; and tmux new-session -s (basename (pwd))
-  eval [[ -n $1 ]]; and tmux new-session -s $1
+  if count $argv > /dev/null
+      tmux new-session -s $argv
+  else
+      tmux new-session -s (basename (pwd))
+  end
 end
