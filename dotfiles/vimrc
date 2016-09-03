@@ -662,7 +662,7 @@ map qq <Nop>hen you forget to sudo:
 nnoremap <Leader>P :Unite -start-insert -no-split -no-resize file_rec/async<cr>
 nnoremap <Leader>p :UniteWithProjectDir -start-insert -no-split -no-resize file_rec/async<cr>
 nnoremap <Leader>f :Unite -start-insert -no-split -no-resize file file/new directory/new<cr>
-nnoremap <Leader>b :Unite -start-insert -no-split -no-resize buffer<cr>
+nnoremap <Leader>b :Unite -start-insert -no-split -no-resize buffer bookmark<cr>
 nnoremap <Leader>y :Unite -start-insert -no-split -no-resize history/yank<cr>
 nnoremap <Leader>o :Unite -start-insert -no-split -no-resize outline<cr>
 nnoremap <Leader>/ :Unite -start-insert -no-split -no-resize -no-empty grep:.<cr>
