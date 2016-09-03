@@ -164,6 +164,11 @@ syntax enable
 
 let g:rustfmt_autosave = 1
 
+"  --
+"  NERDCommenter
+"  --
+let g:NERDSpaceDelims = 1
+
 " --
 " NERDTree - filesystem
 " --
