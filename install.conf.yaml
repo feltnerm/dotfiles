@@ -8,6 +8,7 @@
 
 - link:
     ~/bin: dotfiles/bin
+    ~/.agignore: dotfiles/agignore
     ~/.config/beets: dotfiles/config/beets
     ~/.config/fish/config.fish: dotfiles/config/fish/config.fish
     ~/.config/fish/functions: dotfiles/config/fish/functions
