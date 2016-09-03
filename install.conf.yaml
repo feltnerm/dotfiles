@@ -2,37 +2,37 @@
     link:
       relink: true
       create: true
-      
+
 
 - clean: ['~']
 
 - link:
-    ~/bin: dotfiles/bin
     ~/.agignore: dotfiles/agignore
+    ~/.config/archey3.cfg: dotfiles/config/archey3.cfg
     ~/.config/beets: dotfiles/config/beets
     ~/.config/fish/config.fish: dotfiles/config/fish/config.fish
     ~/.config/fish/functions: dotfiles/config/fish/functions
     ~/.config/fish/lib: dotfiles/config/fish/lib
     ~/.config/systemd: dotfiles/config/systemd
-    ~/.config/archey3.cfg: dotfiles/config/archey3.cfg
     ~/.config/user-dirs.dirs: dotfiles/config/user-dirs.dirs
-    ~/.gradle: dotfiles/gradle
-    ~/.lein: dotfiles/lein
-    ~/.vim: dotfiles/vim
     ~/.editorconfig: dotfiles/editorconfig
     ~/.eslintrc: dotfiles/eslintrc
     ~/.gitconfig: dotfiles/gitconfig
     ~/.gitignore: dotfiles/gitignore
+    ~/.gradle: dotfiles/gradle
     ~/.hushlogin: dotfiles/hushlogin
     ~/.inputrc: dotfiles/inputrc
+    ~/.lein: dotfiles/lein
     ~/.login: dotfiles/login
     ~/.logout: dotfiles/logout
     ~/.ptconfig.toml: dotfiles/ptconfig.toml
     ~/.spacemacs: dotfiles/spacemacs
     ~/.surfraw.conf: dotfiles/surfraw.conf
     ~/.tmux.conf: dotfiles/tmux.conf
+    ~/.vim: dotfiles/vim
     ~/.vimrc: dotfiles/vimrc
     ~/.wgetrc: dotfiles/wgetrc
+    ~/bin: dotfiles/bin
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
