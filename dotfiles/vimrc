@@ -16,6 +16,7 @@ Bundle 'tpope/vim-sensible'
 
 Bundle 'Shougo/unite-outline'
 Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/neoyank.vim'
 Bundle 'tacroe/unite-mark'
 Bundle 'unite-colorscheme'
 if has("nvim")
