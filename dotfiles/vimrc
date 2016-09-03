@@ -49,6 +49,7 @@ Bundle 'YankRing.vim'
 "  Project
 "  --
 Bundle 'scrooloose/nerdtree'
+Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'shemerey/vim-project'
 
 "  --
