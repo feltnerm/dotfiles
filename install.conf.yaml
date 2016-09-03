@@ -27,6 +27,7 @@
     ~/.inputrc: dotfiles/inputrc
     ~/.login: dotfiles/login
     ~/.logout: dotfiles/logout
+    ~/.ptconfig.toml: dotfiles/ptconfig.toml
     ~/.spacemacs: dotfiles/spacemacs
     ~/.surfraw.conf: dotfiles/surfraw.conf
     ~/.tmux.conf: dotfiles/tmux.conf
