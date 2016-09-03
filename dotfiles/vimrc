@@ -122,11 +122,11 @@ Bundle 'tpope/vim-projectionist'
 Bundle 'vim-clojure-highlight'
 
 "" Javascript
-"Bundle 'pangloss/vim-javascript'
+Bundle 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript-jsx'] }
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'mxw/vim-jsx'
+Bundle 'mxw/vim-jsx', { 'for': ['Javascript', 'Javascript-jsx'] }
 Bundle 'node.js'
-Plugin 'othree/yajs.vim'
+" Plugin 'othree/yajs.vim'
 
 "" Markdown
 Bundle 'github/markup'
