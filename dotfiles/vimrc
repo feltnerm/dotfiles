@@ -659,7 +659,8 @@ map Q <Nop>
 map qq <Nop>hen you forget to sudo:
 
 " Unite
-nnoremap <Leader>p :Unite -start-insert -no-split -no-resize file_rec/async<cr>
+nnoremap <Leader>P :Unite -start-insert -no-split -no-resize file_rec/async<cr>
+nnoremap <Leader>p :UniteWithProjectDir -start-insert -no-split -no-resize file_rec/async<cr>
 nnoremap <Leader>f :Unite -start-insert -no-split -no-resize file file/new directory/new<cr>
 nnoremap <Leader>b :Unite -start-insert -no-split -no-resize buffer<cr>
 nnoremap <Leader>y :Unite -start-insert -no-split -no-resize history/yank<cr>
