@@ -5,156 +5,174 @@
 set nocompatible
 
 "  --
-"  Vundle
+"  Plugins
 "  --
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-Bundle 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
-Bundle 'Shougo/vimproc.vim'
-Bundle 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
 
-Bundle 'Shougo/unite-outline'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neoyank.vim'
-Bundle 'tacroe/unite-mark'
-Bundle 'unite-colorscheme'
-Bundle 'lambdalisue/unite-grep-vcs'
-if has("nvim")
-    Bundle 'Shougo/deoplete.nvim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/unite-outline'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neoyank.vim'
+Plug 'tacroe/unite-mark'
+Plug 'unite-colorscheme'
+Plug 'lambdalisue/unite-grep-vcs'
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'carlitux/deoplete-ternjs'
+    Plug 'zchee/deoplete-jedi'
 else
-    Bundle 'Shougo/neocomplete.vim'
+    Plug 'Shougo/neocomplete.vim'
 endif
-Bundle 'Raimondi/delimitMate'
-Bundle 'SearchComplete'
-Bundle 'TaskList.vim'
-Bundle 'airblade/vim-rooter'
-Bundle 'dwieeb/vim-matchit'
-Bundle 'kana/vim-textobj-indent'
-Bundle 'kana/vim-textobj-user'
-Bundle 'kshenoy/vim-signature'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'sjl/gundo.vim'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-obsession'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'unblevable/quick-scope'
-Bundle 'wellle/targets.vim'
-Bundle 'YankRing.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'SearchComplete'
+Plug 'TaskList.vim'
+Plug 'airblade/vim-rooter'
+Plug 'dwieeb/vim-matchit'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-user'
+Plug 'kshenoy/vim-signature'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'scrooloose/nerdcommenter'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'unblevable/quick-scope'
+Plug 'wellle/targets.vim'
+Plug 'YankRing.vim'
 
 "  --
 "  Project
 "  --
-Bundle 'scrooloose/nerdtree'
-Bundle 'Xuyuanp/nerdtree-git-plugin'
-Bundle 'shemerey/vim-project'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'shemerey/vim-project'
 
 "  --
 "  Git plugins
 "  --
-Bundle "mhinz/vim-signify"
-Bundle 'airblade/vim-gitgutter'
-Bundle 'gregsexton/gitv'
-Bundle 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/gitv'
+Plug 'tpope/vim-fugitive'
 
 "  --
 "  Code Formatting
 "  --
-Bundle 'editorconfig/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
 
 "  --
 "  UI
 "  --
-Bundle 'altercation/vim-colors-solarized'
-"Bundle "Solarized"
-Bundle 'Yggdroot/indentLine'
-Bundle 'edkolev/tmuxline.vim'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'chriskempson/base16-vim'
-Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plug 'altercation/vim-colors-solarized'
+"Plug 'Solarized'
+Plug 'Yggdroot/indentLine'
+Plug 'edkolev/tmuxline.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
 "  --
 "  Integrations
 "  --
 
 "" VimWiki
-Bundle 'vimwiki'
+Plug 'vimwiki'
 
 "" Elm
-Bundle 'ElmCast/elm-vim'
+Plug 'ElmCast/elm-vim'
 
 "" Go
-Bundle 'fatih/vim-go'
-Bundle 'Blackrush/vim-gocode'
+" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go'
+Plug 'Blackrush/vim-gocode'
 
 "" Python
-Bundle 'davidhalter/jedi-vim'
-Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'mitsuhiko/vim-jinja'
-Bundle 'mitsuhiko/vim-python-combined'
+Plug 'davidhalter/jedi-vim'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'mitsuhiko/vim-jinja'
+Plug 'mitsuhiko/vim-python-combined'
 
 "" Groovy
-""Bundle 'vim.groovy'
-Bundle 'tfnico/vim-gradle'
+""Plug 'vim.groovy'
+Plug 'tfnico/vim-gradle'
 
 "" Scala
-Bundle 'derekwyatt/vim-scala'
-Bundle 'mpollmeier/vim-scalaConceal'
+Plug 'derekwyatt/vim-scala'
+Plug 'mpollmeier/vim-scalaConceal'
 
 "" Clojure
-"Bundle 'VimClojure'
-"Bundle 'Rainbow-Parenthesis'
-Bundle "guns/vim-clojure-static"
-Bundle 'fwolanski/vim-clojure-conceal'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'paredit.vim'
-Bundle 'tpope/vim-classpath'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-fireplace'
-Bundle 'tpope/vim-leiningen'
-Bundle 'tpope/vim-projectionist'
-Bundle 'vim-clojure-highlight'
+"Plug 'VimClojure'
+"Plug 'Rainbow-Parenthesis'
+Plug 'guns/vim-clojure-static'
+Plug 'fwolanski/vim-clojure-conceal'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'paredit.vim'
+Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-leiningen'
+Plug 'tpope/vim-projectionist'
+" Plug 'vim-clojure-highlight'
 
 "" Javascript
-Bundle 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript-jsx'] }
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'mxw/vim-jsx', { 'for': ['Javascript', 'Javascript-jsx'] }
-Bundle 'node.js'
-" Plugin 'othree/yajs.vim'
+" Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript-jsx'] }
+" Plug 'kchmck/vim-coffee-script'
+" Plug 'mxw/vim-jsx', { 'for': ['Javascript', 'Javascript-jsx'] }
+" Plug 'node.js'
+Plug 'moll/vim-node'
+" Plug 'othree/yajs.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'othree/es.next.syntax.vim'
+Plug 'gavocanov/vim-js-indent'
+Plug 'mxw/vim-jsx'
+Plug 'elzr/vim-json'
+Plug 'othree/jsdoc-syntax.vim'
+Plug '1995eaton/vim-better-javascript-completion'
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+Plug 'othree/jspc.vim'
+Plug 'ramitos/jsctags'
+Plug 'jelera/vim-javascript-syntax'
+
+
+" Plug 'vim-scripts/JavaScript-Indent'
 
 "" Markdown
-Bundle 'github/markup'
-Bundle 'tpope/vim-markdown'
-Bundle 'wikimatze/hammer.vim'
+Plug 'github/markup'
+Plug 'tpope/vim-markdown'
 
 "" YAML
-Bundle 'stephpy/vim-yaml'
+Plug 'stephpy/vim-yaml'
 
 "" HTML5
-Bundle 'othree/html5.vim'
+Plug 'othree/html5.vim'
 
 "" CSS
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'groenewege/vim-less'
-Bundle 'hail2u/vim-css3-syntax'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'groenewege/vim-less'
+Plug 'hail2u/vim-css3-syntax'
 
 "" GLSL
-Bundle "tikhomirov/vim-glsl"
+Plug 'tikhomirov/vim-glsl'
 
 "" Rust
-Bundle 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 
-Bundle 'scrooloose/syntastic'
-Bundle 'mtscout6/syntastic-local-eslint.vim'
+Plug 'scrooloose/syntastic'
+Plug 'mtscout6/syntastic-local-eslint.vim'
 
-call vundle#end()            " required
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+
+call plug#end()
 
 filetype plugin indent on
 syntax enable
