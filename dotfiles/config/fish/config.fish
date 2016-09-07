@@ -5,10 +5,18 @@ set --global --export FISH_HOME "$HOME/.config/fish"
 set --global --export OMF_PATH "$HOME/.local/share/omf"
 
 source "$FISH_HOME/lib/init.fish"
+# Load oh-my-fish configuration.
+source "$OMF_PATH/init.fish"
+
 #
 # Editor
 #
 set --global --export EDITOR nvim
+
+#
+# Virtualfish
+#
+eval (python -m virtualfish)
 
 #
 # SSH Agent
@@ -32,12 +40,5 @@ else
     end
 end
 
-#
-# Virtualfish
-#
-eval (python -m virtualfish)
-
-
 # source "$HOME/.extras.fish"
-# Load oh-my-fish configuration.
-source "$OMF_PATH/init.fish"
+
