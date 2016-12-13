@@ -9,7 +9,9 @@ set nocompatible
 "  --
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-sensible'
+if !has('nvim')
+    Plug 'tpope/vim-sensible'
+endif
 
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Shougo/unite-outline'
