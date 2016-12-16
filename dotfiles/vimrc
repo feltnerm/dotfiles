@@ -56,6 +56,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'unblevable/quick-scope'
 Plug 'wellle/targets.vim'
 Plug 'YankRing.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 "  --
 "  Project
