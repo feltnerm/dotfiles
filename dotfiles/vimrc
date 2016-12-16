@@ -362,6 +362,8 @@ endif
   "\ 'g:neocomplete#sources#omni#input_patterns',
   "\ 'elm',
   "\ '\.')
+
+
 " --
 "  tmuxline settings
 " --
