@@ -759,7 +759,7 @@ vnoremap > >gv
 map Q <Nop>
 
 " Disable accidental macro recording when I spaz out on the q key
-map qq <Nop>hen you forget to sudo:
+map qq <Nop>
 
 " Unite
 nnoremap <Leader>P :Unite -start-insert -no-split -no-resize file_rec/async<cr>
