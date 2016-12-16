@@ -11,8 +11,16 @@ lein
 ncmpcpp
 !ncmpcpp/config
 
-dotfiles/vim/undo/*
+dotfiles/vim/autoload/*
 dotfiles/vim/backup/*
 dotfiles/vim/bundle/*
 dotfiles/vim/bundle/vundle
+dotfiles/vim/plugged/*
 dotfiles/vim/tmp/*
+dotfiles/vim/undo/*
+
+dotfiles/gradle/caches/
+dotfiles/gradle/daemon/
+dotfiles/gradle/gradle.properties
+dotfiles/gradle/native/
+dotfiles/gradle/wrapper/
