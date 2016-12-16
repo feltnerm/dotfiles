@@ -82,6 +82,7 @@ Plug 'editorconfig/editorconfig-vim'
 "  --
 "  UI
 "  --
+Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 "Plug 'Solarized'
 Plug 'Yggdroot/indentLine'
@@ -91,6 +92,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plug 'machakann/vim-highlightedyank'
 
 "  --
 "  Integrations
@@ -542,7 +544,9 @@ set list
 set colorcolumn=80
 
 set background=dark
-colorscheme tomorrow-night
+" colorscheme tomorrow-night
+colorscheme gruvbox
+set termguicolors
 
 " ---
 " Folds
