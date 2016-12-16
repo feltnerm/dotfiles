@@ -644,13 +644,14 @@ set tm=500
 
 "set paste
 set pastetoggle=<F2>
-if has('clipboard')
-    if has('unnamedplus')
-      set clipboard=unnamedplus
-    else
-      set clipboard=unnamed
-    endif
-endif
+set clipboard=unnamed
+" if has('clipboard')
+"     if has('unnamedplus')
+"       set clipboard=unnamedplus
+"     else
+"       set clipboard=unnamed
+"     endif
+" endif
 
 " ---
 " Backspacing
