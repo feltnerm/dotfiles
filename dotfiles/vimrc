@@ -329,10 +329,31 @@ let g:unite_source_mark_marks =
 "  neocomplete/deoplete settings
 " --
 
+set completeopt+=noinsert
 let g:acp_enableAtStartup = 0
 
 if has("nvim")
     let g:deoplete#enable_at_startup = 1
+    let g:tern_request_timeout = 1
+    let g:tern_show_signuate_in_pum = '0'
+    let g:tern#filetypes = [
+                \ 'javascript',
+                \ 'jsx',
+                \ 'javascript.jsx'
+                \ ]
+
+    let g:deoplete#omni#functions = {}
+    let g:deoplete#omni#functions.javascript = [
+      \ 'tern#Complete',
+      \ 'jspc#omni'
+      \ ]
+    " Use tern_for_vim.
+    let g:deoplete#sources = {}
+    let g:deoplete#sources['javascript'] = ['file', 'ternjs']
+    let g:deoplete#sources['jsx'] = ['file', 'ternjs']
+    let g:deoplete#sources['javascript.jsx'] = ['file', 'ternjs']
+    let g:tern#command = ['tern']
+    let g:tern#arguments = ['--persistent']
 else
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
