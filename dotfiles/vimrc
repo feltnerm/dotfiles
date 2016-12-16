@@ -287,18 +287,25 @@ let g:airline_theme = 'tomorrow'
 "  Unite settings
 " --
 
-call unite#custom#source('file_rec, file_rec/async, file_rec/git', 'matchers', ['converter_relative_word', 'matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#custom#profile('default', 'context.smartcase', 1)
-call unite#custom#profile('default', 'context.ignorecase', 1)
 let g:unite_prompt = '≥≥ '
 let g:unite_source_history_yank_enable = 1
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#filters#sorter_default#use(['matcher_fuzzy'])
+call unite#custom#profile('default', 'context.smartcase', 1)
+" call unite#custom#profile('default', 'context.ignorecase', 1)
+call unite#custom#source('file_rec, file_rec/async, file_rec/git', 'matchers', ['converter_file_directory', 'matcher_project_ignore_files', 'matcher_hide_hidden_files', 'matcher_fuzzy'])
+" call unite#custom#source('file_rec, file_rec/async, file_rec/git', 'convertors', ['converter_relative_word', 'converter_relative_abbr'])
 
 let g:unite_source_rec_async_command = ['ack', '-f', '--nofilter']
-if executable('pt')
+if executable('rg')
+    let g:unite_source_grep_command = 'rg'
+    let g:unite_source_grep_default_opts = '--smart-case'
+    let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_grep_encoding = 'utf-8'
+elseif executable('pt')
     " let g:unite_source_rec_async_command = ['pt', '--smart-case', '--follow', '--nocolor', '--nogroup', '--hidden', '--context 0', '']
     let g:unite_source_grep_command = 'pt'
-    let g:unite_source_grep_default_opts = '--smart-case --nogroup --nocolor --context 0'
+    let g:unite_source_grep_default_opts = '--smart-case --nogroup --nocolor --context 0 --home-ptignore --global-gitignore'
     let g:unite_source_grep_recursive_opt = ''
     let g:unite_source_grep_encoding = 'utf-8'
 elseif executable('ag')
