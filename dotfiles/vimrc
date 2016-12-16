@@ -184,7 +184,7 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'rust-lang/rust.vim'
 
 Plug 'scrooloose/syntastic'
-Plug 'mtscout6/syntastic-local-eslint.vim'
+" Plug 'mtscout6/syntastic-local-eslint.vim'
 
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
