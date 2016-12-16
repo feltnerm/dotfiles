@@ -22,12 +22,21 @@ Plug 'unite-colorscheme'
 Plug 'lambdalisue/unite-grep-vcs'
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'carlitux/deoplete-ternjs'
+    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
     Plug 'zchee/deoplete-jedi'
+    Plug 'zchee/deoplete-clang'
+    Plug 'zchee/deoplete-go'
+    Plug 'awetzel/elixir.nvim'
+    Plug 'Shougo/context_filetype.vim'
+    Plug 'Shougo/neopairs.vim'
+    Plug 'Shougo/echodoc.vim'
+    Plug 'Shougo/neoinclude.vim'
+    Plug 'Konfekt/FastFold'
 else
     Plug 'Shougo/neocomplete.vim'
 endif
 Plug 'Raimondi/delimitMate'
+Plug 'ervandew/supertab'
 Plug 'SearchComplete'
 Plug 'TaskList.vim'
 Plug 'airblade/vim-rooter'
