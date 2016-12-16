@@ -424,6 +424,9 @@ let g:elm_classic_highlighting = 0
 "  --
 autocmd! bufwritepost .vimrc source %
 
+" no trailing whitespace
+autocmd BufWritePre * %s/\s\+$//e
+
 " --
 " Git
 " --
