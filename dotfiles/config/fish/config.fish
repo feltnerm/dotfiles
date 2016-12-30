@@ -8,6 +8,10 @@ source "$FISH_HOME/lib/init.fish"
 # Load oh-my-fish configuration.
 source "$OMF_PATH/init.fish"
 
+function fish_greeting
+    fortune | cowsay
+end
+
 #
 # Editor
 #
