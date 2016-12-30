@@ -1,0 +1,58 @@
+snippet react-pure-functional-component
+abbr reactfunc
+alias rpfc
+    import React from 'react'
+
+    const ${1:#:component_name} = ({${2:#:props}}) {
+        return (
+            ${0:TARGET}
+        )
+    )
+
+    $1.propTypes = {}
+
+    $1.defaultProps = {}
+
+    export default $1
+
+snippet react-stateless-component
+alias rsc
+    import React from 'react'
+
+    class ${1:#:component_name} extends React.Component {
+        render () {
+            return (
+                ${0:TARGET}
+            )
+        }
+    )
+
+    $1.propTypes = {}
+
+    $1.defaultProps = {}
+
+    export default $1
+
+snippet react-stateful-component
+alias rc
+    import React from 'react'
+
+    class ${1:#:component_name} extends React.Component {
+        constructor (props) {
+            super(props)
+            this.state = {
+                ${2:#:component_state}
+            }
+        }
+        render () {
+            return (
+                ${0:TARGET}
+            )
+        }
+    )
+
+    $1.propTypes = {}
+
+    $1.defaultProps = {}
+
+    export default $1
