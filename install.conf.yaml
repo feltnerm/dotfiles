@@ -27,6 +27,7 @@
     ~/.ptconfig.toml: dotfiles/ptconfig.toml
     ~/.spacemacs: dotfiles/spacemacs
     ~/.surfraw.conf: dotfiles/surfraw.conf
+    ~/.tmux: dotfiles/tmux
     ~/.tmux.conf: dotfiles/tmux.conf
     ~/.vim: dotfiles/vim
     ~/.vimrc: dotfiles/vimrc

@@ -11,6 +11,9 @@ lein
 ncmpcpp
 !ncmpcpp/config
 
+dotfiles/tmux/plugins/*
+dotfiles/tmux/sidebar
+
 dotfiles/vim/autoload/*
 dotfiles/vim/backup/*
 dotfiles/vim/bundle/*
