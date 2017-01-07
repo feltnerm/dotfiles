@@ -3,6 +3,9 @@
 " Inspired heaviliy by @dwieeb: https://gitlab.com/dwieeb/dotfiles/blob/master/vimrc
 
 set nocompatible
+if &shell =~# 'fish$'
+    set shell=sh
+endif
 
 "  --
 "  Plugins
