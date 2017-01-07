@@ -9,7 +9,7 @@ source "$FISH_HOME/lib/init.fish"
 source "$OMF_PATH/init.fish"
 
 function fish_greeting
-    fortune | cowsay
+    math -s0 (random) \% 2 > /dev/null; and fortune | cowsay -W 80; or fortune | cowthink -W 80
 end
 
 #
