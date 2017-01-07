@@ -295,12 +295,17 @@ call unite#custom#source('buffer, file, file_rec, file_mru, file_rec/async, file
             \ ])
             " \ 'matcher_glob',
 
-let g:unite_source_rec_async_command = ['ack', '-f', '--nofilter']
 if executable('rg')
     let g:unite_source_grep_command = 'rg'
     let g:unite_source_grep_default_opts = '--no-heading --vimgrep --smart-case'
     let g:unite_source_grep_recursive_opt = ''
     let g:unite_source_grep_encoding = 'utf-8'
+
+    let g:unite_source_rec_async_command = [
+                \ 'rg',
+                \ '--files', '--no-heading', '--vimgrep', '--smart-case',
+                \ '--glob', '']
+
 elseif executable('pt')
     let g:unite_source_grep_command = 'pt'
     let g:unite_source_grep_default_opts = '--smart-case --nogroup --nocolor --context 0 --home-ptignore --global-gitignore'
@@ -494,7 +499,6 @@ autocmd FileType clojure            RainbowParenthesesLoadBraces
 "  General Settings
 "  --
 map <space> <leader>
-set shell=/bin/bash
 
 " read modeline from files
 set modeline
