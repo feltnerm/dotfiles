@@ -22,7 +22,15 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'tacroe/unite-mark'
 Plug 'unite-colorscheme'
+Plug 'mattn/unite-nyancat'
+Plug 'rhysd/unite-emoji.vim'
+Plug 'junegunn/vim-emoji'
 Plug 'lambdalisue/unite-grep-vcs'
+Plug 'moznion/unite-git-conflict.vim'
+Plug 'mattn/webapi-vim'
+Plug 'tyru/open-browser.vim'
+Plug 'joker1007/unite-pull-request'
+Plug 'rafi/vim-unite-issue'
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
@@ -55,17 +63,21 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'unblevable/quick-scope'
+Plug 'tpope/vim-abolish'
+Plug 'easymotion/vim-easymotion'
 Plug 'wellle/targets.vim'
 Plug 'YankRing.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'honza/vim-snippets'
+Plug 'davidbeckingsale/writegood.vim'
+Plug 'artur-shaik/vim-javacomplete2'
 
 "  --
 "  Project
 "  --
 Plug 'Shougo/vimfiler.vim'
-Plug 'shemerey/vim-project'
+Plug 'airblade/vim-rooter'
 
 "  --
 "  Git plugins
@@ -73,6 +85,7 @@ Plug 'shemerey/vim-project'
 Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv'
+Plug 'lambdalisue/vim-gita', {'on': ['Gita']}
 Plug 'tpope/vim-fugitive'
 
 "  --
@@ -87,13 +100,14 @@ Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 "Plug 'Solarized'
 Plug 'Yggdroot/indentLine'
-Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'machakann/vim-highlightedyank'
+" Plug 'ryanoasis/vim-devicons'
 
 "  --
 "  Integrations
@@ -157,9 +171,9 @@ Plug 'othree/jsdoc-syntax.vim'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 " Plug 'marijnh/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 Plug 'ramitos/jsctags'
+Plug 'ruanyl/vim-fixmyjs'
 Plug 'jelera/vim-javascript-syntax'
-let g:jsx_ext_required = 0
-
+Plug 'justinj/vim-react-snippets'
 
 " Plug 'vim-scripts/JavaScript-Indent'
 
@@ -177,6 +191,7 @@ Plug 'othree/html5.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'groenewege/vim-less'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'ap/vim-css-color'
 
 "" GLSL
 Plug 'tikhomirov/vim-glsl'
@@ -198,11 +213,9 @@ syntax enable
 " vim-filer settings
 " --
 let g:vimfiler_as_default_explorer = 1
-nmap <leader>d :VimFiler -buffer-name=explorer
-            \ -split -simple -winwidth=35 -toggle<CR>
+nmap <leader>d :VimFiler -buffer-name=explorer -simple -toggle<CR>
 nmap <leader>de :VimFiler -buffer-name=explorer -toggle<CR>
-nmap <leader>df :VimFilerBufferDir -buffer-name=explorer
-            \ -split -simple -winwidth=35 -toggle<CR>
+nmap <leader>df :VimFilerBufferDir -buffer-name=explorer -toggle<CR>
 
 " --
 "  rust.vim settings
@@ -271,11 +284,11 @@ highlight link SyntasticStyleWarningSign SignColumn
 "  airline settings
 " --
 
+let g:airline_theme = 'gruvbox'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#hunks#enabled = 1
-" let g:airline_theme = 'base16_eighties'
 
 " --
 "  Unite settings
@@ -381,9 +394,9 @@ endif
 
 " :Tmuxline airline to set manual colors
 " :TmuxlineSnapshot! tmuxline.conf to save colors
-let g:tmuxline_preset = 'righteous'
-let g:tmuxline_theme = 'vim_statusline_1'
 
+let g:tmuxline_theme = 'airline'
+let g:tmuxline_preset = 'tmux'
 " let g:tmuxline_separators = {
 "     \ 'left' : '',
 "     \ 'left_alt': '>',
@@ -438,9 +451,18 @@ autocmd! bufwritepost .vimrc source %
 " no trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
 
+
+
 " --
 " SuperTab
 " --
+
+" --
+" quick-scope
+" --
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" let g:qs_first_occurrence_highlight_color = 155
+
 
 " --
 " neosnippet
@@ -462,6 +484,7 @@ endif
 
 autocmd FileType git,gitcommit setlocal foldmethod=syntax foldlevel=1
 autocmd FileType gitcommit setlocal spell
+autocmd FileType gitcommit WritegoodEnable
 autocmd FileType gitrebase nnoremap <buffer> S :Cycle<CR>
 
 " Instead of reverting the cursor to the last position in the buffer, we
@@ -475,6 +498,7 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 au BufNewFile,BufRead *.md set filetype=markdown
 autocmd FileType liquid,markdown,text,txt setlocal tw=78 linebreak nolist
 autocmd FileType markdown setlocal spell
+autocmd FileType markdown WritegoodEnable
 
 " --
 " Shell Scripts
@@ -482,6 +506,24 @@ autocmd FileType markdown setlocal spell
 
 autocmd FileType sh,zsh,csh,tcsh    inoremap <silent> <buffer> <C-X>! #!/bin/<C-R>=&ft<CR>
 autocmd FileType perl,python,ruby   inoremap <silent> <buffer> <C-X>! #!/usr/bin/env<Space><C-R>=&ft<CR>
+
+" --
+" JavaScript
+" --
+let g:jsx_ext_required = 0
+let g:vim_json_syntax_conceal = 0
+
+" vim-fixmyjs
+let g:fixmyjs_use_local = 1
+noremap <Leader><Leader>f :Fixmyjs<CR>
+au BufWritePre *.js :Fixmyjs
+au BufWritePre *.jsx :Fixmyjs
+
+" --
+" Java
+" --
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
 
 " --
 " Overtone
@@ -784,10 +826,10 @@ map qq <Nop>
 " Unite
 nnoremap <Leader>p :Unite -wrap -start-insert -no-split -no-resize -buffer-name=search grep:!<cr>
 nnoremap <Leader>pf :Unite -start-insert -no-split -no-resize -buffer-name=files -force-redraw file_rec/async:!<cr>
-nnoremap <Leader>pr :Unite -start-insert -no-split -no-resize -buffer-name=files -force-redraw file_mru<cr>
+nnoremap <Leader>pr :Unite -start-insert -no-split -no-resize -buffer-name=mostrecentfiles -force-redraw file_mru<cr>
 nnoremap <Leader>pb :Unite -start-insert -no-split -no-resize -buffer-name=buffers buffer<cr>
-nnoremap <Leader>pg :Unite -wrap -start-insert -no-split -no-resize -buffer-name=gitgrep grep/git:!<cr>
-nnoremap <Leader>pG :Unite -start-insert -no-split -no-resize -buffer-name=gitfiles file_rec/git:!<cr>
+nnoremap <Leader>pg :Unite -wrap -start-insert -no-split -no-resize -buffer-name=gitgrep grep/git:.<cr>
+nnoremap <Leader>pG :Unite -start-insert -no-split -no-resize -buffer-name=gitfiles file_rec/git<cr>
 nnoremap <Leader>py :Unite -start-insert -buffer-name=yanks history/yank<cr>
 nnoremap <Leader>po :Unite -start-insert -buffer-name=outline outline<cr>
 nnoremap <Leader>ps :Unite -start-insert -buffer-name=snippets neosnippet/user:expand neosnippet:expand<cr>
