@@ -767,7 +767,7 @@ nnoremap E $
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 
 " turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader>/ :nohlsearch<CR>
 
 " highlight last inserted text
 nnoremap gV `[v`]
