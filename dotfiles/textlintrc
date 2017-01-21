@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "spellchecker": true,
+    "write-good": true,
+    "alex": true,
+    "rousseau": true
+  }
+}
