@@ -100,7 +100,6 @@ Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 "Plug 'Solarized'
 Plug 'Yggdroot/indentLine'
-" Plug 'edkolev/tmuxline.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -286,7 +285,6 @@ highlight link SyntasticStyleWarningSign SignColumn
 
 let g:airline_theme = 'gruvbox'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#hunks#enabled = 1
 
@@ -386,23 +384,6 @@ else
       "\ 'elm',
       "\ '\.')
 endif
-
-
-" --
-"  tmuxline settings
-" --
-
-" :Tmuxline airline to set manual colors
-" :TmuxlineSnapshot! tmuxline.conf to save colors
-
-let g:tmuxline_theme = 'airline'
-let g:tmuxline_preset = 'tmux'
-" let g:tmuxline_separators = {
-"     \ 'left' : '',
-"     \ 'left_alt': '>',
-"     \ 'right' : '',
-"     \ 'right_alt' : '<',
-"     \ 'space' : ' '}
 
 " --
 " Indentline
@@ -516,8 +497,6 @@ let g:vim_json_syntax_conceal = 0
 " vim-fixmyjs
 let g:fixmyjs_use_local = 1
 noremap <Leader><Leader>f :Fixmyjs<CR>
-au BufWritePre *.js :Fixmyjs
-au BufWritePre *.jsx :Fixmyjs
 
 " --
 " Java
@@ -767,7 +746,6 @@ set mousehide
 "  Keybindings
 "  --
 nore ; :
-nore , ;
 inoremap jj <Esc>
 inoremap jk <Esc>
 vnoremap <ESC> <C-c>
