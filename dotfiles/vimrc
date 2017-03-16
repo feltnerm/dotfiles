@@ -205,9 +205,6 @@ Plug 'tikhomirov/vim-glsl'
 "" Rust
 Plug 'rust-lang/rust.vim'
 
-" Plug 'scrooloose/syntastic'
-" Plug 'mtscout6/syntastic-local-eslint.vim'
-
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 call plug#end()
@@ -248,54 +245,6 @@ autocmd! BufWritePost * Neomake
 let g:neomake_open_list=0
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
-au BufEnter *.js* let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
-autocmd! FileType javascript,BufWinEnter,BufWritePost * Neomake
-
-
-" --
-" --
-"  syntastic settings
-" --
-
-if executable('python3')
-    let g:syntastic_python_python_exec = 'python3'
-endif
-
-let g:syntastic_javascript_checkers = [ 'eslint' ]
-if executable('eslint_d')
-    let g:syntastic_javascript_eslint_exec = 'eslint_d'
-endif
-
-let g:syntastic_typescript_checkers=[] " can't use until typescript 2
-
-let g:syntastic_html_tidy_ignore_errors = [
-    \ 'trimming empty <i>' ]
-let g:syntastic_quiet_messages = {
-    \ "type": "style",
-    \ "regex": "main redeclared in this block"}
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-
-let g:syntastic_error_symbol = '❌'
-" let g:syntastic_error_symbol = '💩'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
 
 " --
 "  airline settings
@@ -435,7 +384,6 @@ let g:vimwiki_list = [{
 "  --
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 1
-let g:elm_syntastic_show_warnings = 1
 let g:elm_jump_to_error = 0
 let g:elm_make_output_file = "elm.js"
 let g:elm_make_show_warnings = 1
@@ -483,7 +431,7 @@ endif
 
 autocmd FileType git,gitcommit setlocal foldmethod=syntax foldlevel=1
 autocmd FileType gitcommit setlocal spell
-autocmd FileType gitcommit WritegoodEnable
+" autocmd FileType gitcommit WritegoodEnable
 autocmd FileType gitrebase nnoremap <buffer> S :Cycle<CR>
 
 " Instead of reverting the cursor to the last position in the buffer, we
@@ -628,6 +576,15 @@ set expandtab
 set nowrap
 set nojoinspaces
 set listchars=tab:>~,nbsp:_,trail:.
+"
+" javascript
+" au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
+" au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('standard')
+" au BufEnter *.jsx let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
+" au BufEnter *.jsx let b:neomake_javascript_eslint_exe = nrun#Which('standard')
+
+autocmd Filetype javascript.jsx let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
+autocmd Filetype javascript.jsx setlocal tabstop=2 shiftwidth=2 softtabstop=0
 
 " ---
 " Diff
