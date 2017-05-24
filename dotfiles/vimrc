@@ -283,7 +283,7 @@ call unite#custom#source('buffer, file, file_rec, file_mru, file_rec/async, file
             \ 'converter_file_directory',
             \ 'matcher_fuzzy'
             \ ])
-            " \ 'matcher_glob',
+" \ 'matcher_glob',
 
 if executable('rg')
     let g:unite_source_grep_command = 'rg'
@@ -304,8 +304,8 @@ elseif executable('pt')
 elseif executable('ag')
     let g:unite_source_grep_command = 'ag'
     let g:unite_source_grep_default_opts =
-        \ '-S --vimgrep --hidden --ignore ' .
-        \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+                \ '-S --vimgrep --hidden --ignore ' .
+                \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
     let g:unite_source_grep_recursive_opt = ''
 endif
 
@@ -328,11 +328,11 @@ if has("nvim")
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#omni#functions = {}
     let g:deoplete#omni#functions.javascript = [
-      \ 'tern#Complete',
-      \ 'jspc#omni',
-      \ 'elm',
-      \ '\.'
-      \ ]
+                \ 'tern#Complete',
+                \ 'jspc#omni',
+                \ 'elm',
+                \ '\.'
+                \ ]
     "
     " Use tern_for_vim.
     let g:tern_request_timeout = 1
@@ -359,9 +359,9 @@ else
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
     "call neocomplete#util#set_default_dictionary(
-      "\ 'g:neocomplete#sources#omni#input_patterns',
-      "\ 'elm',
-      "\ '\.')
+    "\ 'g:neocomplete#sources#omni#input_patterns',
+    "\ 'elm',
+    "\ '\.')
 endif
 
 " --
@@ -434,7 +434,7 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 " For conceal markers.
 if has('conceal')
-  set conceallevel=2 concealcursor=niv
+    set conceallevel=2 concealcursor=niv
 endif
 
 " --
@@ -506,7 +506,8 @@ set modeline
 " watch for file changes
 set autoread
 
-set esckeys
+" set esckeys
+set timeoutlen=1000 ttimeoutlen=0
 
 " ---
 " Searching
@@ -555,7 +556,7 @@ silent !mkdir -p ~/.vim/tmp> /dev/null 2>&1
 set undodir=~/.vim/undo
 silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
 if exists('+undofile')
-  set undofile
+    set undofile
 endif
 
 " ---
@@ -597,6 +598,7 @@ set listchars=tab:>~,nbsp:_,trail:.
 
 autocmd Filetype javascript.jsx let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
 autocmd Filetype javascript.jsx setlocal tabstop=2 shiftwidth=2 softtabstop=0
+autocmd FileType javascript.jsx set formatprg=prettier-standard
 
 " ---
 " Diff
@@ -658,11 +660,11 @@ set foldmethod=indent
 try
     lang en_US
 catch
-set dictionary+=/usr/share/dict/words
-set spelllang=en_us
-"if exists("+spelllang")
-"endif
-set spellfile=~/.vim/spell/en.utf-8.add
+    set dictionary+=/usr/share/dict/words
+    set spelllang=en_us
+    "if exists("+spelllang")
+    "endif
+    set spellfile=~/.vim/spell/en.utf-8.add
 endtry
 
 " ---
