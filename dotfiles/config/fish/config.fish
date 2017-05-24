@@ -4,6 +4,9 @@ set --global --export FISH_HOME "$HOME/.config/fish"
 # Path to Oh My Fish install.
 set --global --export OMF_PATH "$HOME/.local/share/omf"
 
+set --global vi_mode_default vi_mode_normal
+set --global fish_key_bindings fish_vi_key_bindings
+
 source "$FISH_HOME/lib/init.fish"
 # Load oh-my-fish configuration.
 source "$OMF_PATH/init.fish"
