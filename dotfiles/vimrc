@@ -105,6 +105,7 @@ Plug 'editorconfig/editorconfig-vim'
 "  UI
 "  --
 Plug 'morhetz/gruvbox'
+Plug 'mhinz/vim-janah'
 Plug 'altercation/vim-colors-solarized'
 "Plug 'Solarized'
 Plug 'Yggdroot/indentLine'
