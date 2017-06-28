@@ -18,7 +18,7 @@ endif
 
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'neomake/neomake'
-Plug 'sbdchd/neoformat'
+Plug 'sbdchd/neoformat', { 'do': 'npm install -g prettier prettier-standard' }
 Plug 'jaawerth/nrun.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'junegunn/vim-emoji'
