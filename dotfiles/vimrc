@@ -18,7 +18,7 @@ endif
 
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'neomake/neomake'
-Plug 'sbdchd/neoformat', { 'do': 'npm install -g prettier prettier-standard' }
+Plug 'sbdchd/neoformat', { 'do': 'npm install -g eslint prettier prettier-standard' }
 Plug 'jaawerth/nrun.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'junegunn/vim-emoji'
@@ -32,7 +32,6 @@ if has('nvim')
     Plug 'zchee/deoplete-jedi'
     Plug 'zchee/deoplete-clang'
     Plug 'zchee/deoplete-go'
-    Plug 'SevereOverfl0w/deoplete-github'
     Plug 'awetzel/elixir.nvim'
     Plug 'Shougo/context_filetype.vim'
     Plug 'Shougo/neopairs.vim'
@@ -74,7 +73,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
 Plug 'easymotion/vim-easymotion'
 Plug 'wellle/targets.vim'
-Plug 'vim-scripts/YankRing.vim'
+" Plug 'vim-scripts/YankRing.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
