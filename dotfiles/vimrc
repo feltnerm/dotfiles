@@ -80,7 +80,6 @@ Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 Plug 'davidbeckingsale/writegood.vim'
-Plug 'artur-shaik/vim-javacomplete2'
 
 "  --
 "  Project
@@ -116,6 +115,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'machakann/vim-highlightedyank'
+Plug 'majutsushi/tagbar'
 " Plug 'ryanoasis/vim-devicons'
 
 "  --
@@ -185,6 +185,9 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'justinj/vim-react-snippets'
 
 " Plug 'vim-scripts/JavaScript-Indent'
+"" Java
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'vim-scripts/groovy.vim'
 
 "" Markdown
 Plug 'github/markup'
@@ -248,9 +251,7 @@ let g:gitgutter_realtime = 1
 " --
 " Neoformat
 " --
-autocmd FileType javascript.jsx set formatprg=prettier-standard
-autocmd BufWritePre *.js Neoformat
-autocmd BufWritePre *.jsx Neoformat
+let g:neoformat_run_all_formatters = 0
 let g:neoformat_try_formatprg = 1
 " Enable alignment
 let g:neoformat_basic_format_align = 1
@@ -260,6 +261,7 @@ let g:neoformat_basic_format_retab = 1
 
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 1
+
 " --
 "  airline settings
 " --
@@ -320,7 +322,7 @@ let g:unite_source_mark_marks =
             \ . "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 " --
-"  neocomplete/deoplete settings
+"  neogomplete/deoplete settings
 " --
 
 set completeopt+=noinsert
@@ -462,6 +464,12 @@ autocmd FileType markdown setlocal spell
 autocmd FileType markdown WritegoodEnable
 
 " --
+" TML (and other templating and (H/X)ML like things
+" --
+au BufNewFile,BufRead *.tml set filetype=html
+
+
+" --
 " Shell Scripts
 " --
 
@@ -591,16 +599,14 @@ set expandtab
 set nowrap
 set nojoinspaces
 set listchars=tab:>~,nbsp:_,trail:.
+
 "
 " javascript
-" au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
-" au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('standard')
-" au BufEnter *.jsx let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
-" au BufEnter *.jsx let b:neomake_javascript_eslint_exe = nrun#Which('standard')
-
 autocmd Filetype javascript.jsx let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
 autocmd Filetype javascript.jsx setlocal tabstop=2 shiftwidth=2 softtabstop=0
 autocmd FileType javascript.jsx set formatprg=prettier-standard
+autocmd BufWritePre *.js Neoformat
+autocmd BufWritePre *.jsx Neoformat
 
 " ---
 " Diff
@@ -687,6 +693,8 @@ set mat=2
 " timeout length for keypresses
 set tm=500
 
+set synmaxcol=128
+syntax sync minlines=256
 " ---
 " Paste
 " ---
