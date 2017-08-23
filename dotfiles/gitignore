@@ -289,7 +289,6 @@ fabric.properties
 # These can be changed by user in Lazarus/project options.
 backup/
 *.bak
-lib/
 
 # Application bundle for Mac OS
 *.app/
@@ -505,8 +504,8 @@ GitHub.sublime-settings
 *.evcd
 *.fsdb
 
-# Default name of the simulation executable.  A different name can be 
-# specified with this switch (the associated daidir database name is 
+# Default name of the simulation executable.  A different name can be
+# specified with this switch (the associated daidir database name is
 # also taken from here):  -o <path>/<filename>
 simv
 
@@ -514,7 +513,7 @@ simv
 simv.daidir/
 simv.db.dir/
 
-# Infrastructure necessary to co-simulate SystemC models with 
+# Infrastructure necessary to co-simulate SystemC models with
 # Verilog/VHDL models.  An alternate directory may be specified with this
 # switch:  -Mdir=<directory_path>
 csrc/
@@ -523,7 +522,7 @@ csrc/
 # used to write all messages from simulation:  -l <filename>
 *.log
 
-# Coverage results (generated with urg) and database location.  The 
+# Coverage results (generated with urg) and database location.  The
 # following switch can also be used:  urg -dir <coverage_directory>.vdb
 simv.vdb/
 urgReport/
@@ -576,12 +575,12 @@ tags
 # Virtualenv
 # http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
 .Python
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
+[B]in
+[I]nclude
+[L]ib
+[L]ib64
+[L]ocal
+[S]cripts
 pyvenv.cfg
 .venv
 pip-selfcheck.json
@@ -624,96 +623,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-# Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-
-## Build generated
-build/
-DerivedData/
-
-## Various settings
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata/
-
-## Other
-*.moved-aside
-*.xccheckout
-*.xcscmblueprint
-
-# intermediate build files
-*.bgn
-*.bit
-*.bld
-*.cmd_log
-*.drc
-*.ll
-*.lso
-*.msd
-*.msk
-*.ncd
-*.ngc
-*.ngd
-*.ngr
-*.pad
-*.par
-*.pcf
-*.prj
-*.ptwx
-*.rbb
-*.rbd
-*.stx
-*.syr
-*.twr
-*.twx
-*.unroutes
-*.ut
-*.xpi
-*.xst
-*_bitgen.xwbt
-*_envsettings.html
-*_map.map
-*_map.mrp
-*_map.ngm
-*_map.xrpt
-*_ngdbuild.xrpt
-*_pad.csv
-*_pad.txt
-*_par.xrpt
-*_summary.html
-*_summary.xml
-*_usage.xml
-*_xst.xrpt
-
-# iMPACT generated files
-_impactbatch.log
-impact.xsl
-impact_impact.xwbt
-ise_impact.cmd
-webtalk_impact.xml
-
-# Core Generator generated files
-xaw2verilog.log
-
-# project-wide generated files
-*.gise
-par_usage_statistics.html
-usage_statistics_webtalk.html
-webtalk.log
-webtalk_pn.xml
-
-# generated folders
-iseconfig/
-xlnx_auto_0_xdb/
-xst/
-_ngo/
-_xmsgs/
-
