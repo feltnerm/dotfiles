@@ -87,7 +87,7 @@ Plug 'Shougo/unite-build'
 
 """" Command Plugins
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'neomake/neomake', { 'do' : 'Neomake' }
+Plug 'neomake/neomake'
 
 """" Snippet Plugins
 Plug 'Shougo/neosnippet'
@@ -142,7 +142,7 @@ Plug 'mitsuhiko/vim-jinja'
 Plug 'mitsuhiko/vim-python-combined'
 
 """"" Java
-Plug 'artur-shaik/vim-javacomplete2'
+Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
 
 """"" Groovy
 Plug 'vim-scripts/groovy.vim'
@@ -182,7 +182,7 @@ Plug 'othree/jsdoc-syntax.vim'
 Plug 'othree/jspc.vim'
 Plug 'othree/yajs.vim'
 Plug 'ramitos/jsctags', { 'do': 'npm install && npm install -g git+https://github.com/ramitos/jsctags.git' }
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern tern-jsx' }
 
 " Plug 'vim-scripts/JavaScript-Indent'
 
@@ -253,6 +253,7 @@ nmap <leader>g :UndotreeToggle<CR>
 let g:gitgutter_realtime = 1
 
 """" Neomake settings
+autocmd! BufWritePost * Neomake
 
 """" Neoformat settings
 let g:neoformat_run_all_formatters = 0
@@ -389,33 +390,32 @@ let g:acp_enableAtStartup = 0
 
 if has("nvim")
     let g:deoplete#enable_at_startup = 1
+    let g:deoplete#auto_complete_delay = 10
     let g:deoplete#omni#functions = {}
-    let g:deoplete#omni#functions.javascript = [
-        \ 'tern#Complete',
-        \ 'jspc#omni',
-        \ 'elm',
-        \ '\.'
-        \ ]
+    let g:deoplete#sources = {}
+    let g:deoplete#keyword_patterns = {}
+    let g:deoplete#omni#input_patterns = {}
     "
     " Use tern_for_vim.
-    let g:tern_request_timeout = 1
-    let g:tern_show_signuate_in_pum = '0'
-    let g:tern#filetypes = [
+    let g:tern_show_argument_hints = 'on_hold'
+    let g:tern_show_signature_in_pum = 1
+    let g:deoplete#sources#ternjs#timeout = 1
+    let g:deoplete#sources#ternjs#types = 1
+    let g:deoplete#sources#ternjs#case_insensitive = 1
+    let g:deoplete#sources#ternjs#docs = 1
+    let g:deoplete#sources#ternjs#filetypes = [
                 \ 'javascript',
                 \ 'jsx',
                 \ 'javascript.jsx'
                 \ ]
+    " let g:deoplete#sources._ = ['tag', 'buffer', 'file']
+    let g:deoplete#omni#input_patterns.javascript = '[^. *\t]\.\w*'
+    let g:deoplete#sources['javascript.jsx'] = ['ternjs', 'tag']
+    let g:deoplete#omni#input_patterns.java = '[^. *\t]\.\w*'
 
-    let g:deoplete#sources = {}
-    let g:deoplete#sources['javascript'] = ['member', 'file', 'ternjs']
-    let g:deoplete#sources['jsx'] = ['member', 'file', 'ternjs']
-    let g:deoplete#sources['javascript.jsx'] = ['member', 'file', 'ternjs']
     let g:tern#command = ['tern']
     let g:tern#arguments = ['--persistent']
-
     " deoplete github integration for commit messages
-    "
-    let g:deoplete#keyword_patterns = {}
     let g:deoplete#keyword_patterns.gitcommit = '.+'
 
 else
@@ -427,7 +427,7 @@ else
     "\ '\.')
 endif
 
-"" vim-one settings
+""" vim-one settings
 let g:one_allow_italics = 1 " I love italic for comments
 
 """ Autoloaders
@@ -460,6 +460,7 @@ autocmd FileType perl,python,ruby   inoremap <silent> <buffer> <C-X>! #!/usr/bin
 """" JavaScript
 let g:jsx_ext_required = 0
 let g:vim_json_syntax_conceal = 0
+autocmd FileType javascript.jsx setlocal omnifunc=tern#Complete
 autocmd Filetype javascript.jsx let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
 autocmd Filetype javascript.jsx setlocal tabstop=2 shiftwidth=2 softtabstop=0
 autocmd FileType javascript.jsx set formatprg=prettier-standard
@@ -491,10 +492,6 @@ set timeoutlen=1000 ttimeoutlen=0
 """" Searching
 " set magic on, for regular expressions
 set magic
-" don't highlight search results
-set nohlsearch
-" incremental search
-set incsearch
 " ignore case when searching
 set ignorecase
 " For use use artificial intelligence whilst searching
@@ -649,7 +646,7 @@ set mouse=a
 set mousehide
 
 """ Keybindings
-nore ; :
+noremap ; :
 inoremap jj <Esc>
 inoremap jk <Esc>
 vnoremap <ESC> <C-c>
@@ -660,11 +657,10 @@ nnoremap E $
 " Find merge conflict markers
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 " turn off search highlight
-nnoremap <leader>/ :nohlsearch<CR>
 " highlight last inserted text
 nnoremap gV `[v`]
-vnoremap < <gv
-vnoremap > >gv
+vmap < <gv
+vmap > >gv
 " W" Ex mode: no ty
 map Q <Nop>
 " Disable accidental macro recording when I spaz out on the q key
@@ -699,20 +695,32 @@ map <leader>sw :split<cr>
 map <leader>sv :vsplit<cr>
 
 """" Unite
-nnoremap <Leader>p :Unite -wrap -start-insert -no-split -no-resize -buffer-name=search grep:!<cr>
-nnoremap <Leader>pf :Unite -start-insert -no-split -no-resize -buffer-name=files -force-redraw file_rec/async:!<cr>
-nnoremap <Leader>pr :Unite -start-insert -no-split -no-resize -buffer-name=mostrecentfiles -force-redraw file_mru<cr>
-nnoremap <Leader>pb :Unite -start-insert -no-split -no-resize -buffer-name=buffers buffer<cr>
-nnoremap <Leader>pg :Unite -wrap -start-insert -no-split -no-resize -buffer-name=gitgrep grep/git:.<cr>
-nnoremap <Leader>pG :Unite -start-insert -no-split -no-resize -buffer-name=gitfiles file_rec/git<cr>
-nnoremap <Leader>py :Unite -start-insert -buffer-name=yanks history/yank<cr>
-nnoremap <Leader>po :Unite -start-insert -buffer-name=outline outline<cr>
-nnoremap <Leader>ps :Unite -start-insert -buffer-name=snippets neosnippet/user:expand neosnippet:expand<cr>
-nnoremap <Leader>pq :Unite -start-insert -buffer-name=quickfix quickfix<cr>
+noremap <Leader>p :Unite -wrap -start-insert -no-split -no-resize -buffer-name=search grep:!<cr>
+noremap <Leader>pf :Unite -start-insert -no-split -no-resize -buffer-name=files -force-redraw file_rec/async:!<cr>
+noremap <Leader>pr :Unite -start-insert -no-split -no-resize -buffer-name=mostrecentfiles -force-redraw file_mru<cr>
+noremap <Leader>pb :Unite -start-insert -no-split -no-resize -buffer-name=buffers buffer<cr>
+noremap <Leader>pg :Unite -wrap -start-insert -no-split -no-resize -buffer-name=gitgrep grep/git:.<cr>
+noremap <Leader>pG :Unite -start-insert -no-split -no-resize -buffer-name=gitfiles file_rec/git<cr>
+noremap <Leader>py :Unite -start-insert -buffer-name=yanks history/yank<cr>
+noremap <Leader>po :Unite -start-insert -buffer-name=outline outline<cr>
+noremap <Leader>ps :Unite -start-insert -buffer-name=snippets neosnippet/user:expand neosnippet:expand<cr>
+noremap <Leader>pq :Unite -start-insert -buffer-name=quickfix quickfix<cr>
 
-"""" Neocomplete
-inoremap <expr><C-g> neocomplete#undo_completion()
-inoremap <expr><C-l> neocomplete#complete_common_string()
+""" Tagbar
+noremap <Leader>t :TagbarOpenAutoClose<CR>
+
+
+"""" D-/N-eocomplete
+" if has('nvim')
+" else
+" endif
+
+""" Language Specific Bindings
+autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jj :TernDef<CR>
+autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jd :TernDoc<CR>
+autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jt :TernType<CR>
+autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jr :TernRename<CR>
+autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jf :TernRefs<CR>
 
 "" vim:fdm=expr:fdl=0
 "" vim:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
