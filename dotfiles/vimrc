@@ -2,153 +2,157 @@
 "
 " Inspired heaviliy by @dwieeb: https://gitlab.com/dwieeb/dotfiles/blob/master/vimrc
 
+""" Startup
 set nocompatible
 if &shell =~# 'fish$'
     set shell=sh
 endif
 
-"  --
-"  Plugins
-"  --
+if has('nvim')
+    let g:python2_host_prog = '/usr/local/bin/python'
+    let g:python3_host_prog = '/usr/local/bin/python3'
+endif
+
+""" Plugins
 call plug#begin('~/.vim/plugged')
 
 if !has('nvim')
     Plug 'tpope/vim-sensible'
 endif
 
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'neomake/neomake'
-Plug 'sbdchd/neoformat', { 'do': 'npm install -g eslint prettier prettier-standard' }
-Plug 'jaawerth/nrun.vim'
-Plug 'Shougo/neoyank.vim'
-Plug 'junegunn/vim-emoji'
-Plug 'mattn/webapi-vim'
-Plug 'tyru/open-browser.vim'
-Plug 'mhinz/vim-startify'
+"""" Base Plugins
+Plug 'Raimondi/delimitMate' " autocomplete for brackets, parens, etc.
+Plug 'davidbeckingsale/writegood.vim'
+Plug 'dwieeb/vim-matchit'
+Plug 'easymotion/vim-easymotion' " lookup docs (todo: fix bindings)
+Plug 'ervandew/supertab' " autocomplete in insert-mode with tab
+Plug 'junegunn/vim-github-dashboard' " GitHub dashboard (:GHD! feltnerm)
+Plug 'kana/vim-textobj-indent' " select similarly indented lines (todo: add bindings)
+Plug 'kana/vim-textobj-user' " create custom textobjects
+Plug 'kshenoy/vim-signature' "place, toggle, and display marks (todo: add bindings)
+Plug 'machakann/vim-highlightedyank' " show currently yanked stuff with a highlight
+Plug 'majutsushi/tagbar' " display (exuberant c)tags in a window (todo: bindings)
+Plug 'mhinz/vim-startify' " show startup screen
+Plug 'nathanaelkane/vim-indent-guides' " visualize indents
+Plug 'Yggdroot/indentLine' " show indents (need with above?)
+Plug 'mbbill/undotree' " file undo tree"
+Plug 'Shougo/context_filetype.vim' " Provides functions to find fenced code blocks and their filetype.
+Plug 'Shougo/junkfile.vim' " create a junk file for notes
+Plug 'tpope/vim-abolish' " automatic subsitutions (required?)
+Plug 'tpope/vim-commentary' " comments
+Plug 'tpope/vim-eunuch' " *nix integration
+Plug 'tpope/vim-obsession' " continuously updated session files Use `:Obsess` to record session
+Plug 'tpope/vim-repeat' " repeat with `.` after plugin map
+Plug 'tpope/vim-surround' " quoting/parenthesizing made easy
+Plug 'tpope/vim-unimpaired' " bracket mappings (todo: learn bindings)
+Plug 'tyru/open-browser.vim' " open uri with favorite browser
+Plug 'vim-scripts/SearchComplete' " tab completion inside of `/`
+Plug 'wellle/targets.vim' " adds more text objects (todo: learn bindings)
 
+"""" Required?
+Plug 'Konfekt/FastFold' " required?
+Plug 'jaawerth/nrun.vim' " can this be replaced with npx?
+
+"""" D-/N-eocomplete
 if has('nvim')
-    let g:python2_host_prog = '/usr/local/bin/python'
-    let g:python3_host_prog = '/usr/local/bin/python3'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/neoinclude.vim'
+    Plug 'Shougo/neomru.vim'
+    Plug 'Shougo/neopairs.vim'
     Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-    Plug 'zchee/deoplete-jedi'
+    Plug 'pbogut/deoplete-elm', { 'do' : 'npm install -g elm-oracle' }
     Plug 'zchee/deoplete-clang'
     Plug 'zchee/deoplete-go'
-    Plug 'awetzel/elixir.nvim'
-    Plug 'Shougo/context_filetype.vim'
-    Plug 'Shougo/neopairs.vim'
-    Plug 'Shougo/echodoc.vim'
-    Plug 'Shougo/neoinclude.vim'
-    Plug 'Konfekt/FastFold'
-    Plug 'Shougo/neomru.vim'
+    Plug 'zchee/deoplete-jedi'
 else
     Plug 'Shougo/neocomplete.vim'
 endif
 
-" Unite
-Plug 'Shougo/unite.vim'
+"""" Unite
+" @todo(mjf): denite!
+Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/unite-outline'
+Plug 'Shougo/unite.vim'
+Plug 'joker1007/unite-pull-request' " todo: get working
+Plug 'junegunn/vim-emoji' " emoji support (todo: add keybind to replace emoji)
+Plug 'lambdalisue/unite-grep-vcs' " unite VCS source
+Plug 'mattn/unite-nyancat'
+Plug 'moznion/unite-git-conflict.vim'
+Plug 'osyo-manga/unite-quickfix'
+Plug 'rafi/vim-unite-issue'
+Plug 'rhysd/unite-emoji.vim' " unite source for emoji (depends on vim-emoji)
 Plug 'tacroe/unite-mark'
 Plug 'vim-scripts/unite-colorscheme'
-Plug 'mattn/unite-nyancat'
-Plug 'rhysd/unite-emoji.vim'
-Plug 'lambdalisue/unite-grep-vcs'
-Plug 'moznion/unite-git-conflict.vim'
-Plug 'joker1007/unite-pull-request'
-Plug 'rafi/vim-unite-issue'
+Plug 'Shougo/unite-build'
 
-Plug 'Raimondi/delimitMate'
-Plug 'ervandew/supertab'
-Plug 'vim-scripts/SearchComplete'
-Plug 'dwieeb/vim-matchit'
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-user'
-Plug 'kshenoy/vim-signature'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'sjl/gundo.vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-abolish'
-Plug 'easymotion/vim-easymotion'
-Plug 'wellle/targets.vim'
-" Plug 'vim-scripts/YankRing.vim'
+"""" Command Plugins
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'neomake/neomake'
+
+"""" Snippet Plugins
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
-Plug 'davidbeckingsale/writegood.vim'
 
-"  --
-"  Project
-"  --
+"""" Project Plugins
 Plug 'Shougo/vimfiler.vim'
 Plug 'airblade/vim-rooter'
 
-"  --
-"  Git plugins
-"  --
-Plug 'mhinz/vim-signify'
+"""" VCS Plugins
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv'
 Plug 'lambdalisue/vim-gita', {'on': ['Gita']}
+Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 
-"  --
-"  Code Formatting
-"  --
+"""" Formatting Plugins
 Plug 'editorconfig/editorconfig-vim'
+Plug 'sbdchd/neoformat', { 'do': 'npm install -g eslint eslint_d prettier prettier-standard' }
 
-"  --
-"  UI
-"  --
-Plug 'morhetz/gruvbox'
-Plug 'mhinz/vim-janah'
+"""" Vim UI Plugins
 Plug 'altercation/vim-colors-solarized'
-"Plug 'Solarized'
-Plug 'Yggdroot/indentLine'
-Plug 'flazz/vim-colorschemes'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Plug 'machakann/vim-highlightedyank'
-Plug 'majutsushi/tagbar'
-" Plug 'ryanoasis/vim-devicons'
+Plug 'flazz/vim-colorschemes'
+Plug 'mhinz/vim-janah'
+Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-"  --
-"  Integrations
-"  --
-
-"" VimWiki
+"""" VimWiki
 Plug 'vim-scripts/vimwiki'
 
-"" Elm
+"""" Languages
+Plug 'awetzel/elixir.nvim'
+
+""""" Elm
 Plug 'ElmCast/elm-vim'
 
-"" Go
+""""" Go
 " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'fatih/vim-go'
 Plug 'Blackrush/vim-gocode'
 
-"" Python
+""""" Python
 Plug 'davidhalter/jedi-vim'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'mitsuhiko/vim-jinja'
 Plug 'mitsuhiko/vim-python-combined'
 
-"" Groovy
-""Plug 'vim.groovy'
+""""" Java
+Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
+
+""""" Groovy
+Plug 'vim-scripts/groovy.vim'
 Plug 'tfnico/vim-gradle'
 
-"" Scala
+""""" Scala
 Plug 'derekwyatt/vim-scala'
 Plug 'mpollmeier/vim-scalaConceal'
 
-"" Clojure
+""""" Clojure
 "Plug 'VimClojure'
 "Plug 'Rainbow-Parenthesis'
 Plug 'guns/vim-clojure-static'
@@ -162,120 +166,186 @@ Plug 'tpope/vim-leiningen'
 Plug 'tpope/vim-projectionist'
 " Plug 'vim-clojure-highlight'
 
-"" Javascript
-" Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript-jsx'] }
-" Plug 'kchmck/vim-coffee-script'
-" Plug 'mxw/vim-jsx', { 'for': ['Javascript', 'Javascript-jsx'] }
+""""" Javascript
 " Plug 'node.js'
-Plug '1995eaton/vim-better-javascript-completion'
-Plug 'moll/vim-node'
-Plug 'othree/jspc.vim'
-Plug 'othree/yajs.vim'
-Plug 'othree/es.next.syntax.vim'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'gavocanov/vim-js-indent'
-Plug 'mxw/vim-jsx'
-Plug 'elzr/vim-json'
-Plug 'othree/jsdoc-syntax.vim'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
-" Plug 'marijnh/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
-Plug 'ramitos/jsctags'
-Plug 'ruanyl/vim-fixmyjs'
-Plug 'jelera/vim-javascript-syntax'
+" Plug 'pangloss/vim-javascript', { 'for': ['javascript.jsx', 'javascript'] }
+" Plug '1995eaton/vim-better-javascript-completion'
+Plug 'elzr/vim-json', { 'for': 'json' }
+Plug 'gavocanov/vim-js-indent', { 'for': 'javascript.jsx' }
 Plug 'justinj/vim-react-snippets'
+Plug 'moll/vim-node', { 'for': 'javascript.jsx' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
+Plug 'othree/es.next.syntax.vim', { 'for': 'javascript.jsx' }
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript.jsx' }
+Plug 'othree/jsdoc-syntax.vim', { 'for': 'javascript.jsx' }
+Plug 'othree/jspc.vim', { 'for': 'javascript.jsx' }
+Plug 'othree/yajs.vim', { 'for': 'javascript.jsx' }
+Plug 'ramitos/jsctags', { 'for': 'javascript.jsx', 'do': 'npm install && npm install -g git+https://github.com/ramitos/jsctags.git' }
+Plug 'ternjs/tern_for_vim', { 'for': 'javascript.jsx', 'do': 'npm install && npm install -g tern tern-jsx' }
 
 " Plug 'vim-scripts/JavaScript-Indent'
-"" Java
-Plug 'artur-shaik/vim-javacomplete2'
-Plug 'vim-scripts/groovy.vim'
 
-"" Markdown
-Plug 'github/markup'
-Plug 'tpope/vim-markdown'
-
-"" YAML
-Plug 'stephpy/vim-yaml'
-
-"" HTML5
+""""" HTML5
+Plug 'mattn/webapi-vim'
 Plug 'othree/html5.vim'
 
-"" CSS
+""""" CSS/SASS/LESS
+Plug 'ap/vim-css-color'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'groenewege/vim-less'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'ap/vim-css-color'
 
-"" GLSL
-Plug 'tikhomirov/vim-glsl'
+""""" YAML
+Plug 'stephpy/vim-yaml'
 
-"" Rust
-Plug 'rust-lang/rust.vim'
-
+""""" Markdown
+Plug 'github/markup'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+Plug 'tpope/vim-markdown'
+
+""""" Other
+Plug 'chase/vim-ansible-yaml'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'mitsuhiko/vim-jinja'
+Plug 'rust-lang/rust.vim'
+Plug 'tikhomirov/vim-glsl'
 
 call plug#end()
 
 filetype plugin indent on
 syntax enable
 
-" --
-" vim-filer settings
-" --
+""" Plugin Settings
+
+"""" Indentline settings
+let g:indentLine_char = '|'
+
+"""" Identguide Settings
+let g:indent_guides_enable_on_vim_startup = 1
+
+"""" Delimitmate settings
+let delimitMate_expand_cr = 1
+
+"""" vimwiki settings
+let g:vimwiki_list = [{
+            \ 'auto_export': 1,
+            \ 'path': expand("~/Dropbox/vimwiki"),
+            \ 'path_html': expand("~/Dropbox/vimwiki_html"),
+            \ 'template_path': expand("~/Dropbox/vimwiki/_templates"),
+            \ 'template_default': "default",
+            \ 'template_ext': ".html",
+            \ 'css_name': "_css/style.css",
+            \ 'nested_syntaxes': {'python': 'python'}
+            \ }]
+
+
+"""" vim-filer settings
 let g:vimfiler_as_default_explorer = 1
 nmap <leader>d :VimFiler -buffer-name=explorer -simple -toggle<CR>
 nmap <leader>de :VimFiler -buffer-name=explorer -toggle<CR>
 nmap <leader>df :VimFilerBufferDir -buffer-name=explorer -toggle<CR>
 
-" --
-"  rust.vim settings
-" --
+"""" undotree settings
+nmap <leader>g :UndotreeToggle<CR>
 
-let g:rustfmt_autosave = 1
-
-" --
-" Gundo
-" --
-
-nmap <leader>g :GundoToggle<CR>
-
-" --
-" Git Gutter
-" --
-
+"""" Git Gutter settings
 let g:gitgutter_realtime = 1
 
-" --
-" Neomake
-" --
+"""" Neomake settings
+autocmd InsertChange,TextChanged * update | Neomake
+" autocmd! BufWritePost * Neomake
+let g:neomake_list_height = 10
+let g:neomake_open_list = 2
+let g:neomake_verbose = 1
+let g:neomake_java_checkstyle_xml = "~/.config/checkstyle/google_checks.xml"
+function! OnNeomakeJobFinished() abort
+    let context = g:neomake_hook_context
+    if context.jobinfo.exit_code != 0
+        echom printf('The job for maker %s exited non-zero: %s',
+                    \ context.jobinfo.maker.name, context.jobinfo.exit_code)
+    endif
+endfunction
 
-" --
-" Neoformat
-" --
+augroup my_neomake_hooks
+    au!
+    autocmd User NeomakeJobFinished nested call OnNeomakeJobFinished()
+augroup END
+
+"""" Neoformat settings
+augroup fmt
+    autocmd!
+    autocmd BufWritePre * Neoformat
+augroup END
+let g:neoformat_only_msg_on_error = 1
 let g:neoformat_run_all_formatters = 0
 let g:neoformat_try_formatprg = 1
 " Enable alignment
 let g:neoformat_basic_format_align = 1
-
 " Enable tab to spaces conversion
 let g:neoformat_basic_format_retab = 1
-
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 1
 
-" --
-"  airline settings
-" --
-
-let g:airline_theme = 'gruvbox'
+"""" airline settings
+let g:airline_theme = 'onedark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#hunks#enabled = 1
 
-" --
-"  Unite settings
-" --
+""""  javascript-libraries-syntax settings
+let g:used_javascript_libs = 'react'
+"""" rust.vim settings
+let g:rustfmt_autosave = 1
 
-let g:unite_prompt = '≥≥ '
+"""" elm.vim settings
+let g:elm_setup_keybindings = 0
+let g:elm_format_autosave = 1
+let g:elm_jump_to_error = 0
+let g:elm_make_output_file = "elm.js"
+let g:elm_make_show_warnings = 1
+let g:elm_detailed_complete = 1
+let g:elm_classic_highlighting = 0
+
+"""" tagbar settings
+let g:tagbar_type_ansible = {
+            \ 'ctagstype' : 'ansible',
+            \ 'kinds' : [
+            \ 't:tasks'
+            \ ],
+            \ 'sort' : 0
+            \ }
+
+let g:tagbar_type_css = {
+            \ 'ctagstype' : 'Css',
+            \ 'kinds'     : [
+            \ 'c:classes',
+            \ 's:selectors',
+            \ 'i:identities'
+            \ ]
+            \ }
+
+let g:tagbar_type_make = {
+            \ 'kinds':[
+            \ 'm:macros',
+            \ 't:targets'
+            \ ]
+            \}
+
+let g:tagbar_type_rust = {
+            \ 'ctagstype' : 'rust',
+            \ 'kinds' : [
+            \'T:types,type definitions',
+            \'f:functions,function definitions',
+            \'g:enum,enumeration names',
+            \'s:structure names',
+            \'m:modules,module names',
+            \'c:consts,static constants',
+            \'t:traits,traits',
+            \'i:impls,trait implementations',
+            \]
+            \}
+""""  Unite settings
+let g:unite_prompt = '➪'
 let g:unite_source_history_yank_enable = 1
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#profile('default', 'context', {
@@ -313,50 +383,62 @@ elseif executable('ag')
     let g:unite_source_grep_recursive_opt = ''
 endif
 
-" --
-"  Unite mark settings
-" --
-
+"""" Unite mark settings
 let g:unite_source_mark_marks =
             \   "abcdefghijklmnopqrstuvwxyz"
             \ . "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-" --
-"  neogomplete/deoplete settings
-" --
 
+"""" SuperTab settings
+
+"""" quick-scope settings
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" let g:qs_first_occurrence_highlight_color = 155
+
+"""" neosnippet settings
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/snippets'
+let g:neosnippet#enable_snipmate_compatibility = 1
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" For conceal markers.
+if has('conceal')
+    set conceallevel=1 concealcursor=niv
+endif
+
+"""" neocomplete/deoplete settings
 set completeopt+=noinsert
 let g:acp_enableAtStartup = 0
 
 if has("nvim")
     let g:deoplete#enable_at_startup = 1
+    let g:deoplete#auto_complete_delay = 10
     let g:deoplete#omni#functions = {}
-    let g:deoplete#omni#functions.javascript = [
-                \ 'tern#Complete',
-                \ 'jspc#omni',
-                \ 'elm',
-                \ '\.'
-                \ ]
+    let g:deoplete#sources = {}
+    let g:deoplete#keyword_patterns = {}
+    let g:deoplete#omni#input_patterns = {}
     "
     " Use tern_for_vim.
-    let g:tern_request_timeout = 1
-    let g:tern_show_signuate_in_pum = '0'
-    let g:tern#filetypes = [
+    let g:tern_show_argument_hints = 'on_hold'
+    let g:tern_show_signature_in_pum = 1
+    let g:deoplete#sources#ternjs#timeout = 1
+    let g:deoplete#sources#ternjs#types = 1
+    let g:deoplete#sources#ternjs#case_insensitive = 1
+    let g:deoplete#sources#ternjs#docs = 1
+    let g:deoplete#sources#ternjs#filetypes = [
                 \ 'javascript',
                 \ 'jsx',
                 \ 'javascript.jsx'
                 \ ]
+    " let g:deoplete#sources._ = ['tag', 'buffer', 'file']
+    let g:deoplete#omni#input_patterns.javascript = '[^. *\t]\.\w*'
+    let g:deoplete#sources['javascript.jsx'] = ['ternjs', 'tag']
+    let g:deoplete#omni#input_patterns.java = '[^. *\t]\.\w*'
 
-    let g:deoplete#sources = {}
-    let g:deoplete#sources['javascript'] = ['member', 'file', 'ternjs']
-    let g:deoplete#sources['jsx'] = ['member', 'file', 'ternjs']
-    let g:deoplete#sources['javascript.jsx'] = ['member', 'file', 'ternjs']
     let g:tern#command = ['tern']
     let g:tern#arguments = ['--persistent']
-
     " deoplete github integration for commit messages
-    "
-    let g:deoplete#keyword_patterns = {}
     let g:deoplete#keyword_patterns.gitcommit = '.+'
 
 else
@@ -368,134 +450,56 @@ else
     "\ '\.')
 endif
 
-" --
-" Indentline
-" --
+""" vim-one settings
+let g:one_allow_italics = 1 " I love italic for comments
 
-let g:indentLine_char = '│'
-
-" --
-" Delimitmate
-" --
-
-let delimitMate_expand_cr = 1
-
-" --
-" vimwiki
-" --
-
-let g:vimwiki_list = [{
-            \ 'auto_export': 1,
-            \ 'path': expand("~/Dropbox/vimwiki"),
-            \ 'path_html': expand("~/Dropbox/vimwiki_html"),
-            \ 'template_path': expand("~/Dropbox/vimwiki/_templates"),
-            \ 'template_default': "default",
-            \ 'template_ext': ".html",
-            \ 'css_name': "_css/style.css",
-            \ 'nested_syntaxes': {'python': 'python'}
-            \ }]
-
-"  --
-"  Elm
-"  --
-let g:elm_setup_keybindings = 0
-let g:elm_format_autosave = 1
-let g:elm_jump_to_error = 0
-let g:elm_make_output_file = "elm.js"
-let g:elm_make_show_warnings = 1
-let g:elm_detailed_complete = 1
-let g:elm_classic_highlighting = 0
-
-" --
-"  Autoloaders
-"  --
+""" Autoloaders
 autocmd! bufwritepost .vimrc source %
-
 " no trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
 
-
-
-" --
-" SuperTab
-" --
-
-" --
-" quick-scope
-" --
-" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-" let g:qs_first_occurrence_highlight_color = 155
-
-
-" --
-" neosnippet
-" --
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/snippets'
-let g:neosnippet#enable_snipmate_compatibility = 1
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-" For conceal markers.
-if has('conceal')
-    set conceallevel=2 concealcursor=niv
-endif
-
-" --
-" Git
-" --
-
+"""" git
 autocmd FileType git,gitcommit setlocal foldmethod=syntax foldlevel=1
 autocmd FileType gitcommit setlocal spell
-" autocmd FileType gitcommit WritegoodEnable
+autocmd FileType gitcommit WritegoodEnable
 autocmd FileType gitrebase nnoremap <buffer> S :Cycle<CR>
-
 " Instead of reverting the cursor to the last position in the buffer, we
 " set it to the first line when editing a git commit message
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
-" --
-" Tex/tMarkdown
-" --
-
+"""" tex/tmarkdown
 au BufNewFile,BufRead *.md set filetype=markdown
 autocmd FileType liquid,markdown,text,txt setlocal tw=78 linebreak nolist
 autocmd FileType markdown setlocal spell
 autocmd FileType markdown WritegoodEnable
 
-" --
-" TML (and other templating and (H/X)ML like things
-" --
+"""" TML (and other templating and (H/X)ML like things
 au BufNewFile,BufRead *.tml set filetype=html
 
-
-" --
-" Shell Scripts
-" --
-
+"""" Shell Scripts
 autocmd FileType sh,zsh,csh,tcsh    inoremap <silent> <buffer> <C-X>! #!/bin/<C-R>=&ft<CR>
 autocmd FileType perl,python,ruby   inoremap <silent> <buffer> <C-X>! #!/usr/bin/env<Space><C-R>=&ft<CR>
 
-" --
-" JavaScript
-" --
+"""" JavaScript
+autocmd FileType javascript.jsx setlocal omnifunc=tern#Complete
+autocmd Filetype javascript.jsx setlocal tabstop=2 shiftwidth=2 softtabstop=0
 let g:jsx_ext_required = 0
 let g:vim_json_syntax_conceal = 0
+let g:neomake_javascript_eslint_exe = 'npx'
+let g:neomake_javascript_eslint_args = ['eslint_d', '-f', 'compact']
+let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_javascript_prettier = {
+            \ 'exe' : 'npx',
+            \ 'args' : ['prettier-standard', '--stdin'],
+            \ 'stdin' : 1
+            \ }
+" autocmd BufWritePre *.js Neoformat
+" autocmd BufWritePre *.jsx Neoformat
 
-" vim-fixmyjs
-let g:fixmyjs_use_local = 1
-noremap <Leader><Leader>f :Fixmyjs<CR>
-
-" --
-" Java
-" --
+"""" Java
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
-
-" --
-" Overtone
-" --
-
+"""" Clojure
 autocmd BufRead,BufNewFile *.clj    set filetype=clojure
 autocmd FileType clojure            nnoremap <leader>r :Require<CR>
 autocmd FileType clojure            nnoremap <leader>e :Eval<CR>
@@ -505,92 +509,60 @@ autocmd FileType clojure            RainbowParenthesesLoadRound
 autocmd FileType clojure            RainbowParenthesesLoadSquare
 autocmd FileType clojure            RainbowParenthesesLoadBraces
 
-"  --
-"  General Settings
-"  --
+""" General Settings
 map <space> <leader>
-
 " read modeline from files
 set modeline
-
 " watch for file changes
 set autoread
-
 " set esckeys
 set timeoutlen=1000 ttimeoutlen=0
 
-" ---
-" Searching
-" ---
-
+"""" Searching
 " set magic on, for regular expressions
 set magic
-
-" don't highlight search results
-set nohlsearch
-
-" incremental search
-set incsearch
-
 " ignore case when searching
 set ignorecase
-
 " For use use artificial intelligence whilst searching
 set smartcase
-
 " Highlight searches
 set hlsearch
-
 " Highlight searches dynamically
 set incsearch
-
 " Let me hide a buffer with changes
 set hidden
-
 " Use a better `grep` when searching via '/'
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 endif
 
-
-
-" ---
-" Backup
-" ---
-
+"""" Backup
 set backupcopy=yes
 set backupdir=~/.vim/backup
 silent !mkdir -p ~/.vim/backup > /dev/null 2>&1
 set directory=~/.vim/tmp
 silent !mkdir -p ~/.vim/tmp> /dev/null 2>&1
-set undodir=~/.vim/undo
-silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
-if exists('+undofile')
-    set undofile
+if has("persistent_undo")
+    silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
+    set undodir=~/.vim/undo
+    if exists('+undofile')
+        set undofile
+    endif
 endif
 
-" ---
-" Bells/Sound
-" ---
-
+"""" Bells/Sound
 set noerrorbells
 set novisualbell
 set t_vb=
 
-" --
-" File Formats and Encodings
-" ---
-
+"""" File Formats and Encodings
 set encoding=utf-8
 set ffs=unix,mac,dos
 set fileformats=unix,mac,dos
 scriptencoding utf-8
 set encoding=utf-8 nobomb
 
-" ---
-" Code Formatting
-" ---
-
+"""" Code Formatting
 set autoindent
 set tabstop=4
 set shiftwidth=4
@@ -600,71 +572,49 @@ set nowrap
 set nojoinspaces
 set listchars=tab:>~,nbsp:_,trail:.
 
-"
-" javascript
-autocmd Filetype javascript.jsx let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
-autocmd Filetype javascript.jsx setlocal tabstop=2 shiftwidth=2 softtabstop=0
-autocmd FileType javascript.jsx set formatprg=prettier-standard
-autocmd BufWritePre *.js Neoformat
-autocmd BufWritePre *.jsx Neoformat
-
-" ---
-" Diff
-" ---
-
+"""" Diff
 " Add vertical spaces to keep right and left aligned
 set diffopt=filler
-
 " Ignore whitespace changes (focus on code changes)
 set diffopt+=iwhite
 set diffopt+=vertical
 
-" ---
-" Apperance and UI Settings
-" ---
-
-set t_Co=256
-set number
-set relativenumber
-set numberwidth=5
-set ruler
-set showcmd
+"""" Apperance and UI Settings
+" true color support (github.com/rakr/vim-one)
+set t_8b=[48;2;%lu;%lu;%lum
+set t_8f=[38;2;%lu;%lu;%lum
+colorscheme one
+set background=dark
 set cmdheight=1
+set colorcolumn=80
+set cursorline
+set hlsearch
 " Always show status line
 set laststatus=2
+set list
 set more
+set number
+set numberwidth=5
+set relativenumber
+set ruler
 set scrolloff=1
-set sidescrolloff=1
-set timeoutlen=1200
-set ttimeoutlen=50
+set showcmd
 set showmatch
-
+set sidescrolloff=1
 " splitting a window will put the new window below the current one
 set splitbelow
-
-set title
-set hlsearch
-set cursorline
-set list
-set colorcolumn=80
-
-set background=dark
-" colorscheme tomorrow-night
-colorscheme gruvbox
+set t_Co=256
 set termguicolors
+set timeoutlen=1200
+set title
+set ttimeoutlen=50
 
-" ---
-" Folds
-" ---
-
+"""" Folds
 set foldenable
 set foldlevelstart=10
 set foldmethod=indent
 
-" ---
-" Spellcheck
-" ---
-
+"""" Spellcheck
 try
     lang en_US
 catch
@@ -675,30 +625,22 @@ catch
     set spellfile=~/.vim/spell/en.utf-8.add
 endtry
 
-" ---
-" Performance
-" ---
-
+"""" Performance
 " fast terminal
 set ttyfast
+" how many tenths of a second to blink
+set mat=2
+" timeout length for keypresses
+set tm=500
+set synmaxcol=128
+syntax sync minlines=256
 
 " Redraw when executing macros
 if !has("nvim")
     set lazyredraw
 end
 
-" how many tenths of a second to blink
-set mat=2
-
-" timeout length for keypresses
-set tm=500
-
-set synmaxcol=128
-syntax sync minlines=256
-" ---
-" Paste
-" ---
-
+"""" Paste
 "set paste
 set pastetoggle=<F2>
 set clipboard=unnamed
@@ -710,50 +652,55 @@ set clipboard=unnamed
 "     endif
 " endif
 
-" ---
-" Backspacing
-" ---
-
+"""" Backspacing
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" ---
-" Tab completion
-" ---
-
+"""" Tab completion
+set completeopt-=preview
+set wildignore+=**/tmp/**
+set wildignore+=*.app,*.dmg,*.pdf,*.so
+set wildignore+=*.db,*.o,*.obj
+set wildignore+=*.git,*.svn
+set wildignore+=*.o,*.obj,.git,*.rbc,node_modules,build,indexes,out
+set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.swp,*.bak,*.lock
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*DS_Store*
 set wildmenu
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,node_modules,build,indexes,out
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-set wildignore+=*.db,*.o,*.obj
-set wildignore+=*.swp,*.bak,*.lock
-set wildignore+=*.git,*.svn
-set wildignore+=*DS_Store*
-set wildignore+=**/tmp/**
-set wildignore+=*.png,*.jpg,*.gif
-set wildignore+=*.app,*.dmg,*.pdf,*.so
-set completeopt-=preview
 
-" ---
-" Mouse
-" ---
-
+"""" Mouse
 set mouse=a
 set mousehide
 
-"  --
-"  Keybindings
-"  --
-nore ; :
+""" Keybindings
+noremap ; :
 inoremap jj <Esc>
 inoremap jk <Esc>
 vnoremap <ESC> <C-c>
 imap ii <C-[>
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+" Find merge conflict markers
+map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+" turn off search highlight
+nnoremap <leader>/ :nohlsearch<CR>
+" highlight last inserted text
+nnoremap gV `[v`]
+vmap < <gv
+vmap > >gv
+" W" Ex mode: no ty
+map Q <Nop>
+" Disable accidental macro recording when I spaz out on the q key
+map qq <Nop>
+" Commands
+command! W w
+command! Q q
+cmap w!! w !sudo tee % >/dev/null
 
-" --
-"  Tabs
-"  --
-"
+""""  Tabs
 let notabs = 1
 noremap <leader><Tab> :tabnext<CR>
 noremap <leader><S-Tab> :tabprev<CR>
@@ -762,61 +709,66 @@ noremap <leader>tp :tabprev<CR>
 noremap <leader>tw :tabnew<CR>
 noremap <leader>tc :tabclose<CR>
 
-" Fuck help
+"""" Fuck help
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+"""" Splits
 " Move between splits using hjkl
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-
 " Create splits
 map <leader>sw :split<cr>
 map <leader>sv :vsplit<cr>
 
-" move to beginning/end of line
-nnoremap B ^
-nnoremap E $
+"""" Neomake
+noremap <Leader>m :Neomake!<cr>
+noremap <Leader>mf :Neomake<cr>
+
+"""" Neoformat
+function! ToggleNeoFormat()
+    let g:neoformat_basic_format_align = !g:neoformat_basic_format_align
+    " Enable tab to spaces conversion
+    let g:neoformat_basic_format_retab = !g:neoformat_basic_format_retab
+    " Enable trimmming of trailing whitespace
+    let g:neoformat_basic_format_trim = !g:neoformat_basic_format_trim
+    echo "Trim: " . g:neoformat_basic_format_trim
+    echo "Retab: " . g:neoformat_basic_format_retab
+    echo "Align: " . g:neoformat_basic_format_align
+endfunction
+noremap <Leader>f :Neoformat<cr>
+noremap <Leader>ft :call ToggleNeoFormat()<cr>
+
+"""" Unite
+noremap <Leader>p :Unite -wrap -start-insert -no-split -no-resize -buffer-name=search grep:!<cr>
+noremap <Leader>pf :Unite -start-insert -no-split -no-resize -buffer-name=files -force-redraw file_rec/async:!<cr>
+noremap <Leader>pr :Unite -start-insert -no-split -no-resize -buffer-name=mostrecentfiles -force-redraw file_mru<cr>
+noremap <Leader>pb :Unite -start-insert -no-split -no-resize -buffer-name=buffers buffer<cr>
+noremap <Leader>pg :Unite -wrap -start-insert -no-split -no-resize -buffer-name=gitgrep grep/git:.<cr>
+noremap <Leader>pG :Unite -start-insert -no-split -no-resize -buffer-name=gitfiles file_rec/git<cr>
+noremap <Leader>py :Unite -start-insert -buffer-name=yanks history/yank<cr>
+noremap <Leader>po :Unite -start-insert -buffer-name=outline outline<cr>
+noremap <Leader>ps :Unite -start-insert -buffer-name=snippets neosnippet/user:expand neosnippet:expand<cr>
+noremap <Leader>pq :Unite -start-insert -buffer-name=quickfix quickfix<cr>
+
+""" Tagbar
+noremap <Leader>t :TagbarOpenAutoClose<CR>
 
 
-" Find merge conflict markers
-map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+"""" D-/N-eocomplete
+" if has('nvim')
+" else
+" endif
 
-" turn off search highlight
-nnoremap <leader>/ :nohlsearch<CR>
+""" Language Specific Bindings
+autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jj :TernDef<CR>
+autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jd :TernDoc<CR>
+autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jt :TernType<CR>
+autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jr :TernRename<CR>
+autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jf :TernRefs<CR>
 
-" highlight last inserted text
-nnoremap gV `[v`]
-
-vnoremap < <gv
-vnoremap > >gv
-
-" W" Ex mode: no ty
-map Q <Nop>
-
-" Disable accidental macro recording when I spaz out on the q key
-map qq <Nop>
-
-" Unite
-nnoremap <Leader>p :Unite -wrap -start-insert -no-split -no-resize -buffer-name=search grep:!<cr>
-nnoremap <Leader>pf :Unite -start-insert -no-split -no-resize -buffer-name=files -force-redraw file_rec/async:!<cr>
-nnoremap <Leader>pr :Unite -start-insert -no-split -no-resize -buffer-name=mostrecentfiles -force-redraw file_mru<cr>
-nnoremap <Leader>pb :Unite -start-insert -no-split -no-resize -buffer-name=buffers buffer<cr>
-nnoremap <Leader>pg :Unite -wrap -start-insert -no-split -no-resize -buffer-name=gitgrep grep/git:.<cr>
-nnoremap <Leader>pG :Unite -start-insert -no-split -no-resize -buffer-name=gitfiles file_rec/git<cr>
-nnoremap <Leader>py :Unite -start-insert -buffer-name=yanks history/yank<cr>
-nnoremap <Leader>po :Unite -start-insert -buffer-name=outline outline<cr>
-nnoremap <Leader>ps :Unite -start-insert -buffer-name=snippets neosnippet/user:expand neosnippet:expand<cr>
-
-" Neocomplete
-inoremap <expr><C-g> neocomplete#undo_completion()
-inoremap <expr><C-l> neocomplete#complete_common_string()
-
-" Commands
-command! W w
-command! Q q
-
-cmap w!! w !sudo tee % >/dev/null
+"" vim:fdm=expr:fdl=0
+"" vim:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='

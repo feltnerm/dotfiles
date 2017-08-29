@@ -1,9 +1,9 @@
 [user]
 	name = Mark Feltner
 [github]
-	user = feltnerm
+    user = feltnerm
 [pack]
-	threads = 0
+    threads = 0
 [push]
     config = default
     default = tracking
@@ -15,7 +15,7 @@
     short = true
     branch = true
 [color]
-	ui = auto
+    ui = auto
     branch = auto
     diff = auto
     status = auto
@@ -29,42 +29,35 @@
     old = red bold
     new = green bold
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
 [color "status"]
     added = green
     changed = yellow
     untracked = blue bold
 [diff]
-	renameLimit = 0
+    renameLimit = 0
 [core]
     ignorecase = false
-	excludesfile = ~/.gitignore
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    excludesfile = ~/.gitignore
+    pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
-    co = checkout
-    st = status
+    br = branch
     c = commit -am
     ci = commit
-    br = branch
+    co = checkout
     df = diff --color --color-words --abbrev
-    pl = pull
-    p = push
-    ps = push
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\'%s'\\' $@)\"' -
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    p = push
+    pl = pull
+    pom = push origin master
+    ps = push
+    ri = rebase --interactive --autosquash
     squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\'%s'\\' $@)\"' -
-    ri = rebase --interactive --autosquash))'
-	switch = !legit switch \"$@\"
-	branches = !legit branches
-	sprout = !legit sprout \"$@\"
-	unpublish = !legit unpublish \"$@\"
-	harvest = !legit harvest \"$@\"
-	sync = !legit sync \"$@\"
-	publish = !legit publish \"$@\"
-	graft = !legit graft \"$@\"
+    st = status
 
 # url aliases
 [merge]
@@ -97,6 +90,6 @@
 [push]
         default = matching
 [credential]
-	helper = cache
+    helper = cache
 [ghi]
 	token = b3b48cd16f50155997a92c2076f703bbd85f995a
