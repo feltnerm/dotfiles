@@ -728,6 +728,10 @@ map <C-l> <C-w>l
 map <leader>sw :split<cr>
 map <leader>sv :vsplit<cr>
 
+" Insert current date
+nnoremap <F5> "=strftime("%a %d %b %Y")<CR>P
+inoremap <F5> <C-R>=strftime("%a %d %b %Y")<CR>
+
 """" Neomake
 noremap <Leader>m :Neomake!<cr>
 noremap <Leader>mf :Neomake<cr>
