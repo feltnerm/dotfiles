@@ -480,6 +480,9 @@ au BufNewFile,BufRead *.tml set filetype=html
 autocmd FileType sh,zsh,csh,tcsh    inoremap <silent> <buffer> <C-X>! #!/bin/<C-R>=&ft<CR>
 autocmd FileType perl,python,ruby   inoremap <silent> <buffer> <C-X>! #!/usr/bin/env<Space><C-R>=&ft<CR>
 
+""" YAML
+let g:neoformat_enabled_yaml = ['']
+
 """" JavaScript
 autocmd FileType javascript.jsx setlocal omnifunc=tern#Complete
 autocmd Filetype javascript.jsx setlocal tabstop=2 shiftwidth=2 softtabstop=0
