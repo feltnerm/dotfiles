@@ -9,6 +9,7 @@
 - link:
     ~/.agignore: dotfiles/agignore
     ~/.ctags: dotfiles/ctags
+    ~/.config/alacritty/alacritty.yml: dotfiles/config/alacritty/alacritty.yml
     ~/.config/fish/config.fish: dotfiles/config/fish/config.fish
     ~/.config/fish/functions: dotfiles/config/fish/functions
     ~/.config/fish/lib: dotfiles/config/fish/lib
