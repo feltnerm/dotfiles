@@ -229,9 +229,9 @@ let delimitMate_expand_cr = 1
 """" vimwiki settings
 let g:vimwiki_list = [{
             \ 'auto_export': 1,
-            \ 'path': expand("~/Dropbox/vimwiki"),
-            \ 'path_html': expand("~/Dropbox/vimwiki_html"),
-            \ 'template_path': expand("~/Dropbox/vimwiki/_templates"),
+            \ 'path': expand("~/vimwiki"),
+            \ 'path_html': expand("~/vimwiki/_html"),
+            \ 'template_path': expand("~/vimwiki/_templates"),
             \ 'template_default': "default",
             \ 'template_ext': ".html",
             \ 'css_name': "_css/style.css",
