@@ -4,12 +4,12 @@
     "ecma6",
     "browser"
   ],
-  "loadEagerly": [
-  ],
+  "loadEagerly": [],
   "plugins": {
-    "node": {},
     "es_modules": {},
-    "webpack": {},
-    "jsx": {}
+    "jsx": {},
+    "modules": {},
+    "node": {},
+    "webpack": {}
   }
 }
