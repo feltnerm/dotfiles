@@ -48,6 +48,7 @@ Plug 'tpope/vim-unimpaired' " bracket mappings (todo: learn bindings)
 Plug 'tyru/open-browser.vim' " open uri with favorite browser
 Plug 'vim-scripts/SearchComplete' " tab completion inside of `/`
 Plug 'wellle/targets.vim' " adds more text objects (todo: learn bindings)
+Plug 'milkypostman/vim-togglelist' " toggle location and quickfix windows
 
 """" Required?
 Plug 'Konfekt/FastFold' " required?
@@ -251,11 +252,14 @@ nmap <leader>g :UndotreeToggle<CR>
 """" Git Gutter settings
 let g:gitgutter_realtime = 1
 
+"""" vim-togglelist settings
+let g:toggle_list_no_mapping = 1
+
 """" Neomake settings
 autocmd InsertChange,TextChanged * update | Neomake
 " autocmd! BufWritePost * Neomake
 let g:neomake_list_height = 10
-let g:neomake_open_list = 2
+let g:neomake_open_list = 0
 let g:neomake_verbose = 1
 let g:neomake_java_checkstyle_xml = "~/.config/checkstyle/google_checks.xml"
 function! OnNeomakeJobFinished() abort
@@ -735,6 +739,8 @@ inoremap <F5> <C-R>=strftime("%a %d %b %Y")<CR>
 """" Neomake
 noremap <Leader>m :Neomake!<cr>
 noremap <Leader>mf :Neomake<cr>
+noremap <Leader>ml :call ToggleLocationList()<cr>
+noremap <Leader>mq :call ToggleQuickfixList()<cr>
 
 """" Neoformat
 function! ToggleNeoFormat()
