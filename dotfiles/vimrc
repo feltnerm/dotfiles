@@ -754,7 +754,26 @@ function! ToggleNeoFormat()
     echo "Retab: " . g:neoformat_basic_format_retab
     echo "Align: " . g:neoformat_basic_format_align
 endfunction
+function! ToggleNeoformatAuto()
+    if !exists('#fmt#BufWritePre')
+        augroup fmt
+            autocmd!
+            autocmd BufWritePre * undojoin | Neoformat
+        augroup END
+        echo "Neoformat enabled on save"
+    else
+        augroup fmt
+            autocmd!
+        augroup END
+        echo "Neoformat disabled on save"
+    endif
+endfunction
+
+nnoremap <F4> :call ToggleNeoformatAuto()<CR>
+
 noremap <Leader>f :Neoformat<cr>
+noremap <Leader>fp :Neoformat!<cr>
+noremap <Leader>fa :call ToggleNeoformatAuto()<cr>
 noremap <Leader>ft :call ToggleNeoFormat()<cr>
 
 """" Unite
