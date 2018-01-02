@@ -256,8 +256,9 @@ let g:gitgutter_realtime = 1
 let g:toggle_list_no_mapping = 1
 
 """" Neomake settings
-autocmd InsertChange,TextChanged * update | Neomake
+" autocmd InsertChange,TextChanged * update | Neomake
 " autocmd! BufWritePost * Neomake
+call neomake#configure#automake('rw', 1000)
 let g:neomake_list_height = 10
 let g:neomake_open_list = 0
 let g:neomake_verbose = 1
@@ -276,10 +277,7 @@ augroup my_neomake_hooks
 augroup END
 
 """" Neoformat settings
-augroup fmt
-    autocmd!
-    autocmd BufWritePre * Neoformat
-augroup END
+
 let g:neoformat_only_msg_on_error = 1
 let g:neoformat_run_all_formatters = 0
 let g:neoformat_try_formatprg = 1
