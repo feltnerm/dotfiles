@@ -65,6 +65,9 @@ if has('nvim')
     Plug 'zchee/deoplete-clang'
     Plug 'zchee/deoplete-go'
     Plug 'zchee/deoplete-jedi'
+    Plug 'pbogut/deoplete-elm'
+    Plug 'mhartington/nvim-typescript'
+    Plug 'fszymanski/deoplete-emoji'
 else
     Plug 'Shougo/neocomplete.vim'
 endif
@@ -183,6 +186,7 @@ Plug 'othree/jspc.vim', { 'for': 'javascript.jsx' }
 Plug 'othree/yajs.vim', { 'for': 'javascript.jsx' }
 Plug 'ramitos/jsctags', { 'for': 'javascript.jsx', 'do': 'npm install && npm install -g git+https://github.com/ramitos/jsctags.git' }
 Plug 'ternjs/tern_for_vim', { 'for': 'javascript.jsx', 'do': 'npm install && npm install -g tern tern-jsx' }
+Plug 'Quramy/tsuquyomi', { 'for': 'javascript.jsx', 'do': 'npm install -g typescript' }
 
 " Plug 'vim-scripts/JavaScript-Indent'
 
@@ -392,6 +396,7 @@ let g:unite_source_mark_marks =
 
 
 """" SuperTab settings
+let g:SuperTabDefaultCompletionType = "context"
 
 """" quick-scope settings
 " let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -416,6 +421,7 @@ let g:acp_enableAtStartup = 0
 if has("nvim")
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#auto_complete_delay = 10
+    let g:deoplete#complete_method='omnifunc'
     let g:deoplete#omni#functions = {}
     let g:deoplete#sources = {}
     let g:deoplete#keyword_patterns = {}
@@ -431,11 +437,12 @@ if has("nvim")
     let g:deoplete#sources#ternjs#filetypes = [
                 \ 'javascript',
                 \ 'jsx',
-                \ 'javascript.jsx'
+                \ 'javascript.jsx',
+                \ 'typescript'
                 \ ]
     " let g:deoplete#sources._ = ['tag', 'buffer', 'file']
     let g:deoplete#omni#input_patterns.javascript = '[^. *\t]\.\w*'
-    let g:deoplete#sources['javascript.jsx'] = ['ternjs', 'tag']
+    let g:deoplete#sources['javascript.jsx'] = ['ternjs', 'tag', 'typescript']
     let g:deoplete#omni#input_patterns.java = '[^. *\t]\.\w*'
 
     let g:tern#command = ['tern']
@@ -488,6 +495,8 @@ let g:neoformat_enabled_yaml = ['']
 """" JavaScript
 autocmd FileType javascript.jsx setlocal omnifunc=tern#Complete
 autocmd Filetype javascript.jsx setlocal tabstop=2 shiftwidth=2 softtabstop=0
+" typescript autocomplete; turn off if slow
+let g:tsuquyomi_completion_detail = 1
 let g:jsx_ext_required = 0
 let g:vim_json_syntax_conceal = 0
 let g:neomake_open_list = 0
