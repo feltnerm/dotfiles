@@ -48,6 +48,7 @@
     c = commit -am
     ci = commit
     co = checkout
+    dad = !curl https://icanhazdadjoke.com/ && git add
     df = diff --color --color-words --abbrev
     fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\'%s'\\' $@)\"' -
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
