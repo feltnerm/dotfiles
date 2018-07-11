@@ -86,7 +86,6 @@ dw_php_codehinting.config
 
 
 .metadata
-bin/
 tmp/
 *.tmp
 *.bak
@@ -188,7 +187,6 @@ flycheck_*.el
 
 *.esproj
 
-bin/
 bin-debug/
 bin-release/
 
@@ -357,7 +355,7 @@ octave-workspace
 *.~vsdx
 
 # ignore ModelSim generated files and directories (temp files and so on)
-[_@]*
+# [_@]*
 
 # ignore compilation output of ModelSim
 *.mti
