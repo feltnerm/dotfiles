@@ -467,6 +467,10 @@ autocmd! bufwritepost .vimrc source %
 " no trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
 
+" wiki / vimwiki
+autocmd FileType vimwiki colorscheme base16-gruvbox-light-soft
+autocmd FileType vimwiki set background=light
+
 """" git
 autocmd FileType git,gitcommit setlocal foldmethod=syntax foldlevel=1
 autocmd FileType gitcommit setlocal spell
@@ -599,9 +603,9 @@ set diffopt+=vertical
 
 """" Apperance and UI Settings
 " true color support (github.com/rakr/vim-one)
-set t_8b=[48;2;%lu;%lu;%lum
-set t_8f=[38;2;%lu;%lu;%lum
-colorscheme one
+" set t_8b=[48;2;%lu;%lu;%lum
+" set t_8f=[38;2;%lu;%lu;%lum
+colorscheme base16-gruvbox-dark-soft
 set background=dark
 set cmdheight=1
 set colorcolumn=80
