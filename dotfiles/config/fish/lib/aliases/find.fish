@@ -1,2 +1,1 @@
-#!/usr/bin/env bash
-alias f "find . -name $1"
+alias find "fd"
