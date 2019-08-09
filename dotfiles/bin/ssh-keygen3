@@ -45,7 +45,7 @@ function encrypt_key {
 
 function add_key_to_ssh {
     chmod 600 $path
-    ssh-add $path
+    ssh-add -k $path
     cp "$path" "$path.pub" $HOME/.ssh/
 }
 
