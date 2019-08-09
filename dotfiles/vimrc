@@ -818,6 +818,3 @@ autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jd :TernDoc<C
 autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jt :TernType<CR>
 autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jr :TernRename<CR>
 autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>jf :TernRefs<CR>
-
-"" vim:fdm=expr:fdl=0
-"" vim:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
