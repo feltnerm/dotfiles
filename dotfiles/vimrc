@@ -575,6 +575,8 @@ endif
 """" Bells/Sound
 set noerrorbells
 set novisualbell
+set visualbell
+set noerrorbells
 set t_vb=
 
 """" File Formats and Encodings
