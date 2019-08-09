@@ -560,10 +560,10 @@ endif
 
 """" Backup
 set backupcopy=yes
-set backupdir=~/.vim/backup
-silent !mkdir -p ~/.vim/backup > /dev/null 2>&1
-set directory=~/.vim/tmp
-silent !mkdir -p ~/.vim/tmp> /dev/null 2>&1
+silent !mkdir -p $HOME/.vim/backup > /dev/null 2>&1
+set backupdir=$HOME/.vim/backup
+silent !mkdir -p $HOME/.vim/tmp > /dev/null 2>&1
+set directory=$HOME/.vim/tmp
 if has("persistent_undo")
     silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
     set undodir=~/.vim/undo
