@@ -25,7 +25,7 @@ function generate_key {
 # generate the key using ssh-keygen.
 
     local KEY_TYPE='rsa'
-    local KEY_LENGTH=2048
+    local KEY_LENGTH=4096
     local signature="$(whoami)@$(hostname -s)-$(date +'%s')"
 
     ssh-keygen -t $KEY_TYPE -b $KEY_LENGTH -N $password -f $path -C $signature
