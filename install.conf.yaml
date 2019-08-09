@@ -36,6 +36,7 @@
     ~/.vim: dotfiles/vim
     ~/.vimrc: dotfiles/vimrc
     ~/.wgetrc: dotfiles/wgetrc
+    ~/.zshrc: dotfiles/zshrc
     ~/bin: dotfiles/bin
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
