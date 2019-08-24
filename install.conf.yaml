@@ -28,7 +28,7 @@
     ~/.logout: dotfiles/logout
     ~/.profile: dotfiles/profile
     ~/.ptconfig.toml: dotfiles/ptconfig.toml
-    ~/.spacemacs: dotfiles/spacemacs
+    ~/.spacemacs.d: dotfiles/spacemacs.d
     ~/.surfraw.conf: dotfiles/surfraw.conf
     ~/.tern-project: dotfiles/tern-project
     ~/.textlintrc: dotfiles/textlintrc
