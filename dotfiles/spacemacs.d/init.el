@@ -356,6 +356,15 @@ you should place your code here."
 
   (setq meghanada-server-remote-debug t)
   (setq meghanada-javac-xlint "-Xlint:all,-processing")
+
+  ;; hooks to fire when coding
+  (add-hook 'prog-mode-hook (lambda ()
+                              (setq fill-column 79)
+                              (spacemacs/toggle-fill-column-indicator-on)))
+
+  ;; hooks to fire when editing text / writing
+  (add-hook 'text-mode-hook (lambda ()
+                              (spacemacs/toggle-fill-column-indicator-off)))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
