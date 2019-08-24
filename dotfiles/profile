@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+
+export DROPBOX="$HOME/Dropbox"
+export WIKI="$HOME/vimwiki_html"
+export WIKI_SOURCE="$HOME/vimwiki"
+export CODE_HOME="$HOME/code"
+export PROJECTS="$CODE_HOME"
+
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US"
+export PAGER="less -X"
+export MANPAGER="$PAGER"
+
+# editor
+alias vim=nvim
+export EDITOR=nvim
+export VISUAL=nvim
+
+# use more up-to-date SSL in shell commands
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+export PATH="/usr/local/bin:$PATH"
+
+## java homes
+export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+export JAVA_8_GRAALVM_HOME="/Library/Java/JavaVirtualMachines/graalvm-ce-19.0.0/Contents/Home"
+export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+export JAVA_12_HOME=$(/usr/libexec/java_home -v12)
+
+alias -g java8='export JAVA_HOME=$JAVA_8_HOME'
+alias -g java11='export JAVA_HOME=$JAVA_11_HOME'
+alias -g java12='export JAVA_HOME=$JAVA_12_HOME'
+alias -g javaGraal='export JAVA_HOME=$JAVA_8_GRAALVM_HOME'
+
+function javaSelect() {
+    local version verbose
+
+    version=$1
+    verbose=${2:-true}
+
+    case $version in
+        8)
+            java8
+            # export PATH="$JAVA_HOME/bin:$PATH"
+            $verbose && echo "Selected Java 8"
+            $verbose && echo "$JAVA_HOME"
+            ;;
+        11)
+            java11
+            # export PATH="$JAVA_HOME/bin:$PATH"
+            $verbose && echo "Selected Java 11"
+            $verbose && echo "$JAVA_HOME"
+            ;;
+        12)
+            java12
+            # export PATH="$JAVA_HOME/bin:$PATH"
+            $verbose && echo "Selected Java 12"
+            $verbose && echo "$JAVA_HOME"
+            ;;
+        graal)
+            javaGraal
+            # export PATH="$JAVA_HOME/bin:$PATH"
+            $verbose && echo "Selected Java GraalVM"
+            $verbose && echo "$JAVA_HOME"
+            ;;
+        *)
+            $verbose && echo "Unknown java: $version"
+            $verbose && echo "$JAVA_HOME"
+            ;;
+    esac
+}
+
+## default to Java 8
+javaSelect 8 false
+
+# node setup
+## node version manager (nvm)
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+# python
+export WORKON_HOME="$HOME/.virtualenvs"
+export PYTHONSTARTUP="$HOME/.pystartup"
+export PROJECT_HOME="$CODE_HOME"
+
+# rvm
+export PATH="$HOME/.rvm/bin:$PATH"
+
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# go
+export GOPATH="$HOME/.go"
+export PATH="$GOPATH/bin:$PATH"
+
+# elixir
+export PATH="$PATH:/path/to/elixir/bin"
+
+# my crap
+export PATH="$HOME/bin":"$PATH"
+
+# java
+[ -s "/Users/mfeltner/.jabba/jabba.sh" ] && source "/Users/mfeltner/.jabba/jabba.sh"

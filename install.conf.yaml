@@ -26,6 +26,7 @@
     ~/.lein: dotfiles/lein
     ~/.login: dotfiles/login
     ~/.logout: dotfiles/logout
+    ~/.profile: dotfiles/profile
     ~/.ptconfig.toml: dotfiles/ptconfig.toml
     ~/.spacemacs: dotfiles/spacemacs
     ~/.surfraw.conf: dotfiles/surfraw.conf
