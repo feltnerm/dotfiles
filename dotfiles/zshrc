@@ -1,0 +1,308 @@
+#!/usr/bin/env zsh
+
+### profiler
+## set the trace prompt to include seconds, nanoseconds, script name and line number
+#PS4='+$(date "+%s:%N") %N:%i> '
+## save file stderr to file descriptor 3 and redirect stderr (including trace
+## output) to a file with the script's PID as an extension
+#exec 3>&2 2>/tmp/startlog.$$
+## set options to turn on tracing and expansion of commands contained in the prompt
+#setopt xtrace prompt_subst
+
+## debugger
+#source ~/bin/zshdb/dbg-trace.sh
+# start debgguing with:
+# _Dbg_debugger
+
+# powerlevel9k Customization
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status dir vcs vi_mode)
+POWERLEVEL9k_RIGHT_PROMPT_ELEMENTS=(status root_inidicator background_jobs history command_execution_time time)
+
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
+POWERLEVEL9K_SHOW_CHANGESET=true
+POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
+POWERLEVEL9K_VCS_SHORTEN_LENGTH=16
+POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=11
+POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
+POWERLEVEL9K_VCS_SHORTEN_DELIMITER=".."
+
+#
+## zplug 🌺
+#
+
+## Check if zplug is installed
+if [[ ! -d ~/.zplug ]]; then
+  git clone https://github.com/zplug/zplug ~/.zplug
+  source ~/.zplug/init.zsh && zplug update --self
+fi
+
+source ~/.zplug/init.zsh
+
+## Plugins
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2 # must be loaded after executing compinit
+zplug "bhilburn/powerlevel9k", use:"powerlevel9k.zsh-theme", as:"theme"
+
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-history-substring-search"
+# zplug "zsh-users/zaw"
+
+zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
+zplug "leophys/zsh-plugin-fzf-finder", from:"github", use:"fzf-finder.plugin.zsh"
+zplug "hschne/fzf-git", from:"github"
+# zplug "marzocchi/zsh-notify", from:"github"
+
+zplug "supercrabtree/k", from:"github"
+zplug "MichaelAquilina/zsh-you-should-use"
+zplug "zdharma/zsh-diff-so-fancy", as:command, use:"bin/git-dsf"
+
+zplug "b4b4r07/emoji-cli", from:"github"
+zplug "MichaelAquilina/zsh-emojis", from:"github", use:"emojis.plugin.zsh"
+
+
+# Install packages that have not been installed yet
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    else
+        echo
+    fi
+fi
+
+zplug load
+
+# env shared between bash and zsh
+[ -f "$HOME/.profile" ] && [ -n "$PS1" ] && source "$HOME/.profile"
+
+## Options
+setopt correctall
+setopt autocd
+setopt auto_resume
+setopt extendedglob
+
+# vim emulation
+bindkey -v
+# Better searching in command mode -- http://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/
+autoload history-substring-search-backward
+autoload history-substring-search-forward
+zle -N history-substring-search-backward
+zle -N history-substring-search-forward
+bindkey -M vicmd '?' history-substring-search-backward
+bindkey -M vicmd '/' history-substring-search-forward
+
+# Beginning search with arrow keys
+autoload up-line-or-beginning-search
+autoload down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
+
+# `v` is already mapped to visual mode, so we need to use a different key to
+# open Vim
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd "^V" edit-command-line
+
+# By default, there is a 0.4 second delay after you hit the <ESC> key and when
+# the mode change is registered. This results in a very jarring and frustrating
+# transition between modes. Let's reduce this delay to 0.1 seconds.
+export KEYTIMEOUT=1
+
+# tmux
+## attach to a tmux session via arg, or current directory
+function tmuxa() {
+    if [[ -z "$1" ]]; then
+        tmux attach-session -t $(basename $(pwd))
+    else
+        tmux attach-session -t "$1"
+    fi
+}
+
+## create a new tmux session via arg, or current directory
+function tmuxn() {
+    if [[ -z "$1" ]]; then
+        tmux new-session -s $(basename $(pwd))
+    else
+        tmux new-session -s "$1"
+    fi
+}
+
+# aliases
+alias brewski=brew update && brew upgrade && brew cleanup && brew cask cleanup && brew doctor
+alias rmpyc="find . -name \*.pyc -exec rm -v {} \;"
+# Recursively delete `.DS_Store` files
+alias rmdstore="find . -name \*.DS_Store -exec rm -v {} \;"
+alias clean="rmpyc && rmdstore"
+alias cp="cp -i"
+alias cpv="rsync -pogr --progress"
+alias cpp="rsync -WavP --human-readable --progress $1 $2"
+alias mv="mv -i"
+alias rm="rm -i"
+alias oracow="fortune | cowsay | lolcat"
+alias ls="exa"
+alias l="ls"
+alias ll="ls -l"
+alias lh="ls -h"
+alias la="ls -la"
+alias lad="ls -lah"
+alias lsd="ls -l | grep '^d'"
+# if _which k; then
+#     alias lsk "k"
+# fi
+# Shortcuts
+alias g="git"
+alias v="vim"
+alias dc="docker-compose"
+alias dcu="docker-compose up"
+alias dcd="docker-compose down"
+alias dcr="docker-compose down; and docker-compose up"
+
+alias cat="bat"
+alias weather="curl wttr.in"
+
+# count lines of code
+alias cloc="cloc --exclude-dir=.git,.hg"
+
+# `cat` with pretty colors
+alias hilite="pygmentize -O style=monokai -f console256 -g"
+
+# OS stuff
+alias ports="lsof -i -P -sTCP:LISTEN"
+alias pm="ps ax | grep -v grep | grep $@"
+alias ssh-keygen2="ssh-keygen -t rsa -C (whoami)@(hostname)-(date -u)"
+
+# df < pydf < cdf
+# if _which pydf; then
+#     alias df='pydf'
+# else
+#     if _which cdf; then
+#         alias df='cdf'
+#     fi
+# fi
+
+# ssh and auth
+function add_keys() {
+    local login KEYS keychain_cmd
+    login=$1
+    KEYS=""
+    keychain_cmd="keychain --eval --agents ssh "
+
+    for i in ${HOME}/.ssh/* ; do
+        if [[ -r $i.pub && -r $i ]]; then
+            [[ -n $KEYS ]] && KEYS=$KEYS" "$i
+            [[ -z $KEYS ]] && KEYS=$i
+        fi
+    done
+
+    [[ -n $login ]] && keychain_cmd="$keychain_cmd --stop others $KEYS"
+    [[ -z $login ]] && keychain_cmd="$keychain_cmd --quiet -Q $KEYS"
+    echo "$keychain_cmd"
+}
+
+# Widen stuff
+## kubernetes
+K8S_DOCKER_IMAGE_VERSION=1.1.0-20190426 #1.0.2
+K8S_CLI="docker run --tty --interactive --rm \
+    --user $(id -u) \
+    -v ~/.kube:/config/.kube \
+    -v ~/.aws:/config/.aws \
+    quay.io/widen/k8s:$K8S_DOCKER_IMAGE_VERSION"
+alias kubectl="$K8S_CLI kubectl $@"
+alias helm="$K8S_CLI helm $@"
+
+# source <(elog --completion zsh)
+
+# utils
+## reload the shell
+function reloadShell() {
+    zplug load && source ~/.zshrc
+}
+
+function _source_if_file_exists() {
+    local file="$1"
+    ([ -e "$file" ] || [ -f "$file" ]) && . "$file"
+}
+
+# Check existence of a program
+function _which() {
+    command -v "$1" > /dev/null 2>&1;
+}
+
+# Are we sudo?
+function _root() {
+    [ "$EUID" = "0" ]
+}
+
+function _is_osx() {
+    [ "$(uname)" = "Darwin" ]
+}
+
+function _is_linux() {
+    [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]
+}
+
+# Fun stuff
+function greet() {
+    fortune | cowsay -W 80
+    #math -s0 (random) \% 2 > /dev/null && fortune | cowsay -W 80 || fortune | cowthink -W 80
+}
+
+function gifify() {
+    if [[ -n "$1" ]]; then
+        if [[ $2 == '--good' ]]; then
+            ffmpeg -i $1 -r 10 -vcodec png out-static-%05d.png
+            time convert -verbose +dither -layers Optimize -resize 600x600\> out-static*.png  GIF:- | gifsicle --colors 128 --delay=5 --loop --optimize=3 --multifile - > $1.gif
+            rm out-static*.png
+        else
+            ffmpeg -i $1 -s 600x400 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > $1.gif
+        fi
+    else
+        echo "proper usage: gifify <input_movie.mov>. You DO need to include extension."
+    fi
+}
+
+function screensaver() {
+    while true; do
+        clear && \
+        archey && \
+        oracow && \
+        sleep 30
+    done
+}
+
+# todo(@feltnerm): fix keys on login ??
+# if [[ -n $LOGIN ]]; then
+#     eval `add_keys 1`
+#     src
+# else
+#     eval $(`add_keys`)
+# 	export SSH_AUTH_SOCK=''
+# 	eval $(keychain --eval --quiet)
+# fi
+### /profiler
+## turn off tracing
+## unsetopt xtrace
+## restore stderr to the value saved in FD 3
+#exec 2>&3 3>&-
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/mfeltner/.nvm/versions/node/v12.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/mfeltner/.nvm/versions/node/v12.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/mfeltner/.nvm/versions/node/v12.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/mfeltner/.nvm/versions/node/v12.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/mfeltner/.nvm/versions/node/v12.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/mfeltner/.nvm/versions/node/v12.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
