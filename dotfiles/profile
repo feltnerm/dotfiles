@@ -26,11 +26,11 @@ export PATH="/usr/local/bin:$PATH"
 export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
 export JAVA_8_GRAALVM_HOME="/Library/Java/JavaVirtualMachines/graalvm-ce-19.0.0/Contents/Home"
 export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-export JAVA_12_HOME=$(/usr/libexec/java_home -v12)
+export JAVA_13_HOME=$(/usr/libexec/java_home -v13)
 
 alias -g java8='export JAVA_HOME=$JAVA_8_HOME'
 alias -g java11='export JAVA_HOME=$JAVA_11_HOME'
-alias -g java12='export JAVA_HOME=$JAVA_12_HOME'
+alias -g java13='export JAVA_HOME=$JAVA_13_HOME'
 alias -g javaGraal='export JAVA_HOME=$JAVA_8_GRAALVM_HOME'
 
 function javaSelect() {
@@ -52,10 +52,10 @@ function javaSelect() {
             $verbose && echo "Selected Java 11"
             $verbose && echo "$JAVA_HOME"
             ;;
-        12)
-            java12
+        13)
+            java13
             # export PATH="$JAVA_HOME/bin:$PATH"
-            $verbose && echo "Selected Java 12"
+            $verbose && echo "Selected Java 13"
             $verbose && echo "$JAVA_HOME"
             ;;
         graal)
