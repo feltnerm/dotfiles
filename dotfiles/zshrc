@@ -208,7 +208,7 @@ function add_keys() {
 
 # Widen stuff
 ## kubernetes
-K8S_DOCKER_IMAGE_VERSION=1.1.0-20190426 #1.0.2
+K8S_DOCKER_IMAGE_VERSION=1.14.8-20191217
 K8S_CLI="docker run --tty --interactive --rm \
     --user $(id -u) \
     -v ~/.kube:/config/.kube \
