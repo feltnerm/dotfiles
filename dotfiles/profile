@@ -84,6 +84,8 @@ export NVM_DIR="$HOME/.nvm"
 export WORKON_HOME="$HOME/.virtualenvs"
 export PYTHONSTARTUP="$HOME/.pystartup"
 export PROJECT_HOME="$CODE_HOME"
+VIRTUALENV_WRAPPER_PATH="/usr/local/bin/virtualenvwrapper_lazy.sh"
+source $VIRTUALENV_WRAPPER_PATH
 
 # rvm
 export PATH="$HOME/.rvm/bin:$PATH"
