@@ -237,6 +237,16 @@ function nlsp() {
     tr '\r\n' ' ' < /dev/stdin
 }
 
+function axargs () {
+        local expandalias
+        if [[ $(which $1) =~ "alias" ]]; then
+                expandalias=$(builtin alias $1)
+                expandalias="${${(s.'.)expandalias}[2]}"
+        else
+                expandalias="$1"
+        fi
+        command xargs ${(z)expandalias} "${(z)@[2,-1]}"
+}
 
 # source <(elog --completion zsh)
 
