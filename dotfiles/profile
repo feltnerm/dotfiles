@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
 export DROPBOX="$HOME/Dropbox"
 export WIKI="$HOME/vimwiki_html"
 export WIKI_SOURCE="$HOME/vimwiki"
