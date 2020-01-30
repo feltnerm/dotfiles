@@ -27,6 +27,7 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
 ## java homes
+export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
 export JAVA_8_GRAALVM_HOME="/Library/Java/JavaVirtualMachines/graalvm-ce-19.0.0/Contents/Home"
 export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
