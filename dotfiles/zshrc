@@ -233,6 +233,10 @@ function kubefmt() {
     tail -n +2 | cut -f"$position" -d' ' < /dev/stdin
 }
 
+function nlsp() {
+    tr '\r\n' ' ' < /dev/stdin
+}
+
 
 # source <(elog --completion zsh)
 
