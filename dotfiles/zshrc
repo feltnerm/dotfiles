@@ -215,7 +215,24 @@ K8S_CLI="docker run --tty --interactive --rm \
     -v ~/.aws:/config/.aws \
     quay.io/widen/k8s:$K8S_DOCKER_IMAGE_VERSION"
 alias kubectl="$K8S_CLI kubectl $@"
+alias kg="kubectl get"
+alias kd="kubectl describe"
+alias kgj="kubectl get jobs"
+alias kgp="kubectl get pods"
 alias helm="$K8S_CLI helm $@"
+function kubefmt() {
+    local position
+
+    if [ -z "$1" ]
+    then
+        position=1
+    else
+        position="$1"
+    fi
+
+    tail -n +2 | cut -f"$position" -d' ' < /dev/stdin
+}
+
 
 # source <(elog --completion zsh)
 
