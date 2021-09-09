@@ -99,3 +99,5 @@
 	driver = npx npm-merge-driver merge %A %O %B %P
 [tag]
 	sort = version:refname
+[init]
+	defaultBranch = main
