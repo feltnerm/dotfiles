@@ -33,10 +33,12 @@ export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
 export JAVA_8_GRAALVM_HOME="/Library/Java/JavaVirtualMachines/graalvm-ce-19.0.0/Contents/Home"
 export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
 export JAVA_13_HOME=$(/usr/libexec/java_home -v13)
+export JAVA_16_HOME=$(/usr/libexec/java_home -v16)
 
 alias -g java8='export JAVA_HOME=$JAVA_8_HOME'
 alias -g java11='export JAVA_HOME=$JAVA_11_HOME'
 alias -g java13='export JAVA_HOME=$JAVA_13_HOME'
+alias -g java16='export JAVA_HOME=$JAVA_16_HOME'
 alias -g javaGraal='export JAVA_HOME=$JAVA_8_GRAALVM_HOME'
 
 function javaSelect() {
@@ -64,6 +66,12 @@ function javaSelect() {
             $verbose && echo "Selected Java 13"
             $verbose && echo "$JAVA_HOME"
             ;;
+        16)
+            java16
+            # export PATH="$JAVA_HOME/bin:$PATH"
+            $verbose && echo "Selected Java 16"
+            $verbose && echo "$JAVA_HOME"
+            ;;
         graal)
             javaGraal
             # export PATH="$JAVA_HOME/bin:$PATH"
@@ -77,8 +85,8 @@ function javaSelect() {
     esac
 }
 
-## default to Java 8
-javaSelect 8 false
+## default to Java 16
+javaSelect 16 false
 
 # node setup
 ## node version manager (nvm)
