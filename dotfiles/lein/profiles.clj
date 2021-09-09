@@ -1,16 +1,5 @@
-{:user {:plugins [[cider/cider-nrepl "0.10.0-SNAPSHOT"]
-                  [refactor-nrepl "1.2.0-SNAPSHOT"]
-                  [lein-ancient "0.6.8"]
-                  [jonase/eastwood "0.2.1"]
-                  [lein-kibit "0.1.2"]
-                  [lein-pprint "1.1.1"]
-                  [lein-bikeshed "0.2.0"]]
-        :dependencies [[leiningen #=(leiningen.core.main/leiningen-version)]
-                       [alembic "0.3.2"]
-                       [org.clojure/tools.nrepl "0.2.12"]
-                       [difform "1.1.2"]
-                       [im.chit/vinyasa "0.4.2"]
-                       [org.clojars.gjahad/debug-repl "0.3.3"]]
+{:user {:plugins []
+        :dependencies []
         :injections [(require 'com.georgejahad.difform)
                      (require 'alex-and-georges.debug-repl)
                      (require '[vinyasa.inject :as inject])
