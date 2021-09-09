@@ -88,6 +88,9 @@ function javaSelect() {
 ## default to Java 16
 javaSelect 16 false
 
+# java
+[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
+
 # node setup
 ## node version manager (nvm)
 export NVM_DIR="$HOME/.nvm"
@@ -114,8 +117,10 @@ export PATH="$GOPATH/bin:$PATH"
 # elixir
 export PATH="$PATH:/path/to/elixir/bin"
 
+# pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 # my crap
 export PATH="$HOME/bin":"$PATH"
-
-# java
-[ -s "/Users/mfeltner/.jabba/jabba.sh" ] && source "/Users/mfeltner/.jabba/jabba.sh"
