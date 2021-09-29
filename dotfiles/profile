@@ -22,11 +22,6 @@ alias vim=nvim
 export EDITOR=nvim
 export VISUAL=nvim
 
-# use more up-to-date SSL in shell commands
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-
-export PATH="/usr/local/bin:$PATH"
-
 ## java homes
 export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
@@ -88,8 +83,15 @@ function javaSelect() {
 ## default to Java 16
 javaSelect 16 false
 
+# use more up-to-date SSL in shell commands
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# brew installed things
+export PATH="/usr/local/bin:$PATH"
+
 # java
-[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
+export JABBA_HOME="$HOME/.jabba"
+[ -s "$JABBA_HOME/jabba.sh" ] && source "$JABBA_HOME/jabba.sh"
 
 # node setup
 ## node version manager (nvm)
@@ -118,9 +120,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
 
-# elixir
-export PATH="$PATH:/path/to/elixir/bin"
-
 # pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
@@ -128,6 +127,9 @@ eval "$(pyenv virtualenv-init -)"
 
 # nix
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then . "$HOME/.nix-profile/etc/profile.d/nix.sh"; fi # added by Nix installer
+
+# emacs
+export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # my crap
 source "$HOME/.config/feltnerm/aliases.sh"
