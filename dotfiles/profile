@@ -130,6 +130,7 @@ eval "$(pyenv virtualenv-init -)"
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then . "$HOME/.nix-profile/etc/profile.d/nix.sh"; fi # added by Nix installer
 
 # my crap
-source "$HOME/.aliases.sh"
-source "$HOME/.functions.sh"
-export PATH="$HOME/bin":"$PATH"
+source "$HOME/.config/feltnerm/aliases.sh"
+source "$HOME/.config/feltnerm/functions.sh"
+
+export PATH="$HOME/.config/feltnerm/bin:$PATH"

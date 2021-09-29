@@ -8,9 +8,9 @@
 
 - link:
     ~/.agignore: dotfiles/agignore
-    ~/.aliases.sh: dotfiles/aliases.sh
     ~/.ctags: dotfiles/ctags
     ~/.config/alacritty/alacritty.yml: dotfiles/config/alacritty/alacritty.yml
+    ~/.config/feltnerm: dotfiles/config/feltnerm
     ~/.config/fish/config.fish: dotfiles/config/fish/config.fish
     ~/.config/doom: dotfiles/doom
     ~/.config/fish/functions: dotfiles/config/fish/functions
@@ -20,7 +20,6 @@
         path: dotfiles/config/user-dirs.dirs
     ~/.editorconfig: dotfiles/editorconfig
     ~/.eslintrc: dotfiles/eslintrc
-    ~/.functions.sh: dotfiles/functions.sh
     ~/.gitconfig: dotfiles/gitconfig
     ~/.gitignore: dotfiles/gitignore
     ~/.gradle: dotfiles/gradle
@@ -41,6 +40,5 @@
     ~/.vimrc: dotfiles/vimrc
     ~/.wgetrc: dotfiles/wgetrc
     ~/.zshrc: dotfiles/zshrc
-    ~/bin: dotfiles/bin
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
