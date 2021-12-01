@@ -38,6 +38,7 @@
     ~/.tmux.conf: dotfiles/tmux.conf
     ~/.vim: dotfiles/vim
     ~/.vimrc: dotfiles/vimrc
+    ~/.vimrc-minimal: dotfiles/vimrc-minimal
     ~/.wgetrc: dotfiles/wgetrc
     ~/.zshrc: dotfiles/zshrc
 - shell:

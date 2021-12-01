@@ -1,0 +1,459 @@
+" vimrc-minimal
+"
+""" Startup
+set nocompatible
+if &shell =~# 'fish$'
+    set shell=sh
+endif
+
+if has('nvim')
+    let g:python_host_prog = '/Users/mark/.pyenv/versions/2.7.18/envs/nvim2/bin/python'
+    let g:python3_host_prog = '/Users/mark/.pyenv/versions/3.9.0/envs/nvim/bin/python'
+endif
+
+""" Plugins
+call plug#begin('~/.vim/plugged')
+
+if !has('nvim')
+    Plug 'tpope/vim-sensible'
+endif
+
+"""" Base Plugins
+Plug 'Raimondi/delimitMate' " autocomplete for brackets, parens, etc.
+Plug 'Shougo/context_filetype.vim' " Provides functions to find fenced code blocks and their filetype.
+Plug 'Yggdroot/indentLine' " show indents (need with above?)
+Plug 'davidbeckingsale/writegood.vim'
+Plug 'dwieeb/vim-matchit'
+Plug 'easymotion/vim-easymotion' " lookup docs (todo: fix bindings)
+Plug 'kana/vim-textobj-indent' " select similarly indented lines (todo: add bindings)
+Plug 'kana/vim-textobj-user' " create custom textobjects
+Plug 'kshenoy/vim-signature' "place, toggle, and display marks (todo: add bindings)
+Plug 'machakann/vim-highlightedyank' " show currently yanked stuff with a highlight
+Plug 'mbbill/undotree' " file undo tree"
+Plug 'milkypostman/vim-togglelist' " toggle location and quickfix windows
+Plug 'nathanaelkane/vim-indent-guides' " visualize indents
+Plug 'tpope/vim-abolish' " automatic subsitutions (required?)
+Plug 'tpope/vim-commentary' " comments
+Plug 'tpope/vim-eunuch' " *nix integration
+Plug 'tpope/vim-obsession' " continuously updated session files Use `:Obsess` to record session
+Plug 'tpope/vim-repeat' " repeat with `.` after plugin map
+Plug 'tpope/vim-surround' " quoting/parenthesizing made easy
+Plug 'tpope/vim-unimpaired' " bracket mappings (todo: learn bindings)
+Plug 'vim-scripts/SearchComplete' " tab completion inside of `/`
+Plug 'wellle/targets.vim' " adds more text objects (todo: learn bindings)
+
+"""" Required?
+Plug 'Konfekt/FastFold' " required?
+
+"""" Unite
+" @todo(mjf): denite!
+Plug 'Shougo/neoyank.vim'
+Plug 'Shougo/unite-build'
+Plug 'Shougo/unite-outline'
+Plug 'Shougo/unite.vim'
+Plug 'joker1007/unite-pull-request' " todo: get working
+Plug 'junegunn/vim-emoji' " emoji support (todo: add keybind to replace emoji)
+Plug 'lambdalisue/unite-grep-vcs' " unite VCS source
+Plug 'mattn/unite-nyancat'
+Plug 'moznion/unite-git-conflict.vim'
+Plug 'osyo-manga/unite-quickfix'
+Plug 'rafi/vim-unite-issue'
+Plug 'rhysd/unite-emoji.vim' " unite source for emoji (depends on vim-emoji)
+Plug 'tacroe/unite-mark'
+Plug 'vim-scripts/unite-colorscheme'
+
+"""" Snippet Plugins
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'honza/vim-snippets'
+
+"""" Project Plugins
+Plug 'Shougo/vimfiler.vim'
+Plug 'airblade/vim-rooter'
+
+"""" VCS Plugins
+Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/gitv'
+Plug 'lambdalisue/vim-gita', {'on': ['Gita']}
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+
+"""" Formatting Plugins
+Plug 'editorconfig/editorconfig-vim'
+
+"""" Vim UI Plugins
+Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plug 'flazz/vim-colorschemes'
+Plug 'mhinz/vim-janah'
+Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+"""" VimWiki
+Plug 'vim-scripts/vimwiki'
+"Plug 'Rainbow-Parenthesis'
+Plug 'elzr/vim-json', { 'for': 'json' }
+
+""""" CSS/SASS/LESS
+Plug 'ap/vim-css-color'
+
+""""" YAML
+Plug 'stephpy/vim-yaml'
+
+""""" Markdown
+Plug 'github/markup'
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+Plug 'tpope/vim-markdown'
+
+call plug#end()
+
+filetype plugin indent on
+syntax enable
+
+""" Plugin Settings
+
+"""" Indentline settings
+let g:indentLine_char = '|'
+
+"""" Identguide Settings
+let g:indent_guides_enable_on_vim_startup = 1
+
+"""" Delimitmate settings
+let delimitMate_expand_cr = 1
+
+"""" vimwiki settings
+let g:vimwiki_list = [{
+            \ 'auto_export': 1,
+            \ 'path': expand("~/vimwiki"),
+            \ 'path_html': expand("~/vimwiki/_html"),
+            \ 'template_path': expand("~/vimwiki/_templates"),
+            \ 'template_default': "default",
+            \ 'template_ext': ".html",
+            \ 'css_name': "_css/style.css",
+            \ 'nested_syntaxes': {'python': 'python'}
+            \ }]
+
+
+"""" vim-filer settings
+let g:vimfiler_as_default_explorer = 1
+nmap <leader>d :VimFiler -buffer-name=explorer -simple -toggle<CR>
+nmap <leader>de :VimFiler -buffer-name=explorer -toggle<CR>
+nmap <leader>df :VimFilerBufferDir -buffer-name=explorer -toggle<CR>
+
+"""" undotree settings
+nmap <leader>g :UndotreeToggle<CR>
+
+"""" Git Gutter settings
+let g:gitgutter_realtime = 1
+"""" airline settings
+let g:airline_theme = 'onedark'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#hunks#enabled = 1
+
+""""  Unite settings
+let g:unite_prompt = '➪'
+let g:unite_source_history_yank_enable = 1
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#custom#profile('default', 'context', {
+            \  'start-insert': 1,
+            \  'smartcase': 1
+            \  })
+call unite#custom#source('buffer, file, file_rec, file_mru, file_rec/async, file_rec/git', 'sorters', 'sorter_selecta')
+call unite#custom#source('buffer, file, file_rec, file_mru, file_rec/async, file_rec/git', 'matchers', [
+            \ 'converter_file_directory',
+            \ 'matcher_fuzzy'
+            \ ])
+" \ 'matcher_glob',
+
+if executable('rg')
+    let g:unite_source_grep_command = 'rg'
+    let g:unite_source_grep_default_opts = '--no-heading --vimgrep --smart-case'
+    let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_grep_encoding = 'utf-8'
+
+    let g:unite_source_rec_async_command = [
+                \ 'rg',
+                \ '--files', '--no-heading', '--vimgrep', '--smart-case',
+                \ '--glob', '']
+
+elseif executable('pt')
+    let g:unite_source_grep_command = 'pt'
+    let g:unite_source_grep_default_opts = '--smart-case --nogroup --nocolor --context 0 --home-ptignore --global-gitignore'
+    let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_grep_encoding = 'utf-8'
+elseif executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts =
+                \ '-S --vimgrep --hidden --ignore ' .
+                \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+    let g:unite_source_grep_recursive_opt = ''
+endif
+
+"""" Unite mark settings
+let g:unite_source_mark_marks =
+            \   "abcdefghijklmnopqrstuvwxyz"
+            \ . "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+""" Autoloaders
+autocmd! bufwritepost .vimrc source %
+" no trailing whitespace
+autocmd BufWritePre * %s/\s\+$//e
+
+" wiki / vimwiki
+autocmd FileType vimwiki colorscheme base16-gruvbox-light-soft
+autocmd FileType vimwiki set background=light
+
+"""" git
+autocmd FileType git,gitcommit setlocal foldmethod=syntax foldlevel=1
+autocmd FileType gitcommit setlocal spell
+autocmd FileType gitcommit WritegoodEnable
+autocmd FileType gitrebase nnoremap <buffer> S :Cycle<CR>
+" Instead of reverting the cursor to the last position in the buffer, we
+" set it to the first line when editing a git commit message
+au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+""" General Settings
+map <space> <leader>
+" read modeline from files
+set modeline
+" watch for file changes
+set autoread
+" set esckeys
+set timeoutlen=1000 ttimeoutlen=0
+
+"""" Searching
+" set magic on, for regular expressions
+set magic
+" ignore case when searching
+set ignorecase
+" For use use artificial intelligence whilst searching
+set smartcase
+" Highlight searches
+set hlsearch
+" Highlight searches dynamically
+set incsearch
+" Let me hide a buffer with changes
+set hidden
+" Use a better `grep` when searching via '/'
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+endif
+
+"""" Backup
+set backupcopy=yes
+silent !mkdir -p $HOME/.vim/backup > /dev/null 2>&1
+set backupdir=$HOME/.vim/backup
+silent !mkdir -p $HOME/.vim/tmp > /dev/null 2>&1
+set directory=$HOME/.vim/tmp
+if has("persistent_undo")
+    silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
+    set undodir=~/.vim/undo
+    if exists('+undofile')
+        set undofile
+    endif
+endif
+
+"""" Bells/Sound
+set noerrorbells
+set novisualbell
+set visualbell
+set noerrorbells
+set t_vb=
+
+"""" File Formats and Encodings
+set encoding=utf-8
+set ffs=unix,mac,dos
+set fileformats=unix,mac,dos
+scriptencoding utf-8
+set encoding=utf-8 nobomb
+
+"""" Code Formatting
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set nowrap
+set nojoinspaces
+set listchars=tab:>~,nbsp:_,trail:.
+
+"""" Diff
+" Add vertical spaces to keep right and left aligned
+set diffopt=filler
+" Ignore whitespace changes (focus on code changes)
+set diffopt+=iwhite
+set diffopt+=vertical
+
+"""" Apperance and UI Settings
+" true color support (github.com/rakr/vim-one)
+" set t_8b=[48;2;%lu;%lu;%lum
+" set t_8f=[38;2;%lu;%lu;%lum
+colorscheme base16-gruvbox-dark-soft
+set background=dark
+set cmdheight=1
+set colorcolumn=80
+set cursorline
+set hlsearch
+" Always show status line
+set laststatus=2
+set list
+set more
+set number
+set numberwidth=5
+set relativenumber
+set ruler
+set scrolloff=1
+set showcmd
+set showmatch
+set sidescrolloff=1
+" splitting a window will put the new window below the current one
+set splitbelow
+set t_Co=256
+set termguicolors
+set timeoutlen=1200
+set title
+set ttimeoutlen=50
+
+"""" Folds
+set foldenable
+set foldlevelstart=10
+set foldmethod=indent
+
+"""" Spellcheck
+try
+    lang en_US
+catch
+    set dictionary+=/usr/share/dict/words
+    set spelllang=en_us
+    "if exists("+spelllang")
+    "endif
+    set spellfile=~/.vim/spell/en.utf-8.add
+endtry
+
+"""" Performance
+" fast terminal
+set ttyfast
+" how many tenths of a second to blink
+set mat=2
+" timeout length for keypresses
+set tm=500
+set synmaxcol=128
+syntax sync minlines=256
+
+" Redraw when executing macros
+if !has("nvim")
+    set lazyredraw
+end
+
+"""" Paste
+"set paste
+set pastetoggle=<F2>
+set clipboard=unnamed
+" if has('clipboard')
+"     if has('unnamedplus')
+"       set clipboard=unnamedplus
+"     else
+"       set clipboard=unnamed
+"     endif
+" endif
+
+"""" Backspacing
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+"""" Tab completion
+set completeopt-=preview
+set wildignore+=**/tmp/**
+set wildignore+=*.app,*.dmg,*.pdf,*.so
+set wildignore+=*.db,*.o,*.obj
+set wildignore+=*.git,*.svn
+set wildignore+=*.o,*.obj,.git,*.rbc,node_modules,build,indexes,out
+set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.swp,*.bak,*.lock
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*DS_Store*
+set wildmenu
+set wildmode=list:longest,list:full
+
+"""" Mouse
+set mouse=a
+set mousehide
+
+""" Keybindings
+noremap ; :
+inoremap jj <Esc>
+inoremap jk <Esc>
+vnoremap <ESC> <C-c>
+imap ii <C-[>
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+" Find merge conflict markers
+map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+" turn off search highlight
+nnoremap <leader>/ :nohlsearch<CR>
+" highlight last inserted text
+nnoremap gV `[v`]
+vmap < <gv
+vmap > >gv
+" W" Ex mode: no ty
+map Q <Nop>
+" Disable accidental macro recording when I spaz out on the q key
+map qq <Nop>
+" Commands
+command! W w
+command! Q q
+cmap w!! w !sudo tee % >/dev/null
+
+""""  Tabs
+let notabs = 1
+noremap <leader><Tab> :tabnext<CR>
+noremap <leader><S-Tab> :tabprev<CR>
+noremap <leader>tn :tabnext<CR>
+noremap <leader>tp :tabprev<CR>
+noremap <leader>tw :tabnew<CR>
+noremap <leader>tc :tabclose<CR>
+
+"""" Fuck help
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+"""" Splits
+" Move between splits using hjkl
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+" Create splits
+map <leader>sw :split<cr>
+map <leader>sv :vsplit<cr>
+
+" Insert current date
+nnoremap <F5> "=strftime("%a %d %b %Y")<CR>P
+inoremap <F5> <C-R>=strftime("%a %d %b %Y")<CR>
+
+"""" Unite
+noremap <Leader>p :Unite -wrap -start-insert -no-split -no-resize -buffer-name=search grep:!<cr>
+noremap <Leader>pf :Unite -start-insert -no-split -no-resize -buffer-name=files -force-redraw file_rec/async:!<cr>
+noremap <Leader>pr :Unite -start-insert -no-split -no-resize -buffer-name=mostrecentfiles -force-redraw file_mru<cr>
+noremap <Leader>pb :Unite -start-insert -no-split -no-resize -buffer-name=buffers buffer<cr>
+noremap <Leader>pg :Unite -wrap -start-insert -no-split -no-resize -buffer-name=gitgrep grep/git:.<cr>
+noremap <Leader>pG :Unite -start-insert -no-split -no-resize -buffer-name=gitfiles file_rec/git<cr>
+noremap <Leader>py :Unite -start-insert -buffer-name=yanks history/yank<cr>
+noremap <Leader>po :Unite -start-insert -buffer-name=outline outline<cr>
+noremap <Leader>ps :Unite -start-insert -buffer-name=snippets neosnippet/user:expand neosnippet:expand<cr>
+noremap <Leader>pq :Unite -start-insert -buffer-name=quickfix quickfix<cr>
+
+""" Tagbar
+noremap <Leader>t :TagbarOpenAutoClose<CR>
+
+
+"""" D-/N-eocomplete
+" if has('nvim')
+" else
+" endif
