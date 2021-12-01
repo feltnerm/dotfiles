@@ -123,8 +123,9 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# nix
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then . "$HOME/.nix-profile/etc/profile.d/nix.sh"; fi # added by Nix installer
+# nix!
+if [ -e /Users/mfeltner/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/mfeltner/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 
 # emacs
 export PATH="$HOME/.emacs.d/bin:$PATH"
@@ -132,5 +133,5 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 # my crap
 source "$HOME/.config/feltnerm/aliases.sh"
 source "$HOME/.config/feltnerm/functions.sh"
-
 export PATH="$HOME/.config/feltnerm/bin:$PATH"
+
