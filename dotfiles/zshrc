@@ -48,6 +48,7 @@ zplug "bhilburn/powerlevel9k", use:"powerlevel9k.zsh-theme", as:"theme"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
+zplug "hlissner/zsh-autopair", defer:2
 # zplug "zsh-users/zaw"
 
 zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
