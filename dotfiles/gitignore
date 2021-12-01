@@ -3,6 +3,7 @@ env.sh
 .project
 .projectile
 .tern-port
+.dir-locals.el
 
 # Local configuration folder and symbol database
 /.anjuta/
