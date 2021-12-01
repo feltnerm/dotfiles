@@ -119,6 +119,97 @@ bindkey -M vicmd "^V" edit-command-line
 # transition between modes. Let's reduce this delay to 0.1 seconds.
 export KEYTIMEOUT=1
 
+# tmux
+## attach to a tmux session via arg, or current directory
+function tmuxa() {
+    if [[ -z "$1" ]]; then
+        tmux attach-session -t $(basename $(pwd))
+    else
+        tmux attach-session -t "$1"
+    fi
+}
+
+## create a new tmux session via arg, or current directory
+function tmuxn() {
+    if [[ -z "$1" ]]; then
+        tmux new-session -s $(basename $(pwd))
+    else
+        tmux new-session -s "$1"
+    fi
+}
+
+# aliases
+alias brewski=brew update && brew upgrade && brew cleanup && brew cask cleanup && brew doctor
+alias rmpyc="find . -name \*.pyc -exec rm -v {} \;"
+# Recursively delete `.DS_Store` files
+alias rmdstore="find . -name \*.DS_Store -exec rm -v {} \;"
+alias clean="rmpyc && rmdstore"
+alias cp="cp -i"
+alias cpv="rsync -pogr --progress"
+alias cpp="rsync -WavP --human-readable --progress $1 $2"
+alias mv="mv -i"
+alias rm="rm -i"
+alias oracow="fortune | cowsay | lolcat"
+alias ls="exa"
+alias l="ls"
+alias ll="ls -l"
+alias lh="ls -h"
+alias la="ls -la"
+alias lad="ls -lah"
+alias lsd="ls -l | grep '^d'"
+# if _which k; then
+#     alias lsk "k"
+# fi
+# Shortcuts
+alias g="git"
+alias v="vim"
+alias dc="docker-compose"
+alias dcu="docker-compose up"
+alias dcd="docker-compose down"
+alias dcr="docker-compose down; and docker-compose up"
+
+alias cat="bat"
+alias weather="curl wttr.in"
+
+# count lines of code
+alias cloc="cloc --exclude-dir=.git,.hg"
+
+# `cat` with pretty colors
+alias hilite="pygmentize -O style=monokai -f console256 -g"
+
+# OS stuff
+alias ports="lsof -i -P -sTCP:LISTEN"
+alias pm="ps ax | grep -v grep | grep $@"
+alias ssh-keygen2="ssh-keygen -t rsa -C $(whoami)@$(hostname)-$(date -u)"
+
+# df < pydf < cdf
+# if _which pydf; then
+#     alias df='pydf'
+# else
+#     if _which cdf; then
+#         alias df='cdf'
+#     fi
+# fi
+
+# ssh and auth
+function add_keys() {
+    local login KEYS keychain_cmd
+    login=$1
+    KEYS=""
+    keychain_cmd="keychain --eval --agents ssh "
+
+    for i in ${HOME}/.ssh/* ; do
+        if [[ -r $i.pub && -r $i ]]; then
+            [[ -n $KEYS ]] && KEYS=$KEYS" "$i
+            [[ -z $KEYS ]] && KEYS=$i
+        fi
+    done
+
+    [[ -n $login ]] && keychain_cmd="$keychain_cmd --stop others $KEYS"
+    [[ -z $login ]] && keychain_cmd="$keychain_cmd --quiet -Q $KEYS"
+    echo "$keychain_cmd"
+}
+
 # Widen stuff
 ## kubernetes
 K8S_DOCKER_IMAGE_VERSION=1.14.8-20191217
